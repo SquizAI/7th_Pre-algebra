@@ -916,7 +916,11 @@ class GameController {
         this.correctAnswers = data.correctAnswers;
 
         this.showScreen('game');
-        this.nextQuestion();
+
+        // Wait for DOM to be ready before updating UI
+        setTimeout(() => {
+            this.nextQuestion();
+        }, 100);
     }
 
     showChallengeMode() {
