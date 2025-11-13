@@ -275,7 +275,26 @@ class GameController {
 
         // Update UI
         document.getElementById('equationDisplay').textContent = this.currentEquation.equation;
-        document.getElementById('currentQuestion').textContent = this.currentQuestion;
+
+        // Update progress display - current question and progress bar
+        const currentQuestionEl = document.getElementById('currentQuestion');
+        const totalQuestionsEl = document.getElementById('totalQuestions');
+        const progressFillEl = document.getElementById('progressFill');
+
+        if (currentQuestionEl) {
+            currentQuestionEl.textContent = this.currentQuestion;
+            console.log(`📊 Progress: ${this.currentQuestion}/${this.currentLevelInfo.totalQuestions}`);
+        }
+
+        if (totalQuestionsEl) {
+            totalQuestionsEl.textContent = this.currentLevelInfo.totalQuestions;
+        }
+
+        if (progressFillEl) {
+            const progress = (this.currentQuestion / this.currentLevelInfo.totalQuestions) * 100;
+            progressFillEl.style.width = `${progress}%`;
+            progressFillEl.style.transition = 'width 0.3s ease';
+        }
 
         // Clear optional fields (may not exist in all implementations)
         const answerField = document.getElementById('answerField');
@@ -293,10 +312,6 @@ class GameController {
         } else {
             document.getElementById('hintBox').style.display = 'none';
         }
-
-        // Update progress bar
-        const progress = (this.currentQuestion / this.currentLevelInfo.totalQuestions) * 100;
-        document.getElementById('progressFill').style.width = `${progress}%`;
 
         // Display current mastery if adaptive learning is active
         if (window.adaptiveLearning && this.currentQuestion > 1 && !this.isPracticeMode) {
