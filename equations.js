@@ -239,245 +239,419 @@ class EquationGenerator {
         ];
     }
 
-    // Generate equation based on type
-    generateEquation(type) {
+    // Generate equation based on type with adaptive difficulty
+    generateEquation(type, questionNumber = 1, totalQuestions = 5) {
+        // Get current difficulty from adaptive learning, or calculate from question number
+        let difficulty = 'medium';
+
+        if (window.adaptiveLearning) {
+            // Use adaptive learning's difficulty if available
+            difficulty = window.adaptiveLearning.getCurrentDifficulty();
+        } else {
+            // Fallback: increase difficulty as level progresses
+            const progressPct = questionNumber / totalQuestions;
+            if (progressPct <= 0.33) {
+                difficulty = 'easy';
+            } else if (progressPct <= 0.66) {
+                difficulty = 'medium';
+            } else {
+                difficulty = 'hard';
+            }
+        }
+
+        console.log(`🎲 Generating ${type} equation (Q${questionNumber}/${totalQuestions}, difficulty: ${difficulty})`);
+
         switch(type) {
             case 'two-step-basic':
-                return this.generateTwoStepBasic();
+                return this.generateTwoStepBasic(difficulty);
             case 'two-step-mixed':
-                return this.generateTwoStepMixed();
+                return this.generateTwoStepMixed(difficulty);
             case 'combining-terms':
-                return this.generateCombiningTerms();
+                return this.generateCombiningTerms(difficulty);
             case 'distributive-intro':
-                return this.generateDistributiveIntro();
+                return this.generateDistributiveIntro(difficulty);
             case 'distributive-practice':
-                return this.generateDistributivePractice();
+                return this.generateDistributivePractice(difficulty);
             case 'both-sides-intro':
-                return this.generateBothSidesIntro();
+                return this.generateBothSidesIntro(difficulty);
             case 'both-sides-practice':
-                return this.generateBothSidesPractice();
+                return this.generateBothSidesPractice(difficulty);
             case 'both-sides-distributive':
-                return this.generateBothSidesDistributive();
+                return this.generateBothSidesDistributive(difficulty);
             case 'infinite-solutions':
-                return this.generateInfiniteSolutions();
+                return this.generateInfiniteSolutions(difficulty);
             case 'no-solution':
-                return this.generateNoSolution();
+                return this.generateNoSolution(difficulty);
             case 'solutions-mixed':
-                return this.generateSolutionsMixed();
+                return this.generateSolutionsMixed(difficulty);
             case 'complex-mixed':
+                return this.generateComplexEquation(difficulty, 'mixed');
             case 'complex-advanced':
+                return this.generateComplexEquation(difficulty, 'advanced');
             case 'final-boss':
-                return this.generateComplexEquation();
+                return this.generateComplexEquation(difficulty, 'boss');
+            case 'review-checkpoint-1':
+                return this.generateCheckpoint1(difficulty);
+            case 'review-checkpoint-2':
+                return this.generateCheckpoint2(difficulty);
+            case 'review-checkpoint-3':
+                return this.generateCheckpoint3(difficulty);
             default:
-                return this.generateTwoStepBasic();
+                return this.generateTwoStepBasic(difficulty);
         }
     }
 
-    // Two-step basic: ax + b = c
-    generateTwoStepBasic() {
-        const a = this.randomInt(2, 5);
-        const b = this.randomInt(1, 10);
-        const x = this.randomInt(1, 10);
-        const c = a * x + b;
+    // Two-step basic: ax + b = c (with difficulty scaling)
+    generateTwoStepBasic(difficulty = 'medium') {
+        let a, b, x, c;
+
+        switch(difficulty) {
+            case 'easy':
+                a = this.randomInt(2, 4);      // Small coefficients
+                x = this.randomInt(1, 8);       // Small answers
+                b = this.randomInt(1, 7);       // Small constants
+                break;
+            case 'hard':
+                a = this.randomInt(3, 8);       // Larger coefficients
+                x = this.randomInt(-5, 15);     // Can be negative
+                b = this.randomInt(-10, 15);    // Can be negative
+                break;
+            default: // medium
+                a = this.randomInt(2, 6);
+                x = this.randomInt(1, 12);
+                b = this.randomInt(1, 12);
+        }
+
+        c = a * x + b;
 
         return {
-            equation: `${a}x + ${b} = ${c}`,
+            equation: `${a}x ${b >= 0 ? '+' : ''} ${b} = ${c}`,
             answer: x,
+            type: 'two-step-basic',
             steps: [
-                `${a}x + ${b} = ${c}`,
-                `${a}x = ${c - b}  (subtract ${b} from both sides)`,
+                `${a}x ${b >= 0 ? '+' : ''} ${b} = ${c}`,
+                `${a}x = ${c - b}  (${b >= 0 ? 'subtract' : 'add'} ${Math.abs(b)} ${b >= 0 ? 'from' : 'to'} both sides)`,
                 `x = ${x}  (divide both sides by ${a})`
             ],
-            hints: [
-                `🤔 What's next to the x term? How can we isolate ${a}x by itself?`,
-                `💡 We need to get rid of the ${b}. What operation undoes adding ${b}?`,
-                `✨ Subtract ${b} from both sides to isolate the term with x.`
-            ],
+            hint: `First, ${b >= 0 ? 'subtract' : 'add'} ${Math.abs(b)} to isolate the x term, then divide by ${a}.`,
             concept: "two-step equation"
         };
     }
 
-    // Two-step mixed with negatives
-    generateTwoStepMixed() {
-        const operations = [
-            () => this.generateTwoStepBasic(),
-            () => {
-                // ax - b = c
-                const a = this.randomInt(2, 5);
-                const b = this.randomInt(1, 10);
-                const x = this.randomInt(1, 10);
-                const c = a * x - b;
-                return {
-                    equation: `${a}x - ${b} = ${c}`,
-                    answer: x,
-                    steps: [
-                        `${a}x - ${b} = ${c}`,
-                        `${a}x = ${c + b}  (add ${b} to both sides)`,
-                        `x = ${x}  (divide both sides by ${a})`
-                    ],
-                    hints: [
-                        `🤔 What operation is being done to the x term? What needs to be undone first?`,
-                        `💡 Subtracting ${b} is the same as adding negative ${b}. How do we undo that?`,
-                        `✨ Add ${b} to both sides to isolate the term with x.`
-                    ],
-                    concept: "two-step with subtraction"
-                };
-            }
-        ];
+    // Two-step mixed: HARDER - includes subtraction and negative numbers
+    generateTwoStepMixed(difficulty = 'medium') {
+        let a, b, x, c;
+        const useSubtraction = Math.random() > 0.5; // 50% subtraction
 
-        return operations[this.randomInt(0, operations.length - 1)]();
-    }
+        switch(difficulty) {
+            case 'easy':
+                a = this.randomInt(2, 5);
+                x = this.randomInt(1, 10);
+                b = this.randomInt(1, 8);
+                break;
+            case 'hard':
+                a = this.randomInt(4, 10);      // Larger coefficients than basic
+                x = this.randomInt(-8, 18);     // Wider range including negatives
+                b = this.randomInt(-15, 20);    // Larger constants
+                break;
+            default: // medium
+                a = this.randomInt(3, 7);       // Slightly larger than basic
+                x = this.randomInt(-3, 15);
+                b = this.randomInt(-5, 15);
+        }
 
-    // Combining like terms: ax + bx + c = d
-    generateCombiningTerms() {
-        const a = this.randomInt(1, 4);
-        const b = this.randomInt(1, 4);
-        const c = this.randomInt(1, 10);
-        const x = this.randomInt(1, 8);
-        const d = (a + b) * x + c;
+        c = useSubtraction ? (a * x - b) : (a * x + b);
+        const sign = useSubtraction ? '-' : (b >= 0 ? '+' : '');
 
         return {
-            equation: `${a}x + ${b}x + ${c} = ${d}`,
+            equation: `${a}x ${sign} ${Math.abs(b)} = ${c}`,
             answer: x,
+            type: 'two-step-mixed',
             steps: [
-                `${a}x + ${b}x + ${c} = ${d}`,
-                `${a + b}x + ${c} = ${d}  (combine like terms)`,
-                `${a + b}x = ${d - c}  (subtract ${c} from both sides)`,
-                `x = ${x}  (divide both sides by ${a + b})`
+                `${a}x ${sign} ${Math.abs(b)} = ${c}`,
+                `${a}x = ${useSubtraction ? c + b : c - b}  (${useSubtraction ? 'add' : 'subtract'} ${Math.abs(b)})`,
+                `x = ${x}  (divide by ${a})`
             ],
-            hint: `First, combine the terms with x: ${a}x + ${b}x = ${a + b}x`,
+            hint: `${useSubtraction ? 'Add' : 'Subtract'} ${Math.abs(b)} first, then divide by ${a}.`,
+            concept: "two-step with mixed operations"
+        };
+    }
+
+    // Combining like terms: ax + bx + c = d (with difficulty scaling)
+    generateCombiningTerms(difficulty = 'medium') {
+        let a, b, c, x, d;
+
+        switch(difficulty) {
+            case 'easy':
+                a = this.randomInt(1, 3);       // Small coefficients
+                b = this.randomInt(1, 3);
+                x = this.randomInt(1, 8);
+                c = this.randomInt(1, 8);
+                break;
+            case 'hard':
+                a = this.randomInt(2, 7);       // Larger, can have subtraction
+                b = this.randomInt(-4, 7);      // Can be negative to create subtraction
+                x = this.randomInt(-5, 15);
+                c = this.randomInt(-12, 18);
+                break;
+            default: // medium
+                a = this.randomInt(1, 5);
+                b = this.randomInt(1, 5);
+                x = this.randomInt(-3, 12);
+                c = this.randomInt(-5, 15);
+        }
+
+        d = (a + b) * x + c;
+        const combined = a + b;
+
+        return {
+            equation: `${a}x ${b >= 0 ? '+' : ''} ${b}x ${c >= 0 ? '+' : ''} ${c} = ${d}`,
+            answer: x,
+            type: 'combining-terms',
+            steps: [
+                `${a}x ${b >= 0 ? '+' : ''} ${b}x ${c >= 0 ? '+' : ''} ${c} = ${d}`,
+                `${combined}x ${c >= 0 ? '+' : ''} ${c} = ${d}  (combine: ${a}x ${b >= 0 ? '+' : ''} ${b}x = ${combined}x)`,
+                `${combined}x = ${d - c}  (${c >= 0 ? 'subtract' : 'add'} ${Math.abs(c)})`,
+                `x = ${x}  (divide by ${combined})`
+            ],
+            hint: `Combine like terms first: ${a}x ${b >= 0 ? '+' : ''} ${b}x = ${combined}x, then solve.`,
             concept: "combining like terms"
         };
     }
 
-    // Distributive property: a(x + b) = c
-    generateDistributiveIntro() {
-        const a = this.randomInt(2, 5);
-        const b = this.randomInt(1, 8);
-        const x = this.randomInt(1, 10);
-        const c = a * (x + b);
+    // Distributive property: a(x + b) = c (with difficulty)
+    generateDistributiveIntro(difficulty = 'medium') {
+        let a, b, x, c;
+
+        switch(difficulty) {
+            case 'easy':
+                a = this.randomInt(2, 4);       // Small multiplier
+                b = this.randomInt(1, 6);       // Small inside constant
+                x = this.randomInt(1, 8);
+                break;
+            case 'hard':
+                a = this.randomInt(3, 8);       // Larger multiplier
+                b = this.randomInt(-8, 12);     // Can be negative
+                x = this.randomInt(-5, 15);
+                break;
+            default: // medium
+                a = this.randomInt(2, 6);
+                b = this.randomInt(1, 10);
+                x = this.randomInt(1, 12);
+        }
+
+        c = a * (x + b);
 
         return {
-            equation: `${a}(x + ${b}) = ${c}`,
+            equation: `${a}(x ${b >= 0 ? '+' : ''} ${b}) = ${c}`,
             answer: x,
+            type: 'distributive-intro',
             steps: [
-                `${a}(x + ${b}) = ${c}`,
-                `${a}x + ${a * b} = ${c}  (distribute ${a})`,
-                `${a}x = ${c - a * b}  (subtract ${a * b} from both sides)`,
-                `x = ${x}  (divide both sides by ${a})`
+                `${a}(x ${b >= 0 ? '+' : ''} ${b}) = ${c}`,
+                `${a}x ${a * b >= 0 ? '+' : ''} ${a * b} = ${c}  (distribute ${a})`,
+                `${a}x = ${c - a * b}  (subtract ${a * b})`,
+                `x = ${x}  (divide by ${a})`
             ],
-            hint: `Use the distributive property: ${a}(x + ${b}) = ${a}x + ${a * b}`,
+            hint: `Distribute ${a}: multiply both x and ${b} by ${a}, then solve.`,
             concept: "distributive property"
         };
     }
 
-    // Distributive practice with more complexity
-    generateDistributivePractice() {
-        const a = this.randomInt(2, 6);
-        const b = this.randomInt(1, 8);
-        const c = this.randomInt(1, 10);
-        const x = this.randomInt(1, 10);
-        const result = a * (x + b) + c;
+    // Distributive practice: HARDER - includes extra constant outside parentheses
+    generateDistributivePractice(difficulty = 'medium') {
+        let a, b, c, x, result;
+
+        switch(difficulty) {
+            case 'easy':
+                a = this.randomInt(2, 4);
+                b = this.randomInt(1, 6);
+                c = this.randomInt(1, 8);
+                x = this.randomInt(1, 8);
+                break;
+            case 'hard':
+                a = this.randomInt(3, 8);
+                b = this.randomInt(-6, 12);
+                c = this.randomInt(-10, 15);
+                x = this.randomInt(-5, 15);
+                break;
+            default: // medium
+                a = this.randomInt(2, 6);
+                b = this.randomInt(-3, 10);
+                c = this.randomInt(-5, 12);
+                x = this.randomInt(-3, 12);
+        }
+
+        result = a * (x + b) + c;
 
         return {
-            equation: `${a}(x + ${b}) + ${c} = ${result}`,
+            equation: `${a}(x ${b >= 0 ? '+' : ''} ${b}) ${c >= 0 ? '+' : ''} ${c} = ${result}`,
             answer: x,
+            type: 'distributive-practice',
             steps: [
-                `${a}(x + ${b}) + ${c} = ${result}`,
-                `${a}x + ${a * b} + ${c} = ${result}  (distribute ${a})`,
-                `${a}x + ${a * b + c} = ${result}  (combine constants)`,
+                `${a}(x ${b >= 0 ? '+' : ''} ${b}) ${c >= 0 ? '+' : ''} ${c} = ${result}`,
+                `${a}x ${a * b >= 0 ? '+' : ''} ${a * b} ${c >= 0 ? '+' : ''} ${c} = ${result}  (distribute)`,
+                `${a}x ${a * b + c >= 0 ? '+' : ''} ${a * b + c} = ${result}  (combine constants)`,
                 `${a}x = ${result - (a * b + c)}  (subtract ${a * b + c})`,
                 `x = ${x}  (divide by ${a})`
             ],
-            hint: `First distribute ${a}, then combine like terms.`,
-            concept: "distributive with constants"
+            hint: `Distribute ${a} first, then combine ${a * b} and ${c}, then solve.`,
+            concept: "distributive with extra constants"
         };
     }
 
     // Variables on both sides intro: ax + b = cx + d
-    generateBothSidesIntro() {
-        const a = this.randomInt(3, 6);
-        const c = this.randomInt(1, a - 1);
-        const b = this.randomInt(1, 8);
-        const x = this.randomInt(1, 10);
-        const d = a * x + b - c * x;
+    generateBothSidesIntro(difficulty = 'medium') {
+        let a, c, b, x, d;
+
+        switch(difficulty) {
+            case 'easy':
+                a = this.randomInt(3, 5);
+                c = this.randomInt(1, 2);       // Small right-side coefficient
+                b = this.randomInt(1, 6);
+                x = this.randomInt(1, 8);
+                break;
+            case 'hard':
+                a = this.randomInt(4, 10);
+                c = this.randomInt(2, 7);
+                b = this.randomInt(-10, 15);    // Can be negative
+                x = this.randomInt(-5, 15);
+                break;
+            default: // medium
+                a = this.randomInt(3, 7);
+                c = this.randomInt(1, 5);
+                b = this.randomInt(-3, 12);
+                x = this.randomInt(-2, 12);
+        }
+
+        d = a * x + b - c * x;
 
         return {
-            equation: `${a}x + ${b} = ${c}x + ${d}`,
+            equation: `${a}x ${b >= 0 ? '+' : ''} ${b} = ${c}x ${d >= 0 ? '+' : ''} ${d}`,
             answer: x,
+            type: 'both-sides-intro',
             steps: [
-                `${a}x + ${b} = ${c}x + ${d}`,
-                `${a - c}x + ${b} = ${d}  (subtract ${c}x from both sides)`,
-                `${a - c}x = ${d - b}  (subtract ${b} from both sides)`,
+                `${a}x ${b >= 0 ? '+' : ''} ${b} = ${c}x ${d >= 0 ? '+' : ''} ${d}`,
+                `${a - c}x ${b >= 0 ? '+' : ''} ${b} = ${d}  (subtract ${c}x)`,
+                `${a - c}x = ${d - b}  (subtract ${b})`,
                 `x = ${x}  (divide by ${a - c})`
             ],
-            hint: `Move all x terms to one side. Subtract ${c}x from both sides.`,
+            hint: `Move all x terms to one side: subtract ${c}x from both sides first.`,
             concept: "variables on both sides"
         };
     }
 
-    // Variables on both sides practice
-    generateBothSidesPractice() {
-        const a = this.randomInt(4, 8);
-        const c = this.randomInt(1, a - 2);
-        const b = this.randomInt(2, 12);
-        const d = this.randomInt(1, 10);
-        const x = Math.round((d - b) / (a - c));
+    // Variables on both sides practice: HARDER - includes subtraction
+    generateBothSidesPractice(difficulty = 'medium') {
+        let a, c, b, d, x;
 
-        if (!Number.isInteger(x) || x < 1) {
-            return this.generateBothSidesPractice(); // Try again
+        switch(difficulty) {
+            case 'easy':
+                a = this.randomInt(4, 6);
+                c = this.randomInt(1, 3);
+                b = this.randomInt(1, 8);
+                x = this.randomInt(1, 10);
+                d = a * x - b - c * x;  // Calculate d to get integer solution
+                break;
+            case 'hard':
+                a = this.randomInt(5, 12);
+                c = this.randomInt(2, 8);
+                b = this.randomInt(-12, 18);
+                x = this.randomInt(-8, 18);
+                d = a * x - b - c * x;
+                break;
+            default: // medium
+                a = this.randomInt(4, 9);
+                c = this.randomInt(2, 6);
+                b = this.randomInt(-5, 15);
+                x = this.randomInt(-4, 15);
+                d = a * x - b - c * x;
         }
 
         return {
-            equation: `${a}x - ${b} = ${c}x + ${d}`,
+            equation: `${a}x - ${b} = ${c}x ${d >= 0 ? '+' : ''} ${d}`,
             answer: x,
+            type: 'both-sides-practice',
             steps: [
-                `${a}x - ${b} = ${c}x + ${d}`,
+                `${a}x - ${b} = ${c}x ${d >= 0 ? '+' : ''} ${d}`,
                 `${a - c}x - ${b} = ${d}  (subtract ${c}x)`,
-                `${a - c}x = ${b + d}  (add ${b})`,
+                `${a - c}x = ${d + b}  (add ${b})`,
                 `x = ${x}  (divide by ${a - c})`
             ],
-            hint: `Get all x terms on the left side, constants on the right.`,
-            concept: "variables both sides with negatives"
+            hint: `Subtract ${c}x from both sides, then add ${b} to both sides.`,
+            concept: "variables both sides with subtraction"
         };
     }
 
-    // Both sides with distributive
-    generateBothSidesDistributive() {
-        const a = this.randomInt(2, 4);
-        const b = this.randomInt(1, 5);
-        const c = this.randomInt(1, 3);
-        const d = this.randomInt(1, 8);
-        const x = this.randomInt(1, 8);
-        const right = c * x + d;
+    // Both sides with distributive: HARDEST - combines two concepts
+    generateBothSidesDistributive(difficulty = 'medium') {
+        let a, b, c, d, x;
+
+        switch(difficulty) {
+            case 'easy':
+                a = this.randomInt(2, 3);       // Small multiplier
+                b = this.randomInt(1, 4);
+                c = this.randomInt(1, 2);       // Small right coefficient
+                x = this.randomInt(1, 8);
+                d = a * (x + b) - c * x;        // Calculate for integer solution
+                break;
+            case 'hard':
+                a = this.randomInt(3, 7);
+                b = this.randomInt(-6, 10);
+                c = this.randomInt(2, 6);
+                x = this.randomInt(-5, 15);
+                d = a * (x + b) - c * x;
+                break;
+            default: // medium
+                a = this.randomInt(2, 5);
+                b = this.randomInt(-3, 8);
+                c = this.randomInt(1, 4);
+                x = this.randomInt(-3, 12);
+                d = a * (x + b) - c * x;
+        }
 
         return {
-            equation: `${a}(x + ${b}) = ${c}x + ${d}`,
+            equation: `${a}(x ${b >= 0 ? '+' : ''} ${b}) = ${c}x ${d >= 0 ? '+' : ''} ${d}`,
             answer: x,
+            type: 'both-sides-distributive',
             steps: [
-                `${a}(x + ${b}) = ${c}x + ${d}`,
-                `${a}x + ${a * b} = ${c}x + ${d}  (distribute ${a})`,
-                `${a - c}x + ${a * b} = ${d}  (subtract ${c}x)`,
+                `${a}(x ${b >= 0 ? '+' : ''} ${b}) = ${c}x ${d >= 0 ? '+' : ''} ${d}`,
+                `${a}x ${a * b >= 0 ? '+' : ''} ${a * b} = ${c}x ${d >= 0 ? '+' : ''} ${d}  (distribute ${a})`,
+                `${a - c}x ${a * b >= 0 ? '+' : ''} ${a * b} = ${d}  (subtract ${c}x)`,
                 `${a - c}x = ${d - a * b}  (subtract ${a * b})`,
                 `x = ${x}  (divide by ${a - c})`
             ],
-            hint: `First distribute, then move x terms to one side.`,
-            concept: "distributive with both sides"
+            hint: `Distribute ${a} first, THEN handle variables on both sides.`,
+            concept: "distributive + both sides (combined)"
         };
     }
 
     // Infinite solutions: ax + b = ax + b
-    generateInfiniteSolutions() {
-        const a = this.randomInt(2, 6);
-        const b = this.randomInt(3, 15);
-        const left = this.randomInt(2, 5);
+    generateInfiniteSolutions(difficulty = 'medium') {
+        let a, b, left;
+
+        switch(difficulty) {
+            case 'easy':
+                a = this.randomInt(2, 4);       // Smaller coefficients
+                b = this.randomInt(3, 10);
+                left = this.randomInt(2, 3);    // Smaller multiplier
+                break;
+            case 'hard':
+                a = this.randomInt(3, 8);       // Larger coefficients
+                b = this.randomInt(-8, 20);     // Can be negative
+                left = this.randomInt(2, 6);    // Larger multiplier
+                break;
+            default: // medium
+                a = this.randomInt(2, 6);
+                b = this.randomInt(3, 15);
+                left = this.randomInt(2, 5);
+        }
 
         return {
-            equation: `${left}(${a}x + ${b}) = ${left * a}x + ${left * b}`,
+            equation: `${left}(${a}x ${b >= 0 ? '+' : ''} ${b}) = ${left * a}x ${(left * b) >= 0 ? '+' : ''} ${left * b}`,
             answer: "infinite",
             steps: [
-                `${left}(${a}x + ${b}) = ${left * a}x + ${left * b}`,
-                `${left * a}x + ${left * b} = ${left * a}x + ${left * b}  (distribute)`,
+                `${left}(${a}x ${b >= 0 ? '+' : ''} ${b}) = ${left * a}x ${(left * b) >= 0 ? '+' : ''} ${left * b}`,
+                `${left * a}x ${(left * b) >= 0 ? '+' : ''} ${left * b} = ${left * a}x ${(left * b) >= 0 ? '+' : ''} ${left * b}  (distribute)`,
                 `${left * b} = ${left * b}  (subtract ${left * a}x)`,
                 `TRUE for all values of x`
             ],
@@ -488,16 +662,31 @@ class EquationGenerator {
     }
 
     // No solution: ax + b = ax + c (where b ≠ c)
-    generateNoSolution() {
-        const a = this.randomInt(2, 6);
-        const b = this.randomInt(3, 10);
-        const c = b + this.randomInt(2, 8);
+    generateNoSolution(difficulty = 'medium') {
+        let a, b, c;
+
+        switch(difficulty) {
+            case 'easy':
+                a = this.randomInt(2, 4);       // Smaller coefficients
+                b = this.randomInt(3, 8);
+                c = b + this.randomInt(2, 5);   // Smaller difference
+                break;
+            case 'hard':
+                a = this.randomInt(3, 8);       // Larger coefficients
+                b = this.randomInt(-10, 15);    // Can be negative
+                c = b + this.randomInt(3, 12);  // Larger difference
+                break;
+            default: // medium
+                a = this.randomInt(2, 6);
+                b = this.randomInt(3, 10);
+                c = b + this.randomInt(2, 8);
+        }
 
         return {
-            equation: `${a}x + ${b} = ${a}x + ${c}`,
+            equation: `${a}x ${b >= 0 ? '+' : ''} ${b} = ${a}x ${c >= 0 ? '+' : ''} ${c}`,
             answer: "none",
             steps: [
-                `${a}x + ${b} = ${a}x + ${c}`,
+                `${a}x ${b >= 0 ? '+' : ''} ${b} = ${a}x ${c >= 0 ? '+' : ''} ${c}`,
                 `${b} = ${c}  (subtract ${a}x from both sides)`,
                 `FALSE - ${b} does not equal ${c}`,
                 `No solution exists`
@@ -509,23 +698,105 @@ class EquationGenerator {
     }
 
     // Mixed solution types
-    generateSolutionsMixed() {
+    generateSolutionsMixed(difficulty = 'medium') {
         const types = [
-            () => this.generateTwoStepBasic(),
-            () => this.generateInfiniteSolutions(),
-            () => this.generateNoSolution()
+            () => this.generateTwoStepBasic(difficulty),
+            () => this.generateInfiniteSolutions(difficulty),
+            () => this.generateNoSolution(difficulty)
         ];
         return types[this.randomInt(0, 2)]();
     }
 
-    // Complex equations for boss levels
-    generateComplexEquation() {
+    // Complex equations for boss levels with progressive difficulty
+    generateComplexEquation(difficulty = 'medium', variant = 'mixed') {
+        // Different variants for different boss levels
+        switch(variant) {
+            case 'mixed':
+                // Level 17: Mix of distributive and both sides (moderate)
+                const mixedTypes = [
+                    () => this.generateBothSidesDistributive(difficulty),
+                    () => this.generateDistributivePractice(difficulty),
+                    () => this.generateBothSidesPractice(difficulty)
+                ];
+                return mixedTypes[this.randomInt(0, 2)]();
+
+            case 'advanced':
+                // Level 18: Harder versions, more both-sides emphasis
+                const advancedTypes = [
+                    () => this.generateBothSidesDistributive(difficulty),
+                    () => this.generateBothSidesPractice(difficulty),
+                    () => this.generateSolutionsMixed(difficulty)  // Include special solutions
+                ];
+                return advancedTypes[this.randomInt(0, 2)]();
+
+            case 'boss':
+                // Level 19: Ultimate challenge - all hardest types
+                const bossTypes = [
+                    () => this.generateBothSidesDistributive(difficulty),
+                    () => this.generateSolutionsMixed(difficulty),
+                    () => {
+                        // Create an extra-challenging both-sides equation
+                        let a = this.randomInt(3, 8);
+                        let b = this.randomInt(-8, 12);
+                        let c = this.randomInt(2, 7);
+                        let d = this.randomInt(-10, 15);
+                        let x = this.randomInt(-5, 20);
+                        let e = a * x + b - c * x - d;
+
+                        return {
+                            equation: `${a}x ${b >= 0 ? '+' : ''} ${b} = ${c}x ${d >= 0 ? '+' : ''} ${d} ${e >= 0 ? '+' : ''} ${e}`,
+                            answer: x,
+                            type: 'complex-boss',
+                            steps: [
+                                `${a}x ${b >= 0 ? '+' : ''} ${b} = ${c}x ${d >= 0 ? '+' : ''} ${d} ${e >= 0 ? '+' : ''} ${e}`,
+                                `${a}x ${b >= 0 ? '+' : ''} ${b} = ${c}x ${(d + e) >= 0 ? '+' : ''} ${d + e}  (combine constants)`,
+                                `${a - c}x ${b >= 0 ? '+' : ''} ${b} = ${d + e}  (subtract ${c}x)`,
+                                `${a - c}x = ${d + e - b}  (subtract ${b})`,
+                                `x = ${x}  (divide by ${a - c})`
+                            ],
+                            hint: `Collect all x terms on one side, then all constants on the other.`,
+                            concept: "complex multi-step equation"
+                        };
+                    }
+                ];
+                return bossTypes[this.randomInt(0, 2)]();
+
+            default:
+                return this.generateBothSidesDistributive(difficulty);
+        }
+    }
+
+    // Checkpoint 1: Review levels 1-5 (two-step and combining terms)
+    generateCheckpoint1(difficulty = 'medium') {
         const types = [
-            () => this.generateBothSidesDistributive(),
-            () => this.generateDistributivePractice(),
-            () => this.generateBothSidesPractice()
+            () => this.generateTwoStepBasic(difficulty),
+            () => this.generateTwoStepMixed(difficulty),
+            () => this.generateCombiningTerms(difficulty)
         ];
         return types[this.randomInt(0, 2)]();
+    }
+
+    // Checkpoint 2: Review levels 1-10 (two-step, combining, distributive)
+    generateCheckpoint2(difficulty = 'medium') {
+        const types = [
+            () => this.generateTwoStepMixed(difficulty),
+            () => this.generateCombiningTerms(difficulty),
+            () => this.generateDistributiveIntro(difficulty),
+            () => this.generateDistributivePractice(difficulty)
+        ];
+        return types[this.randomInt(0, 3)]();
+    }
+
+    // Checkpoint 3: Review levels 1-15 (all concepts including both sides)
+    generateCheckpoint3(difficulty = 'medium') {
+        const types = [
+            () => this.generateCombiningTerms(difficulty),
+            () => this.generateDistributivePractice(difficulty),
+            () => this.generateBothSidesIntro(difficulty),
+            () => this.generateBothSidesPractice(difficulty),
+            () => this.generateBothSidesDistributive(difficulty)
+        ];
+        return types[this.randomInt(0, 4)]();
     }
 
     // Helper function

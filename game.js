@@ -274,8 +274,12 @@ class GameController {
         this.questionStartTime = Date.now();
         this.hintUsedThisQuestion = false;
 
-        // Generate equation with adaptive difficulty if available
-        this.currentEquation = this.equationGen.generateEquation(this.currentLevelInfo.type);
+        // Generate equation with progressive difficulty based on question number
+        this.currentEquation = this.equationGen.generateEquation(
+            this.currentLevelInfo.type,
+            this.currentQuestion,
+            this.currentLevelInfo.totalQuestions
+        );
 
         // Track problem start for student report
         if (window.studentReport) {
