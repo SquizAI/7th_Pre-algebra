@@ -276,9 +276,15 @@ class GameController {
         // Update UI
         document.getElementById('equationDisplay').textContent = this.currentEquation.equation;
         document.getElementById('currentQuestion').textContent = this.currentQuestion;
-        document.getElementById('answerField').value = '';
+
+        // Clear optional fields (may not exist in all implementations)
+        const answerField = document.getElementById('answerField');
+        if (answerField) answerField.value = '';
+
         document.getElementById('feedbackArea').innerHTML = '';
-        document.getElementById('stepsContainer').innerHTML = '';
+
+        const stepsContainer = document.getElementById('stepsContainer');
+        if (stepsContainer) stepsContainer.innerHTML = '';
 
         // Show hint if available
         if (this.currentLevelInfo.hints && this.currentEquation.hint) {
@@ -527,8 +533,11 @@ class GameController {
 
         // In practice mode, allow retry
         if (this.isPracticeMode) {
-            document.getElementById('answerField').value = '';
-            document.getElementById('answerField').focus();
+            const answerField = document.getElementById('answerField');
+            if (answerField) {
+                answerField.value = '';
+                answerField.focus();
+            }
         } else {
             // Move to next question after delay
             setTimeout(() => {
