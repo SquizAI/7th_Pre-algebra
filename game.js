@@ -211,9 +211,17 @@ class GameController {
             // Update UI
             document.getElementById('levelTitle').textContent = `Level ${levelInfo.id}: ${levelInfo.name}`;
             document.getElementById('levelDescription').textContent = levelInfo.description;
+
+            // Update both progress displays
             document.getElementById('totalQuestions').textContent = levelInfo.totalQuestions;
             document.getElementById('currentQuestion').textContent = '0';
             document.getElementById('progressFill').style.width = '0%';
+
+            // Update level progress (bottom display)
+            document.getElementById('levelTotalQuestions').textContent = levelInfo.totalQuestions;
+            document.getElementById('levelCurrentQuestion').textContent = '0';
+            document.getElementById('levelProgressFill').style.width = '0%';
+
             document.getElementById('streak').textContent = this.streak;
 
             // Generate first question
@@ -228,9 +236,16 @@ class GameController {
 
         document.getElementById('levelTitle').textContent = levelInfo.name;
         document.getElementById('levelDescription').textContent = levelInfo.description;
+
+        // Update both progress displays
         document.getElementById('totalQuestions').textContent = levelInfo.totalQuestions;
         document.getElementById('currentQuestion').textContent = '0';
         document.getElementById('progressFill').style.width = '0%';
+
+        // Update level progress (bottom display)
+        document.getElementById('levelTotalQuestions').textContent = levelInfo.totalQuestions;
+        document.getElementById('levelCurrentQuestion').textContent = '0';
+        document.getElementById('levelProgressFill').style.width = '0%';
 
         this.nextQuestion();
     }
@@ -276,24 +291,38 @@ class GameController {
         // Update UI
         document.getElementById('equationDisplay').textContent = this.currentEquation.equation;
 
-        // Update progress display - current question and progress bar
+        // Calculate progress percentage
+        const progress = (this.currentQuestion / this.currentLevelInfo.totalQuestions) * 100;
+
+        // Update TOP progress display (problem header)
         const currentQuestionEl = document.getElementById('currentQuestion');
         const totalQuestionsEl = document.getElementById('totalQuestions');
         const progressFillEl = document.getElementById('progressFill');
 
-        if (currentQuestionEl) {
-            currentQuestionEl.textContent = this.currentQuestion;
-            console.log(`📊 Progress: ${this.currentQuestion}/${this.currentLevelInfo.totalQuestions}`);
-        }
-
-        if (totalQuestionsEl) {
-            totalQuestionsEl.textContent = this.currentLevelInfo.totalQuestions;
-        }
-
+        if (currentQuestionEl) currentQuestionEl.textContent = this.currentQuestion;
+        if (totalQuestionsEl) totalQuestionsEl.textContent = this.currentLevelInfo.totalQuestions;
         if (progressFillEl) {
-            const progress = (this.currentQuestion / this.currentLevelInfo.totalQuestions) * 100;
             progressFillEl.style.width = `${progress}%`;
             progressFillEl.style.transition = 'width 0.3s ease';
+        }
+
+        // Update BOTTOM level progress display (the one you see at bottom)
+        const levelCurrentQuestionEl = document.getElementById('levelCurrentQuestion');
+        const levelTotalQuestionsEl = document.getElementById('levelTotalQuestions');
+        const levelProgressFillEl = document.getElementById('levelProgressFill');
+
+        if (levelCurrentQuestionEl) {
+            levelCurrentQuestionEl.textContent = this.currentQuestion;
+            console.log(`📊 Level Progress: ${this.currentQuestion}/${this.currentLevelInfo.totalQuestions}`);
+        }
+
+        if (levelTotalQuestionsEl) {
+            levelTotalQuestionsEl.textContent = this.currentLevelInfo.totalQuestions;
+        }
+
+        if (levelProgressFillEl) {
+            levelProgressFillEl.style.width = `${progress}%`;
+            levelProgressFillEl.style.transition = 'width 0.3s ease';
         }
 
         // Clear optional fields (may not exist in all implementations)
