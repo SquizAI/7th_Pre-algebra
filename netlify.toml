@@ -1,0 +1,10 @@
+[build]
+  publish = "."
+  command = "echo 'window.GEMINI_API_KEY = \"'$GEMINI_API_KEY'\";' > env-inject.js"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer-when-downgrade"
