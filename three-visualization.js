@@ -207,17 +207,29 @@ class ThreeVisualization {
 
         this.leftObjects = [];
         this.rightObjects = [];
+
+        // Clear overlays
+        if (this.contextTextElement) {
+            this.contextTextElement.remove();
+            this.contextTextElement = null;
+        }
+        if (this.legendElement) {
+            this.legendElement.remove();
+            this.legendElement = null;
+        }
     }
 
     visualizeEquation(equation) {
-        // Parse the equation (simple parsing for visualization)
+        // Parse the equation properly
         const parts = equation.equation.split('=');
         if (parts.length !== 2) return;
 
         const leftSide = parts[0].trim();
         const rightSide = parts[1].trim();
 
-        // Create visual representation
+        console.log(`🎨 Visualizing: ${leftSide} = ${rightSide}`);
+
+        // Parse and create visual representation
         this.createSideObjects(leftSide, 'left');
         this.createSideObjects(rightSide, 'right');
 
@@ -225,77 +237,153 @@ class ThreeVisualization {
         this.animateBalance();
     }
 
+    parseExpression(expression) {
+        // Parse algebraic expression into terms
+        const terms = {
+            xCoefficient: 0,
+            constant: 0,
+            isDivision: false,
+            divisor: 1
+        };
+
+        // Check for division format: x/a or x / a
+        const divMatch = expression.match(/x\s*\/\s*(\d+)/);
+        if (divMatch) {
+            terms.isDivision = true;
+            terms.divisor = parseInt(divMatch[1]);
+            terms.xCoefficient = 1; // x/a means 1x divided by a
+
+            // Get any constants after the division
+            const remaining = expression.replace(/x\s*\/\s*\d+/, '').trim();
+            if (remaining) {
+                const constMatch = remaining.match(/([+-]?\s*\d+)/);
+                if (constMatch) {
+                    terms.constant = parseInt(constMatch[1].replace(/\s/g, ''));
+                }
+            }
+
+            console.log(`  Division detected: x/${terms.divisor} with constant ${terms.constant}`);
+            return terms;
+        }
+
+        // Parse x coefficient (handles 3x, -5x, x, -x)
+        const xMatch = expression.match(/([+-]?\s*\d*)\s*x/);
+        if (xMatch) {
+            let coef = xMatch[1].replace(/\s/g, '');
+            if (coef === '' || coef === '+') {
+                terms.xCoefficient = 1;
+            } else if (coef === '-') {
+                terms.xCoefficient = -1;
+            } else {
+                terms.xCoefficient = parseInt(coef);
+            }
+        }
+
+        // Parse constant (any number not followed by x)
+        // Match all numbers not followed by x, considering their signs
+        const constantMatches = expression.match(/([+-]?\s*\d+)(?!\s*x)/g);
+        if (constantMatches) {
+            terms.constant = constantMatches.reduce((sum, match) => {
+                return sum + parseInt(match.replace(/\s/g, ''));
+            }, 0);
+        }
+
+        console.log(`  Parsed: ${terms.xCoefficient}x ${terms.constant >= 0 ? '+' : ''} ${terms.constant}`);
+        return terms;
+    }
+
     createSideObjects(expression, side) {
         const objects = side === 'left' ? this.leftObjects : this.rightObjects;
         const plate = side === 'left' ? this.leftPlate : this.rightPlate;
 
-        // Count x terms and constants (simplified)
-        const xMatches = expression.match(/(\d+)x/g) || [];
-        const xCount = xMatches.reduce((sum, match) => {
-            return sum + parseInt(match);
-        }, 0) || (expression.includes('x') ? 1 : 0);
+        // Parse the expression
+        const terms = this.parseExpression(expression);
 
-        const constantMatches = expression.match(/[+-]?\s*\d+(?!x)/g) || [];
-        const constantSum = constantMatches.reduce((sum, match) => {
-            return sum + parseInt(match.replace(/\s/g, ''));
-        }, 0);
+        let objectIndex = 0;
 
-        // Create cubes for x variables (blue/purple)
-        for (let i = 0; i < Math.min(xCount, 5); i++) {
-            const geometry = new THREE.BoxGeometry(0.4, 0.4, 0.4);
-            const material = new THREE.MeshStandardMaterial({
-                color: 0x764ba2,
-                metalness: 0.3,
-                roughness: 0.7
-            });
-            const cube = new THREE.Mesh(geometry, material);
+        // Create cubes for x terms
+        if (terms.xCoefficient !== 0) {
+            const absCoef = Math.abs(terms.xCoefficient);
+            const isPositive = terms.xCoefficient > 0;
+            const displayCount = terms.isDivision ? 1 : Math.min(absCoef, 6); // Show fewer for large coefficients
 
-            const angle = (i / Math.max(xCount, 1)) * Math.PI * 2;
-            const radius = 0.8;
-            cube.position.set(
-                plate.position.x + Math.cos(angle) * radius,
-                plate.position.y + 0.4 + (i * 0.05),
-                plate.position.z + Math.sin(angle) * radius
-            );
+            for (let i = 0; i < displayCount; i++) {
+                const geometry = new THREE.BoxGeometry(0.4, 0.4, 0.4);
+                const material = new THREE.MeshStandardMaterial({
+                    color: isPositive ? 0x667eea : 0xff6b6b, // Purple for positive, red for negative
+                    metalness: 0.3,
+                    roughness: 0.7,
+                    opacity: terms.isDivision ? 0.6 : 1.0, // Semi-transparent for division
+                    transparent: terms.isDivision
+                });
+                const cube = new THREE.Mesh(geometry, material);
 
-            cube.castShadow = true;
-            cube.receiveShadow = true;
+                // Scale for division
+                if (terms.isDivision) {
+                    cube.scale.set(0.7, 0.7, 0.7);
+                }
 
-            // Add "x" label
-            this.addLabel(cube, 'x');
+                const angle = (objectIndex / 10) * Math.PI * 2;
+                const radius = 0.8;
+                cube.position.set(
+                    plate.position.x + Math.cos(angle) * radius,
+                    plate.position.y + 0.4 + (objectIndex * 0.05),
+                    plate.position.z + Math.sin(angle) * radius
+                );
 
-            this.scene.add(cube);
-            objects.push(cube);
+                cube.castShadow = true;
+                cube.receiveShadow = true;
+
+                // Label
+                const label = terms.isDivision ? `x/${terms.divisor}` :
+                             (absCoef > displayCount ? `${absCoef}x` : 'x');
+                this.addLabel(cube, label);
+
+                this.scene.add(cube);
+                objects.push(cube);
+                objectIndex++;
+            }
         }
 
-        // Create spheres for constants (gold)
-        const sphereCount = Math.min(Math.abs(constantSum), 8);
-        for (let i = 0; i < sphereCount; i++) {
-            const geometry = new THREE.SphereGeometry(0.25, 16, 16);
-            const material = new THREE.MeshStandardMaterial({
-                color: 0xffd700,
-                metalness: 0.6,
-                roughness: 0.4
-            });
-            const sphere = new THREE.Mesh(geometry, material);
+        // Create spheres for constants
+        if (terms.constant !== 0) {
+            const absConst = Math.abs(terms.constant);
+            const isPositive = terms.constant > 0;
+            const sphereCount = Math.min(absConst, 8); // Cap at 8 for visibility
 
-            const angle = (i / Math.max(sphereCount, 1)) * Math.PI * 2;
-            const radius = 0.5;
-            sphere.position.set(
-                plate.position.x + Math.cos(angle) * radius,
-                plate.position.y + 0.3,
-                plate.position.z + Math.sin(angle) * radius
-            );
+            for (let i = 0; i < sphereCount; i++) {
+                const geometry = new THREE.SphereGeometry(0.25, 16, 16);
+                const material = new THREE.MeshStandardMaterial({
+                    color: isPositive ? 0xffd700 : 0xff4444, // Gold for positive, red for negative
+                    metalness: 0.6,
+                    roughness: 0.4
+                });
+                const sphere = new THREE.Mesh(geometry, material);
 
-            sphere.castShadow = true;
-            sphere.receiveShadow = true;
+                const angle = (objectIndex / 10) * Math.PI * 2;
+                const radius = 0.6;
+                sphere.position.set(
+                    plate.position.x + Math.cos(angle) * radius,
+                    plate.position.y + 0.3 + (objectIndex * 0.04),
+                    plate.position.z + Math.sin(angle) * radius
+                );
 
-            // Add number label
-            const valuePerSphere = Math.ceil(Math.abs(constantSum) / sphereCount);
-            this.addLabel(sphere, valuePerSphere.toString());
+                sphere.castShadow = true;
+                sphere.receiveShadow = true;
 
-            this.scene.add(sphere);
-            objects.push(sphere);
+                // Label showing value per sphere
+                const valuePerSphere = Math.ceil(absConst / sphereCount);
+                this.addLabel(sphere, `${isPositive ? '+' : '-'}${valuePerSphere}`);
+
+                this.scene.add(sphere);
+                objects.push(sphere);
+                objectIndex++;
+            }
+        }
+
+        // If side is empty (like 0), show nothing
+        if (terms.xCoefficient === 0 && terms.constant === 0) {
+            console.log(`  ${side} side is empty`);
         }
     }
 
@@ -378,7 +466,45 @@ class ThreeVisualization {
         this.container.appendChild(contextDiv);
         this.contextTextElement = contextDiv;
 
+        // Add visual legend
+        this.addVisualLegend();
+
         console.log('🎨 Word problem context displayed in visualization');
+    }
+
+    addVisualLegend() {
+        // Remove existing legend if present
+        if (this.legendElement) {
+            this.legendElement.remove();
+        }
+
+        const legendDiv = document.createElement('div');
+        legendDiv.className = 'viz-legend';
+        legendDiv.style.cssText = `
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            line-height: 1.6;
+            z-index: 10;
+            pointer-events: none;
+        `;
+
+        legendDiv.innerHTML = `
+            <div style="font-weight: bold; margin-bottom: 4px;">Visual Guide:</div>
+            <div>🟣 Purple cube = positive x term</div>
+            <div>🔴 Red cube = negative x term</div>
+            <div>🟡 Gold sphere = positive number</div>
+            <div>🔴 Red sphere = negative number</div>
+            <div style="font-size: 0.7rem; margin-top: 4px; opacity: 0.8;">Semi-transparent = division</div>
+        `;
+
+        this.container.appendChild(legendDiv);
+        this.legendElement = legendDiv;
     }
 
     extractKeyContext(wordProblem) {
