@@ -94,8 +94,13 @@ Please provide helpful, age-appropriate guidance for a 7th-grade student. Focus 
     // Parse and return response
     const data = await response.json();
 
+    // Log response structure for debugging
+    console.log('Gemini API Response:', JSON.stringify(data, null, 2));
+
     // Extract the text response
     const aiResponse = data?.candidates?.[0]?.content?.parts?.[0]?.text || 'No response generated';
+
+    console.log('Extracted AI Response:', aiResponse);
 
     return {
       statusCode: 200,
