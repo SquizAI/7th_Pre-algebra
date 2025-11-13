@@ -1,6 +1,7 @@
 [build]
   publish = "."
-  command = "echo 'window.GEMINI_API_KEY = \"'$GEMINI_API_KEY'\";' > env-inject.js"
+  command = "echo '// No client-side API key needed - use serverless function' > env-inject.js"
+  functions = "functions"
 
 [[headers]]
   for = "/*"
@@ -8,3 +9,8 @@
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "no-referrer-when-downgrade"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200

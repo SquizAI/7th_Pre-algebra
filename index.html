@@ -14,7 +14,7 @@
     <meta property="og:url" content="https://7th-grade-pre-algebra.netlify.app/">
     <meta property="og:title" content="7th Grade Pre-Algebra Adventure - Interactive Learning">
     <meta property="og:description" content="Master equation solving through interactive lessons, step-by-step guidance, and gamified learning. Perfect for 7th grade students.">
-    <meta property="og:image" content="https://7th-grade-pre-algebra.netlify.app/social-share.png">
+    <meta property="og:image" content="https://7th-grade-pre-algebra.netlify.app/assets/images/social-share.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
@@ -23,9 +23,9 @@
     <meta name="twitter:url" content="https://7th-grade-pre-algebra.netlify.app/">
     <meta name="twitter:title" content="7th Grade Pre-Algebra Adventure">
     <meta name="twitter:description" content="Interactive equation solving with video lessons and step-by-step guidance for 7th grade students.">
-    <meta name="twitter:image" content="https://7th-grade-pre-algebra.netlify.app/social-share.png">
+    <meta name="twitter:image" content="https://7th-grade-pre-algebra.netlify.app/assets/images/social-share.png">
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
@@ -573,15 +573,17 @@
     <!-- Scripts -->
     <!-- Environment variables (injected by Netlify build) -->
     <script src="env-inject.js"></script>
-    <script src="equations.js"></script>
-    <script src="animated-examples.js"></script>
-    <script src="student-report.js"></script>
-    <script src="adaptive-learning.js"></script>
-    <script src="word-problem-generator.js"></script>
-    <script src="step-solver.js"></script>
-    <script src="learning-workflow.js"></script>
-    <script src="game.js"></script>
-    <script src="three-visualization.js"></script>
-    <script src="gemini-helper.js"></script>
+    <script src="js/core/equations.js"></script>
+    <script src="js/features/animated-examples.js"></script>
+    <script src="js/features/student-report.js"></script>
+    <script src="js/features/adaptive-learning.js"></script>
+    <script src="js/features/word-problem-generator.js"></script>
+    <script src="js/utils/step-solver.js"></script>
+    <script src="js/utils/ai-client.js"></script>
+    <script src="js/features/learning-workflow.js"></script>
+    <script src="js/features/standards-navigation.js"></script>
+    <script src="js/core/game.js"></script>
+    <script src="js/features/three-visualization.js"></script>
+    <script src="js/utils/gemini-helper.js"></script>
 </body>
 </html>

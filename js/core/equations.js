@@ -235,6 +235,36 @@ class EquationGenerator {
                 totalQuestions: 5,
                 hints: true,
                 concepts: ["review"]
+            },
+
+            // PERIOD 2 SPECIAL LESSON (Level 21)
+            {
+                id: 21,
+                name: "Solution Types Mastery",
+                description: "Master identifying one, none, or infinite solutions",
+                world: 4,
+                type: "solutions-mixed",
+                masteryRequired: 5,
+                totalQuestions: 6,
+                hints: true,
+                concepts: ["solution types", "infinite solutions", "no solution"],
+                // Password protection
+                requiresPassword: true,
+                password: "Algebra1114", // Password: Algebra1114
+                passwordHint: "Think: Algebra + today's date (4 digits)",
+                availableDate: "2025-11-14", // November 14, 2025
+                // Florida Standards
+                standards: ["MA.8.AR.2.1", "MA.K12.MTR.4.1", "ELA.K12.EE.1.1"],
+                standardDescriptions: {
+                    "MA.8.AR.2.1": "Solve multi-step linear equations in one variable with rational number coefficients",
+                    "MA.K12.MTR.4.1": "Engage in discussions on mathematical thinking",
+                    "ELA.K12.EE.1.1": "Cite evidence to explain and justify reasoning"
+                },
+                // Lesson metadata
+                lessonCode: "7_math_2.11.3",
+                period: 2,
+                grade: 7,
+                subject: "Pre-Algebra"
             }
         ];
     }

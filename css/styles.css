@@ -4034,3 +4034,374 @@ body {
         padding: 1rem;
     }
 }
+
+/* ===================================
+   FLORIDA STANDARDS NAVIGATION
+   =================================== */
+
+.standards-nav {
+  position: fixed;
+  left: 0;
+  top: 80px; /* Below header */
+  width: 320px;
+  height: calc(100vh - 80px);
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transition: transform 0.3s ease;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.standards-nav.collapsed {
+  transform: translateX(-280px);
+}
+
+.standards-nav-header {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.standards-nav-header h3 {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.nav-toggle {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.nav-toggle:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.toggle-icon {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.standards-nav-content {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.standard-item {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #ccc;
+  transition: all 0.2s;
+}
+
+.standard-item:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transform: translateX(2px);
+}
+
+.standard-item.current {
+  border-left-color: #4CAF50;
+  background: linear-gradient(to right, #e8f5e9 0%, white 20%);
+}
+
+.standard-item.completed {
+  border-left-color: #2196F3;
+  opacity: 0.8;
+}
+
+.standard-item.upcoming {
+  border-left-color: #FF9800;
+}
+
+.standard-status {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.standard-code {
+  font-size: 0.75rem;
+  color: #666;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.25rem;
+}
+
+.standard-title {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #1e3c72;
+  margin-bottom: 0.5rem;
+}
+
+.standard-dates {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.standard-description {
+  font-size: 0.85rem;
+  color: #555;
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
+}
+
+.standard-progress {
+  font-size: 0.8rem;
+  color: #666;
+  margin-bottom: 0.75rem;
+  padding: 0.5rem;
+  background: #f5f5f5;
+  border-radius: 4px;
+}
+
+.progress-label {
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.progress-value {
+  color: #1e3c72;
+}
+
+.btn-goto-standard {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.2s;
+}
+
+.btn-goto-standard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Adjust main content when nav is open */
+.screen {
+  margin-left: 320px;
+  transition: margin-left 0.3s ease;
+}
+
+.standards-nav.collapsed ~ .screen {
+  margin-left: 40px;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .standards-nav {
+    width: 280px;
+  }
+
+  .standards-nav.collapsed {
+    transform: translateX(-240px);
+  }
+
+  .screen {
+    margin-left: 0;
+  }
+
+  .standards-nav.collapsed ~ .screen {
+    margin-left: 0;
+  }
+}
+
+/* Scrollbar styling for standards nav */
+.standards-nav-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.standards-nav-content::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.standards-nav-content::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.standards-nav-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Password Modal Styles */
+.password-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.password-modal.show {
+  opacity: 1;
+}
+
+.password-modal-content {
+  background: white;
+  padding: 3rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  transform: translateY(-20px);
+  transition: transform 0.3s ease;
+}
+
+.password-modal.show .password-modal-content {
+  transform: translateY(0);
+}
+
+.password-modal-content h2 {
+  color: #667eea;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.password-modal-content h3 {
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.password-modal-content .lesson-description {
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.password-modal-content .password-hint {
+  background: #f0f4ff;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  color: #555;
+  border-left: 4px solid #667eea;
+}
+
+.password-input {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+  border: 3px solid #667eea;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.password-input:focus {
+  outline: none;
+  border-color: #764ba2;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.password-input.error {
+  border-color: #ff4444;
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.modal-buttons .btn-primary,
+.modal-buttons .btn-secondary {
+  flex: 1;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.modal-buttons .btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.modal-buttons .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.modal-buttons .btn-secondary {
+  background: #e0e0e0;
+  color: #333;
+}
+
+.modal-buttons .btn-secondary:hover {
+  background: #d0d0d0;
+  transform: translateY(-2px);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .password-modal-content {
+    padding: 2rem;
+    width: 95%;
+  }
+
+  .password-modal-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .password-modal-content h3 {
+    font-size: 1.2rem;
+  }
+
+  .modal-buttons {
+    flex-direction: column;
+  }
+
+  .modal-buttons .btn-primary,
+  .modal-buttons .btn-secondary {
+    width: 100%;
+  }
+}

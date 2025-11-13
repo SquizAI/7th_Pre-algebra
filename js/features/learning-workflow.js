@@ -178,6 +178,59 @@ class LearningWorkflow {
                     ],
                     explanation: 'First move all x terms to one side. Subtract 2x from both sides to get 4x + 5 = 13'
                 }
+            },
+
+            'solution-types': {
+                name: 'Special Solution Types',
+                icon: '🎭',
+                description: 'Learn to identify equations with one solution, no solution, or infinitely many solutions.',
+                videoId: 'nYo6ftCSgAs', // EnVision Grade 7 Accelerated Pre-Algebra 7-4
+                keyPoints: [
+                    'One Solution: Variables cancel to give a true statement with a specific answer',
+                    'No Solution: Variables cancel but you get a FALSE statement (like 5 = 3)',
+                    'Infinitely Many Solutions: Variables cancel and you get a TRUE statement (like 5 = 5)',
+                    'The key is what happens after you simplify - does it make sense?'
+                ],
+                examples: [
+                    {
+                        problem: '2x + 3 = 2x + 5',
+                        steps: [
+                            { action: 'Start', equation: '2x + 3 = 2x + 5', explanation: 'Solve for x' },
+                            { action: 'Subtract 2x', equation: '3 = 5', explanation: 'Subtract 2x from both sides' },
+                            { action: 'Result', equation: '3 = 5 (FALSE)', explanation: 'This is impossible! No value of x makes this true' },
+                            { action: 'Answer', equation: 'NO SOLUTION', explanation: 'The equation has no solution' }
+                        ]
+                    },
+                    {
+                        problem: '3x + 6 = 3(x + 2)',
+                        steps: [
+                            { action: 'Start', equation: '3x + 6 = 3(x + 2)', explanation: 'Solve for x' },
+                            { action: 'Distribute', equation: '3x + 6 = 3x + 6', explanation: 'Apply distributive property' },
+                            { action: 'Subtract 3x', equation: '6 = 6', explanation: 'Subtract 3x from both sides' },
+                            { action: 'Result', equation: '6 = 6 (TRUE)', explanation: 'This is always true, regardless of x!' },
+                            { action: 'Answer', equation: 'INFINITELY MANY SOLUTIONS', explanation: 'Any value of x works!' }
+                        ]
+                    },
+                    {
+                        problem: '4x + 5 = 2x + 13',
+                        steps: [
+                            { action: 'Start', equation: '4x + 5 = 2x + 13', explanation: 'Solve for x' },
+                            { action: 'Subtract 2x', equation: '2x + 5 = 13', explanation: 'Get variables on one side' },
+                            { action: 'Subtract 5', equation: '2x = 8', explanation: 'Isolate the variable term' },
+                            { action: 'Divide by 2', equation: 'x = 4', explanation: 'Solve for x' },
+                            { action: 'Result', equation: 'ONE SOLUTION: x = 4', explanation: 'This has exactly one solution' }
+                        ]
+                    }
+                ],
+                checkQuestion: {
+                    question: 'When you solve an equation and get "7 = 7", what does this mean?',
+                    options: [
+                        { text: 'The solution is x = 7', correct: false },
+                        { text: 'There is no solution', correct: false },
+                        { text: 'There are infinitely many solutions', correct: true }
+                    ],
+                    explanation: 'When both sides are identical after solving, the equation is true for ALL values of x. This means infinitely many solutions!'
+                }
             }
         };
 
@@ -394,6 +447,7 @@ class LearningWorkflow {
         if (levelType.includes('combining')) return 'combining-terms';
         if (levelType.includes('distributive')) return 'distributive-intro';
         if (levelType.includes('both-sides')) return 'both-sides-intro';
+        if (levelType.includes('solution') || levelType.includes('infinite') || levelType.includes('no-solution')) return 'solution-types';
         return null;
     }
 }

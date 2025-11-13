@@ -149,7 +149,7 @@ class GameController {
     }
 
     // Load a level
-    loadLevel(levelId) {
+    async loadLevel(levelId) {
         console.log('=== loadLevel() called ===');
         console.log('Level ID:', levelId);
         console.log('Is practice mode:', this.isPracticeMode);
@@ -162,6 +162,15 @@ class GameController {
 
         console.log('Level info:', levelInfo);
         console.log('Level type:', levelInfo.type);
+
+        // NEW: Check password and date requirements
+        if (levelInfo.requiresPassword) {
+            const canAccess = await this.checkLessonAccess(levelInfo);
+            if (!canAccess) {
+                console.log('❌ Access denied - password check failed');
+                return;
+            }
+        }
 
         // Check if this is a new concept that needs introduction
         const conceptKey = window.learningWorkflow?.getConceptForLevel(levelInfo.type);
@@ -188,6 +197,114 @@ class GameController {
         // Already learned or practice mode - go straight to game
         console.log(`⏭️ Concept already learned, going directly to practice`);
         this.startLevelDirectly(levelInfo);
+    }
+
+    // NEW: Check if student can access a password-protected lesson
+    async checkLessonAccess(levelInfo) {
+        // Check if already unlocked
+        const unlockKey = `lesson_${levelInfo.id}_unlocked`;
+        if (localStorage.getItem(unlockKey) === 'true') {
+            console.log('✅ Lesson already unlocked');
+            return true;
+        }
+
+        // Check if lesson is available yet (date-based)
+        if (levelInfo.availableDate) {
+            const today = new Date();
+            const availableDate = new Date(levelInfo.availableDate);
+            if (today < availableDate) {
+                alert(`🔒 This lesson will be available on ${availableDate.toLocaleDateString('en-US', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                })}.\n\nCheck back on that date!`);
+                return false;
+            }
+        }
+
+        // Show password prompt
+        return new Promise((resolve) => {
+            const modal = document.createElement('div');
+            modal.className = 'password-modal';
+            modal.innerHTML = `
+                <div class="password-modal-content">
+                    <h2>🔐 Password Required</h2>
+                    <h3>${levelInfo.name}</h3>
+                    <p class="lesson-description">${levelInfo.description}</p>
+                    <p class="password-hint"><strong>Hint:</strong> ${levelInfo.passwordHint}</p>
+                    <input type="password"
+                           id="lessonPasswordInput"
+                           placeholder="Enter password"
+                           autocomplete="off"
+                           class="password-input">
+                    <div class="modal-buttons">
+                        <button class="btn-primary" id="submitPasswordBtn">
+                            🔓 Unlock Lesson
+                        </button>
+                        <button class="btn-secondary" id="cancelPasswordBtn">
+                            ← Back to Menu
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            document.body.appendChild(modal);
+            setTimeout(() => modal.classList.add('show'), 10);
+
+            const input = document.getElementById('lessonPasswordInput');
+            const submitBtn = document.getElementById('submitPasswordBtn');
+            const cancelBtn = document.getElementById('cancelPasswordBtn');
+
+            const closeModal = () => {
+                modal.classList.remove('show');
+                setTimeout(() => modal.remove(), 300);
+            };
+
+            submitBtn.onclick = () => {
+                const enteredPassword = input.value.trim();
+
+                if (enteredPassword === levelInfo.password) {
+                    // Password correct - store unlock
+                    localStorage.setItem(unlockKey, 'true');
+                    console.log('✅ Password correct - lesson unlocked!');
+
+                    // Show success message
+                    modal.querySelector('.password-modal-content').innerHTML = `
+                        <h2>🎉 Success!</h2>
+                        <p style="font-size: 1.2em; color: #4CAF50;">Lesson unlocked!</p>
+                        <p>Starting in 2 seconds...</p>
+                    `;
+
+                    setTimeout(() => {
+                        closeModal();
+                        resolve(true);
+                    }, 2000);
+                } else {
+                    // Password wrong
+                    input.classList.add('error');
+                    input.value = '';
+                    input.placeholder = '❌ Incorrect password. Try again.';
+
+                    setTimeout(() => {
+                        input.classList.remove('error');
+                        input.placeholder = 'Enter password';
+                        input.focus();
+                    }, 2000);
+                }
+            };
+
+            cancelBtn.onclick = () => {
+                closeModal();
+                resolve(false);
+            };
+
+            input.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') submitBtn.click();
+            });
+
+            setTimeout(() => input.focus(), 100);
+        });
     }
 
     startLevelDirectly(levelInfo) {
