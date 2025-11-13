@@ -40,8 +40,8 @@ exports.handler = async (event, context) => {
     }
 
     // Construct Gemini API request
-    // Use gemini-1.5-flash for fast, cost-effective responses
-    const geminiEndpoint = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+    // Use gemini-1.5-flash-latest for fast, cost-effective responses
+    const geminiEndpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`;
 
     // Build the full prompt with context
     let fullPrompt = prompt;
