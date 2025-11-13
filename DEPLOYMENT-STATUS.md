@@ -121,9 +121,10 @@ Then deploy - done!
 
 ### Environment Variables:
 ```
-GEMINI_API_KEY = YOUR_API_KEY_HERE
+GEMINI_API_KEY = [REDACTED - Set in Netlify environment variables]
 ```
 **Status:** ✅ Set in Netlify (both builds and previews)
+**Note:** Never commit actual API keys to the repository!
 
 ### Build Process:
 1. Netlify detects push

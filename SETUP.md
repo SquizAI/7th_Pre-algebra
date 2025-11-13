@@ -88,12 +88,14 @@ Then shows: `12x + 45 = 117`
 
 ## 🧪 Local Development
 
-For local testing, the API key is already in your `.env` file:
+For local testing, create a `.env` file in the project root:
 
 ```bash
-# .env file (already created)
+# .env file (create this file locally - it's in .gitignore)
 GEMINI_API_KEY=YOUR_API_KEY_HERE
 ```
+
+**IMPORTANT:** Never commit your actual API key to git! The `.env` file is in `.gitignore` for security.
 
 The local `env-inject.js` file loads this automatically. Just open `index.html` in your browser!
 
