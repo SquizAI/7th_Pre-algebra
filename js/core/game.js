@@ -730,6 +730,19 @@ class GameController {
         feedbackArea.innerHTML = `<div class="feedback-message ${type}">${message}</div>`;
     }
 
+    // Helper: Get lesson number for a level ID
+    getLessonNumberForLevel(levelId) {
+        if (!window.ScheduleConfig) return null;
+
+        // Search through lessonToLevel mapping
+        for (const [lessonNum, lvlId] of Object.entries(window.ScheduleConfig.lessonToLevel)) {
+            if (lvlId === levelId) {
+                return parseInt(lessonNum);
+            }
+        }
+        return null;
+    }
+
     // Complete level - check for mastery
     completeLevel() {
         console.log('=== COMPLETING LEVEL ===');
@@ -790,6 +803,21 @@ class GameController {
                 this.updateWorldProgress();
                 this.updatePlayerStats(); // Update the home screen display
                 console.log('✅ Progress saved and updated');
+
+                // NEW: Mark lesson as completed in LessonScheduler
+                if (window.LessonScheduler && window.ScheduleConfig) {
+                    // Find lesson number for this level
+                    const lessonNumber = this.getLessonNumberForLevel(levelInfo.id);
+                    if (lessonNumber) {
+                        window.LessonScheduler.completLesson(lessonNumber);
+                        console.log(`📅 Marked lesson ${lessonNumber} as completed`);
+
+                        // Refresh date navigation if visible
+                        if (window.DateNavigation) {
+                            window.DateNavigation.refresh();
+                        }
+                    }
+                }
             }
 
             // Show success modal with adaptive learning info
