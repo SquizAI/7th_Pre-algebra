@@ -32,10 +32,39 @@ class WordProblemGenerator {
         return null;
     }
 
-    // Generate a word problem using Gemini AI
-    async generateWordProblem(equationType, difficulty, answer) {
+    // Parse equation to extract coefficients
+    parseEquation(equationStr) {
+        // Handle equations like "5x + 7 = 52" or "3x - 4 = 14"
+        const parts = equationStr.split('=');
+        if (parts.length !== 2) {
+            return { coefficient: 1, constant: 0, result: 0 };
+        }
+
+        const leftSide = parts[0].trim();
+        const result = parseInt(parts[1].trim());
+
+        // Extract coefficient of x
+        const xMatch = leftSide.match(/(-?\d*)x/);
+        const coefficient = xMatch ? (xMatch[1] === '' || xMatch[1] === '+' ? 1 : xMatch[1] === '-' ? -1 : parseInt(xMatch[1])) : 1;
+
+        // Extract constant term
+        const constantMatch = leftSide.match(/[+-]\s*(\d+)(?!x)/);
+        const constant = constantMatch ? parseInt(constantMatch[0].replace(/\s/g, '')) : 0;
+
+        return { coefficient, constant, result };
+    }
+
+    // Generate a word problem using Gemini AI with exact equation match
+    async generateWordProblem(equation, difficulty) {
+        const equationStr = equation.equation;
+        const equationType = equation.type;
+        const answer = equation.answer;
+
+        // Parse equation to get coefficients
+        const { coefficient, constant, result } = this.parseEquation(equationStr);
+
         // Check cache first
-        const cacheKey = `${equationType}-${difficulty}-${answer}`;
+        const cacheKey = `${equationStr}-${difficulty}`;
         if (this.cache.has(cacheKey)) {
             console.log('📦 Using cached word problem');
             return this.cache.get(cacheKey);
@@ -43,11 +72,11 @@ class WordProblemGenerator {
 
         // If no API key, use fallback
         if (!this.apiKey) {
-            return this.getFallbackProblem(equationType, difficulty, answer);
+            return this.getFallbackProblem(coefficient, constant, result, answer, equationType);
         }
 
         try {
-            const prompt = this.buildPrompt(equationType, difficulty, answer);
+            const prompt = this.buildPrompt(coefficient, constant, result, answer, equationType, difficulty);
             const response = await fetch(`${this.apiEndpoint}?key=${this.apiKey}`, {
                 method: 'POST',
                 headers: {
@@ -70,7 +99,7 @@ class WordProblemGenerator {
 
             if (!response.ok) {
                 console.error('Gemini API error:', response.status);
-                return this.getFallbackProblem(equationType, difficulty, answer);
+                return this.getFallbackProblem(coefficient, constant, result, answer, equationType);
             }
 
             const data = await response.json();
@@ -80,16 +109,17 @@ class WordProblemGenerator {
             this.addToCache(cacheKey, wordProblem);
 
             console.log('✨ Generated word problem with Gemini AI');
+            console.log(`   Equation: ${coefficient}x + ${constant} = ${result} (x = ${answer})`);
             return wordProblem;
 
         } catch (error) {
             console.error('Error generating word problem:', error);
-            return this.getFallbackProblem(equationType, difficulty, answer);
+            return this.getFallbackProblem(coefficient, constant, result, answer, equationType);
         }
     }
 
-    // Build the AI prompt based on equation type and difficulty
-    buildPrompt(equationType, difficulty, answer) {
+    // Build the AI prompt with exact equation structure
+    buildPrompt(coefficient, constant, result, answer, equationType, difficulty) {
         const difficultyContext = {
             easy: 'simple, straightforward',
             medium: 'moderately challenging',
@@ -97,60 +127,82 @@ class WordProblemGenerator {
         };
 
         const typeContext = {
-            'two-step-basic': 'two-step equation (like 3x + 5 = 20)',
-            'two-step equation': 'two-step equation (like 2x - 7 = 15)',
-            'combining like terms': 'equation with combining like terms (like 3x + 2x + 4 = 29)',
-            'distributive property': 'equation using distributive property (like 2(x + 3) = 18)',
-            'variables on both sides': 'equation with variables on both sides (like 4x + 7 = 2x + 19)',
+            'two-step-basic': 'two-step equation',
+            'two-step equation': 'two-step equation',
+            'combining like terms': 'equation with combining like terms',
+            'distributive property': 'equation using distributive property',
+            'variables on both sides': 'equation with variables on both sides',
             'complex-mixed': 'complex equation combining multiple concepts'
         };
 
+        // Build equation description based on sign
+        const constantPart = constant >= 0 ? `plus ${constant}` : `minus ${Math.abs(constant)}`;
+        const equationDescription = `${coefficient}x ${constantPart} equals ${result}`;
+
         return `You are a 7th grade math teacher creating engaging word problems for students learning pre-algebra.
 
-Create a ${difficultyContext[difficulty]} word problem for 7th graders that involves a ${typeContext[equationType] || 'multi-step equation'}.
+Create a ${difficultyContext[difficulty] || 'moderately challenging'} word problem that EXACTLY matches this equation:
+${coefficient}x ${constant >= 0 ? '+' : '-'} ${Math.abs(constant)} = ${result}
+
+Where:
+- ${coefficient} is the rate/coefficient (how much per unit)
+- ${Math.abs(constant)} is the starting amount or adjustment (${constant >= 0 ? 'added' : 'subtracted'})
+- ${result} is the final total
+- The answer is x = ${answer}
 
 The word problem should:
 1. Be relatable to 7th grade students (ages 12-13)
-2. Use real-world scenarios they care about: money, gaming, sports, phones, food, shopping, friends, etc.
-3. Be ${difficultyContext[difficulty]} to understand
-4. Have an answer of x = ${answer}
-5. Be exactly 2-3 sentences long
-6. NOT include the equation itself - students need to figure out the equation from the word problem
-7. Use diverse scenarios (avoid repeating shopping/money themes if possible)
+2. Use real-world scenarios: money, gaming, sports, phones, food, collecting items, etc.
+3. Have EXACTLY the structure: "${coefficient} times something ${constant >= 0 ? 'plus' : 'minus'} ${Math.abs(constant)} equals ${result}"
+4. Be exactly 2-3 sentences long
+5. NOT include the equation itself - students need to figure it out
+6. Make it clear what the variable represents
 
-Write ONLY the word problem text. No equations, no solutions, no extra explanations.
+Example for 3x + 5 = 20:
+"Marco is collecting trading cards. He has 5 cards already and buys 3 cards each week. After a certain number of weeks, Marco has 20 cards total. How many weeks did he collect?"
 
-Example format:
-"Sarah is saving up for a new gaming console. She already has $45 and plans to save $12 each week from her allowance. How many weeks will it take her to have $117?"`;
+Write ONLY the word problem text. No equations, no solutions, no extra explanations.`;
     }
 
     // Fallback word problems when API is unavailable
-    getFallbackProblem(equationType, difficulty, answer) {
-        const templates = this.getFallbackTemplates(equationType, difficulty);
-        const template = templates[Math.floor(Math.random() * templates.length)];
-        return template.replace('{answer}', answer);
-    }
+    getFallbackProblem(coefficient, constant, result, answer, equationType) {
+        const scenarios = [
+            {
+                template: `{name} is saving money for a new gaming console. {pronoun_cap} already has $${Math.abs(constant)} and plans to save $${coefficient} each week from ${pronoun_pos} allowance. After ${answer} weeks, {pronoun} will have $${result}. How many weeks did it take?`,
+                names: ['Alex', 'Jordan', 'Taylor', 'Morgan', 'Casey'],
+                pronouns: { cap: 'They', pos: 'their', obj: 'they' }
+            },
+            {
+                template: `A student is collecting rare sneakers. Starting with ${Math.abs(constant)} pairs, the student buys ${coefficient} ${coefficient === 1 ? 'pair' : 'pairs'} each month. After ${answer} months, the collection has ${result} pairs total.`,
+                names: [],
+                pronouns: {}
+            },
+            {
+                template: `Your phone has ${Math.abs(constant)} GB used already. You download ${coefficient} GB of games each day. After ${answer} days, you've used ${result} GB total. How many days passed?`,
+                names: [],
+                pronouns: {}
+            },
+            {
+                template: `A basketball player scored ${Math.abs(constant)} points in the first quarter. In each remaining quarter, the player scores ${coefficient} ${coefficient === 1 ? 'point' : 'points'}. After ${answer} more quarters, the total score is ${result} points.`,
+                names: [],
+                pronouns: {}
+            }
+        ];
 
-    getFallbackTemplates(equationType, difficulty) {
-        const templates = {
-            'two-step-basic': [
-                'You scored {answer} points in a video game. You earned 5 bonus points and then tripled your score. What was your original score?',
-                'A pizza costs ${answer} after a $3 delivery fee. If the pizza was divided equally among 2 friends, how much did each person pay before the fee?',
-                'Your phone has {answer} GB of storage. After downloading 8 GB of games, you\'ve used half your storage. How much storage do you have total?'
-            ],
-            'distributive property': [
-                'You bought {answer} packs of trading cards. Each pack costs $3 and has 5 cards. If you spent $30 total, how many packs did you buy?',
-                'A streaming service charges ${answer} per month. You paid for 3 months plus a $5 setup fee, spending $44 total. What\'s the monthly cost?',
-                'You\'re planning a party. Pizza costs ${answer} per person. With 8 friends and a $12 cake, you spent $60 total. What\'s the cost per person?'
-            ],
-            'variables on both sides': [
-                'Two gamers are competing. Player 1 has {answer} points plus 7 bonus points. Player 2 has {answer} points plus 15 bonus points. They end with the same score. What\'s {answer}?',
-                'You and your friend are collecting sneakers. You have {answer} pairs plus 4 more. Your friend has {answer} pairs plus 10 more. You both have the same total. What\'s {answer}?',
-                'Two students are reading. Student A reads {answer} pages per day plus 5 extra. Student B reads {answer} pages per day plus 13 extra. They read the same amount. What\'s {answer}?'
-            ]
-        };
+        const scenario = scenarios[Math.floor(Math.random() * scenarios.length)];
+        let problem = scenario.template;
 
-        return templates[equationType] || templates['two-step-basic'];
+        // Replace placeholders
+        if (scenario.names.length > 0) {
+            const name = scenario.names[Math.floor(Math.random() * scenario.names.length)];
+            problem = problem.replace(/{name}/g, name);
+            problem = problem.replace(/{pronoun_cap}/g, scenario.pronouns.cap);
+            problem = problem.replace(/{pronoun_pos}/g, scenario.pronouns.pos);
+            problem = problem.replace(/{pronoun}/g, scenario.pronouns.obj);
+        }
+
+        console.log(`📝 Using fallback problem for ${coefficient}x + ${constant} = ${result}`);
+        return problem;
     }
 
     // Cache management

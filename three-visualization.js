@@ -176,14 +176,20 @@ class ThreeVisualization {
         this.scene.add(ground);
     }
 
-    updateEquation(equation) {
+    updateEquation(equation, wordProblem = null) {
         this.currentEquation = equation;
+        this.currentWordProblem = wordProblem;
 
         // Clear existing objects
         this.clearObjects();
 
         // Parse equation and create objects
         this.visualizeEquation(equation);
+
+        // Display word problem context if available
+        if (wordProblem) {
+            this.displayWordProblemContext(wordProblem);
+        }
     }
 
     clearObjects() {
@@ -336,6 +342,57 @@ class ThreeVisualization {
         };
 
         animate();
+    }
+
+    displayWordProblemContext(wordProblem) {
+        // Remove existing context display if present
+        if (this.contextTextElement) {
+            this.contextTextElement.remove();
+        }
+
+        // Create HTML overlay for word problem context
+        const contextDiv = document.createElement('div');
+        contextDiv.className = 'viz-word-problem-context';
+        contextDiv.style.cssText = `
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            background: rgba(102, 126, 234, 0.95);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            pointer-events: none;
+        `;
+
+        // Extract key information from word problem for display
+        const shortContext = this.extractKeyContext(wordProblem);
+        contextDiv.innerHTML = `<strong>📖 Context:</strong> ${shortContext}`;
+
+        // Add to visualization container
+        this.container.style.position = 'relative';
+        this.container.appendChild(contextDiv);
+        this.contextTextElement = contextDiv;
+
+        console.log('🎨 Word problem context displayed in visualization');
+    }
+
+    extractKeyContext(wordProblem) {
+        // Extract the most relevant part of the word problem
+        // Keep it short for visualization overlay
+        const sentences = wordProblem.split(/[.!?]+/);
+        const firstSentence = sentences[0].trim();
+
+        // If first sentence is too long, truncate
+        if (firstSentence.length > 80) {
+            return firstSentence.substring(0, 77) + '...';
+        }
+
+        return firstSentence;
     }
 
     setupControls() {

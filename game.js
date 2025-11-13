@@ -351,16 +351,25 @@ class GameController {
             wordProblemText.innerHTML = '<div style="text-align: center; opacity: 0.7;">✨ Generating word problem...</div>';
 
             try {
-                // Generate word problem
+                // Generate word problem with full equation object
                 const wordProblem = await window.wordProblemGenerator.generateWordProblem(
-                    this.currentLevelInfo.type,
-                    difficulty,
-                    this.currentEquation.answer
+                    this.currentEquation,
+                    difficulty
                 );
+
+                // Store word problem for current equation
+                this.currentWordProblem = wordProblem;
 
                 // Display the word problem
                 wordProblemText.textContent = wordProblem;
                 console.log('📝 Word problem generated:', wordProblem);
+                console.log('   For equation:', this.currentEquation.equation);
+
+                // Update visualization with word problem context
+                if (window.threeVisualization) {
+                    window.threeVisualization.updateEquation(this.currentEquation, wordProblem);
+                    console.log('🎨 Visualization updated with word problem context');
+                }
 
             } catch (error) {
                 console.error('Error generating word problem:', error);
