@@ -339,11 +339,16 @@ class GameController {
         if (stepsContainer) stepsContainer.innerHTML = '';
 
         // Show hint if available
-        if (this.currentLevelInfo.hints && this.currentEquation.hint) {
-            document.getElementById('hintText').textContent = this.currentEquation.hint;
-            document.getElementById('hintBox').style.display = 'block';
-        } else {
-            document.getElementById('hintBox').style.display = 'none';
+        const hintBox = document.getElementById('hintBox');
+        const hintText = document.getElementById('hintText');
+
+        if (hintBox && hintText) {
+            if (this.currentLevelInfo.hints && this.currentEquation.hint) {
+                hintText.textContent = this.currentEquation.hint;
+                hintBox.style.display = 'block';
+            } else {
+                hintBox.style.display = 'none';
+            }
         }
 
         // Display current mastery if adaptive learning is active

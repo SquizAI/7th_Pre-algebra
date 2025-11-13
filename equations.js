@@ -338,10 +338,14 @@ class EquationGenerator {
         };
     }
 
-    // Two-step mixed: HARDER - includes subtraction and negative numbers
+    // Two-step mixed: HARDER - includes subtraction AND division
     generateTwoStepMixed(difficulty = 'medium') {
         let a, b, x, c;
-        const useSubtraction = Math.random() > 0.5; // 50% subtraction
+        const operationType = Math.random();
+
+        // 33% subtraction, 33% division, 34% addition (mixed)
+        const useSubtraction = operationType < 0.33;
+        const useDivision = operationType >= 0.33 && operationType < 0.66;
 
         switch(difficulty) {
             case 'easy':
@@ -360,19 +364,49 @@ class EquationGenerator {
                 b = this.randomInt(-5, 15);
         }
 
-        c = useSubtraction ? (a * x - b) : (a * x + b);
-        const sign = useSubtraction ? '-' : (b >= 0 ? '+' : '');
+        let equation, steps, hint;
+
+        if (useDivision) {
+            // x/a + b = c format (division)
+            c = Math.floor(x / a) + b;
+            equation = `x/${a} ${b >= 0 ? '+' : ''} ${b} = ${c}`;
+            steps = [
+                `x/${a} ${b >= 0 ? '+' : ''} ${b} = ${c}`,
+                `x/${a} = ${c - b}  (subtract ${b})`,
+                `x = ${x}  (multiply by ${a})`
+            ];
+            hint = `Subtract ${b} first, then multiply both sides by ${a}.`;
+        } else if (useSubtraction) {
+            // ax - b = c format (subtraction)
+            c = a * x - b;
+            equation = `${a}x - ${Math.abs(b)} = ${c}`;
+            steps = [
+                `${a}x - ${Math.abs(b)} = ${c}`,
+                `${a}x = ${c + b}  (add ${Math.abs(b)})`,
+                `x = ${x}  (divide by ${a})`
+            ];
+            hint = `Add ${Math.abs(b)} first, then divide by ${a}.`;
+        } else {
+            // ax + b = c format (addition)
+            c = a * x + b;
+            const sign = b >= 0 ? '+' : '';
+            equation = `${a}x ${sign} ${b} = ${c}`;
+            steps = [
+                `${a}x ${sign} ${b} = ${c}`,
+                `${a}x = ${c - b}  (subtract ${b})`,
+                `x = ${x}  (divide by ${a})`
+            ];
+            hint = `Subtract ${b} first, then divide by ${a}.`;
+        }
+
+        console.log(`📝 Generated two-step-mixed: ${equation} (Type: ${useDivision ? 'division' : useSubtraction ? 'subtraction' : 'addition'})`);
 
         return {
-            equation: `${a}x ${sign} ${Math.abs(b)} = ${c}`,
+            equation,
             answer: x,
             type: 'two-step-mixed',
-            steps: [
-                `${a}x ${sign} ${Math.abs(b)} = ${c}`,
-                `${a}x = ${useSubtraction ? c + b : c - b}  (${useSubtraction ? 'add' : 'subtract'} ${Math.abs(b)})`,
-                `x = ${x}  (divide by ${a})`
-            ],
-            hint: `${useSubtraction ? 'Add' : 'Subtract'} ${Math.abs(b)} first, then divide by ${a}.`,
+            steps,
+            hint,
             concept: "two-step with mixed operations"
         };
     }

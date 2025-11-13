@@ -168,7 +168,7 @@ Write ONLY the word problem text. No equations, no solutions, no extra explanati
     getFallbackProblem(coefficient, constant, result, answer, equationType) {
         const scenarios = [
             {
-                template: `{name} is saving money for a new gaming console. {pronoun_cap} already has $${Math.abs(constant)} and plans to save $${coefficient} each week from ${pronoun_pos} allowance. After ${answer} weeks, {pronoun} will have $${result}. How many weeks did it take?`,
+                template: `{name} is saving money for a new gaming console. {pronoun_cap} already has $${Math.abs(constant)} and plans to save $${coefficient} each week from {pronoun_pos} allowance. After ${answer} weeks, {pronoun} will have $${result}. How many weeks did it take?`,
                 names: ['Alex', 'Jordan', 'Taylor', 'Morgan', 'Casey'],
                 pronouns: { cap: 'They', pos: 'their', obj: 'they' }
             },
