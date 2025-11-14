@@ -91,7 +91,7 @@ const DateNavigation = {
   },
 
   /**
-   * Render "Today's Lesson" prominent card
+   * Render "Today's Lesson" prominent card (using atomic design components)
    */
   renderTodaysLesson(todaysLesson) {
     if (!todaysLesson) return '';
@@ -103,41 +103,42 @@ const DateNavigation = {
     const isCompleted = lesson.status === 'completed';
 
     return `
-      <div class="todays-lesson-card ${isCompleted ? 'completed' : ''}">
-        <div class="todays-lesson-header">
-          <div class="todays-lesson-badge">
+      <div class="hero-lesson">
+        <div class="card-hero ${isCompleted ? 'completed' : ''}">
+          <span class="hero-lesson__badge">
             ${isCompleted ? '✅ COMPLETED' : '📍 TODAY\'S LESSON'}
+          </span>
+          <h2 class="hero-lesson__title">${lesson.name}</h2>
+          <div class="hero-lesson__topic">
+            ${lesson.topic || 'Pre-Algebra'} • Lesson ${lesson.lessonNumber}
           </div>
-          <div class="todays-lesson-date">
-            ${this.formatDateLong(lesson.date)}
-          </div>
-        </div>
-        <div class="todays-lesson-content">
-          <div class="todays-lesson-number">Lesson ${lesson.lessonNumber}</div>
-          <h3 class="todays-lesson-title">${lesson.name}</h3>
-          <div class="todays-lesson-meta">
-            <span class="lesson-topic">${lesson.topic || 'Pre-Algebra'}</span>
-            <span class="lesson-standard">${lesson.standard}</span>
+          <div class="hero-lesson__standard">
+            Florida Standard: ${lesson.standard}
           </div>
           ${metadata && metadata.videoId ? `
-            <div class="todays-lesson-video">
-              <span class="video-icon">🎥</span>
-              <span class="video-text">Includes video lesson</span>
+            <div class="hero-lesson__meta">
+              <span aria-hidden="true">🎥</span> Includes video lesson
             </div>
           ` : ''}
-        </div>
-        <div class="todays-lesson-actions">
-          ${!isCompleted ? `
-            <button class="btn-start-lesson" data-lesson="${lesson.lessonNumber}" data-level="${lesson.levelId}">
-              <span class="btn-icon">▶️</span>
-              <span class="btn-text">Start Lesson</span>
-            </button>
-          ` : `
-            <button class="btn-review-lesson" data-lesson="${lesson.lessonNumber}" data-level="${lesson.levelId}">
-              <span class="btn-icon">🔄</span>
-              <span class="btn-text">Review Lesson</span>
-            </button>
-          `}
+          <div class="hero-lesson__action">
+            ${!isCompleted ? `
+              <button
+                class="btn btn-xl btn-primary"
+                data-lesson="${lesson.lessonNumber}"
+                data-level="${lesson.levelId}"
+                aria-label="Start today's lesson: ${lesson.name}">
+                <span aria-hidden="true">▶️</span> Start Lesson
+              </button>
+            ` : `
+              <button
+                class="btn btn-xl btn-success"
+                data-lesson="${lesson.lessonNumber}"
+                data-level="${lesson.levelId}"
+                aria-label="Review completed lesson: ${lesson.name}">
+                <span aria-hidden="true">🔄</span> Review Lesson
+              </button>
+            `}
+          </div>
         </div>
       </div>
     `;
@@ -228,7 +229,7 @@ const DateNavigation = {
   },
 
   /**
-   * Render a single lesson card
+   * Render a single lesson card (using atomic design components)
    */
   renderLessonCard(lesson) {
     const statusIcons = {
@@ -250,27 +251,33 @@ const DateNavigation = {
     const canAccess = lesson.status === 'today' || lesson.status === 'available' || lesson.status === 'completed';
 
     return `
-      <div class="lesson-card ${lesson.status}" data-lesson="${lesson.lessonNumber}">
-        <div class="lesson-card-header">
-          <div class="lesson-card-status">
-            <span class="status-icon">${statusIcon}</span>
-            <span class="status-label">${statusLabel}</span>
+      <div class="card card-lesson ${lesson.status}" data-lesson="${lesson.lessonNumber}">
+        <div class="card__header">
+          <div class="card__status">
+            <span aria-hidden="true">${statusIcon}</span>
+            <span class="sr-only">${statusLabel}</span>
           </div>
-          <div class="lesson-card-date">${this.formatDateShort(lesson.date)}</div>
+          <time class="card__date" datetime="${lesson.dateStr}">
+            ${this.formatDateShort(lesson.date)}
+          </time>
         </div>
-        <div class="lesson-card-body">
-          <div class="lesson-card-number">Lesson ${lesson.lessonNumber}</div>
-          <h4 class="lesson-card-title">${lesson.name}</h4>
-          <div class="lesson-card-topic">${lesson.topic || 'Pre-Algebra'}</div>
+        <div class="card__body">
+          <span class="card__subtitle">Lesson ${lesson.lessonNumber}</span>
+          <h4 class="card__title">${lesson.name}</h4>
+          <p class="card__description">${lesson.topic || 'Pre-Algebra'}</p>
         </div>
-        <div class="lesson-card-footer">
+        <div class="card__footer">
           ${canAccess ? `
-            <button class="btn-access-lesson" data-lesson="${lesson.lessonNumber}" data-level="${lesson.levelId}">
-              ${lesson.status === 'completed' ? 'Review' : 'Start'}
+            <button
+              class="btn btn-md ${lesson.status === 'completed' ? 'btn-success' : 'btn-primary'}"
+              data-lesson="${lesson.lessonNumber}"
+              data-level="${lesson.levelId}"
+              aria-label="${lesson.status === 'completed' ? 'Review' : 'Start'} lesson ${lesson.lessonNumber}: ${lesson.name}">
+              ${lesson.status === 'completed' ? '<span aria-hidden="true">🔄</span> Review' : '<span aria-hidden="true">▶️</span> Start'}
             </button>
           ` : `
-            <button class="btn-access-lesson" disabled>
-              Available ${this.formatDateShort(lesson.date)}
+            <button class="btn btn-md btn-secondary" disabled aria-label="Lesson locked until ${this.formatDateShort(lesson.date)}">
+              <span aria-hidden="true">🔒</span> ${this.formatDateShort(lesson.date)}
             </button>
           `}
         </div>

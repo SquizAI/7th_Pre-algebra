@@ -25,483 +25,607 @@
     <meta name="twitter:description" content="Interactive equation solving with video lessons and step-by-step guidance for 7th grade students.">
     <meta name="twitter:image" content="https://7th-grade-pre-algebra.netlify.app/assets/images/social-share.png">
 
+    <!-- New Atomic CSS System -->
+    <link rel="stylesheet" href="css/main.css">
+    <!-- Legacy styles for backwards compatibility -->
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
+    <!-- Skip Links for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- Main Container -->
     <div id="app">
         <!-- Header -->
-        <header class="game-header">
+        <header class="game-header" role="banner">
             <div class="logo">
-                <h1>🎮 Equation Quest</h1>
+                <h1>Equation Quest</h1>
                 <p class="subtitle">Master Pre-Algebra Through Adventure!</p>
             </div>
-            <div class="player-stats">
+            <div class="player-stats" aria-label="Player statistics">
                 <div class="stat-item">
                     <span class="stat-label">Level:</span>
-                    <span class="stat-value" id="playerLevel">1</span>
+                    <span class="stat-value" id="playerLevel" aria-live="polite">1</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-label">XP:</span>
-                    <span class="stat-value" id="playerXP">0</span>
+                    <span class="stat-value" id="playerXP" aria-live="polite">0</span>
                     <span class="stat-max">/100</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-label">Coins:</span>
-                    <span class="stat-value" id="playerCoins">0</span>
-                    <span class="coin-icon">🪙</span>
+                    <span class="stat-value" id="playerCoins" aria-live="polite">0</span>
+                    <span class="coin-icon" aria-hidden="true">🪙</span>
                 </div>
             </div>
-            <button class="btn-ai-tutor" id="copyToGeminiBtn">✨ Copy to Gemini</button>
+            <button class="btn-ai-tutor" id="copyToGeminiBtn" aria-label="Copy current progress to Gemini AI helper">
+                <span aria-hidden="true">✨</span> Copy to Gemini
+            </button>
         </header>
 
-        <!-- Main Menu Screen -->
-        <div id="menuScreen" class="screen active">
-            <div class="menu-container">
-                <div class="welcome-message">
-                    <h2>7th Grade Pre-Algebra</h2>
-                    <p class="standard-info">Florida Standard MA.8.AR.2.1 - Multi-Step Linear Equations</p>
-                </div>
-
-                <div class="why-this-matters">
-                    <h3>💡 Why This Matters to YOU</h3>
-                    <div class="real-world-examples">
-                        <div class="example-card">
-                            <div class="example-icon">💰</div>
-                            <div class="example-text">
-                                <strong>Managing Money:</strong> "I have $50. I spent some on lunch and now have $32. How much was lunch?" → 50 - x = 32
-                            </div>
-                        </div>
-                        <div class="example-card">
-                            <div class="example-icon">🎮</div>
-                            <div class="example-text">
-                                <strong>Gaming & Coding:</strong> Game developers use equations to calculate damage, speed, and scores. Programming = solving equations constantly.
-                            </div>
-                        </div>
-                        <div class="example-card">
-                            <div class="example-icon">📱</div>
-                            <div class="example-text">
-                                <strong>Phone Plans:</strong> "Which plan is cheaper? Plan A: $20 + $0.10/text or Plan B: $35 unlimited?" → You need equations to compare.
-                            </div>
-                        </div>
-                        <div class="example-card">
-                            <div class="example-icon">🏀</div>
-                            <div class="example-text">
-                                <strong>Sports Stats:</strong> "I scored 18 points with 2-pointers and 3-pointers. How many of each?" → 2x + 3y = 18
-                            </div>
-                        </div>
+        <!-- Main Content -->
+        <main id="main-content" aria-label="Main content">
+            <!-- Main Menu Screen -->
+            <section id="menuScreen" class="screen active" aria-labelledby="menu-heading">
+                <div class="menu-container">
+                    <div class="welcome-message">
+                        <h2 id="menu-heading">7th Grade Pre-Algebra</h2>
+                        <p class="standard-info">Florida Standard MA.8.AR.2.1 - Multi-Step Linear Equations</p>
                     </div>
-                    <p class="bottom-line"><strong>Bottom Line:</strong> Equations are how you figure out ANYTHING with unknown numbers. Every career that pays well uses this skill.</p>
-                </div>
 
-                <div class="workflow-instructions">
-                    <div class="instruction-card primary-action">
-                        <div class="step-badge">CONTINUE YOUR LEARNING</div>
-                        <div class="current-level-display">
-                            <div class="next-level-label">Up Next:</div>
-                            <div class="level-info-display">
-                                <span class="level-number-badge" id="displayLevelNum">Level 1</span>
-                                <div class="level-details-display">
-                                    <div class="level-title-display" id="displayLevelTitle">Two-Step Equations</div>
-                                    <div class="level-world-display" id="displayLevelWorld">🏰 Castle of Basics</div>
+                    <section class="why-this-matters" aria-labelledby="why-matters-heading">
+                        <h3 id="why-matters-heading"><span aria-hidden="true">💡</span> Why This Matters to YOU</h3>
+                        <div class="real-world-examples">
+                            <article class="example-card">
+                                <div class="example-icon" aria-hidden="true">💰</div>
+                                <div class="example-text">
+                                    <strong>Managing Money:</strong> "I have $50. I spent some on lunch and now have $32. How much was lunch?" → 50 - x = 32
+                                </div>
+                            </article>
+                            <article class="example-card">
+                                <div class="example-icon" aria-hidden="true">🎮</div>
+                                <div class="example-text">
+                                    <strong>Gaming & Coding:</strong> Game developers use equations to calculate damage, speed, and scores. Programming = solving equations constantly.
+                                </div>
+                            </article>
+                            <article class="example-card">
+                                <div class="example-icon" aria-hidden="true">📱</div>
+                                <div class="example-text">
+                                    <strong>Phone Plans:</strong> "Which plan is cheaper? Plan A: $20 + $0.10/text or Plan B: $35 unlimited?" → You need equations to compare.
+                                </div>
+                            </article>
+                            <article class="example-card">
+                                <div class="example-icon" aria-hidden="true">🏀</div>
+                                <div class="example-text">
+                                    <strong>Sports Stats:</strong> "I scored 18 points with 2-pointers and 3-pointers. How many of each?" → 2x + 3y = 18
+                                </div>
+                            </article>
+                        </div>
+                        <p class="bottom-line"><strong>Bottom Line:</strong> Equations are how you figure out ANYTHING with unknown numbers. Every career that pays well uses this skill.</p>
+                    </section>
+
+                    <section class="workflow-instructions" aria-labelledby="workflow-heading">
+                        <h3 id="workflow-heading" class="sr-only">Learning Workflow</h3>
+                        <div class="instruction-card primary-action">
+                            <div class="step-badge">CONTINUE YOUR LEARNING</div>
+                            <div class="current-level-display">
+                                <div class="next-level-label">Up Next:</div>
+                                <div class="level-info-display">
+                                    <span class="level-number-badge" id="displayLevelNum">Level 1</span>
+                                    <div class="level-details-display">
+                                        <div class="level-title-display" id="displayLevelTitle">Two-Step Equations</div>
+                                        <div class="level-world-display" id="displayLevelWorld"><span aria-hidden="true">🏰</span> Castle of Basics</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="menu-btn primary large" id="startStoryBtn" aria-label="Start current level">
+                                <span class="btn-icon" aria-hidden="true">▶️</span>
+                                <span class="btn-text">Start This Level</span>
+                            </button>
+                            <p class="instruction-text">
+                                Each lesson: Video → Examples → Practice
+                            </p>
+                        </div>
+
+                        <div class="secondary-options">
+                            <div class="option-row">
+                                <div class="option-card">
+                                    <div class="step-badge">STEP 2 - IF NEEDED</div>
+                                    <button class="menu-btn" id="tutorialBtn" aria-label="Watch video tutorials">
+                                        <span class="btn-icon" aria-hidden="true">🎓</span>
+                                        <span class="btn-text">Watch Video Tutorials</span>
+                                    </button>
+                                    <p class="option-desc">Rewatch videos if you need help</p>
+                                </div>
+
+                                <div class="option-card">
+                                    <div class="step-badge">EXTRA PRACTICE</div>
+                                    <button class="menu-btn" id="practiceBtn" aria-label="Go to practice arena">
+                                        <span class="btn-icon" aria-hidden="true">⚔️</span>
+                                        <span class="btn-text">Practice Arena</span>
+                                    </button>
+                                    <p class="option-desc">Additional practice for concepts you've learned</p>
                                 </div>
                             </div>
                         </div>
-                        <button class="menu-btn primary large" id="startStoryBtn">
-                            <span class="btn-icon">▶️</span>
-                            <span class="btn-text">Start This Level</span>
-                        </button>
-                        <p class="instruction-text">
-                            Each lesson: Video → Examples → Practice
-                        </p>
-                    </div>
+                    </section>
 
-                    <div class="secondary-options">
-                        <div class="option-row">
-                            <div class="option-card">
-                                <div class="step-badge">STEP 2 - IF NEEDED</div>
-                                <button class="menu-btn" id="tutorialBtn">
-                                    <span class="btn-icon">🎓</span>
-                                    <span class="btn-text">Watch Video Tutorials</span>
-                                </button>
-                                <p class="option-desc">Rewatch videos if you need help</p>
-                            </div>
-
-                            <div class="option-card">
-                                <div class="step-badge">EXTRA PRACTICE</div>
-                                <button class="menu-btn" id="practiceBtn">
-                                    <span class="btn-icon">⚔️</span>
-                                    <span class="btn-text">Practice Arena</span>
-                                </button>
-                                <p class="option-desc">Additional practice for concepts you've learned</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="progress-overview">
-                    <h3>Your Progress</h3>
-                    <div class="world-progress">
-                        <div class="world-item" data-world="1">
-                            <span class="world-icon">🏰</span>
-                            <span class="world-name">Castle of Basics</span>
-                            <span class="world-status">0/5</span>
-                        </div>
-                        <div class="world-item" data-world="2">
-                            <span class="world-icon">🌲</span>
-                            <span class="world-name">Forest of Distribution</span>
-                            <span class="world-status">0/5</span>
-                        </div>
-                        <div class="world-item" data-world="3">
-                            <span class="world-icon">⛰️</span>
-                            <span class="world-name">Mountain of Both Sides</span>
-                            <span class="world-status">0/5</span>
-                        </div>
-                        <div class="world-item" data-world="4">
-                            <span class="world-icon">🌊</span>
-                            <span class="world-name">Ocean of Fractions</span>
-                            <span class="world-status">0/5</span>
-                        </div>
-                        <div class="world-item" data-world="5">
-                            <span class="world-icon">🐉</span>
-                            <span class="world-name">Dragon's Lair (Final Boss)</span>
-                            <span class="world-status">0/3</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tutorial Screen -->
-        <div id="tutorialScreen" class="screen">
-            <div class="tutorial-container">
-                <button class="btn-back">← Back to Menu</button>
-                <h2>📚 Video Tutorials</h2>
-
-                <div class="tutorial-grid">
-                    <div class="tutorial-card">
-                        <h3>🎯 Two-Step Equations for Beginners</h3>
-                        <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/0ackz7dJSYY"
-                                    frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
-                        </div>
-                        <p class="tutorial-desc">Intro to Two-Step Equations - Perfect for beginners! (Math with Mr. J)</p>
-                    </div>
-
-                    <div class="tutorial-card">
-                        <h3>📚 Grade 7: Two-Step Equations</h3>
-                        <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/q3g68vcMXxM"
-                                    frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
-                        </div>
-                        <p class="tutorial-desc">Solving Two-Step Equations - 7th Grade Level</p>
-                    </div>
-
-                    <div class="tutorial-card">
-                        <h3>🎓 Pre-Algebra BASICS</h3>
-                        <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/viqI5rsMSyw"
-                                    frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
-                        </div>
-                        <p class="tutorial-desc">Pre-Algebra Level Equations - Master the basics!</p>
-                    </div>
-
-                    <div class="tutorial-card">
-                        <h3>⚖️ Variables on Both Sides</h3>
-                        <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/eZsyV0ISzV8"
-                                    frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
-                        </div>
-                        <p class="tutorial-desc">Introduction to equations with variables on both sides</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Concept Introduction Screen -->
-        <div id="conceptIntroScreen" class="screen">
-            <div class="concept-intro-container">
-                <button class="btn-back">← Back to Menu</button>
-
-                <div class="concept-card">
-                    <div class="concept-icon" id="conceptIcon">🎯</div>
-                    <h2 id="conceptTitle">New Concept: Two-Step Equations</h2>
-                    <p id="conceptDescription">You're about to learn how to solve equations that require two steps!</p>
-
-                    <div class="learning-path">
-                        <h3>📚 Your Learning Path:</h3>
-                        <div class="path-steps">
-                            <div class="path-step" data-step="1">
-                                <div class="step-number">1</div>
-                                <div class="step-content">
-                                    <h4>📹 Watch Video</h4>
-                                    <p>Learn the concept (3-5 min)</p>
-                                </div>
-                            </div>
-                            <div class="path-step" data-step="2">
-                                <div class="step-number">2</div>
-                                <div class="step-content">
-                                    <h4>👀 See Examples</h4>
-                                    <p>Watch step-by-step solutions</p>
-                                </div>
-                            </div>
-                            <div class="path-step" data-step="3">
-                                <div class="step-number">3</div>
-                                <div class="step-content">
-                                    <h4>✍️ Try Problems</h4>
-                                    <p>Practice with guidance</p>
-                                </div>
-                            </div>
-                            <div class="path-step" data-step="4">
-                                <div class="step-number">4</div>
-                                <div class="step-content">
-                                    <h4>✅ Show Mastery</h4>
-                                    <p>Get 4/5 correct to advance</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="concept-actions">
-                        <button class="btn-primary-large" id="watchVideoBtn">
-                            📹 Watch Video Tutorial (Required)
-                        </button>
-                        <p class="mandatory-notice">⚠️ You must watch the video before practicing</p>
-                    </div>
-
-                    <div class="concept-note">
-                        <strong>💡 Learning Tip:</strong> Don't skip the video! It will make the problems much easier to understand.
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Video Lesson Screen -->
-        <div id="videoLessonScreen" class="screen">
-            <div class="video-lesson-container">
-                <button class="btn-back">← Back</button>
-
-                <div class="video-lesson-card">
-                    <h2 id="videoLessonTitle">Video Lesson: Two-Step Equations</h2>
-                    <p id="videoLessonDesc">Watch this video to understand the concept before practicing.</p>
-
-                    <div class="main-video-container">
-                        <iframe id="mainVideoFrame"
-                                src=""
-                                frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
-                    </div>
-
-                    <div class="video-notes">
-                        <h3>📝 Key Points to Remember:</h3>
-                        <ul id="keyPointsList">
-                            <li>Work backwards: undo operations in reverse order</li>
-                            <li>Always do the same operation to both sides</li>
-                            <li>Simplify step by step</li>
+                    <section class="progress-overview" aria-labelledby="progress-heading">
+                        <h3 id="progress-heading">Your Progress</h3>
+                        <ul class="world-progress">
+                            <li class="world-item" data-world="1">
+                                <span class="world-icon" aria-hidden="true">🏰</span>
+                                <span class="world-name">Castle of Basics</span>
+                                <span class="world-status">0/5</span>
+                            </li>
+                            <li class="world-item" data-world="2">
+                                <span class="world-icon" aria-hidden="true">🌲</span>
+                                <span class="world-name">Forest of Distribution</span>
+                                <span class="world-status">0/5</span>
+                            </li>
+                            <li class="world-item" data-world="3">
+                                <span class="world-icon" aria-hidden="true">⛰️</span>
+                                <span class="world-name">Mountain of Both Sides</span>
+                                <span class="world-status">0/5</span>
+                            </li>
+                            <li class="world-item" data-world="4">
+                                <span class="world-icon" aria-hidden="true">🌊</span>
+                                <span class="world-name">Ocean of Fractions</span>
+                                <span class="world-status">0/5</span>
+                            </li>
+                            <li class="world-item" data-world="5">
+                                <span class="world-icon" aria-hidden="true">🐉</span>
+                                <span class="world-name">Dragon's Lair (Final Boss)</span>
+                                <span class="world-status">0/3</span>
+                            </li>
                         </ul>
-                    </div>
+                    </section>
+                </div>
+            </section>
 
-                    <div class="video-actions">
-                        <label class="video-checkbox">
-                            <input type="checkbox" id="videoWatchedCheck">
-                            <span>✅ I watched and understood the video</span>
-                        </label>
-                        <button class="btn-primary-large" id="continueToExamplesBtn" disabled>
-                            Continue to Examples →
-                        </button>
+            <!-- Tutorial Screen -->
+            <section id="tutorialScreen" class="screen" aria-labelledby="tutorial-heading">
+                <div class="tutorial-container">
+                    <button class="btn btn-md btn-ghost" onclick="window.gameController.showScreen('menu')" aria-label="Back to menu">
+                        <span aria-hidden="true">←</span> Back to Menu
+                    </button>
+                    <h2 id="tutorial-heading"><span aria-hidden="true">📚</span> Video Tutorials</h2>
+
+                    <div class="tutorial-grid grid grid-cols-2 flex-wrap">
+                        <article class="tutorial-card card card-interactive">
+                            <div class="card__header">
+                                <h3 class="card__title"><span aria-hidden="true">🎯</span> Two-Step Equations for Beginners</h3>
+                            </div>
+                            <div class="card__body">
+                                <div class="video-container">
+                                    <iframe src="https://www.youtube.com/embed/0ackz7dJSYY"
+                                            title="Two-Step Equations for Beginners"
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen></iframe>
+                                </div>
+                            </div>
+                            <div class="card__footer">
+                                <p class="tutorial-desc">Intro to Two-Step Equations - Perfect for beginners! (Math with Mr. J)</p>
+                            </div>
+                        </article>
+
+                        <article class="tutorial-card card card-interactive">
+                            <div class="card__header">
+                                <h3 class="card__title"><span aria-hidden="true">📚</span> Grade 7: Two-Step Equations</h3>
+                            </div>
+                            <div class="card__body">
+                                <div class="video-container">
+                                    <iframe src="https://www.youtube.com/embed/q3g68vcMXxM"
+                                            title="Grade 7: Two-Step Equations"
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen></iframe>
+                                </div>
+                            </div>
+                            <div class="card__footer">
+                                <p class="tutorial-desc">Solving Two-Step Equations - 7th Grade Level</p>
+                            </div>
+                        </article>
+
+                        <article class="tutorial-card card card-interactive">
+                            <div class="card__header">
+                                <h3 class="card__title"><span aria-hidden="true">🎓</span> Pre-Algebra BASICS</h3>
+                            </div>
+                            <div class="card__body">
+                                <div class="video-container">
+                                    <iframe src="https://www.youtube.com/embed/viqI5rsMSyw"
+                                            title="Pre-Algebra BASICS"
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen></iframe>
+                                </div>
+                            </div>
+                            <div class="card__footer">
+                                <p class="tutorial-desc">Pre-Algebra Level Equations - Master the basics!</p>
+                            </div>
+                        </article>
+
+                        <article class="tutorial-card card card-interactive">
+                            <div class="card__header">
+                                <h3 class="card__title"><span aria-hidden="true">⚖️</span> Variables on Both Sides</h3>
+                            </div>
+                            <div class="card__body">
+                                <div class="video-container">
+                                    <iframe src="https://www.youtube.com/embed/eZsyV0ISzV8"
+                                            title="Variables on Both Sides"
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen></iframe>
+                                </div>
+                            </div>
+                            <div class="card__footer">
+                                <p class="tutorial-desc">Introduction to equations with variables on both sides</p>
+                            </div>
+                        </article>
                     </div>
                 </div>
-            </div>
-        </div>
+            </section>
 
-        <!-- Examples Screen -->
-        <div id="examplesScreen" class="screen">
-            <div class="examples-container">
-                <button class="btn-back">← Back</button>
+            <!-- Concept Introduction Screen -->
+            <section id="conceptIntroScreen" class="screen" aria-labelledby="concept-intro-heading">
+                <div class="concept-intro-container">
+                    <button class="btn-back" aria-label="Back to menu">← Back to Menu</button>
 
-                <div class="examples-card">
-                    <h2>👀 Worked Examples</h2>
-                    <p>Study these examples carefully. See how each step works.</p>
+                    <article class="concept-card">
+                        <div class="concept-icon" id="conceptIcon" aria-hidden="true">🎯</div>
+                        <h2 id="concept-intro-heading" id="conceptTitle">New Concept: Two-Step Equations</h2>
+                        <p id="conceptDescription">You're about to learn how to solve equations that require two steps!</p>
 
-                    <div class="examples-grid" id="examplesGrid">
-                        <!-- Examples will be loaded here -->
-                    </div>
-
-                    <div class="understanding-check">
-                        <h3>🤔 Quick Understanding Check:</h3>
-                        <p id="checkQuestion">What should you do first when solving 3x + 5 = 20?</p>
-                        <div class="check-options">
-                            <button class="check-option" data-correct="false">Divide by 3</button>
-                            <button class="check-option" data-correct="true">Subtract 5 from both sides</button>
-                            <button class="check-option" data-correct="false">Add 5 to both sides</button>
+                        <div class="learning-path">
+                            <h3><span aria-hidden="true">📚</span> Your Learning Path:</h3>
+                            <ol class="path-steps">
+                                <li class="path-step" data-step="1">
+                                    <div class="step-number">1</div>
+                                    <div class="step-content">
+                                        <h4><span aria-hidden="true">📹</span> Watch Video</h4>
+                                        <p>Learn the concept (3-5 min)</p>
+                                    </div>
+                                </li>
+                                <li class="path-step" data-step="2">
+                                    <div class="step-number">2</div>
+                                    <div class="step-content">
+                                        <h4><span aria-hidden="true">👀</span> See Examples</h4>
+                                        <p>Watch step-by-step solutions</p>
+                                    </div>
+                                </li>
+                                <li class="path-step" data-step="3">
+                                    <div class="step-number">3</div>
+                                    <div class="step-content">
+                                        <h4><span aria-hidden="true">✍️</span> Try Problems</h4>
+                                        <p>Practice with guidance</p>
+                                    </div>
+                                </li>
+                                <li class="path-step" data-step="4">
+                                    <div class="step-number">4</div>
+                                    <div class="step-content">
+                                        <h4><span aria-hidden="true">✅</span> Show Mastery</h4>
+                                        <p>Get 4/5 correct to advance</p>
+                                    </div>
+                                </li>
+                            </ol>
                         </div>
-                        <div class="check-feedback" id="checkFeedback"></div>
-                    </div>
 
-                    <div class="examples-actions">
-                        <button class="btn-primary-large" id="startPracticeBtn">
-                            Ready to Practice! →
-                        </button>
-                        <button class="btn-secondary-large" id="rewatchVideoBtn">
-                            ← Rewatch Video
-                        </button>
-                    </div>
+                        <div class="concept-actions">
+                            <button class="btn-primary-large" id="watchVideoBtn" aria-label="Watch video tutorial - required before practicing">
+                                <span aria-hidden="true">📹</span> Watch Video Tutorial (Required)
+                            </button>
+                            <p class="mandatory-notice" role="alert"><span aria-hidden="true">⚠️</span> You must watch the video before practicing</p>
+                        </div>
+
+                        <div class="concept-note">
+                            <strong><span aria-hidden="true">💡</span> Learning Tip:</strong> Don't skip the video! It will make the problems much easier to understand.
+                        </div>
+                    </article>
                 </div>
-            </div>
-        </div>
+            </section>
 
-        <!-- Game Screen -->
-        <div id="gameScreen" class="screen">
-            <div class="game-container">
-                <button class="btn-back">← Back to Menu</button>
+            <!-- Video Lesson Screen -->
+            <section id="videoLessonScreen" class="screen" aria-labelledby="video-lesson-heading">
+                <div class="video-lesson-container">
+                    <button class="btn-back" aria-label="Go back">← Back</button>
 
-                <!-- Level Header -->
-                <div class="level-header">
-                    <div class="level-info">
-                        <h2 id="levelTitle">Level 1: The First Challenge</h2>
-                        <p id="levelDescription">Solve basic two-step equations</p>
-                    </div>
-                    <div class="level-stats">
-                        <div class="streak">🔥 Streak: <span id="streak">0</span></div>
-                        <div class="mastery-display" id="masteryDisplay" style="display: none;">
-                            <span class="mastery-label">📊 Mastery:</span>
-                            <span class="mastery-value" id="masteryValue">0%</span>
-                            <span class="difficulty-badge" id="difficultyBadge">Medium</span>
-                        </div>
-                    </div>
-                </div>
+                    <article class="video-lesson-card">
+                        <h2 id="video-lesson-heading" id="videoLessonTitle">Video Lesson: Two-Step Equations</h2>
+                        <p id="videoLessonDesc">Watch this video to understand the concept before practicing.</p>
 
-                <!-- Main Game Area -->
-                <div class="game-area">
-                    <!-- 3D Visualization -->
-                    <div class="visualization-panel">
-                        <h3>⚖️ Balance Visualization</h3>
-                        <div id="threeContainer"></div>
-                        <div class="viz-controls">
-                            <button class="viz-btn" id="resetVizBtn">Reset View</button>
-                            <button class="viz-btn" id="toggleVizBtn">Toggle Animation</button>
-                        </div>
-                    </div>
-
-                    <!-- Equation Panel -->
-                    <div class="equation-panel">
-                        <div class="problem-header">
-                            <div class="problem-number">
-                                <span>Problem <span id="currentQuestion">1</span> of <span id="totalQuestions">10</span></span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress-fill" id="progressFill"></div>
-                            </div>
+                        <div class="main-video-container">
+                            <iframe id="mainVideoFrame"
+                                    src=""
+                                    title="Main video lesson"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
                         </div>
 
-                        <!-- Word Problem Section -->
-                        <div class="word-problem-section" id="wordProblemSection" style="display: none;">
-                            <h3>📖 Word Problem</h3>
-                            <div class="word-problem-text" id="wordProblemText">
-                                <!-- AI-generated word problem will appear here -->
-                            </div>
-                            <div class="word-problem-hint">
-                                💡 Read carefully and figure out what equation to create!
-                            </div>
+                        <div class="video-notes">
+                            <h3><span aria-hidden="true">📝</span> Key Points to Remember:</h3>
+                            <ul id="keyPointsList">
+                                <li>Work backwards: undo operations in reverse order</li>
+                                <li>Always do the same operation to both sides</li>
+                                <li>Simplify step by step</li>
+                            </ul>
                         </div>
 
-                        <div class="current-equation">
-                            <h3>Solve this equation:</h3>
-                            <div class="equation-display" id="equationDisplay">
-                                3x + 5 = 20
-                            </div>
-                        </div>
-
-                        <div class="solving-method-notice">
-                            <div class="notice-icon">📝</div>
-                            <div class="notice-text">
-                                <strong>Show Your Work:</strong> Click below to solve this step-by-step. You'll answer questions and fill in calculations for each step.
-                            </div>
-                        </div>
-
-                        <div class="primary-action-area">
-                            <button class="btn-solve-steps" id="solveStepsBtn">
-                                <span class="btn-icon">▶️</span>
-                                <span class="btn-text">Solve This Step-by-Step</span>
+                        <div class="video-actions">
+                            <label class="video-checkbox">
+                                <input type="checkbox" id="videoWatchedCheck" aria-describedby="video-checkbox-label">
+                                <span id="video-checkbox-label"><span aria-hidden="true">✅</span> I watched and understood the video</span>
+                            </label>
+                            <button class="btn-primary-large" id="continueToExamplesBtn" disabled aria-label="Continue to examples - enabled after confirming video watched">
+                                Continue to Examples →
                             </button>
                         </div>
+                    </article>
+                </div>
+            </section>
 
-                        <!-- Step Solver Container (Modal) -->
-                        <div class="step-solver-overlay" id="stepSolverContainer">
-                            <!-- Interactive step solver will appear here -->
+            <!-- Examples Screen -->
+            <section id="examplesScreen" class="screen" aria-labelledby="examples-heading">
+                <div class="examples-container">
+                    <button class="btn btn-md btn-ghost" aria-label="Go back to previous screen">← Back</button>
+
+                    <article class="card">
+                        <header class="card__header">
+                            <h2 id="examples-heading" class="card__title"><span aria-hidden="true">👀</span> Worked Examples</h2>
+                            <p class="card__subtitle">Study these examples carefully. See how each step works.</p>
+                        </header>
+
+                        <div class="card__body">
+                            <div class="examples-grid" id="examplesGrid" role="list" aria-label="Example problems with step-by-step solutions" aria-live="polite">
+                                <!-- Examples will be loaded here dynamically -->
+                            </div>
+
+                            <div class="understanding-check card" style="margin-top: var(--space-6);">
+                                <div class="card__header">
+                                    <h3 class="card__title"><span aria-hidden="true">🤔</span> Quick Understanding Check</h3>
+                                </div>
+                                <div class="card__body">
+                                    <p id="checkQuestion" class="question-text">What should you do first when solving 3x + 5 = 20?</p>
+                                    <div class="check-options" role="group" aria-labelledby="checkQuestion">
+                                        <button class="btn btn-md btn-secondary" data-correct="false" aria-label="Option A: Divide by 3">
+                                            Divide by 3
+                                        </button>
+                                        <button class="btn btn-md btn-secondary" data-correct="true" aria-label="Option B: Subtract 5 from both sides (correct answer)">
+                                            Subtract 5 from both sides
+                                        </button>
+                                        <button class="btn btn-md btn-secondary" data-correct="false" aria-label="Option C: Add 5 to both sides">
+                                            Add 5 to both sides
+                                        </button>
+                                    </div>
+                                    <div class="check-feedback" id="checkFeedback" role="status" aria-live="polite" aria-atomic="true"></div>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="feedback-area" id="feedbackArea">
-                            <!-- Feedback messages appear here -->
+                        <footer class="card__footer">
+                            <button class="btn btn-lg btn-primary" id="startPracticeBtn" aria-label="Start practicing problems">
+                                <span aria-hidden="true">✍️</span> Ready to Practice!
+                            </button>
+                            <button class="btn btn-md btn-secondary" id="rewatchVideoBtn" aria-label="Rewatch video lesson">
+                                <span aria-hidden="true">📹</span> Rewatch Video
+                            </button>
+                        </footer>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Game Screen -->
+            <section id="gameScreen" class="screen" aria-labelledby="game-heading">
+                <div class="game-container">
+                    <button class="btn btn-md btn-secondary" aria-label="Back to menu">
+                        <span aria-hidden="true">←</span> Back to Menu
+                    </button>
+
+                    <!-- Level Header -->
+                    <header class="level-header">
+                        <div class="level-info">
+                            <h2 id="game-heading">Level 1: The First Challenge</h2>
+                            <p id="levelDescription" class="card__subtitle">Solve basic two-step equations</p>
                         </div>
+                        <div class="level-stats" aria-label="Level statistics">
+                            <div class="streak">
+                                <span aria-hidden="true">🔥</span> Streak:
+                                <output id="streak" aria-live="polite">0</output>
+                            </div>
+                            <div class="mastery-display" id="masteryDisplay" style="display: none;">
+                                <span class="mastery-label"><span aria-hidden="true">📊</span> Mastery:</span>
+                                <output class="mastery-value" id="masteryValue" aria-live="polite">0%</output>
+                                <span class="difficulty-badge" id="difficultyBadge" role="status">Medium</span>
+                            </div>
+                        </div>
+                    </header>
+
+                    <!-- Main Game Area -->
+                    <div class="game-area">
+                        <!-- 3D Visualization -->
+                        <aside class="visualization-panel card" aria-label="Balance scale visualization">
+                            <h3 class="card__title"><span aria-hidden="true">⚖️</span> Balance Visualization</h3>
+                            <div id="threeContainer" role="img" aria-label="3D visualization of equation balance"></div>
+                            <div class="viz-controls">
+                                <button class="btn btn-sm btn-ghost" id="resetVizBtn" aria-label="Reset visualization view">
+                                    <span aria-hidden="true">↺</span> Reset View
+                                </button>
+                                <button class="btn btn-sm btn-ghost" id="toggleVizBtn" aria-label="Toggle visualization animation">
+                                    <span aria-hidden="true">▶</span> Toggle Animation
+                                </button>
+                            </div>
+                        </aside>
+
+                        <!-- Equation Panel -->
+                        <article class="equation-panel card">
+                            <div class="problem-header card__header">
+                                <div class="problem-number">
+                                    <span>Problem <output id="currentQuestion">1</output> of <output id="totalQuestions">10</output></span>
+                                </div>
+                                <progress class="progress-bar"
+                                         id="problemProgress"
+                                         value="0"
+                                         max="100"
+                                         aria-label="Problem progress">
+                                    <div class="progress-fill" id="progressFill"></div>
+                                </progress>
+                            </div>
+
+                            <!-- Word Problem Section -->
+                            <div class="word-problem-section card" id="wordProblemSection" style="display: none;">
+                                <h3 class="card__title"><span aria-hidden="true">📖</span> Word Problem</h3>
+                                <div class="word-problem-text card__body" id="wordProblemText" role="article">
+                                    <!-- AI-generated word problem will appear here -->
+                                </div>
+                                <div class="word-problem-hint" role="note">
+                                    <span aria-hidden="true">💡</span> Read carefully and figure out what equation to create!
+                                </div>
+                            </div>
+
+                            <div class="current-equation card__body">
+                                <h3>Solve this equation:</h3>
+                                <output class="equation-display"
+                                       id="equationDisplay"
+                                       role="math"
+                                       aria-live="polite"
+                                       aria-atomic="true"
+                                       aria-label="Current equation to solve">
+                                    3x + 5 = 20
+                                </output>
+                            </div>
+
+                            <div class="solving-method-notice card" role="note">
+                                <div class="notice-icon" aria-hidden="true">📝</div>
+                                <div class="notice-text">
+                                    <strong>Show Your Work:</strong> Click below to solve this step-by-step. You'll answer questions and fill in calculations for each step.
+                                </div>
+                            </div>
+
+                            <div class="primary-action-area">
+                                <button class="btn btn-lg btn-primary" id="solveStepsBtn" aria-label="Start step-by-step solution">
+                                    <span aria-hidden="true">▶️</span>
+                                    Solve This Step-by-Step
+                                </button>
+                            </div>
+
+                            <!-- Step Solver Container (Modal) -->
+                            <div class="step-solver-overlay"
+                                 id="stepSolverContainer"
+                                 role="dialog"
+                                 aria-modal="true"
+                                 aria-labelledby="step-solver-title"
+                                 aria-hidden="true">
+                                <!-- Interactive step solver will appear here -->
+                            </div>
+
+                            <div class="feedback-area card"
+                                 id="feedbackArea"
+                                 role="status"
+                                 aria-live="polite"
+                                 aria-atomic="true">
+                                <!-- Feedback messages appear here -->
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Level Progress -->
+                    <footer class="level-progress">
+                        <div class="progress-label">Level Progress</div>
+                        <progress class="progress-bar"
+                                 id="levelProgress"
+                                 value="0"
+                                 max="100"
+                                 aria-label="Level completion progress">
+                            <div class="progress-fill" id="levelProgressFill" style="width: 0%"></div>
+                        </progress>
+                        <output class="progress-text" aria-live="polite">
+                            <span id="levelCurrentQuestion">0</span> / <span id="levelTotalQuestions">5</span> questions
+                        </output>
+                    </footer>
+                </div>
+            </section>
+
+            <!-- Practice Screen -->
+            <section id="practiceScreen" class="screen" aria-labelledby="practice-heading">
+                <div class="practice-container">
+                    <button class="btn btn-md btn-secondary" aria-label="Back to menu">
+                        <span aria-hidden="true">←</span> Back to Menu
+                    </button>
+                    <h2 id="practice-heading"><span aria-hidden="true">⚔️</span> Practice Arena</h2>
+
+                    <div class="practice-options card-grid">
+                        <article class="practice-card card card-interactive" data-type="basic">
+                            <div class="card__header">
+                                <h3 class="card__title"><span aria-hidden="true">🎯</span> Basic Equations</h3>
+                            </div>
+                            <div class="card__body">
+                                <p>Two-step equations: ax + b = c</p>
+                            </div>
+                            <div class="card__footer">
+                                <button class="btn btn-md btn-primary" aria-label="Start basic equations practice">
+                                    <span aria-hidden="true">▶</span> Start Practice
+                                </button>
+                            </div>
+                        </article>
+
+                        <article class="practice-card card card-interactive" data-type="distributive">
+                            <div class="card__header">
+                                <h3 class="card__title"><span aria-hidden="true">📦</span> Distributive Property</h3>
+                            </div>
+                            <div class="card__body">
+                                <p>Equations with parentheses: a(x + b) = c</p>
+                            </div>
+                            <div class="card__footer">
+                                <button class="btn btn-md btn-primary" aria-label="Start distributive property practice">
+                                    <span aria-hidden="true">▶</span> Start Practice
+                                </button>
+                            </div>
+                        </article>
+
+                        <article class="practice-card card card-interactive" data-type="both-sides">
+                            <div class="card__header">
+                                <h3 class="card__title"><span aria-hidden="true">⚖️</span> Variables on Both Sides</h3>
+                            </div>
+                            <div class="card__body">
+                                <p>Equations: ax + b = cx + d</p>
+                            </div>
+                            <div class="card__footer">
+                                <button class="btn btn-md btn-primary" aria-label="Start variables on both sides practice">
+                                    <span aria-hidden="true">▶</span> Start Practice
+                                </button>
+                            </div>
+                        </article>
+
+                        <article class="practice-card card card-interactive" data-type="complex">
+                            <div class="card__header">
+                                <h3 class="card__title"><span aria-hidden="true">🧠</span> Complex Equations</h3>
+                            </div>
+                            <div class="card__body">
+                                <p>Multi-step with fractions and distribution</p>
+                            </div>
+                            <div class="card__footer">
+                                <button class="btn btn-md btn-primary" aria-label="Start complex equations practice">
+                                    <span aria-hidden="true">▶</span> Start Practice
+                                </button>
+                            </div>
+                        </article>
                     </div>
                 </div>
-
-                <!-- Level Progress -->
-                <div class="level-progress">
-                    <div class="progress-label">Level Progress</div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="levelProgressFill" style="width: 0%"></div>
-                    </div>
-                    <div class="progress-text"><span id="levelCurrentQuestion">0</span> / <span id="levelTotalQuestions">5</span> questions</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Practice Screen -->
-        <div id="practiceScreen" class="screen">
-            <div class="practice-container">
-                <button class="btn-back">← Back to Menu</button>
-                <h2>⚔️ Practice Arena</h2>
-
-                <div class="practice-options">
-                    <div class="practice-card" data-type="basic">
-                        <h3>🎯 Basic Equations</h3>
-                        <p>Two-step equations: ax + b = c</p>
-                        <button class="btn-practice">Start Practice</button>
-                    </div>
-
-                    <div class="practice-card" data-type="distributive">
-                        <h3>📦 Distributive Property</h3>
-                        <p>Equations with parentheses: a(x + b) = c</p>
-                        <button class="btn-practice">Start Practice</button>
-                    </div>
-
-                    <div class="practice-card" data-type="both-sides">
-                        <h3>⚖️ Variables on Both Sides</h3>
-                        <p>Equations: ax + b = cx + d</p>
-                        <button class="btn-practice">Start Practice</button>
-                    </div>
-
-                    <div class="practice-card" data-type="complex">
-                        <h3>🧠 Complex Equations</h3>
-                        <p>Multi-step with fractions and distribution</p>
-                        <button class="btn-practice">Start Practice</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+            </section>
+        </main>
 
         <!-- Gemini Helper Modal -->
-        <div id="geminiModal" class="modal">
+        <div id="geminiModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="gemini-modal-title">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2>✨ Gemini AI Helper</h2>
-                    <button class="btn-close">&times;</button>
+                    <h2 id="gemini-modal-title"><span aria-hidden="true">✨</span> Gemini AI Helper</h2>
+                    <button class="btn-close" aria-label="Close modal">&times;</button>
                 </div>
                 <div class="modal-body">
                     <div class="gemini-info">
-                        <p><strong>📋 Your equation context has been copied!</strong></p>
+                        <p><strong><span aria-hidden="true">📋</span> Your equation context has been copied!</strong></p>
                         <p>Now you can paste it into Gemini (open next to this window) to get help with:</p>
                         <ul>
                             <li>Step-by-step explanations</li>
@@ -515,16 +639,16 @@
                         </div>
 
                         <div class="gemini-actions">
-                            <button class="btn-copy-again" id="copyAgainBtn">📋 Copy Again</button>
-                            <a href="https://gemini.google.com/" target="_blank" class="btn-open-gemini">🔗 Open Gemini</a>
+                            <button class="btn-copy-again" id="copyAgainBtn" aria-label="Copy to clipboard again"><span aria-hidden="true">📋</span> Copy Again</button>
+                            <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer" class="btn-open-gemini" aria-label="Open Gemini in new tab"><span aria-hidden="true">🔗</span> Open Gemini</a>
                         </div>
 
                         <div class="quick-prompts">
                             <h3>Quick Prompts:</h3>
-                            <button class="quick-prompt-btn" data-prompt="explain">Explain this concept</button>
-                            <button class="quick-prompt-btn" data-prompt="steps">Show me the steps</button>
-                            <button class="quick-prompt-btn" data-prompt="similar">Give me similar problems</button>
-                            <button class="quick-prompt-btn" data-prompt="mistakes">What are common mistakes?</button>
+                            <button class="quick-prompt-btn" data-prompt="explain" aria-label="Copy 'Explain this concept' prompt">Explain this concept</button>
+                            <button class="quick-prompt-btn" data-prompt="steps" aria-label="Copy 'Show me the steps' prompt">Show me the steps</button>
+                            <button class="quick-prompt-btn" data-prompt="similar" aria-label="Copy 'Give me similar problems' prompt">Give me similar problems</button>
+                            <button class="quick-prompt-btn" data-prompt="mistakes" aria-label="Copy 'What are common mistakes' prompt">What are common mistakes?</button>
                         </div>
                     </div>
                 </div>
@@ -532,37 +656,39 @@
         </div>
 
         <!-- Success Modal -->
-        <div id="successModal" class="modal">
+        <div id="successModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="success-modal-title">
             <div class="modal-content success-content">
-                <div class="celebration">🎉</div>
-                <h2>Amazing Work!</h2>
+                <div class="celebration" aria-hidden="true">🎉</div>
+                <h2 id="success-modal-title">Amazing Work!</h2>
                 <div class="rewards">
                     <p>You earned:</p>
                     <div class="reward-item">+<span id="earnedXP">50</span> XP</div>
-                    <div class="reward-item">+<span id="earnedCoins">10</span> 🪙</div>
+                    <div class="reward-item">+<span id="earnedCoins">10</span> <span aria-hidden="true">🪙</span></div>
                 </div>
-                <button class="btn-continue" id="continueBtn">Continue</button>
+                <button class="btn-continue" id="continueBtn" aria-label="Continue to next level">Continue</button>
             </div>
         </div>
 
         <!-- Student Name Input Modal -->
-        <div id="studentNameModal" class="modal" style="display: flex;">
+        <div id="studentNameModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="name-modal-title" style="display: flex;">
             <div class="modal-content name-input-content">
-                <div class="modal-icon">👋</div>
-                <h2>Welcome to Algebra Adventure!</h2>
+                <div class="modal-icon" aria-hidden="true">👋</div>
+                <h2 id="name-modal-title">Welcome to Algebra Adventure!</h2>
                 <p class="modal-subtitle">Let's get started. What's your name?</p>
 
                 <div class="name-input-group">
+                    <label for="studentNameInput" class="sr-only">Enter your name</label>
                     <input type="text"
                            id="studentNameInput"
                            class="student-name-input"
                            placeholder="Enter your name"
                            autocomplete="off"
-                           maxlength="50">
+                           maxlength="50"
+                           aria-required="true">
                 </div>
 
-                <button class="btn-primary name-submit-btn" id="submitNameBtn">
-                    Start Learning! 🚀
+                <button class="btn-primary name-submit-btn" id="submitNameBtn" aria-label="Submit name and start learning">
+                    Start Learning! <span aria-hidden="true">🚀</span>
                 </button>
 
                 <p class="privacy-note">Your name will be used in your progress reports</p>

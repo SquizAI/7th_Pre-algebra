@@ -1,0 +1,209 @@
+/**
+ * Organism Component: Header
+ *
+ * Main application header with logo, navigation, and user stats.
+ * This is a complex component that combines multiple atoms and molecules.
+ */
+
+/* ============================================
+   Game Header
+   ============================================ */
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-6);
+  padding: var(--space-6) var(--space-8);
+  background: linear-gradient(135deg, var(--color-primary-500), var(--color-accent-500));
+  color: var(--color-white);
+  box-shadow: var(--shadow-lg);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+}
+
+/* ============================================
+   Logo Section
+   ============================================ */
+
+.game-header .logo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.game-header .logo h1 {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-bold);
+  margin: 0;
+  line-height: var(--line-height-tight);
+}
+
+.game-header .logo .subtitle {
+  font-size: var(--text-sm);
+  opacity: var(--opacity-90);
+  margin: 0;
+}
+
+/* ============================================
+   Player Stats
+   ============================================ */
+
+.player-stats {
+  display: flex;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(10px);
+  transition: all var(--transition-fast) var(--ease-out);
+}
+
+.stat-item:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+.stat-label {
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  opacity: var(--opacity-80);
+}
+
+.stat-value {
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-bold);
+}
+
+.stat-max {
+  font-size: var(--text-sm);
+  opacity: var(--opacity-70);
+}
+
+.coin-icon {
+  font-size: var(--text-lg);
+}
+
+/* ============================================
+   AI Tutor Button
+   ============================================ */
+
+.btn-ai-tutor {
+  padding: var(--space-3) var(--space-6);
+  background-color: rgba(255, 255, 255, 0.2);
+  color: var(--color-white);
+  border: var(--border-width-2) solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-lg);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: all var(--transition-base) var(--ease-out);
+  backdrop-filter: blur(10px);
+}
+
+.btn-ai-tutor:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-ai-tutor:active {
+  transform: translateY(0);
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .game-header {
+    padding: var(--space-4) var(--space-6);
+  }
+
+  .player-stats {
+    gap: var(--space-4);
+  }
+
+  .stat-item {
+    padding: var(--space-2) var(--space-3);
+  }
+
+  .stat-label {
+    display: none;
+  }
+
+  .stat-value {
+    font-size: var(--text-base);
+  }
+}
+
+@media (max-width: 768px) {
+  .game-header {
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--space-4);
+  }
+
+  .game-header .logo {
+    text-align: center;
+    width: 100%;
+  }
+
+  .game-header .logo h1 {
+    font-size: var(--text-xl);
+  }
+
+  .player-stats {
+    width: 100%;
+    justify-content: space-around;
+    gap: var(--space-2);
+  }
+
+  .stat-item {
+    flex: 1;
+    justify-content: center;
+    padding: var(--space-2);
+  }
+
+  .btn-ai-tutor {
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--text-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .game-header .logo h1 {
+    font-size: var(--text-lg);
+  }
+
+  .game-header .logo .subtitle {
+    font-size: var(--text-xs);
+  }
+
+  .player-stats {
+    gap: var(--space-1);
+  }
+
+  .stat-item {
+    padding: var(--space-1) var(--space-2);
+    font-size: var(--text-xs);
+  }
+
+  .stat-value {
+    font-size: var(--text-sm);
+  }
+
+  .coin-icon {
+    font-size: var(--text-base);
+  }
+}

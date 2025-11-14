@@ -1,0 +1,366 @@
+/**
+ * Navigation Component Styles
+ *
+ * Flexbox-based layout for proper sidebar navigation
+ * Replaces fixed positioning with a proper flex container
+ */
+
+/* ===================================
+   App Layout Container
+   =================================== */
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* ===================================
+   Sidebar Navigation
+   =================================== */
+
+.app-sidebar {
+  width: 320px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-right: 2px solid rgba(30, 60, 114, 0.1);
+  overflow-y: auto;
+  flex-shrink: 0;
+  z-index: 1000;
+  transition: width 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-sidebar.collapsed {
+  width: 60px;
+}
+
+/* Sidebar Header */
+.app-sidebar .standards-nav-header {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  min-height: 60px;
+}
+
+.app-sidebar .standards-nav-header h3 {
+  font-size: 1.1rem;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: opacity 0.2s;
+}
+
+.app-sidebar.collapsed .standards-nav-header h3 {
+  opacity: 0;
+  width: 0;
+}
+
+/* Sidebar Content */
+.app-sidebar .standards-nav-content {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  transition: opacity 0.2s;
+}
+
+.app-sidebar.collapsed .standards-nav-content {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ===================================
+   Main Content Area
+   =================================== */
+
+.app-main {
+  flex: 1;
+  overflow-y: auto;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-width: 0; /* Prevents flex item from overflowing */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure screens fill the main area */
+.app-main .screen {
+  flex: 1;
+  margin-left: 0 !important; /* Override old fixed nav margin */
+}
+
+/* ===================================
+   Navigation Toggle Button
+   =================================== */
+
+.nav-toggle {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.nav-toggle:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.toggle-icon {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/* ===================================
+   Standard Items (Navigation Cards)
+   =================================== */
+
+.standard-item {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #ccc;
+  transition: all 0.2s;
+  cursor: default;
+}
+
+.standard-item:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transform: translateX(2px);
+}
+
+.standard-item.current {
+  border-left-color: #4CAF50;
+  background: linear-gradient(to right, #e8f5e9 0%, white 20%);
+}
+
+.standard-item.completed {
+  border-left-color: #2196F3;
+  opacity: 0.8;
+}
+
+.standard-item.upcoming {
+  border-left-color: #FF9800;
+}
+
+.standard-status {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.standard-code {
+  font-size: 0.75rem;
+  color: #666;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.25rem;
+}
+
+.standard-title {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #1e3c72;
+  margin-bottom: 0.5rem;
+}
+
+.standard-dates {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.standard-description {
+  font-size: 0.85rem;
+  color: #555;
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
+}
+
+.standard-progress {
+  font-size: 0.8rem;
+  color: #666;
+  margin-bottom: 0.75rem;
+  padding: 0.5rem;
+  background: #f5f5f5;
+  border-radius: 4px;
+}
+
+.progress-label {
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.progress-value {
+  color: #1e3c72;
+}
+
+.btn-goto-standard {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.2s;
+}
+
+.btn-goto-standard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ===================================
+   Scrollbar Styling
+   =================================== */
+
+.app-sidebar .standards-nav-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.app-sidebar .standards-nav-content::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.app-sidebar .standards-nav-content::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.app-sidebar .standards-nav-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* ===================================
+   Mobile Navigation
+   =================================== */
+
+@media (max-width: 768px) {
+  /* Make sidebar full-screen overlay on mobile */
+  .app-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 280px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.3);
+    z-index: 2000;
+  }
+
+  .app-sidebar.open {
+    transform: translateX(0);
+  }
+
+  /* Collapsed state hides sidebar completely on mobile */
+  .app-sidebar.collapsed {
+    transform: translateX(-100%);
+    width: 280px; /* Keep width consistent */
+  }
+
+  .app-sidebar.collapsed.open {
+    transform: translateX(0);
+  }
+
+  /* Main content takes full width on mobile */
+  .app-main {
+    width: 100%;
+  }
+
+  /* Mobile overlay backdrop */
+  .mobile-nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .mobile-nav-overlay.active {
+    display: block;
+    opacity: 1;
+  }
+}
+
+/* ===================================
+   Hamburger Menu Button (Mobile)
+   =================================== */
+
+.hamburger-btn {
+  display: none;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 2001;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s;
+  width: 48px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+}
+
+.hamburger-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.hamburger-btn span {
+  font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .hamburger-btn {
+    display: flex;
+  }
+
+  /* Push header content to avoid overlap with hamburger */
+  .game-header {
+    padding-left: 4.5rem;
+  }
+}
+
+/* ===================================
+   Tablet Adjustments
+   =================================== */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .app-sidebar {
+    width: 280px;
+  }
+
+  .app-sidebar.collapsed {
+    width: 60px;
+  }
+}

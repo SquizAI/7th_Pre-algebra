@@ -58,14 +58,21 @@ const StandardsNavigation = {
     // Check if navigation already exists
     if (document.getElementById('standardsNav')) return;
 
-    // Create navigation container
-    const nav = document.createElement('div');
-    nav.id = 'standardsNav';
-    nav.className = 'standards-nav';
-    nav.innerHTML = `
+    const app = document.getElementById('app');
+    if (!app) return;
+
+    // Create wrapper layout structure
+    const appLayout = document.createElement('div');
+    appLayout.className = 'app-layout';
+
+    // Create sidebar
+    const sidebar = document.createElement('div');
+    sidebar.id = 'standardsNav';
+    sidebar.className = 'app-sidebar';
+    sidebar.innerHTML = `
       <div class="standards-nav-header">
         <h3>📅 Curriculum Standards</h3>
-        <button class="nav-toggle" id="toggleStandardsNav">
+        <button class="nav-toggle" id="toggleStandardsNav" aria-label="Toggle navigation">
           <span class="toggle-icon">◀</span>
         </button>
       </div>
@@ -74,11 +81,42 @@ const StandardsNavigation = {
       </div>
     `;
 
-    // Insert into page (before main content)
-    const app = document.getElementById('app');
-    if (app) {
-      app.insertBefore(nav, app.firstChild);
+    // Create main content area
+    const mainArea = document.createElement('div');
+    mainArea.className = 'app-main';
+    mainArea.id = 'appMain';
+
+    // Move all existing children of #app into mainArea
+    while (app.firstChild) {
+      mainArea.appendChild(app.firstChild);
     }
+
+    // Build new structure
+    appLayout.appendChild(sidebar);
+    appLayout.appendChild(mainArea);
+    app.appendChild(appLayout);
+
+    // Create mobile overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'mobile-nav-overlay';
+    overlay.id = 'mobileNavOverlay';
+    overlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      overlay.classList.remove('active');
+    });
+    app.appendChild(overlay);
+
+    // Create hamburger button for mobile
+    const hamburger = document.createElement('button');
+    hamburger.className = 'hamburger-btn';
+    hamburger.id = 'hamburgerBtn';
+    hamburger.innerHTML = '<span>☰</span>';
+    hamburger.setAttribute('aria-label', 'Open navigation menu');
+    hamburger.addEventListener('click', () => {
+      sidebar.classList.add('open');
+      overlay.classList.add('active');
+    });
+    app.appendChild(hamburger);
   },
 
   /**
@@ -167,8 +205,25 @@ const StandardsNavigation = {
   toggleNavigation() {
     const nav = document.getElementById('standardsNav');
     const icon = document.querySelector('.toggle-icon');
+    const overlay = document.getElementById('mobileNavOverlay');
 
-    if (nav) {
+    if (!nav) return;
+
+    // Check if we're on mobile
+    const isMobile = window.innerWidth <= 768;
+
+    if (isMobile) {
+      // On mobile: toggle open state and overlay
+      const isOpen = nav.classList.contains('open');
+      if (isOpen) {
+        nav.classList.remove('open');
+        if (overlay) overlay.classList.remove('active');
+      } else {
+        nav.classList.add('open');
+        if (overlay) overlay.classList.add('active');
+      }
+    } else {
+      // On desktop: toggle collapsed state
       nav.classList.toggle('collapsed');
       if (icon) {
         icon.textContent = nav.classList.contains('collapsed') ? '▶' : '◀';

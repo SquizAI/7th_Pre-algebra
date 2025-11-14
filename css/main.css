@@ -1,0 +1,138 @@
+/**
+ * Main CSS File - 7th-PreAlgebra Application
+ *
+ * This file imports all CSS modules using Atomic Design methodology:
+ * - Foundation: Design tokens and base styles
+ * - Atoms: Basic building blocks (buttons, inputs, etc.)
+ * - Molecules: Simple component combinations (cards, forms, etc.)
+ * - Organisms: Complex components (hero sections, navigation, etc.)
+ * - Utilities: Helper classes for layout and styling
+ *
+ * Import order matters - foundation must come first!
+ */
+
+/* ============================================
+   FOUNDATION LAYER
+   Core design tokens, reset, and base styles
+   ============================================ */
+@import './foundation/tokens.css';
+@import './foundation/reset.css';
+@import './foundation/base.css';
+
+/* ============================================
+   ATOMS LAYER
+   Basic building blocks
+   ============================================ */
+@import './atoms/buttons.css';
+@import './atoms/typography.css';
+@import './atoms/spacing.css';
+
+/* ============================================
+   MOLECULES LAYER
+   Simple component combinations
+   ============================================ */
+@import './molecules/cards.css';
+@import './molecules/forms.css';
+
+/* ============================================
+   ORGANISMS LAYER
+   Complex, feature-rich components
+   ============================================ */
+@import './organisms/hero-lesson.css';
+@import './organisms/header.css';
+@import './organisms/navigation.css';
+
+/* ============================================
+   UTILITIES LAYER
+   Helper classes for layout and styling
+   ============================================ */
+@import './utilities/layout.css';
+@import './utilities/helpers.css';
+
+/* ============================================
+   LEGACY SUPPORT
+   Import existing styles.css for backwards compatibility
+   ============================================ */
+@import './styles.css';
+
+/**
+ * Global Base Styles
+ * Applied to common HTML elements
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-secondary);
+  min-height: 100vh;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Remove default list styles */
+ul, ol {
+  list-style: none;
+}
+
+/* Remove default link styles */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Make images responsive by default */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 var(--space-4);
+  }
+}
+
+/* Screen reader only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus visible for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}

@@ -55,14 +55,14 @@ class AnimatedExample {
                 </div>
 
                 <div class="animation-controls">
-                    <button class="control-btn" id="prevStepBtn" ${isFirst ? 'disabled' : ''}>
-                        ⬅️ Previous
+                    <button class="btn btn-md btn-secondary" id="prevStepBtn" ${isFirst ? 'disabled' : ''} aria-label="Previous step">
+                        <span aria-hidden="true">⬅️</span> Previous
                     </button>
-                    <button class="control-btn primary" id="playPauseBtn">
-                        ${this.isPlaying ? '⏸️ Pause' : '▶️ Play'}
+                    <button class="btn btn-md btn-primary" id="playPauseBtn" aria-label="${this.isPlaying ? 'Pause animation' : 'Play animation'}">
+                        <span aria-hidden="true">${this.isPlaying ? '⏸️' : '▶️'}</span> ${this.isPlaying ? 'Pause' : 'Play'}
                     </button>
-                    <button class="control-btn" id="nextStepBtn" ${isLast ? 'disabled' : ''}>
-                        Next ➡️
+                    <button class="btn btn-md btn-secondary" id="nextStepBtn" ${isLast ? 'disabled' : ''} aria-label="Next step">
+                        Next <span aria-hidden="true">➡️</span>
                     </button>
                 </div>
 
@@ -299,26 +299,36 @@ class AnimatedExamplesGrid {
         if (!this.gridContainer) return;
 
         this.gridContainer.innerHTML = `
-            <div class="examples-navigation">
-                <h3>📚 Worked Examples</h3>
-                <p class="examples-subtitle">Watch how to solve these step-by-step</p>
+            <div class="examples-navigation card" style="margin-bottom: var(--space-6);">
+                <div class="card__header">
+                    <h3 class="card__title"><span aria-hidden="true">📚</span> Select an Example</h3>
+                    <p class="card__subtitle">Watch how to solve these step-by-step</p>
+                </div>
 
-                <div class="example-selector">
+                <div class="example-selector card__body" role="tablist" aria-label="Example problem selector">
                     ${this.examples.map((example, index) => `
-                        <button class="example-tab ${index === this.currentExampleIndex ? 'active' : ''}"
-                                data-index="${index}">
-                            Example ${index + 1}
-                            <div class="example-problem-preview">${example.problem}</div>
+                        <button class="btn btn-md ${index === this.currentExampleIndex ? 'btn-primary' : 'btn-secondary'} example-tab"
+                                data-index="${index}"
+                                role="tab"
+                                aria-selected="${index === this.currentExampleIndex}"
+                                aria-controls="animatedExampleContainer"
+                                aria-label="Example ${index + 1}: ${example.problem}">
+                            <div class="example-tab-content">
+                                <span class="example-number">Example ${index + 1}</span>
+                                <div class="example-problem-preview">${example.problem}</div>
+                            </div>
                         </button>
                     `).join('')}
                 </div>
             </div>
 
-            <div id="animatedExampleContainer" class="animated-example-wrapper"></div>
+            <div id="animatedExampleContainer" class="animated-example-wrapper card" role="tabpanel" aria-live="polite"></div>
 
-            <div class="interaction-prompt">
-                <div class="prompt-icon">👆</div>
-                <div class="prompt-text">Click the arrows or press Play to see the solution steps!</div>
+            <div class="interaction-prompt card" style="margin-top: var(--space-6); text-align: center;">
+                <div class="card__body">
+                    <div class="prompt-icon" aria-hidden="true">👆</div>
+                    <div class="prompt-text">Click the arrows or press Play to see the solution steps!</div>
+                </div>
             </div>
         `;
 
@@ -339,9 +349,17 @@ class AnimatedExamplesGrid {
     loadExample(index) {
         this.currentExampleIndex = index;
 
-        // Update active tab
+        // Update active tab with atomic button classes
         this.gridContainer.querySelectorAll('.example-tab').forEach((tab, i) => {
-            tab.classList.toggle('active', i === index);
+            if (i === index) {
+                tab.classList.remove('btn-secondary');
+                tab.classList.add('btn-primary');
+                tab.setAttribute('aria-selected', 'true');
+            } else {
+                tab.classList.remove('btn-primary');
+                tab.classList.add('btn-secondary');
+                tab.setAttribute('aria-selected', 'false');
+            }
         });
 
         // Load into animated example

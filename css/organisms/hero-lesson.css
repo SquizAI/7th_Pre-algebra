@@ -1,0 +1,111 @@
+/* ============================================
+   ATOMIC DESIGN: HERO LESSON
+   Today's lesson hero card component
+   ============================================ */
+
+.hero-lesson {
+  margin-bottom: var(--space-10);
+}
+
+.hero-lesson__badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: var(--space-4);
+}
+
+.hero-lesson__title {
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-3);
+  line-height: var(--line-height-tight);
+}
+
+.hero-lesson__topic {
+  font-size: var(--text-lg);
+  opacity: 0.9;
+  margin-bottom: var(--space-2);
+}
+
+.hero-lesson__standard {
+  font-size: var(--text-sm);
+  opacity: 0.8;
+  margin-bottom: var(--space-6);
+}
+
+.hero-lesson__action {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+/* Progress indicator for hero lesson */
+.hero-lesson__progress {
+  margin-top: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hero-lesson__progress-label {
+  font-size: var(--text-sm);
+  opacity: 0.8;
+  margin-bottom: var(--space-2);
+}
+
+.hero-lesson__progress-bar {
+  background: rgba(255, 255, 255, 0.2);
+  height: 8px;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.hero-lesson__progress-fill {
+  background: white;
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width 0.5s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-lesson__title {
+    font-size: var(--text-3xl);
+  }
+
+  .hero-lesson__action {
+    flex-direction: column;
+  }
+
+  .hero-lesson__action .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-lesson__title {
+    font-size: var(--text-2xl);
+  }
+
+  .hero-lesson__topic {
+    font-size: var(--text-base);
+  }
+}
+
+/* Animation for completed state */
+.hero-lesson.completed .hero-lesson__badge {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}

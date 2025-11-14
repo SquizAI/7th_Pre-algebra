@@ -1,3 +1,50 @@
+/* Import New Navigation Component */
+@import url('organisms/navigation.css');
+
+/* Accessibility Styles */
+/* Skip link for keyboard navigation */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #1e3c72;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 0 0 4px 0;
+    z-index: 10000;
+    font-weight: bold;
+    transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+    outline: 3px solid #ffd700;
+    outline-offset: 2px;
+}
+
+/* Screen reader only text */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.sr-only-focusable:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+}
+
 /* Global Styles */
 * {
     margin: 0;
@@ -4039,10 +4086,19 @@ body {
    FLORIDA STANDARDS NAVIGATION
    =================================== */
 
+/*
+ * DEPRECATED: Navigation styles moved to css/organisms/navigation.css
+ * The old fixed positioning approach has been replaced with flexbox layout
+ * See: css/organisms/navigation.css for the new implementation
+ *
+ * These styles are commented out to prevent conflicts
+ */
+
+/*
 .standards-nav {
   position: fixed;
   left: 0;
-  top: 80px; /* Below header */
+  top: 80px;
   width: 320px;
   height: calc(100vh - 80px);
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
@@ -4205,7 +4261,6 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Adjust main content when nav is open */
 .screen {
   margin-left: 320px;
   transition: margin-left 0.3s ease;
@@ -4215,7 +4270,6 @@ body {
   margin-left: 40px;
 }
 
-/* Mobile responsive */
 @media (max-width: 768px) {
   .standards-nav {
     width: 280px;
@@ -4234,7 +4288,6 @@ body {
   }
 }
 
-/* Scrollbar styling for standards nav */
 .standards-nav-content::-webkit-scrollbar {
   width: 6px;
 }
@@ -4251,6 +4304,7 @@ body {
 .standards-nav-content::-webkit-scrollbar-thumb:hover {
   background: rgba(0, 0, 0, 0.3);
 }
+*/
 
 /* Password Modal Styles */
 .password-modal {
