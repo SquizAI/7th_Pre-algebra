@@ -3,33 +3,11 @@
 
 class WordProblemGenerator {
     constructor() {
-        this.apiKey = this.getApiKey();
-        this.apiEndpoint = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
+        // Use serverless function instead of direct API access
+        this.apiEndpoint = '/.netlify/functions/gemini-api';
         this.cache = new Map(); // Cache generated problems
         this.maxCacheSize = 50;
-    }
-
-    // Get API key from environment or localStorage
-    getApiKey() {
-        // In production (Netlify), this will be set as an environment variable
-        // For local development, you can set it in localStorage for testing
-        if (typeof process !== 'undefined' && process.env && process.env.GEMINI_API_KEY) {
-            return process.env.GEMINI_API_KEY;
-        }
-
-        // Fallback: check if it's injected into window (for Netlify build)
-        if (window.GEMINI_API_KEY) {
-            return window.GEMINI_API_KEY;
-        }
-
-        // For local testing only
-        const localKey = localStorage.getItem('GEMINI_API_KEY');
-        if (localKey) {
-            return localKey;
-        }
-
-        console.warn('⚠️ Gemini API key not found. Word problems will use fallback mode.');
-        return null;
+        this.useServerlessFunction = true;
     }
 
     // Parse equation to extract coefficients
@@ -70,40 +48,32 @@ class WordProblemGenerator {
             return this.cache.get(cacheKey);
         }
 
-        // If no API key, use fallback
-        if (!this.apiKey) {
-            return this.getFallbackProblem(coefficient, constant, result, answer, equationType);
-        }
-
         try {
             const prompt = this.buildPrompt(coefficient, constant, result, answer, equationType, difficulty);
-            const response = await fetch(`${this.apiEndpoint}?key=${this.apiKey}`, {
+
+            // Call serverless function instead of Gemini API directly
+            const response = await fetch(this.apiEndpoint, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    contents: [{
-                        parts: [{
-                            text: prompt
-                        }]
-                    }],
-                    generationConfig: {
-                        temperature: 0.9,
-                        topK: 40,
-                        topP: 0.95,
-                        maxOutputTokens: 300,
+                    prompt: prompt,
+                    studentContext: {
+                        equation: equationStr,
+                        level: difficulty,
+                        concept: 'Two-Step Equations'
                     }
                 })
             });
 
             if (!response.ok) {
-                console.error('Gemini API error:', response.status);
+                console.error('Word problem API error:', response.status);
                 return this.getFallbackProblem(coefficient, constant, result, answer, equationType);
             }
 
             const data = await response.json();
-            const wordProblem = data.candidates[0].content.parts[0].text.trim();
+            const wordProblem = data.response.trim();
 
             // Cache the result
             this.addToCache(cacheKey, wordProblem);
