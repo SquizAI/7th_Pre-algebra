@@ -271,7 +271,7 @@
             <!-- Concept Introduction Screen -->
             <section id="conceptIntroScreen" class="screen" aria-labelledby="conceptTitle">
                 <div class="concept-intro-container">
-                    <button class="btn-back" aria-label="Back to menu">← Back to Menu</button>
+                    <button class="btn-back" onclick="window.gameController.showScreen('menu')" aria-label="Back to menu">← Back to Menu</button>
 
                     <article class="concept-card">
                         <div class="concept-icon" id="conceptIcon" aria-hidden="true">🎯</div>
@@ -329,7 +329,7 @@
             <!-- Video Lesson Screen -->
             <section id="videoLessonScreen" class="screen" aria-labelledby="videoLessonTitle">
                 <div class="video-lesson-container">
-                    <button class="btn-back" aria-label="Go back">← Back</button>
+                    <button class="btn-back" onclick="window.gameController.showScreen('menu')" aria-label="Go back">← Back</button>
 
                     <article class="video-lesson-card">
                         <h2 id="videoLessonTitle">Video Lesson: Two-Step Equations</h2>
@@ -369,7 +369,7 @@
             <!-- Examples Screen -->
             <section id="examplesScreen" class="screen" aria-labelledby="examples-heading">
                 <div class="examples-container">
-                    <button class="btn btn-md btn-ghost" aria-label="Go back to previous screen">← Back</button>
+                    <button class="btn btn-md btn-ghost" onclick="window.gameController.showScreen('menu')" aria-label="Go back to previous screen">← Back</button>
 
                     <article class="card">
                         <header class="card__header">
@@ -419,7 +419,7 @@
             <!-- Game Screen -->
             <section id="gameScreen" class="screen" aria-labelledby="game-heading">
                 <div class="game-container">
-                    <button class="btn btn-md btn-secondary" aria-label="Back to menu">
+                    <button class="btn btn-md btn-secondary" onclick="window.gameController.showScreen('menu')" aria-label="Back to menu">
                         <span aria-hidden="true">←</span> Back to Menu
                     </button>
 
@@ -550,7 +550,7 @@
             <!-- Practice Screen -->
             <section id="practiceScreen" class="screen" aria-labelledby="practice-heading">
                 <div class="practice-container">
-                    <button class="btn btn-md btn-secondary" aria-label="Back to menu">
+                    <button class="btn btn-md btn-secondary" onclick="window.gameController.showScreen('menu')" aria-label="Back to menu">
                         <span aria-hidden="true">←</span> Back to Menu
                     </button>
                     <h2 id="practice-heading"><span aria-hidden="true">⚔️</span> Practice Arena</h2>

@@ -92,14 +92,33 @@ class GameController {
 
     // Screen management
     showScreen(screenName) {
-        document.querySelectorAll('.screen').forEach(screen => {
+        console.log(`📱 showScreen called: "${screenName}"`);
+
+        // Remove active from all screens
+        const allScreens = document.querySelectorAll('.screen');
+        console.log(`  Found ${allScreens.length} screens`);
+        allScreens.forEach(screen => {
             screen.classList.remove('active');
         });
 
-        const screen = document.getElementById(`${screenName}Screen`);
-        if (screen) {
-            screen.classList.add('active');
+        // Add active to target screen
+        const targetScreen = document.getElementById(`${screenName}Screen`);
+        if (targetScreen) {
+            targetScreen.classList.add('active');
             this.currentScreen = screenName;
+            console.log(`  ✅ Activated: ${targetScreen.id}`);
+
+            // Force display check
+            const computedDisplay = window.getComputedStyle(targetScreen).display;
+            console.log(`  Display style: ${computedDisplay}`);
+
+            // If display is still 'none', force it
+            if (computedDisplay === 'none') {
+                console.warn(`  ⚠️ Display still 'none'! Forcing to 'block'`);
+                targetScreen.style.display = 'block';
+            }
+        } else {
+            console.error(`  ❌ Screen not found: "${screenName}Screen"`);
         }
 
         // Refresh progress when showing menu
