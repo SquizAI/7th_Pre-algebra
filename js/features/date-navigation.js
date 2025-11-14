@@ -14,6 +14,8 @@
 const DateNavigation = {
   // Current view state
   currentView: 'calendar', // 'calendar', 'list', 'today'
+  teacherPassword: 'teacher2025', // TODO: Move to config
+  isTeacherAuthenticated: false,
 
   /**
    * Initialize the date navigation UI
@@ -26,6 +28,9 @@ const DateNavigation = {
       console.error('❌ LessonScheduler not loaded!');
       return;
     }
+
+    // Check if teacher is already authenticated (session storage)
+    this.isTeacherAuthenticated = sessionStorage.getItem('teacherAuth') === 'true';
 
     this.render();
     this.attachEventListeners();
@@ -64,23 +69,34 @@ const DateNavigation = {
     const upcoming = window.LessonScheduler.getUpcomingLessons(5);
     const past = window.LessonScheduler.getPastLessons(5);
 
+    // Show only today's lesson by default
+    if (this.currentView === 'today' || this.currentView === 'calendar') {
+      return `
+        <div class="date-nav-header">
+          <h2 class="date-nav-title">📚 Today's Lesson</h2>
+          <div class="date-nav-controls">
+            <button class="btn btn-sm btn-secondary" data-view="list" style="margin-left: auto;">
+              📋 View All Lessons
+            </button>
+          </div>
+        </div>
+
+        ${todaysLesson ? this.renderTodaysLesson(todaysLesson) : this.renderNoClassToday()}
+      `;
+    }
+
+    // Full list view (teacher mode)
     return `
       <div class="date-nav-header">
-        <h2 class="date-nav-title">📚 Lesson Calendar</h2>
+        <h2 class="date-nav-title">📚 All Lessons</h2>
         <div class="date-nav-controls">
-          <button class="btn-view" data-view="today" ${!todaysLesson ? 'disabled' : ''}>
-            📍 Today
-          </button>
-          <button class="btn-view active" data-view="calendar">
-            📅 Calendar
-          </button>
-          <button class="btn-view" data-view="list">
-            📋 All Lessons
+          <button class="btn btn-sm btn-secondary" data-view="today">
+            ← Back to Today
           </button>
         </div>
       </div>
 
-      ${todaysLesson ? this.renderTodaysLesson(todaysLesson) : this.renderNoClassToday()}
+      ${todaysLesson ? this.renderTodaysLesson(todaysLesson) : ''}
 
       <div class="date-nav-sections">
         ${this.renderWeekView(weekLessons)}
@@ -324,16 +340,15 @@ const DateNavigation = {
       }
     });
 
-    // Handle lesson start/access buttons
+    // Handle lesson start/access buttons - updated for atomic design classes
     document.addEventListener('click', (e) => {
-      if (e.target.closest('.btn-start-lesson') ||
-          e.target.closest('.btn-review-lesson') ||
-          e.target.closest('.btn-access-lesson')) {
-        const btn = e.target.closest('button');
+      const btn = e.target.closest('button[data-level]');
+      if (btn) {
         const lessonNumber = parseInt(btn.dataset.lesson);
         const levelId = parseInt(btn.dataset.level);
 
         if (levelId && window.game) {
+          console.log(`🎯 Lesson button clicked - Level ${levelId}`);
           this.navigateToLesson(levelId);
         }
       }
@@ -344,16 +359,35 @@ const DateNavigation = {
    * Switch between different views
    */
   switchView(view) {
+    // If switching to list view, require teacher authentication
+    if (view === 'list' && !this.isTeacherAuthenticated) {
+      this.promptTeacherPassword();
+      return;
+    }
+
     this.currentView = view;
+    console.log(`📊 Switching to ${view} view`);
 
-    // Update active button
-    document.querySelectorAll('.btn-view').forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.view === view);
-    });
+    // Re-render the entire navigation with new view
+    this.render();
+  },
 
-    // Re-render based on view
-    // TODO: Implement different views (list, calendar, today)
-    console.log(`Switched to ${view} view`);
+  /**
+   * Prompt for teacher password
+   */
+  promptTeacherPassword() {
+    const password = prompt('🔐 Teacher Password Required\n\nEnter the teacher password to view and edit the full lesson calendar:');
+
+    if (password === this.teacherPassword) {
+      this.isTeacherAuthenticated = true;
+      sessionStorage.setItem('teacherAuth', 'true');
+      alert('✅ Authentication successful! You now have access to the full calendar.');
+      this.currentView = 'list';
+      this.render();
+    } else if (password !== null) {
+      // User entered wrong password (didn't cancel)
+      alert('❌ Incorrect password. Access denied.\n\nStudents: Click on Today\'s Lesson to start learning!');
+    }
   },
 
   /**
