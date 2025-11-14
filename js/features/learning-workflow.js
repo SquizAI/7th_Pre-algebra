@@ -356,6 +356,11 @@ class LearningWorkflow {
             window.studentReport.recordExamplesViewed();
         }
 
+        // CRITICAL FIX: Mark concept as learned here so returning users can skip workflow
+        // Students who view examples have seen enough to skip intro/video next time
+        this.markConceptLearned(this.currentConcept);
+        console.log(`✅ Concept marked as learned: ${this.currentConcept}`);
+
         // Use animated examples system
         if (window.animatedExamplesGrid) {
             window.animatedExamplesGrid.loadExamples(concept.examples);
