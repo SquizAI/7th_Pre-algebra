@@ -398,7 +398,10 @@ class EquationGenerator {
 
         if (useDivision) {
             // x/a + b = c format (division)
-            c = Math.floor(x / a) + b;
+            // FIX: Ensure x is divisible by a to avoid fractional answers
+            x = x - (x % a); // Make x divisible by a
+            if (x === 0) x = a; // Avoid x = 0
+            c = (x / a) + b;
             equation = `x/${a} ${b >= 0 ? '+' : ''} ${b} = ${c}`;
             steps = [
                 `x/${a} ${b >= 0 ? '+' : ''} ${b} = ${c}`,

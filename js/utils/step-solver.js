@@ -46,7 +46,8 @@ class StepSolver {
         const answer = equation.answer;
 
         // Parse equation to determine steps needed
-        if (equation.concept === 'two-step equation') {
+        // FIX: Handle both 'two-step equation' and 'two-step with mixed operations'
+        if (equation.concept === 'two-step equation' || equation.concept === 'two-step with mixed operations') {
             this.steps = this.buildTwoStepSteps(eq, answer);
         } else if (equation.concept === 'combining like terms') {
             this.steps = this.buildCombiningTermsSteps(eq, answer);
@@ -60,21 +61,88 @@ class StepSolver {
         }
     }
 
-    // Build steps for two-step equations (ax + b = c)
+    // Build steps for two-step equations (ax + b = c, ax - b = c, x/a + b = c)
     buildTwoStepSteps(equation, answer) {
         const steps = [];
 
-        // Parse: ax + b = c
+        // Parse equation
         const parts = equation.split('=');
         const leftSide = parts[0].trim();
         const rightSide = parts[1].trim();
+        const c = parseInt(rightSide);
 
-        // Extract coefficient, constant on left, and value on right
-        const match = leftSide.match(/(-?\d+)x\s*([+-]\s*\d+)/);
-        if (match) {
-            const a = parseInt(match[1]);
-            const b = parseInt(match[2].replace(/\s/g, ''));
-            const c = parseInt(rightSide);
+        // Try to match different formats
+        // Format 1: ax + b = c or ax - b = c
+        const matchAddSub = leftSide.match(/(-?\d+)x\s*([+-]\s*\d+)/);
+        // Format 2: x/a + b = c or x/a - b = c
+        const matchDiv = leftSide.match(/x\/(\d+)\s*([+-]\s*\d+)/);
+
+        if (matchDiv) {
+            // Division format: x/a + b = c
+            const a = parseInt(matchDiv[1]);
+            const b = parseInt(matchDiv[2].replace(/\s/g, ''));
+
+            // Step 1: Identify what to do first
+            steps.push({
+                type: 'question',
+                prompt: `Starting equation: ${equation}`,
+                question: `What operation should we do FIRST to isolate the x term?`,
+                questionType: 'choice',
+                choices: [
+                    { text: `Multiply both sides by ${a}`, correct: false },
+                    { text: b > 0 ? `Subtract ${b} from both sides` : `Add ${Math.abs(b)} to both sides`, correct: true },
+                    { text: 'Divide both sides', correct: false }
+                ],
+                explanation: 'Work backwards! Undo addition/subtraction BEFORE multiplication/division.'
+            });
+
+            // Step 2: Perform the operation
+            const step2Result = c - b;
+            steps.push({
+                type: 'fill-blank',
+                prompt: b > 0 ?
+                    `Subtract ${b} from both sides` :
+                    `Add ${Math.abs(b)} to both sides`,
+                previousEquation: equation,
+                equation: `x/${a} = ___`,
+                correctAnswer: step2Result.toString(),
+                hint: b > 0 ?
+                    `${c} - ${b} = ?` :
+                    `${c} + ${Math.abs(b)} = ?`,
+                explanation: `x/${a} = ${step2Result}`,
+                showTransformation: true
+            });
+
+            // Step 3: What to do next
+            steps.push({
+                type: 'question',
+                prompt: `Now we have: x/${a} = ${step2Result}`,
+                question: `What should we do to solve for x?`,
+                questionType: 'choice',
+                choices: [
+                    { text: `Multiply both sides by ${a}`, correct: true },
+                    { text: `Divide both sides by ${a}`, correct: false },
+                    { text: `Add ${a}`, correct: false }
+                ],
+                explanation: `To get x by itself, multiply both sides by ${a}`
+            });
+
+            // Step 4: Final calculation
+            steps.push({
+                type: 'fill-blank',
+                prompt: `Multiply both sides by ${a}`,
+                previousEquation: `x/${a} = ${step2Result}`,
+                equation: `x = ___`,
+                correctAnswer: answer.toString(),
+                hint: `${step2Result} × ${a} = ?`,
+                explanation: `x = ${answer}`,
+                showTransformation: true
+            });
+
+        } else if (matchAddSub) {
+            // Addition/Subtraction format: ax + b = c or ax - b = c
+            const a = parseInt(matchAddSub[1]);
+            const b = parseInt(matchAddSub[2].replace(/\s/g, ''));
 
             // Step 1: Identify what to do first
             steps.push({
@@ -97,7 +165,7 @@ class StepSolver {
                 prompt: b > 0 ?
                     `Subtract ${b} from both sides` :
                     `Add ${Math.abs(b)} to both sides`,
-                previousEquation: equation,  // Show where we came from
+                previousEquation: equation,
                 equation: `${a}x = ___`,
                 correctAnswer: step2Result.toString(),
                 hint: b > 0 ?
