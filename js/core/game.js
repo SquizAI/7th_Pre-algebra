@@ -344,21 +344,34 @@ class GameController {
 
         // Wait for DOM to be ready before updating UI
         setTimeout(() => {
-            // Update UI
-            document.getElementById('levelTitle').textContent = `Level ${levelInfo.id}: ${levelInfo.name}`;
-            document.getElementById('levelDescription').textContent = levelInfo.description;
+            // Update UI (use game-heading instead of levelTitle for atomic design)
+            const gameHeading = document.getElementById('game-heading');
+            if (gameHeading) {
+                gameHeading.textContent = `Level ${levelInfo.id}: ${levelInfo.name}`;
+            }
+            const levelDesc = document.getElementById('levelDescription');
+            if (levelDesc) {
+                levelDesc.textContent = levelInfo.description;
+            }
 
-            // Update both progress displays
-            document.getElementById('totalQuestions').textContent = levelInfo.totalQuestions;
-            document.getElementById('currentQuestion').textContent = '0';
-            document.getElementById('progressFill').style.width = '0%';
+            // Update both progress displays (with null checks)
+            const totalQ = document.getElementById('totalQuestions');
+            const currentQ = document.getElementById('currentQuestion');
+            const progressFill = document.getElementById('progressFill');
+            if (totalQ) totalQ.textContent = levelInfo.totalQuestions;
+            if (currentQ) currentQ.textContent = '0';
+            if (progressFill) progressFill.style.width = '0%';
 
             // Update level progress (bottom display)
-            document.getElementById('levelTotalQuestions').textContent = levelInfo.totalQuestions;
-            document.getElementById('levelCurrentQuestion').textContent = '0';
-            document.getElementById('levelProgressFill').style.width = '0%';
+            const levelTotalQ = document.getElementById('levelTotalQuestions');
+            const levelCurrentQ = document.getElementById('levelCurrentQuestion');
+            const levelProgressFill = document.getElementById('levelProgressFill');
+            if (levelTotalQ) levelTotalQ.textContent = levelInfo.totalQuestions;
+            if (levelCurrentQ) levelCurrentQ.textContent = '0';
+            if (levelProgressFill) levelProgressFill.style.width = '0%';
 
-            document.getElementById('streak').textContent = this.streak;
+            const streakEl = document.getElementById('streak');
+            if (streakEl) streakEl.textContent = this.streak;
 
             // Generate first question
             this.nextQuestion();
@@ -370,18 +383,30 @@ class GameController {
         this.currentQuestion = 0;
         this.correctAnswers = 0;
 
-        document.getElementById('levelTitle').textContent = levelInfo.name;
-        document.getElementById('levelDescription').textContent = levelInfo.description;
+        const gameHeading = document.getElementById('game-heading');
+        if (gameHeading) {
+            gameHeading.textContent = levelInfo.name;
+        }
+        const levelDesc = document.getElementById('levelDescription');
+        if (levelDesc) {
+            levelDesc.textContent = levelInfo.description;
+        }
 
-        // Update both progress displays
-        document.getElementById('totalQuestions').textContent = levelInfo.totalQuestions;
-        document.getElementById('currentQuestion').textContent = '0';
-        document.getElementById('progressFill').style.width = '0%';
+        // Update both progress displays (with null checks)
+        const totalQ = document.getElementById('totalQuestions');
+        const currentQ = document.getElementById('currentQuestion');
+        const progressFill = document.getElementById('progressFill');
+        if (totalQ) totalQ.textContent = levelInfo.totalQuestions;
+        if (currentQ) currentQ.textContent = '0';
+        if (progressFill) progressFill.style.width = '0%';
 
         // Update level progress (bottom display)
-        document.getElementById('levelTotalQuestions').textContent = levelInfo.totalQuestions;
-        document.getElementById('levelCurrentQuestion').textContent = '0';
-        document.getElementById('levelProgressFill').style.width = '0%';
+        const levelTotalQ = document.getElementById('levelTotalQuestions');
+        const levelCurrentQ = document.getElementById('levelCurrentQuestion');
+        const levelProgressFill = document.getElementById('levelProgressFill');
+        if (levelTotalQ) levelTotalQ.textContent = levelInfo.totalQuestions;
+        if (levelCurrentQ) levelCurrentQ.textContent = '0';
+        if (levelProgressFill) levelProgressFill.style.width = '0%';
 
         this.nextQuestion();
     }
