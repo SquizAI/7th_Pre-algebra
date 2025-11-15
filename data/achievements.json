@@ -1,0 +1,532 @@
+{
+  "achievements": [
+    {
+      "id": "first_steps",
+      "name": "First Steps",
+      "description": "Complete your first lesson",
+      "badge_icon": "🏆",
+      "xp_reward": 10,
+      "category": "completion",
+      "unlock_criteria": {
+        "type": "lessons_completed",
+        "value": 1
+      }
+    },
+    {
+      "id": "perfect_score",
+      "name": "Perfect Score",
+      "description": "Get 100% on any lesson",
+      "badge_icon": "💯",
+      "xp_reward": 20,
+      "category": "accuracy",
+      "unlock_criteria": {
+        "type": "perfect_lesson",
+        "value": 1
+      }
+    },
+    {
+      "id": "speed_demon",
+      "name": "Speed Demon",
+      "description": "Complete a lesson in under 3 minutes",
+      "badge_icon": "⚡",
+      "xp_reward": 25,
+      "category": "speed",
+      "unlock_criteria": {
+        "type": "lesson_time",
+        "value": 180
+      }
+    },
+    {
+      "id": "week_warrior",
+      "name": "Week Warrior",
+      "description": "Maintain a 7-day learning streak",
+      "badge_icon": "🔥",
+      "xp_reward": 50,
+      "category": "streaks",
+      "unlock_criteria": {
+        "type": "streak",
+        "value": 7
+      }
+    },
+    {
+      "id": "month_master",
+      "name": "Month Master",
+      "description": "Maintain a 30-day learning streak",
+      "badge_icon": "📅",
+      "xp_reward": 200,
+      "category": "streaks",
+      "unlock_criteria": {
+        "type": "streak",
+        "value": 30
+      }
+    },
+    {
+      "id": "unit_complete",
+      "name": "Unit Complete",
+      "description": "Finish any unit",
+      "badge_icon": "📚",
+      "xp_reward": 100,
+      "category": "completion",
+      "unlock_criteria": {
+        "type": "unit_completed",
+        "value": 1
+      }
+    },
+    {
+      "id": "quarter_king",
+      "name": "Quarter King",
+      "description": "Finish any quarter",
+      "badge_icon": "👑",
+      "xp_reward": 250,
+      "category": "completion",
+      "unlock_criteria": {
+        "type": "quarter_completed",
+        "value": 1
+      }
+    },
+    {
+      "id": "math_master",
+      "name": "Math Master",
+      "description": "Complete all 87 lessons",
+      "badge_icon": "🌟",
+      "xp_reward": 500,
+      "category": "mastery",
+      "unlock_criteria": {
+        "type": "lessons_completed",
+        "value": 87
+      }
+    },
+    {
+      "id": "comeback_kid",
+      "name": "Comeback Kid",
+      "description": "Improve your score on a retry",
+      "badge_icon": "💪",
+      "xp_reward": 15,
+      "category": "special",
+      "unlock_criteria": {
+        "type": "score_improvement",
+        "value": 1
+      }
+    },
+    {
+      "id": "explorer",
+      "name": "Explorer",
+      "description": "Try 10 different lessons",
+      "badge_icon": "🗺️",
+      "xp_reward": 30,
+      "category": "completion",
+      "unlock_criteria": {
+        "type": "lessons_attempted",
+        "value": 10
+      }
+    },
+    {
+      "id": "triple_perfect",
+      "name": "Triple Perfect",
+      "description": "Get 100% on three lessons in a row",
+      "badge_icon": "🎯",
+      "xp_reward": 75,
+      "category": "accuracy",
+      "unlock_criteria": {
+        "type": "consecutive_perfect",
+        "value": 3
+      }
+    },
+    {
+      "id": "practice_makes_perfect",
+      "name": "Practice Makes Perfect",
+      "description": "Complete 50 practice problems",
+      "badge_icon": "✏️",
+      "xp_reward": 40,
+      "category": "completion",
+      "unlock_criteria": {
+        "type": "practice_problems",
+        "value": 50
+      }
+    },
+    {
+      "id": "early_bird",
+      "name": "Early Bird",
+      "description": "Complete a lesson before 8 AM",
+      "badge_icon": "🌅",
+      "xp_reward": 20,
+      "category": "special",
+      "unlock_criteria": {
+        "type": "early_completion",
+        "value": 1
+      }
+    },
+    {
+      "id": "night_owl",
+      "name": "Night Owl",
+      "description": "Complete a lesson after 8 PM",
+      "badge_icon": "🦉",
+      "xp_reward": 20,
+      "category": "special",
+      "unlock_criteria": {
+        "type": "late_completion",
+        "value": 1
+      }
+    },
+    {
+      "id": "weekend_warrior",
+      "name": "Weekend Warrior",
+      "description": "Complete lessons on Saturday and Sunday",
+      "badge_icon": "⚔️",
+      "xp_reward": 35,
+      "category": "special",
+      "unlock_criteria": {
+        "type": "weekend_completion",
+        "value": 2
+      }
+    },
+    {
+      "id": "equation_expert",
+      "name": "Equation Expert",
+      "description": "Solve 100 equations correctly",
+      "badge_icon": "🧮",
+      "xp_reward": 60,
+      "category": "mastery",
+      "unlock_criteria": {
+        "type": "correct_equations",
+        "value": 100
+      }
+    },
+    {
+      "id": "distribution_master",
+      "name": "Distribution Master",
+      "description": "Complete all distribution property lessons",
+      "badge_icon": "📦",
+      "xp_reward": 80,
+      "category": "mastery",
+      "unlock_criteria": {
+        "type": "topic_mastery",
+        "value": "distribution"
+      }
+    },
+    {
+      "id": "fraction_fanatic",
+      "name": "Fraction Fanatic",
+      "description": "Complete all fraction equation lessons",
+      "badge_icon": "🍕",
+      "xp_reward": 90,
+      "category": "mastery",
+      "unlock_criteria": {
+        "type": "topic_mastery",
+        "value": "fractions"
+      }
+    },
+    {
+      "id": "both_sides_boss",
+      "name": "Both Sides Boss",
+      "description": "Master variables on both sides",
+      "badge_icon": "⚖️",
+      "xp_reward": 85,
+      "category": "mastery",
+      "unlock_criteria": {
+        "type": "topic_mastery",
+        "value": "both_sides"
+      }
+    },
+    {
+      "id": "speed_runner",
+      "name": "Speed Runner",
+      "description": "Complete 5 lessons under 3 minutes each",
+      "badge_icon": "🏃",
+      "xp_reward": 100,
+      "category": "speed",
+      "unlock_criteria": {
+        "type": "fast_completions",
+        "value": 5
+      }
+    },
+    {
+      "id": "accuracy_ace",
+      "name": "Accuracy Ace",
+      "description": "Maintain 90%+ accuracy over 20 problems",
+      "badge_icon": "🎪",
+      "xp_reward": 70,
+      "category": "accuracy",
+      "unlock_criteria": {
+        "type": "high_accuracy",
+        "value": 20
+      }
+    },
+    {
+      "id": "persistence_pays",
+      "name": "Persistence Pays",
+      "description": "Retry a failed lesson and pass it",
+      "badge_icon": "🔄",
+      "xp_reward": 25,
+      "category": "special",
+      "unlock_criteria": {
+        "type": "retry_success",
+        "value": 1
+      }
+    },
+    {
+      "id": "video_viewer",
+      "name": "Video Viewer",
+      "description": "Watch 10 video tutorials",
+      "badge_icon": "📹",
+      "xp_reward": 30,
+      "category": "completion",
+      "unlock_criteria": {
+        "type": "videos_watched",
+        "value": 10
+      }
+    },
+    {
+      "id": "help_seeker",
+      "name": "Help Seeker",
+      "description": "Use Gemini AI helper 5 times",
+      "badge_icon": "✨",
+      "xp_reward": 15,
+      "category": "special",
+      "unlock_criteria": {
+        "type": "ai_helper_used",
+        "value": 5
+      }
+    },
+    {
+      "id": "five_star_student",
+      "name": "Five Star Student",
+      "description": "Complete 5 lessons in one day",
+      "badge_icon": "⭐",
+      "xp_reward": 50,
+      "category": "special",
+      "unlock_criteria": {
+        "type": "daily_lessons",
+        "value": 5
+      }
+    },
+    {
+      "id": "steady_progress",
+      "name": "Steady Progress",
+      "description": "Complete at least one lesson for 10 days",
+      "badge_icon": "📈",
+      "xp_reward": 65,
+      "category": "streaks",
+      "unlock_criteria": {
+        "type": "active_days",
+        "value": 10
+      }
+    },
+    {
+      "id": "comeback_champion",
+      "name": "Comeback Champion",
+      "description": "Improve scores on 5 different lessons",
+      "badge_icon": "🏅",
+      "xp_reward": 55,
+      "category": "special",
+      "unlock_criteria": {
+        "type": "score_improvements",
+        "value": 5
+      }
+    },
+    {
+      "id": "no_mistakes",
+      "name": "No Mistakes",
+      "description": "Complete a lesson without any wrong answers",
+      "badge_icon": "✅",
+      "xp_reward": 40,
+      "category": "accuracy",
+      "unlock_criteria": {
+        "type": "flawless_lesson",
+        "value": 1
+      }
+    },
+    {
+      "id": "lightning_fast",
+      "name": "Lightning Fast",
+      "description": "Complete a lesson in under 1 minute",
+      "badge_icon": "⚡",
+      "xp_reward": 50,
+      "category": "speed",
+      "unlock_criteria": {
+        "type": "lesson_time",
+        "value": 60
+      }
+    },
+    {
+      "id": "castle_conqueror",
+      "name": "Castle Conqueror",
+      "description": "Complete all Castle of Basics lessons",
+      "badge_icon": "🏰",
+      "xp_reward": 100,
+      "category": "completion",
+      "unlock_criteria": {
+        "type": "world_completed",
+        "value": "castle"
+      }
+    },
+    {
+      "id": "forest_explorer",
+      "name": "Forest Explorer",
+      "description": "Complete all Forest of Distribution lessons",
+      "badge_icon": "🌲",
+      "xp_reward": 100,
+      "category": "completion",
+      "unlock_criteria": {
+        "type": "world_completed",
+        "value": "forest"
+      }
+    },
+    {
+      "id": "mountain_climber",
+      "name": "Mountain Climber",
+      "description": "Complete all Mountain of Both Sides lessons",
+      "badge_icon": "⛰️",
+      "xp_reward": 100,
+      "category": "completion",
+      "unlock_criteria": {
+        "type": "world_completed",
+        "value": "mountain"
+      }
+    },
+    {
+      "id": "ocean_navigator",
+      "name": "Ocean Navigator",
+      "description": "Complete all Ocean of Fractions lessons",
+      "badge_icon": "🌊",
+      "xp_reward": 100,
+      "category": "completion",
+      "unlock_criteria": {
+        "type": "world_completed",
+        "value": "ocean"
+      }
+    },
+    {
+      "id": "dragon_slayer",
+      "name": "Dragon Slayer",
+      "description": "Defeat the Dragon's Lair final boss",
+      "badge_icon": "🐉",
+      "xp_reward": 150,
+      "category": "mastery",
+      "unlock_criteria": {
+        "type": "world_completed",
+        "value": "dragon"
+      }
+    },
+    {
+      "id": "level_up_legend",
+      "name": "Level Up Legend",
+      "description": "Reach player level 10",
+      "badge_icon": "🆙",
+      "xp_reward": 75,
+      "category": "mastery",
+      "unlock_criteria": {
+        "type": "player_level",
+        "value": 10
+      }
+    },
+    {
+      "id": "coin_collector",
+      "name": "Coin Collector",
+      "description": "Earn 1000 coins total",
+      "badge_icon": "🪙",
+      "xp_reward": 50,
+      "category": "special",
+      "unlock_criteria": {
+        "type": "total_coins",
+        "value": 1000
+      }
+    },
+    {
+      "id": "xp_hunter",
+      "name": "XP Hunter",
+      "description": "Earn 5000 XP total",
+      "badge_icon": "💎",
+      "xp_reward": 100,
+      "category": "special",
+      "unlock_criteria": {
+        "type": "total_xp",
+        "value": 5000
+      }
+    },
+    {
+      "id": "study_buddy",
+      "name": "Study Buddy",
+      "description": "Use step-by-step solver 20 times",
+      "badge_icon": "📝",
+      "xp_reward": 35,
+      "category": "completion",
+      "unlock_criteria": {
+        "type": "step_solver_used",
+        "value": 20
+      }
+    },
+    {
+      "id": "visualization_pro",
+      "name": "Visualization Pro",
+      "description": "Use 3D visualization 15 times",
+      "badge_icon": "🎨",
+      "xp_reward": 30,
+      "category": "special",
+      "unlock_criteria": {
+        "type": "visualization_used",
+        "value": 15
+      }
+    },
+    {
+      "id": "fifty_club",
+      "name": "Fifty Club",
+      "description": "Complete 50 lessons total",
+      "badge_icon": "5️⃣0️⃣",
+      "xp_reward": 200,
+      "category": "completion",
+      "unlock_criteria": {
+        "type": "lessons_completed",
+        "value": 50
+      }
+    },
+    {
+      "id": "centurion",
+      "name": "Centurion",
+      "description": "Solve 500 equations correctly",
+      "badge_icon": "💯",
+      "xp_reward": 150,
+      "category": "mastery",
+      "unlock_criteria": {
+        "type": "correct_equations",
+        "value": 500
+      }
+    },
+    {
+      "id": "problem_solver",
+      "name": "Problem Solver",
+      "description": "Complete 10 word problems",
+      "badge_icon": "📖",
+      "xp_reward": 45,
+      "category": "completion",
+      "unlock_criteria": {
+        "type": "word_problems",
+        "value": 10
+      }
+    },
+    {
+      "id": "dedication_award",
+      "name": "Dedication Award",
+      "description": "Log in for 14 consecutive days",
+      "badge_icon": "🎖️",
+      "xp_reward": 100,
+      "category": "streaks",
+      "unlock_criteria": {
+        "type": "login_streak",
+        "value": 14
+      }
+    },
+    {
+      "id": "challenge_accepted",
+      "name": "Challenge Accepted",
+      "description": "Complete all practice arena challenges",
+      "badge_icon": "🎯",
+      "xp_reward": 120,
+      "category": "mastery",
+      "unlock_criteria": {
+        "type": "practice_arena_complete",
+        "value": 4
+      }
+    }
+  ]
+}

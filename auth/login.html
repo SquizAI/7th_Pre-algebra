@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Equation Quest</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/main.css">
+
+    <style>
+        /* Auth Page Specific Styles */
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--color-primary-400) 0%, var(--color-accent-500) 100%);
+            padding: var(--space-4);
+        }
+
+        .auth-card {
+            background: var(--color-white);
+            border-radius: var(--radius-xl);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: var(--space-8);
+            max-width: 450px;
+            width: 100%;
+            animation: slideUp 0.4s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: var(--space-8);
+        }
+
+        .auth-logo {
+            font-size: var(--text-5xl);
+            margin-bottom: var(--space-4);
+        }
+
+        .auth-title {
+            font-size: var(--text-3xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-text-primary);
+            margin-bottom: var(--space-2);
+        }
+
+        .auth-subtitle {
+            font-size: var(--text-base);
+            color: var(--color-text-secondary);
+        }
+
+        .auth-form {
+            margin-bottom: var(--space-6);
+        }
+
+        .auth-divider {
+            text-align: center;
+            margin: var(--space-6) 0;
+            color: var(--color-text-tertiary);
+            position: relative;
+        }
+
+        .auth-divider::before,
+        .auth-divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 45%;
+            height: 1px;
+            background: var(--color-neutral-300);
+        }
+
+        .auth-divider::before {
+            left: 0;
+        }
+
+        .auth-divider::after {
+            right: 0;
+        }
+
+        .auth-links {
+            text-align: center;
+            margin-top: var(--space-6);
+        }
+
+        .auth-link {
+            color: var(--color-primary-500);
+            font-weight: var(--font-weight-medium);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        .auth-link:hover {
+            color: var(--color-primary-600);
+            text-decoration: underline;
+        }
+
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .loading-overlay.active {
+            display: flex;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid var(--color-white);
+            border-top: 4px solid var(--color-primary-500);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .alert {
+            padding: var(--space-4);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-4);
+            font-size: var(--text-sm);
+            display: none;
+        }
+
+        .alert.active {
+            display: block;
+        }
+
+        .alert-error {
+            background: var(--color-danger-50);
+            color: var(--color-danger-700);
+            border: 1px solid var(--color-danger-200);
+        }
+
+        .alert-success {
+            background: var(--color-success-50);
+            color: var(--color-success-700);
+            border: 1px solid var(--color-success-200);
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="auth-logo">🎮</div>
+                <h1 class="auth-title">Welcome Back!</h1>
+                <p class="auth-subtitle">Sign in to continue your learning adventure</p>
+            </div>
+
+            <!-- Alert Messages -->
+            <div id="alertMessage" class="alert" role="alert"></div>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="auth-form">
+                <div class="form-group">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        class="form-input"
+                        placeholder="student@example.com"
+                        required
+                        autocomplete="email"
+                        aria-required="true"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="form-label">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        class="form-input"
+                        placeholder="Enter your password"
+                        required
+                        autocomplete="current-password"
+                        aria-required="true"
+                    >
+                </div>
+
+                <div class="form-check">
+                    <input
+                        type="checkbox"
+                        id="rememberMe"
+                        class="form-check-input"
+                    >
+                    <label for="rememberMe" class="form-check-label">
+                        Remember me
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-lg btn-primary" style="width: 100%; margin-top: var(--space-6);">
+                    Sign In
+                </button>
+            </form>
+
+            <div class="auth-links">
+                <p>
+                    <a href="#" id="forgotPasswordLink" class="auth-link">Forgot your password?</a>
+                </p>
+                <p style="margin-top: var(--space-4);">
+                    Don't have an account?
+                    <a href="signup.html" class="auth-link">Sign up here</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../env-inject.js"></script>
+    <script src="../js/auth/supabase-client.js"></script>
+    <script src="../js/auth/auth-manager.js"></script>
+
+    <script>
+        // Login Form Handler
+        const loginForm = document.getElementById('loginForm');
+        const alertMessage = document.getElementById('alertMessage');
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        const forgotPasswordLink = document.getElementById('forgotPasswordLink');
+
+        // Show alert message
+        function showAlert(message, type = 'error') {
+            alertMessage.textContent = message;
+            alertMessage.className = `alert alert-${type} active`;
+
+            setTimeout(() => {
+                alertMessage.classList.remove('active');
+            }, 5000);
+        }
+
+        // Show loading overlay
+        function showLoading(show = true) {
+            loadingOverlay.classList.toggle('active', show);
+        }
+
+        // Handle login form submission
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const rememberMe = document.getElementById('rememberMe').checked;
+
+            // Validation
+            if (!email || !password) {
+                showAlert('Please enter both email and password');
+                return;
+            }
+
+            showLoading(true);
+
+            try {
+                // Wait for auth manager to be ready
+                await waitForAuthManager();
+
+                // Sign in
+                const result = await window.authManager.signIn(email, password);
+
+                if (result.success) {
+                    // Store remember me preference
+                    if (rememberMe) {
+                        localStorage.setItem('rememberMe', 'true');
+                    }
+
+                    showAlert(result.message, 'success');
+
+                    // Redirect to main app
+                    setTimeout(() => {
+                        window.location.href = '../index.html';
+                    }, 1000);
+                } else {
+                    showAlert(result.error || 'Login failed. Please check your credentials.');
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                showAlert('An unexpected error occurred. Please try again.');
+            } finally {
+                showLoading(false);
+            }
+        });
+
+        // Handle forgot password
+        forgotPasswordLink.addEventListener('click', async (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value.trim();
+
+            if (!email) {
+                showAlert('Please enter your email address first');
+                return;
+            }
+
+            showLoading(true);
+
+            try {
+                await waitForAuthManager();
+                const result = await window.authManager.resetPassword(email);
+
+                if (result.success) {
+                    showAlert(result.message, 'success');
+                } else {
+                    showAlert(result.error || 'Failed to send reset email');
+                }
+            } catch (error) {
+                console.error('Password reset error:', error);
+                showAlert('An unexpected error occurred. Please try again.');
+            } finally {
+                showLoading(false);
+            }
+        });
+
+        // Wait for auth manager to be ready
+        async function waitForAuthManager() {
+            let attempts = 0;
+            while (!window.authManager && attempts < 50) {
+                await new Promise(resolve => setTimeout(resolve, 100));
+                attempts++;
+            }
+
+            if (!window.authManager) {
+                throw new Error('Auth manager failed to initialize');
+            }
+        }
+
+        // Check if already logged in
+        async function checkAuth() {
+            try {
+                await waitForAuthManager();
+
+                if (window.authManager.isAuthenticated()) {
+                    window.location.href = '../index.html';
+                }
+            } catch (error) {
+                console.error('Auth check error:', error);
+            }
+        }
+
+        // Run auth check on page load
+        checkAuth();
+    </script>
+</body>
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Lesson Player</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #1f2937;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        .test-section {
+            background: #f9fafb;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .test-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            margin: 5px;
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+        }
+        .test-button:hover {
+            background: #5568d3;
+        }
+        .test-button.secondary {
+            background: #10b981;
+        }
+        .test-button.secondary:hover {
+            background: #059669;
+        }
+        .info {
+            background: #dbeafe;
+            border-left: 4px solid #3b82f6;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .success {
+            background: #d1fae5;
+            border-left: 4px solid #10b981;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        code {
+            background: #e5e7eb;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lesson Player Test Suite</h1>
+
+    <div class="success">
+        <strong>Status:</strong> Lesson player system created successfully!
+    </div>
+
+    <div class="test-section">
+        <h2>Quick Launch Tests</h2>
+        <p>Click any lesson below to test the lesson player:</p>
+
+        <a href="/lesson-player.html?lesson=1" class="test-button">
+            Lesson 1: Welcome to Algebra Castle
+        </a>
+        <a href="/lesson-player.html?lesson=2" class="test-button">
+            Lesson 2: Two-Step Mastery
+        </a>
+        <a href="/lesson-player.html?lesson=3" class="test-button">
+            Lesson 3: Two-Step Review
+        </a>
+        <a href="/lesson-player.html?lesson=4" class="test-button">
+            Lesson 4: Forest of Terms
+        </a>
+    </div>
+
+    <div class="test-section">
+        <h2>Feature Tests</h2>
+
+        <h3>1. Exercise Types</h3>
+        <div class="info">
+            Test different exercise types:
+            <ul>
+                <li>Multiple Choice (Lesson 1, Exercise 1)</li>
+                <li>True/False (Lesson 1, Exercise 2)</li>
+                <li>Math Problems (Lesson 1, Exercises 4-7)</li>
+                <li>Fill in Blank (Lesson 4, Exercises 2-3)</li>
+            </ul>
+        </div>
+
+        <h3>2. Feedback System</h3>
+        <div class="info">
+            <ul>
+                <li>Correct answer: Green checkmark + success animation</li>
+                <li>Incorrect answer: Red X + shake animation + hint</li>
+                <li>Continue button appears after checking</li>
+            </ul>
+        </div>
+
+        <h3>3. Progress Tracking</h3>
+        <div class="info">
+            <ul>
+                <li>Progress bar updates with each exercise</li>
+                <li>"Exercise 3 of 7" counter</li>
+                <li>Final completion screen with XP/coins</li>
+            </ul>
+        </div>
+
+        <h3>4. Completion Screen</h3>
+        <div class="info">
+            Test by completing any lesson:
+            <ul>
+                <li>Score display (7/7 or 6/7, etc.)</li>
+                <li>Accuracy percentage</li>
+                <li>XP breakdown (base + bonuses)</li>
+                <li>Coins earned</li>
+                <li>Achievements (if applicable)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Manual Test Checklist</h2>
+        <p>Follow these steps to verify the lesson player:</p>
+
+        <ol>
+            <li><strong>Start Lesson 1</strong>
+                <ul>
+                    <li>Click "Lesson 1" above</li>
+                    <li>Verify lesson title displays correctly</li>
+                    <li>Verify progress shows "1 / 7"</li>
+                </ul>
+            </li>
+
+            <li><strong>Answer Exercise 1 (Multiple Choice)</strong>
+                <ul>
+                    <li>Click an option</li>
+                    <li>Verify "Check" button becomes enabled</li>
+                    <li>Click "Check"</li>
+                    <li>Verify feedback appears (correct or incorrect)</li>
+                    <li>Click "Continue"</li>
+                </ul>
+            </li>
+
+            <li><strong>Test Math Problem (Exercise 4)</strong>
+                <ul>
+                    <li>Type answer in input field</li>
+                    <li>Click "Check"</li>
+                    <li>Verify correct answer (x = 4)</li>
+                </ul>
+            </li>
+
+            <li><strong>Test Incorrect Answer</strong>
+                <ul>
+                    <li>Intentionally answer wrong</li>
+                    <li>Verify shake animation</li>
+                    <li>Verify hint appears</li>
+                    <li>Verify correct answer shown</li>
+                </ul>
+            </li>
+
+            <li><strong>Complete Full Lesson</strong>
+                <ul>
+                    <li>Answer all 7 exercises</li>
+                    <li>Verify completion modal appears</li>
+                    <li>Verify XP and coins display</li>
+                    <li>Click "Continue" to return to menu</li>
+                </ul>
+            </li>
+
+            <li><strong>Test Keyboard Navigation</strong>
+                <ul>
+                    <li>Use Tab to navigate options</li>
+                    <li>Use Arrow keys in multiple choice</li>
+                    <li>Press Enter to submit answer</li>
+                </ul>
+            </li>
+
+            <li><strong>Test Exit Button</strong>
+                <ul>
+                    <li>Click X in top-left</li>
+                    <li>Verify confirmation dialog</li>
+                    <li>Test both "OK" and "Cancel"</li>
+                </ul>
+            </li>
+
+            <li><strong>Test Mobile Responsive</strong>
+                <ul>
+                    <li>Open DevTools (F12)</li>
+                    <li>Toggle device toolbar (Ctrl+Shift+M)</li>
+                    <li>Test on iPhone/iPad sizes</li>
+                    <li>Verify layout adjusts properly</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+
+    <div class="test-section">
+        <h2>Browser Console Tests</h2>
+        <p>Open browser console (F12) and run these commands:</p>
+
+        <div class="info">
+            <h4>Check lesson progress:</h4>
+            <code>LessonScheduler.getProgress()</code>
+
+            <h4>View lesson results:</h4>
+            <code>JSON.parse(localStorage.getItem('lessonResults'))</code>
+
+            <h4>Reset progress:</h4>
+            <code>LessonScheduler.resetProgress()</code>
+
+            <h4>Launch specific lesson:</h4>
+            <code>LessonScheduler.launchLesson(2)</code>
+
+            <h4>Check current exercise type:</h4>
+            <code>LessonPlayer.exercises[LessonPlayer.currentExerciseIndex]</code>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Integration with Main App</h2>
+        <p>To launch lessons from the main app, use:</p>
+
+        <div class="info">
+            <h4>From "Start This Level" button:</h4>
+            <code>onclick="LessonScheduler.launchTodaysLesson()"</code>
+
+            <h4>From skill tree node:</h4>
+            <code>onclick="LessonScheduler.launchLesson(lessonNumber)"</code>
+        </div>
+
+        <button class="test-button secondary" onclick="location.href='/index.html'">
+            Return to Main App
+        </button>
+    </div>
+
+    <div class="test-section">
+        <h2>Files Created</h2>
+        <ul>
+            <li><code>/js/ui/exercise-types.js</code> - Exercise type classes</li>
+            <li><code>/js/ui/lesson-player.js</code> - Main lesson controller</li>
+            <li><code>/js/ui/lesson-complete.js</code> - Completion modal</li>
+            <li><code>/js/ui/lesson-exercises.js</code> - Exercise data for lessons 1-6</li>
+            <li><code>/lesson-player.html</code> - Lesson player page</li>
+            <li><code>/css/lesson-player.css</code> - Lesson UI styles</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>Expected Results</h2>
+        <div class="success">
+            <strong>Lesson 1 Completion (Perfect Score):</strong>
+            <ul>
+                <li>Score: 7/7 (100% Accuracy)</li>
+                <li>Base XP: +50</li>
+                <li>Perfect Score Bonus: +20</li>
+                <li>Speed Bonus: +10 (if under 5 min)</li>
+                <li>First Try Bonus: +7 (if all correct first try)</li>
+                <li>Total XP: 80-87 XP</li>
+                <li>Coins: 10 coins</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Log initialization
+        console.log('Test page loaded');
+        console.log('Available lessons:', window.ScheduleConfig?.lessonMetadata);
+    </script>
+</body>
+</html>

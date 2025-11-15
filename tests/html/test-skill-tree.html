@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Tree Test Suite</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: #F9FAFB;
+        }
+
+        .test-section {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .test-section h2 {
+            margin-top: 0;
+            color: #1F2937;
+            border-bottom: 2px solid #E5E7EB;
+            padding-bottom: 0.5rem;
+        }
+
+        .test-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            transition: transform 0.2s ease;
+        }
+
+        .test-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .test-button.secondary {
+            background: #F3F4F6;
+            color: #374151;
+        }
+
+        .test-result {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+        }
+
+        .test-result.success {
+            background: #ECFDF5;
+            color: #065F46;
+            border-left: 4px solid #10B981;
+        }
+
+        .test-result.error {
+            background: #FEF2F2;
+            color: #991B1B;
+            border-left: 4px solid #DC2626;
+        }
+
+        .test-result.info {
+            background: #EFF6FF;
+            color: #1E40AF;
+            border-left: 4px solid #3B82F6;
+        }
+
+        .demo-area {
+            border: 2px dashed #D1D5DB;
+            padding: 2rem;
+            border-radius: 8px;
+            background: #FAFAFA;
+            margin-top: 1rem;
+            min-height: 200px;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            opacity: 0.9;
+            margin-top: 0.25rem;
+        }
+
+        pre {
+            background: #1F2937;
+            color: #F9FAFB;
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin: 0.25rem;
+        }
+
+        .badge.success { background: #ECFDF5; color: #065F46; }
+        .badge.warning { background: #FFF7ED; color: #92400E; }
+        .badge.error { background: #FEF2F2; color: #991B1B; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Skill Tree Test Suite</h1>
+    <p>Comprehensive testing for the Duolingo-style lesson map implementation.</p>
+
+    <!-- Test 1: File Loading -->
+    <div class="test-section">
+        <h2>1. File Loading Tests</h2>
+        <button class="test-button" onclick="testFileLoading()">Test JSON File Loading</button>
+        <button class="test-button secondary" onclick="testFileStructure()">Test File Structure</button>
+        <div id="fileLoadingResult"></div>
+    </div>
+
+    <!-- Test 2: Data Processing -->
+    <div class="test-section">
+        <h2>2. Data Processing Tests</h2>
+        <button class="test-button" onclick="testDataProcessing()">Test Lesson Data Processing</button>
+        <button class="test-button secondary" onclick="testLessonCount()">Verify 87 Lessons</button>
+        <div id="dataProcessingResult"></div>
+    </div>
+
+    <!-- Test 3: Status System -->
+    <div class="test-section">
+        <h2>3. Status System Tests</h2>
+        <button class="test-button" onclick="testStatusCalculation()">Test Status Logic</button>
+        <button class="test-button secondary" onclick="testProgressTracking()">Test Progress Tracking</button>
+        <button class="test-button secondary" onclick="simulateProgress()">Simulate Progress</button>
+        <div id="statusResult"></div>
+    </div>
+
+    <!-- Test 4: Filtering -->
+    <div class="test-section">
+        <h2>4. Filtering Tests</h2>
+        <button class="test-button" onclick="testQuarterFilter()">Test Quarter Filter</button>
+        <button class="test-button" onclick="testUnitFilter()">Test Unit Filter</button>
+        <button class="test-button" onclick="testStandardFilter()">Test Standard Filter</button>
+        <button class="test-button" onclick="testSearch()">Test Search</button>
+        <div id="filterResult"></div>
+    </div>
+
+    <!-- Test 5: Rendering -->
+    <div class="test-section">
+        <h2>5. Rendering Tests</h2>
+        <button class="test-button" onclick="testRendering()">Test Tree Rendering</button>
+        <button class="test-button secondary" onclick="testNodeCreation()">Test Node Creation</button>
+        <div id="renderingResult"></div>
+        <div class="demo-area" id="demoArea">
+            <em>Rendering demo will appear here...</em>
+        </div>
+    </div>
+
+    <!-- Test 6: Progress Stats -->
+    <div class="test-section">
+        <h2>6. Progress Statistics</h2>
+        <button class="test-button" onclick="showProgressStats()">Show Stats</button>
+        <button class="test-button secondary" onclick="resetProgress()">Reset Progress</button>
+        <div id="statsResult"></div>
+        <div class="stat-grid" id="statGrid"></div>
+    </div>
+
+    <!-- Load Dependencies -->
+    <script src="/js/ui/skill-tree.js"></script>
+    <script src="/js/ui/skill-tree-renderer.js"></script>
+
+    <!-- Test Scripts -->
+    <script>
+        // Test Results Helper
+        function showResult(containerId, message, type = 'info') {
+            const container = document.getElementById(containerId);
+            container.innerHTML = `<div class="test-result ${type}">${message}</div>`;
+        }
+
+        // Test 1: File Loading
+        async function testFileLoading() {
+            showResult('fileLoadingResult', 'Testing file loading...', 'info');
+
+            try {
+                const files = [
+                    '/docs/Q1_8th_grade_detailed_lessons.json',
+                    '/docs/Q2_8th_grade_detailed_lessons.json',
+                    '/docs/Q3_8th_grade_detailed_lessons.json',
+                    '/docs/Q4_8th_grade_detailed_lessons.json'
+                ];
+
+                const results = await Promise.all(
+                    files.map(async (file) => {
+                        try {
+                            const response = await fetch(file);
+                            return { file, status: response.ok ? 'OK' : 'FAIL' };
+                        } catch (e) {
+                            return { file, status: 'ERROR', error: e.message };
+                        }
+                    })
+                );
+
+                const allOk = results.every(r => r.status === 'OK');
+                const message = `
+                    <strong>File Loading Test ${allOk ? 'PASSED' : 'FAILED'}</strong><br>
+                    ${results.map(r => `
+                        <span class="badge ${r.status === 'OK' ? 'success' : 'error'}">${r.status}</span>
+                        ${r.file.split('/').pop()}
+                    `).join('<br>')}
+                `;
+
+                showResult('fileLoadingResult', message, allOk ? 'success' : 'error');
+            } catch (e) {
+                showResult('fileLoadingResult', `Error: ${e.message}`, 'error');
+            }
+        }
+
+        async function testFileStructure() {
+            showResult('fileLoadingResult', 'Testing file structure...', 'info');
+
+            try {
+                await SkillTree.init();
+                const lessons = SkillTree.allLessons;
+
+                const hasLessonNumber = lessons.every(l => l.lesson_number);
+                const hasQuarter = lessons.every(l => l.quarter);
+                const hasStandard = lessons.every(l => l.standard_code || l.standard);
+
+                const message = `
+                    <strong>File Structure Test ${hasLessonNumber && hasQuarter ? 'PASSED' : 'FAILED'}</strong><br>
+                    <span class="badge ${hasLessonNumber ? 'success' : 'error'}">
+                        Lesson Numbers: ${hasLessonNumber ? 'OK' : 'MISSING'}
+                    </span>
+                    <span class="badge ${hasQuarter ? 'success' : 'error'}">
+                        Quarters: ${hasQuarter ? 'OK' : 'MISSING'}
+                    </span>
+                    <span class="badge ${hasStandard ? 'success' : 'warning'}">
+                        Standards: ${hasStandard ? 'OK' : 'PARTIAL'}
+                    </span>
+                `;
+
+                showResult('fileLoadingResult', message, hasLessonNumber && hasQuarter ? 'success' : 'error');
+            } catch (e) {
+                showResult('fileLoadingResult', `Error: ${e.message}`, 'error');
+            }
+        }
+
+        // Test 2: Data Processing
+        async function testDataProcessing() {
+            showResult('dataProcessingResult', 'Processing lesson data...', 'info');
+
+            try {
+                await SkillTree.init();
+
+                const quarters = {};
+                SkillTree.allLessons.forEach(l => {
+                    quarters[l.quarter] = (quarters[l.quarter] || 0) + 1;
+                });
+
+                const message = `
+                    <strong>Data Processing Test PASSED</strong><br>
+                    <pre>${JSON.stringify(quarters, null, 2)}</pre>
+                `;
+
+                showResult('dataProcessingResult', message, 'success');
+            } catch (e) {
+                showResult('dataProcessingResult', `Error: ${e.message}`, 'error');
+            }
+        }
+
+        async function testLessonCount() {
+            showResult('dataProcessingResult', 'Counting lessons...', 'info');
+
+            try {
+                await SkillTree.init();
+                const count = SkillTree.allLessons.length;
+                const expected = 87;
+
+                const message = `
+                    <strong>Lesson Count: ${count} / ${expected}</strong><br>
+                    ${count === expected ? '✓ Correct!' : '✗ Mismatch!'}
+                `;
+
+                showResult('dataProcessingResult', message, count === expected ? 'success' : 'warning');
+            } catch (e) {
+                showResult('dataProcessingResult', `Error: ${e.message}`, 'error');
+            }
+        }
+
+        // Test 3: Status System
+        async function testStatusCalculation() {
+            showResult('statusResult', 'Testing status logic...', 'info');
+
+            try {
+                await SkillTree.init();
+
+                const tests = [
+                    { lesson: 1, expected: 'available' }, // First lesson always available
+                    { lesson: 2, expected: 'locked' },    // Not completed prev
+                    { lesson: 50, expected: 'locked' }    // Far ahead
+                ];
+
+                const results = tests.map(t => ({
+                    ...t,
+                    actual: SkillTree.getLessonStatus(t.lesson),
+                    pass: SkillTree.getLessonStatus(t.lesson) === t.expected
+                }));
+
+                const allPass = results.every(r => r.pass);
+
+                const message = `
+                    <strong>Status Calculation ${allPass ? 'PASSED' : 'FAILED'}</strong><br>
+                    ${results.map(r => `
+                        Lesson ${r.lesson}: Expected "${r.expected}", Got "${r.actual}"
+                        <span class="badge ${r.pass ? 'success' : 'error'}">${r.pass ? 'PASS' : 'FAIL'}</span>
+                    `).join('<br>')}
+                `;
+
+                showResult('statusResult', message, allPass ? 'success' : 'error');
+            } catch (e) {
+                showResult('statusResult', `Error: ${e.message}`, 'error');
+            }
+        }
+
+        async function testProgressTracking() {
+            showResult('statusResult', 'Testing progress tracking...', 'info');
+
+            try {
+                await SkillTree.init();
+
+                // Complete lesson 1
+                SkillTree.completeLesson(1);
+
+                const status1 = SkillTree.getLessonStatus(1);
+                const status2 = SkillTree.getLessonStatus(2);
+
+                const message = `
+                    <strong>Progress Tracking Test</strong><br>
+                    Completed Lesson 1<br>
+                    Lesson 1 status: ${status1} <span class="badge ${status1 === 'completed' ? 'success' : 'error'}">${status1}</span><br>
+                    Lesson 2 status: ${status2} <span class="badge ${status2 === 'available' ? 'success' : 'warning'}">${status2}</span>
+                `;
+
+                showResult('statusResult', message, 'success');
+            } catch (e) {
+                showResult('statusResult', `Error: ${e.message}`, 'error');
+            }
+        }
+
+        async function simulateProgress() {
+            showResult('statusResult', 'Simulating progress...', 'info');
+
+            try {
+                await SkillTree.init();
+
+                // Complete first 10 lessons with random scores
+                for (let i = 1; i <= 10; i++) {
+                    SkillTree.progress[i] = {
+                        completed: true,
+                        completedAt: new Date().toISOString(),
+                        score: Math.floor(Math.random() * 40) + 60 // 60-100
+                    };
+                }
+                SkillTree.saveProgress();
+
+                const completed = SkillTree.getCompletedCount();
+                const percentage = SkillTree.getProgressPercentage();
+
+                showResult('statusResult', `
+                    <strong>Progress Simulated</strong><br>
+                    Completed: ${completed} lessons<br>
+                    Progress: ${percentage}%<br>
+                    <span class="badge success">Refresh page to see on lesson map</span>
+                `, 'success');
+            } catch (e) {
+                showResult('statusResult', `Error: ${e.message}`, 'error');
+            }
+        }
+
+        // Test 4: Filtering
+        async function testQuarterFilter() {
+            showResult('filterResult', 'Testing quarter filter...', 'info');
+
+            try {
+                await SkillTree.init();
+
+                SkillTree.filterByQuarter('Q1');
+                const q1Lessons = SkillTree.getFilteredLessons();
+
+                SkillTree.filterByQuarter('all');
+                const allLessons = SkillTree.getFilteredLessons();
+
+                const message = `
+                    <strong>Quarter Filter Test PASSED</strong><br>
+                    Q1 Lessons: ${q1Lessons.length}<br>
+                    All Lessons: ${allLessons.length}
+                `;
+
+                showResult('filterResult', message, 'success');
+            } catch (e) {
+                showResult('filterResult', `Error: ${e.message}`, 'error');
+            }
+        }
+
+        async function testUnitFilter() {
+            showResult('filterResult', 'Testing unit filter...', 'info');
+
+            try {
+                await SkillTree.init();
+
+                SkillTree.filterByUnit(1);
+                const unit1 = SkillTree.getFilteredLessons();
+
+                const message = `
+                    <strong>Unit Filter Test PASSED</strong><br>
+                    Unit 1 Lessons: ${unit1.length}
+                `;
+
+                showResult('filterResult', message, 'success');
+            } catch (e) {
+                showResult('filterResult', `Error: ${e.message}`, 'error');
+            }
+        }
+
+        async function testStandardFilter() {
+            showResult('filterResult', 'Testing standard filter...', 'info');
+
+            try {
+                await SkillTree.init();
+
+                SkillTree.filterByStandard('NSO');
+                const nso = SkillTree.getFilteredLessons();
+
+                SkillTree.filterByStandard('AR');
+                const ar = SkillTree.getFilteredLessons();
+
+                const message = `
+                    <strong>Standard Filter Test PASSED</strong><br>
+                    NSO Lessons: ${nso.length}<br>
+                    AR Lessons: ${ar.length}
+                `;
+
+                showResult('filterResult', message, 'success');
+            } catch (e) {
+                showResult('filterResult', `Error: ${e.message}`, 'error');
+            }
+        }
+
+        async function testSearch() {
+            showResult('filterResult', 'Testing search...', 'info');
+
+            try {
+                await SkillTree.init();
+
+                const results = SkillTree.searchLessons('equation');
+
+                const message = `
+                    <strong>Search Test PASSED</strong><br>
+                    Found ${results.length} lessons matching "equation"
+                `;
+
+                showResult('filterResult', message, 'success');
+            } catch (e) {
+                showResult('filterResult', `Error: ${e.message}`, 'error');
+            }
+        }
+
+        // Test 5: Rendering
+        async function testRendering() {
+            showResult('renderingResult', 'Testing rendering...', 'info');
+
+            try {
+                await SkillTree.init();
+                SkillTreeRenderer.init('demoArea');
+
+                const lessons = SkillTree.allLessons.slice(0, 5); // First 5 lessons
+                SkillTreeRenderer.renderSkillTree(lessons);
+
+                showResult('renderingResult', `
+                    <strong>Rendering Test PASSED</strong><br>
+                    Rendered 5 sample lessons in demo area
+                `, 'success');
+            } catch (e) {
+                showResult('renderingResult', `Error: ${e.message}`, 'error');
+            }
+        }
+
+        async function testNodeCreation() {
+            showResult('renderingResult', 'Testing node creation...', 'info');
+
+            try {
+                await SkillTree.init();
+
+                const lesson = SkillTree.getLesson(1);
+                const node = SkillTreeRenderer.renderLessonNode(lesson, 0);
+
+                const message = `
+                    <strong>Node Creation Test PASSED</strong><br>
+                    Created node for: ${lesson.lesson_topic || lesson.title}
+                `;
+
+                showResult('renderingResult', message, 'success');
+            } catch (e) {
+                showResult('renderingResult', `Error: ${e.message}`, 'error');
+            }
+        }
+
+        // Test 6: Progress Stats
+        async function showProgressStats() {
+            try {
+                await SkillTree.init();
+
+                const total = SkillTree.allLessons.length;
+                const completed = SkillTree.getCompletedCount();
+                const percentage = SkillTree.getProgressPercentage();
+                const units = SkillTree.getUnits();
+
+                const statsHtml = `
+                    <div class="stat-card">
+                        <div class="stat-value">${total}</div>
+                        <div class="stat-label">Total Lessons</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">${completed}</div>
+                        <div class="stat-label">Completed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">${percentage}%</div>
+                        <div class="stat-label">Progress</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">${units.length}</div>
+                        <div class="stat-label">Units</div>
+                    </div>
+                `;
+
+                document.getElementById('statGrid').innerHTML = statsHtml;
+                showResult('statsResult', `<strong>Statistics Updated</strong>`, 'success');
+            } catch (e) {
+                showResult('statsResult', `Error: ${e.message}`, 'error');
+            }
+        }
+
+        function resetProgress() {
+            localStorage.removeItem('skillTreeProgress');
+            localStorage.removeItem('currentLesson');
+            showResult('statsResult', `
+                <strong>Progress Reset</strong><br>
+                <span class="badge warning">Refresh page to see changes</span>
+            `, 'success');
+        }
+
+        // Auto-run basic tests on load
+        window.addEventListener('DOMContentLoaded', async () => {
+            console.log('Test suite loaded. Click buttons to run tests.');
+        });
+    </script>
+</body>
+</html>

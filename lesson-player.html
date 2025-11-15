@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson - 7th Grade Pre-Algebra</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/lesson-player.css">
+</head>
+<body class="lesson-player-page">
+    <!-- Skip Links for Accessibility -->
+    <a href="#lesson-content" class="skip-link">Skip to lesson content</a>
+
+    <div id="lessonPlayerContainer" class="lesson-player-container">
+        <!-- Header with Progress -->
+        <header class="lesson-header">
+            <button class="btn-exit" id="exitLessonBtn" aria-label="Exit lesson">
+                <span class="exit-icon">✕</span>
+            </button>
+
+            <div class="lesson-progress-bar">
+                <div class="progress-wrapper">
+                    <progress id="progressBar"
+                             class="progress"
+                             value="0"
+                             max="100"
+                             aria-label="Lesson progress">
+                    </progress>
+                    <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                </div>
+                <div class="progress-text">
+                    <span id="currentExercise">1</span> / <span id="totalExercises">7</span>
+                </div>
+            </div>
+
+            <div class="lesson-info">
+                <div class="lesson-title" id="lessonTitle">Loading...</div>
+                <div class="lesson-topic" id="lessonTopic"></div>
+            </div>
+        </header>
+
+        <!-- Main Exercise Area -->
+        <main id="lesson-content" class="lesson-content">
+            <div id="exerciseContainer" class="exercise-container">
+                <!-- Exercise will be rendered here dynamically -->
+                <div class="loading-exercise">
+                    <div class="spinner"></div>
+                    <p>Loading lesson...</p>
+                </div>
+            </div>
+
+            <!-- Feedback Area -->
+            <div id="feedbackArea" class="feedback-message" style="display: none;">
+                <div class="feedback-icon"></div>
+                <div class="feedback-content">
+                    <div class="feedback-title"></div>
+                    <div class="feedback-explanation"></div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Action Buttons -->
+        <footer class="lesson-footer">
+            <button class="btn-check"
+                    id="checkAnswerBtn"
+                    disabled
+                    aria-label="Check your answer">
+                Check
+            </button>
+
+            <button class="btn-continue"
+                    id="continueBtn"
+                    style="display: none;"
+                    aria-label="Continue to next exercise">
+                Continue
+            </button>
+        </footer>
+    </div>
+
+    <!-- Lesson Complete Modal will be injected by lesson-complete.js -->
+
+    <!-- Scripts -->
+    <script src="js/config/schedule.js"></script>
+    <script src="js/features/lesson-scheduler.js"></script>
+    <script src="js/ui/exercise-types.js"></script>
+    <script src="js/ui/lesson-exercises.js"></script>
+    <script src="js/ui/lesson-player.js"></script>
+    <script src="js/ui/lesson-complete.js"></script>
+
+    <script>
+        // Initialize lesson player on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get lesson ID from URL parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const lessonId = parseInt(urlParams.get('lesson')) || 1;
+
+            console.log(`Initializing lesson player for lesson ${lessonId}`);
+
+            // Start the lesson
+            if (window.LessonPlayer) {
+                window.LessonPlayer.init(lessonId);
+            } else {
+                console.error('LessonPlayer not loaded!');
+            }
+        });
+    </script>
+</body>
+</html>

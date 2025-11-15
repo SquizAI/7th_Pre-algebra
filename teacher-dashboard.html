@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard - Equation Quest</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+    <!-- Supabase SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="teacher-dashboard-body">
+    <div id="app">
+        <!-- Header -->
+        <header class="dashboard-header teacher-header">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>Equation Quest</h1>
+                    <p class="subtitle">Teacher Dashboard</p>
+                </div>
+                <div class="header-actions">
+                    <a href="index.html" class="btn btn-md btn-ghost">Back to App</a>
+                    <button id="exportClassDataBtn" class="btn btn-md btn-primary">📊 Export Class Data</button>
+                    <button id="signOutBtn" class="btn btn-md btn-ghost">Sign Out</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="dashboard-main teacher-main">
+            <!-- Class Overview -->
+            <section class="overview-section">
+                <h2>Class Overview</h2>
+                <div class="overview-grid">
+                    <div class="overview-card">
+                        <div class="overview-icon">👥</div>
+                        <div class="overview-content">
+                            <div class="overview-label">Total Students</div>
+                            <div class="overview-value" id="totalStudents">0</div>
+                        </div>
+                    </div>
+
+                    <div class="overview-card">
+                        <div class="overview-icon">✅</div>
+                        <div class="overview-content">
+                            <div class="overview-label">Avg Completion</div>
+                            <div class="overview-value" id="avgCompletion">0%</div>
+                        </div>
+                    </div>
+
+                    <div class="overview-card">
+                        <div class="overview-icon">📈</div>
+                        <div class="overview-content">
+                            <div class="overview-label">Avg Score</div>
+                            <div class="overview-value" id="avgScore">0%</div>
+                        </div>
+                    </div>
+
+                    <div class="overview-card">
+                        <div class="overview-icon">🔥</div>
+                        <div class="overview-content">
+                            <div class="overview-label">Active Today</div>
+                            <div class="overview-value" id="activeToday">0</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Struggling Students Alert -->
+            <section class="section alert-section" id="alertSection" style="display: none;">
+                <div class="alert-header">
+                    <h3>⚠️ Students Needing Attention</h3>
+                    <div class="alert-info">Students with low scores or inactive for 7+ days</div>
+                </div>
+                <div class="alert-list" id="alertList">
+                    <!-- Dynamically populated -->
+                </div>
+            </section>
+
+            <!-- Charts Row -->
+            <div class="charts-row">
+                <!-- Class Progress Chart -->
+                <section class="section chart-section">
+                    <div class="section-header">
+                        <h3>Class Progress Over Time</h3>
+                        <select id="progressPeriodSelect" class="period-select">
+                            <option value="7">Last 7 days</option>
+                            <option value="30" selected>Last 30 days</option>
+                            <option value="90">Last 90 days</option>
+                            <option value="all">All time</option>
+                        </select>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="classProgressChart"></canvas>
+                    </div>
+                </section>
+
+                <!-- Standards Mastery Heatmap -->
+                <section class="section chart-section">
+                    <div class="section-header">
+                        <h3>Standards Mastery</h3>
+                        <div class="section-info">Average scores by standard</div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="standardsChart"></canvas>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Student List Table -->
+            <section class="section table-section">
+                <div class="section-header">
+                    <h3>Student List</h3>
+                    <div class="table-controls">
+                        <div class="search-box">
+                            <input type="text" id="studentSearch" placeholder="Search students..." class="search-input">
+                        </div>
+                        <select id="quarterFilter" class="filter-select">
+                            <option value="all">All Quarters</option>
+                            <option value="Q1">Quarter 1</option>
+                            <option value="Q2">Quarter 2</option>
+                            <option value="Q3">Quarter 3</option>
+                            <option value="Q4">Quarter 4</option>
+                        </select>
+                        <select id="sortBy" class="filter-select">
+                            <option value="name">Name</option>
+                            <option value="level">Level</option>
+                            <option value="completion">Completion</option>
+                            <option value="score">Score</option>
+                            <option value="streak">Streak</option>
+                            <option value="lastActive">Last Active</option>
+                        </select>
+                        <button id="sortOrder" class="btn-icon" title="Toggle sort order">↓</button>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table class="student-table" id="studentTable">
+                        <thead>
+                            <tr>
+                                <th data-sort="name">Student Name</th>
+                                <th data-sort="level">Level</th>
+                                <th data-sort="completion">Lessons Completed</th>
+                                <th data-sort="score">Avg Score</th>
+                                <th data-sort="streak">Streak</th>
+                                <th data-sort="lastActive">Last Active</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentTableBody">
+                            <tr>
+                                <td colspan="7" class="loading-cell">
+                                    <div class="spinner"></div>
+                                    <span>Loading students...</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-footer">
+                    <div class="showing-count" id="showingCount">Showing 0 of 0 students</div>
+                    <div class="table-pagination" id="tablePagination">
+                        <!-- Pagination controls -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quarter Breakdown -->
+            <section class="section">
+                <div class="section-header">
+                    <h3>Completion by Quarter</h3>
+                    <div class="section-info">Class average per quarter</div>
+                </div>
+                <div class="quarter-stats-grid">
+                    <div class="quarter-stat-card">
+                        <div class="quarter-stat-header">
+                            <span class="quarter-icon">🏰</span>
+                            <span class="quarter-name">Quarter 1</span>
+                        </div>
+                        <div class="quarter-stat-value" id="q1ClassAvg">0%</div>
+                        <div class="quarter-stat-bar">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="q1ClassBar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="quarter-stat-details">
+                            <span id="q1StudentsComplete">0 students</span> completed
+                        </div>
+                    </div>
+
+                    <div class="quarter-stat-card">
+                        <div class="quarter-stat-header">
+                            <span class="quarter-icon">🌲</span>
+                            <span class="quarter-name">Quarter 2</span>
+                        </div>
+                        <div class="quarter-stat-value" id="q2ClassAvg">0%</div>
+                        <div class="quarter-stat-bar">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="q2ClassBar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="quarter-stat-details">
+                            <span id="q2StudentsComplete">0 students</span> completed
+                        </div>
+                    </div>
+
+                    <div class="quarter-stat-card">
+                        <div class="quarter-stat-header">
+                            <span class="quarter-icon">⛰️</span>
+                            <span class="quarter-name">Quarter 3</span>
+                        </div>
+                        <div class="quarter-stat-value" id="q3ClassAvg">0%</div>
+                        <div class="quarter-stat-bar">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="q3ClassBar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="quarter-stat-details">
+                            <span id="q3StudentsComplete">0 students</span> completed
+                        </div>
+                    </div>
+
+                    <div class="quarter-stat-card">
+                        <div class="quarter-stat-header">
+                            <span class="quarter-icon">🌊</span>
+                            <span class="quarter-name">Quarter 4</span>
+                        </div>
+                        <div class="quarter-stat-value" id="q4ClassAvg">0%</div>
+                        <div class="quarter-stat-bar">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="q4ClassBar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="quarter-stat-details">
+                            <span id="q4StudentsComplete">0 students</span> completed
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="dashboard-footer">
+            <p>Last updated: <span id="lastUpdated">Just now</span></p>
+            <button id="refreshDataBtn" class="btn btn-sm btn-ghost">↻ Refresh Data</button>
+        </footer>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-content">
+            <div class="spinner-large"></div>
+            <p>Loading class data...</p>
+        </div>
+    </div>
+
+    <!-- Student Detail Modal -->
+    <div id="studentModal" class="modal" style="display: none;">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3 id="modalStudentName">Student Details</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Student details loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="env-inject.js"></script>
+    <script src="js/auth/supabase-client.js"></script>
+    <script src="js/auth/auth-manager.js"></script>
+    <script src="js/utils/analytics.js"></script>
+    <script src="js/ui/charts.js"></script>
+    <script src="js/ui/dashboard.js"></script>
+
+    <script>
+        // Initialize teacher dashboard when ready
+        (async function() {
+            // Wait for auth manager
+            let attempts = 0;
+            while (!window.authManager && attempts < 50) {
+                await new Promise(resolve => setTimeout(resolve, 100));
+                attempts++;
+            }
+
+            if (!window.authManager) {
+                console.error('Auth manager not available');
+                window.location.href = 'auth/login.html';
+                return;
+            }
+
+            // Check authentication
+            const user = window.authManager.getCurrentUser();
+            if (!user) {
+                window.location.href = 'auth/login.html';
+                return;
+            }
+
+            // Check if user is a teacher
+            const profile = await window.authManager.getUserProfile(user.id);
+            if (!profile || profile.role !== 'teacher') {
+                alert('Access denied. Teacher account required.');
+                window.location.href = 'dashboard.html';
+                return;
+            }
+
+            // Initialize teacher dashboard
+            if (window.Dashboard) {
+                await window.Dashboard.initTeacherDashboard();
+            }
+
+            // Event handlers
+            document.getElementById('signOutBtn')?.addEventListener('click', async () => {
+                const result = await window.authManager.signOut();
+                if (result.success) {
+                    window.location.href = 'auth/login.html';
+                }
+            });
+
+            document.getElementById('exportClassDataBtn')?.addEventListener('click', () => {
+                if (window.Dashboard) {
+                    window.Dashboard.exportClassData();
+                }
+            });
+
+            document.getElementById('refreshDataBtn')?.addEventListener('click', () => {
+                if (window.Dashboard) {
+                    window.Dashboard.refreshTeacherData();
+                }
+            });
+
+            // Auto-refresh every 2 minutes
+            setInterval(() => {
+                if (window.Dashboard) {
+                    window.Dashboard.refreshTeacherData();
+                }
+            }, 120000);
+        })();
+    </script>
+</body>
+</html>

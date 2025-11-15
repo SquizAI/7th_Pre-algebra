@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements - Equation Quest</title>
+    <meta name="description" content="Track your achievements and progress in Equation Quest">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/achievements.css">
+</head>
+<body class="achievements-page">
+    <!-- Skip Links for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="game-header" role="banner">
+        <div class="logo">
+            <h1>Equation Quest</h1>
+            <p class="subtitle">Achievement Gallery</p>
+        </div>
+        <div class="player-stats" aria-label="Player statistics">
+            <div class="stat-item">
+                <span class="stat-label">Level:</span>
+                <span class="stat-value" id="playerLevel" aria-live="polite">1</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">XP:</span>
+                <span class="stat-value" id="playerXP" aria-live="polite">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Coins:</span>
+                <span class="stat-value" id="playerCoins" aria-live="polite">0</span>
+                <span class="coin-icon" aria-hidden="true">🪙</span>
+            </div>
+        </div>
+        <nav class="header-nav">
+            <a href="index.html" class="btn btn-md btn-secondary">
+                <span aria-hidden="true">←</span> Back to Game
+            </a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="achievements-main">
+        <div class="achievements-container">
+            <!-- Page Header -->
+            <section class="page-header">
+                <h2 class="page-title">
+                    <span class="title-icon" aria-hidden="true">🏆</span>
+                    Your Achievements
+                </h2>
+                <p class="page-description">
+                    Track your progress and unlock badges as you master pre-algebra
+                </p>
+            </section>
+
+            <!-- Achievement Stats Summary -->
+            <section class="achievement-stats-section" aria-labelledby="stats-heading">
+                <h3 id="stats-heading" class="sr-only">Achievement Statistics</h3>
+                <div id="achievementStats" class="achievement-stats">
+                    <!-- Stats will be rendered here by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Category Tabs -->
+            <section class="category-tabs-section" aria-labelledby="categories-heading">
+                <h3 id="categories-heading" class="section-heading">Filter by Category</h3>
+                <div id="categoryTabs" class="category-tabs" role="tablist">
+                    <!-- Tabs will be rendered here by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Achievement Gallery -->
+            <section class="achievement-gallery-section" aria-labelledby="gallery-heading">
+                <h3 id="gallery-heading" class="sr-only">Achievement Gallery</h3>
+                <div id="achievementGallery" class="achievement-gallery">
+                    <!-- Achievements will be rendered here by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Empty State (shown when no achievements yet) -->
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <div class="empty-icon" aria-hidden="true">🎯</div>
+                <h3>No Achievements Yet</h3>
+                <p>Start completing lessons to unlock your first achievement!</p>
+                <a href="index.html" class="btn btn-lg btn-primary">
+                    Start Learning
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="achievements-footer">
+        <div class="footer-content">
+            <p class="footer-text">
+                <span aria-hidden="true">💪</span> Keep learning to unlock more achievements!
+            </p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="#help">Help</a>
+                <a href="#about">About</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/features/achievement-system.js"></script>
+    <script src="js/ui/achievement-display.js"></script>
+    <script>
+        // Initialize achievements page when DOM is ready
+        document.addEventListener('DOMContentLoaded', async () => {
+            console.log('📄 Achievements page loading...');
+
+            // Wait for AchievementSystem to load
+            if (window.AchievementSystem) {
+                await window.AchievementSystem.init();
+
+                // Check if user has any achievements
+                const stats = window.AchievementSystem.getStats();
+                if (stats.total === 0) {
+                    document.getElementById('emptyState').style.display = 'flex';
+                } else {
+                    // Initialize the achievements page display
+                    if (window.AchievementDisplay) {
+                        window.AchievementDisplay.initAchievementsPage();
+                    }
+                }
+
+                // Update header stats
+                updateHeaderStats();
+            }
+        });
+
+        // Update player stats in header
+        function updateHeaderStats() {
+            const stats = window.AchievementSystem._userStats;
+            if (stats) {
+                document.getElementById('playerLevel').textContent = stats.playerLevel || 1;
+                document.getElementById('playerXP').textContent = stats.totalXP || 0;
+                document.getElementById('playerCoins').textContent = stats.totalCoins || 0;
+            }
+        }
+    </script>
+</body>
+</html>

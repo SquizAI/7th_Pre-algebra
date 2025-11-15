@@ -14,13 +14,14 @@
 const DateNavigation = {
   // Current view state
   currentView: 'calendar', // 'calendar', 'list', 'today'
-  teacherPassword: 'teacher2025', // TODO: Move to config
   isTeacherAuthenticated: false,
+  userRole: null,
+  supabase: null,
 
   /**
    * Initialize the date navigation UI
    */
-  init() {
+  async init() {
     console.log('📅 DateNavigation initializing...');
 
     // Wait for LessonScheduler to be ready
@@ -29,8 +30,11 @@ const DateNavigation = {
       return;
     }
 
-    // Check if teacher is already authenticated (session storage)
-    this.isTeacherAuthenticated = sessionStorage.getItem('teacherAuth') === 'true';
+    // Initialize Supabase client
+    this.supabase = window.SupabaseClient?.getClient();
+
+    // Check user role from Supabase
+    await this.checkTeacherRole();
 
     this.render();
     this.attachEventListeners();
@@ -373,20 +377,77 @@ const DateNavigation = {
   },
 
   /**
-   * Prompt for teacher password
+   * Check if user is a teacher from Supabase profile
    */
-  promptTeacherPassword() {
-    const password = prompt('🔐 Teacher Password Required\n\nEnter the teacher password to view and edit the full lesson calendar:');
+  async checkTeacherRole() {
+    if (!this.supabase) {
+      console.warn('⚠️ Supabase not initialized, teacher features disabled');
+      this.isTeacherAuthenticated = false;
+      return;
+    }
 
-    if (password === this.teacherPassword) {
-      this.isTeacherAuthenticated = true;
-      sessionStorage.setItem('teacherAuth', 'true');
-      alert('✅ Authentication successful! You now have access to the full calendar.');
+    try {
+      // Get current user
+      const { data: { user }, error: userError } = await this.supabase.auth.getUser();
+      if (userError || !user) {
+        this.isTeacherAuthenticated = false;
+        return;
+      }
+
+      // Fetch user profile to check role
+      const { data: profile, error: profileError } = await this.supabase
+        .from('profiles')
+        .select('role')
+        .eq('user_id', user.id)
+        .single();
+
+      if (profileError) {
+        console.warn('⚠️ Could not fetch user role:', profileError.message);
+        this.isTeacherAuthenticated = false;
+        return;
+      }
+
+      // Check if role is 'teacher' or 'admin'
+      this.userRole = profile?.role || 'student';
+      this.isTeacherAuthenticated = ['teacher', 'admin'].includes(this.userRole);
+
+      if (this.isTeacherAuthenticated) {
+        console.log('👨‍🏫 Teacher access granted');
+      } else {
+        console.log('👨‍🎓 Student access only');
+      }
+    } catch (error) {
+      console.error('❌ Error checking teacher role:', error);
+      this.isTeacherAuthenticated = false;
+    }
+  },
+
+  /**
+   * Prompt for teacher authentication
+   */
+  async promptTeacherPassword() {
+    if (!this.supabase) {
+      alert('❌ Authentication system not available. Please refresh the page.');
+      return;
+    }
+
+    // Check if user is signed in
+    const { data: { user } } = await this.supabase.auth.getUser();
+    if (!user) {
+      alert('🔐 Please sign in to access teacher features.\n\nRedirecting to login page...');
+      window.location.href = '/auth/login.html';
+      return;
+    }
+
+    // Re-check role
+    await this.checkTeacherRole();
+
+    if (this.isTeacherAuthenticated) {
+      alert('✅ Teacher access granted! You now have access to the full calendar.');
       this.currentView = 'list';
       this.render();
-    } else if (password !== null) {
-      // User entered wrong password (didn't cancel)
-      alert('❌ Incorrect password. Access denied.\n\nStudents: Click on Today\'s Lesson to start learning!');
+    } else {
+      alert('❌ Access denied. Your account does not have teacher privileges.\n\nContact your administrator if you believe this is an error.\n\nStudents: Click on Today\'s Lesson to start learning!');
     }
   },
 

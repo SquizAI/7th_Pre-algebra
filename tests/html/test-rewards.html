@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test XP & Coins System</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        body {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .test-section {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .test-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 0.5rem;
+            transition: transform 0.2s ease;
+        }
+        .test-button:hover {
+            transform: scale(1.05);
+        }
+        .stats-display {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .stat-card {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 0.5rem 0;
+        }
+        .stat-label {
+            font-size: 0.875rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .log {
+            background: #f3f4f6;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.875rem;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 1rem;
+        }
+        .log-entry {
+            padding: 0.25rem 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+    </style>
+</head>
+<body>
+    <h1>XP & Coins System Test</h1>
+
+    <!-- Header Stats (simulates game header) -->
+    <div class="player-stats" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 2rem; border-radius: 12px; color: white; margin-bottom: 2rem;">
+        <div style="display: flex; justify-content: space-around; align-items: center;">
+            <div class="stat-item">
+                <span class="stat-label">Level:</span>
+                <span class="stat-value" id="playerLevel">1</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">XP:</span>
+                <span class="stat-value" id="playerXP">0</span>
+                <span class="stat-max">/100</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Coins:</span>
+                <span class="stat-value" id="playerCoins">0</span>
+                <span>🪙</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Test Controls -->
+    <div class="test-section">
+        <h2>Test XP System</h2>
+        <button class="test-button" onclick="testBasicXP()">Award Basic XP (50)</button>
+        <button class="test-button" onclick="testPerfectScore()">Perfect Score (50 + 20 bonus)</button>
+        <button class="test-button" onclick="testSpeedBonus()">Speed Bonus (50 + 10 bonus)</button>
+        <button class="test-button" onclick="testAllBonuses()">All Bonuses (50 + 45)</button>
+        <button class="test-button" onclick="testLevelUp()">Force Level Up (500 XP)</button>
+    </div>
+
+    <div class="test-section">
+        <h2>Test Coin System</h2>
+        <button class="test-button" onclick="testBasicCoins()">Award Basic Coins (10)</button>
+        <button class="test-button" onclick="testCoinPerfect()">Perfect Score (10 + 5 bonus)</button>
+        <button class="test-button" onclick="testCoinStreak()">Streak Bonus (10 + streak)</button>
+        <button class="test-button" onclick="testDailyBonus()">Daily Login Bonus</button>
+        <button class="test-button" onclick="testCoinBalance()">Show Balance Modal</button>
+    </div>
+
+    <div class="test-section">
+        <h2>Current Stats</h2>
+        <div class="stats-display" id="statsDisplay"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test Log</h2>
+        <div class="log" id="testLog"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Reset</h2>
+        <button class="test-button" onclick="resetAll()" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">
+            Reset All Progress
+        </button>
+    </div>
+
+    <!-- Load XP and Coin Systems -->
+    <script src="js/features/xp-system.js"></script>
+    <script src="js/features/coin-system.js"></script>
+    <script src="js/ui/xp-display.js"></script>
+    <script src="js/ui/coin-display.js"></script>
+
+    <script>
+        const userId = 'student';
+        const log = document.getElementById('testLog');
+
+        function addLog(message) {
+            const entry = document.createElement('div');
+            entry.className = 'log-entry';
+            entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            log.insertBefore(entry, log.firstChild);
+        }
+
+        function updateStats() {
+            const xpData = window.xpSystem.getXPData(userId);
+            const progress = window.xpSystem.getXPProgress(xpData.totalXP);
+            const coinStats = window.coinSystem.getCoinStats(userId);
+
+            const statsDisplay = document.getElementById('statsDisplay');
+            statsDisplay.innerHTML = `
+                <div class="stat-card">
+                    <div class="stat-label">Total XP</div>
+                    <div class="stat-value">${xpData.totalXP}</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Current Level</div>
+                    <div class="stat-value">${progress.currentLevel}</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Progress to Next</div>
+                    <div class="stat-value">${progress.progressPercent}%</div>
+                </div>
+                <div class="stat-card" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                    <div class="stat-label">Total Coins</div>
+                    <div class="stat-value">${coinStats.currentBalance}</div>
+                </div>
+                <div class="stat-card" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                    <div class="stat-label">Coins Earned</div>
+                    <div class="stat-value">${coinStats.totalEarned}</div>
+                </div>
+                <div class="stat-card" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">
+                    <div class="stat-label">Coins Spent</div>
+                    <div class="stat-value">${coinStats.totalSpent}</div>
+                </div>
+            `;
+        }
+
+        // Test Functions
+        function testBasicXP() {
+            const result = window.xpDisplay.awardXP(userId, 50, 'test-basic', { base: 50 });
+            addLog(`Awarded 50 base XP. Total: ${result.totalXP} XP, Level: ${result.level}`);
+            updateStats();
+        }
+
+        function testPerfectScore() {
+            const breakdown = { base: 50, perfectScore: 20 };
+            const result = window.xpDisplay.awardXP(userId, 70, 'test-perfect', breakdown);
+            addLog(`Awarded 70 XP (50 base + 20 perfect). Total: ${result.totalXP} XP`);
+            updateStats();
+        }
+
+        function testSpeedBonus() {
+            const breakdown = { base: 50, speed: 10 };
+            const result = window.xpDisplay.awardXP(userId, 60, 'test-speed', breakdown);
+            addLog(`Awarded 60 XP (50 base + 10 speed). Total: ${result.totalXP} XP`);
+            updateStats();
+        }
+
+        function testAllBonuses() {
+            const breakdown = { base: 50, perfectScore: 20, speed: 10, firstAttempt: 15 };
+            const result = window.xpDisplay.awardXP(userId, 95, 'test-all', breakdown);
+            addLog(`Awarded 95 XP (all bonuses!). Total: ${result.totalXP} XP`);
+            updateStats();
+        }
+
+        function testLevelUp() {
+            const result = window.xpDisplay.awardXP(userId, 500, 'test-levelup');
+            addLog(`Awarded 500 XP. Total: ${result.totalXP} XP, Level: ${result.level}`);
+            updateStats();
+        }
+
+        function testBasicCoins() {
+            const breakdown = { base: 10 };
+            const result = window.coinDisplay.awardCoins(userId, 10, 'test-basic', breakdown);
+            addLog(`Awarded 10 coins. New balance: ${result.newBalance}`);
+            updateStats();
+        }
+
+        function testCoinPerfect() {
+            const breakdown = { base: 10, perfectScore: 5 };
+            const result = window.coinDisplay.awardCoins(userId, 15, 'test-perfect', breakdown);
+            addLog(`Awarded 15 coins (10 base + 5 perfect). Balance: ${result.newBalance}`);
+            updateStats();
+        }
+
+        function testCoinStreak() {
+            const breakdown = { base: 10, streak: 10 };
+            const result = window.coinDisplay.awardCoins(userId, 20, 'test-streak', breakdown);
+            addLog(`Awarded 20 coins (10 base + 10 streak). Balance: ${result.newBalance}`);
+            updateStats();
+        }
+
+        function testDailyBonus() {
+            const result = window.coinSystem.getDailyLoginBonus(userId);
+            if (result.claimed) {
+                addLog(`Daily bonus claimed! +${result.coinsGained} coins`);
+                window.coinDisplay.updateDisplay(userId);
+            } else {
+                addLog(`Daily bonus already claimed today`);
+            }
+            updateStats();
+        }
+
+        function testCoinBalance() {
+            window.coinDisplay.showCoinBalance(userId);
+            addLog(`Showing coin balance modal`);
+        }
+
+        function resetAll() {
+            if (confirm('Reset all XP and coins? This cannot be undone.')) {
+                window.xpSystem.resetXP(userId);
+                window.coinSystem.resetCoins(userId);
+                window.xpDisplay.updateDisplay(userId);
+                window.coinDisplay.updateDisplay(userId);
+                addLog(`=== ALL PROGRESS RESET ===`);
+                updateStats();
+            }
+        }
+
+        // Initialize
+        window.addEventListener('load', () => {
+            addLog('XP & Coins system loaded');
+            updateStats();
+        });
+    </script>
+</body>
+</html>

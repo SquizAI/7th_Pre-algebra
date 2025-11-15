@@ -1,0 +1,516 @@
+/**
+ * Rewards System - XP and Coin Display Styles
+ *
+ * Kid-friendly animations and UI components for the rewards system
+ */
+
+/* ============================================
+   XP PROGRESS BAR
+   ============================================ */
+
+.xp-progress-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto 1rem;
+    padding: 0 1rem;
+}
+
+.xp-progress-bar {
+    position: relative;
+    width: 100%;
+    height: 32px;
+    background: linear-gradient(to right, #1e3a8a, #3b82f6);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow:
+        inset 0 2px 4px rgba(0, 0, 0, 0.2),
+        0 2px 8px rgba(59, 130, 246, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.xp-progress-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        #fbbf24 0%,
+        #f59e0b 50%,
+        #fbbf24 100%
+    );
+    background-size: 200% 100%;
+    border-radius: 16px;
+    transition: width 0.5s ease-out;
+    animation: shimmer 2s ease-in-out infinite;
+    box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+}
+
+.xp-progress-text {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    line-height: 32px;
+    font-weight: 700;
+    font-size: 0.875rem;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes shimmer {
+    0%, 100% { background-position: 0% 0%; }
+    50% { background-position: 100% 0%; }
+}
+
+/* ============================================
+   FLOATING XP ANIMATION
+   ============================================ */
+
+.floating-xp {
+    position: fixed;
+    top: 60px;
+    right: 20px;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(0);
+    transition: all 0.3s ease-out;
+}
+
+.floating-xp.animate {
+    opacity: 1;
+    animation: floatUp 1.5s ease-out forwards;
+}
+
+.floating-xp-main {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #fbbf24;
+    text-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(251, 191, 36, 0.6);
+    margin-bottom: 0.5rem;
+}
+
+.xp-breakdown {
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
+    padding: 0.5rem;
+    backdrop-filter: blur(10px);
+}
+
+.xp-breakdown-item {
+    font-size: 0.875rem;
+    color: #fff;
+    margin: 0.25rem 0;
+    text-align: center;
+}
+
+@keyframes floatUp {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.8);
+    }
+    20% {
+        opacity: 1;
+        transform: translateY(-20px) scale(1.2);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100px) scale(1);
+    }
+}
+
+/* ============================================
+   FLOATING COINS ANIMATION
+   ============================================ */
+
+.floating-coins {
+    position: fixed;
+    top: 60px;
+    right: 20px;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(0);
+}
+
+.floating-coins.animate {
+    opacity: 1;
+    animation: floatUp 1.5s ease-out forwards;
+}
+
+.floating-coins-main {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #f59e0b;
+    text-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(245, 158, 11, 0.6);
+    margin-bottom: 0.5rem;
+}
+
+.coin-breakdown {
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
+    padding: 0.5rem;
+    backdrop-filter: blur(10px);
+}
+
+.coin-breakdown-item {
+    font-size: 0.875rem;
+    color: #fff;
+    margin: 0.25rem 0;
+    text-align: center;
+}
+
+/* ============================================
+   LEVEL UP MODAL
+   ============================================ */
+
+.level-up-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.level-up-modal.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.level-up-content {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 24px;
+    padding: 3rem 2rem;
+    text-align: center;
+    max-width: 500px;
+    animation: levelUpAppear 0.5s ease-out;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.celebration-animation {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.level-up-badge {
+    display: inline-block;
+    font-size: 6rem;
+    font-weight: 900;
+    color: #fbbf24;
+    text-shadow:
+        0 4px 8px rgba(0, 0, 0, 0.3),
+        0 0 40px rgba(251, 191, 36, 0.8);
+    animation: pulseBadge 2s ease-in-out infinite;
+}
+
+.celebration-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    font-size: 2rem;
+    animation: particleFloat 2s ease-out forwards;
+}
+
+.level-up-title {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.level-up-message {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+}
+
+.level-up-rewards {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    color: #fff;
+}
+
+@keyframes levelUpAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) rotate(-5deg);
+    }
+    50% {
+        transform: scale(1.1) rotate(2deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+@keyframes pulseBadge {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes particleFloat {
+    0% {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-200px) rotate(360deg);
+    }
+}
+
+/* ============================================
+   DAILY BONUS NOTIFICATION
+   ============================================ */
+
+.daily-bonus-notification {
+    position: fixed;
+    top: 80px;
+    right: -400px;
+    max-width: 350px;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: right 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 9998;
+}
+
+.daily-bonus-notification.show {
+    right: 20px;
+}
+
+.bonus-icon {
+    font-size: 3rem;
+    animation: bounceIcon 1s ease-in-out infinite;
+}
+
+.bonus-text strong {
+    display: block;
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.bonus-text p {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin: 0;
+}
+
+@keyframes bounceIcon {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* ============================================
+   COIN BALANCE MODAL
+   ============================================ */
+
+.coin-balance-modal .modal-content {
+    max-width: 600px;
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: #fff;
+}
+
+.coin-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.stat-box {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.stat-box .stat-value {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #fbbf24;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 0.5rem;
+}
+
+.stat-box .stat-label {
+    font-size: 0.875rem;
+    opacity: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.coin-history {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    padding: 1rem;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+
+.history-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.history-item.earned .history-amount {
+    color: #10b981;
+}
+
+.history-item.spent .history-amount {
+    color: #ef4444;
+}
+
+.history-amount {
+    font-weight: 700;
+    font-size: 1.125rem;
+}
+
+.history-details {
+    flex: 1;
+    margin-left: 1rem;
+}
+
+.history-source {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.history-date {
+    font-size: 0.75rem;
+    opacity: 0.7;
+}
+
+.no-history {
+    text-align: center;
+    opacity: 0.6;
+    padding: 2rem;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+    .xp-progress-container {
+        max-width: 100%;
+        padding: 0 0.5rem;
+    }
+
+    .floating-xp,
+    .floating-coins {
+        right: 10px;
+        top: 50px;
+    }
+
+    .floating-xp-main,
+    .floating-coins-main {
+        font-size: 1.5rem;
+    }
+
+    .level-up-content {
+        margin: 1rem;
+        padding: 2rem 1rem;
+    }
+
+    .level-up-badge {
+        font-size: 4rem;
+    }
+
+    .level-up-title {
+        font-size: 2rem;
+    }
+
+    .level-up-message {
+        font-size: 1.125rem;
+    }
+
+    .daily-bonus-notification {
+        max-width: calc(100% - 40px);
+        right: -100%;
+    }
+
+    .daily-bonus-notification.show {
+        right: 10px;
+    }
+
+    .coin-stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    .floating-xp.animate,
+    .floating-coins.animate {
+        animation: none;
+        opacity: 1;
+    }
+
+    .xp-progress-fill {
+        animation: none;
+    }
+
+    .level-up-badge {
+        animation: none;
+    }
+
+    .particle {
+        animation: none;
+        display: none;
+    }
+
+    .bonus-icon {
+        animation: none;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .xp-progress-bar,
+    .level-up-content,
+    .daily-bonus-notification {
+        border: 2px solid currentColor;
+    }
+}

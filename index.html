@@ -29,6 +29,8 @@
     <link rel="stylesheet" href="css/styles.css">
     <!-- New Atomic CSS System overrides legacy styles -->
     <link rel="stylesheet" href="css/main.css">
+    <!-- Streak display styles -->
+    <link rel="stylesheet" href="css/streak-display.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
@@ -59,9 +61,26 @@
                     <span class="coin-icon" aria-hidden="true">🪙</span>
                 </div>
             </div>
-            <button class="btn-ai-tutor" id="copyToGeminiBtn" aria-label="Copy current progress to Gemini AI helper">
-                <span aria-hidden="true">✨</span> Copy to Gemini
-            </button>
+            <div class="header-actions" style="display: flex; gap: var(--space-4); align-items: center;">
+                <a href="dashboard.html" class="btn-dashboard" aria-label="View dashboard" style="text-decoration: none; background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%); color: white; padding: 0.5rem 1rem; border-radius: 8px; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; transition: transform 0.2s ease;">
+                    <span aria-hidden="true">📊</span> Dashboard
+                </a>
+                <a href="lesson-map.html" class="btn-lesson-map" aria-label="View lesson map" style="text-decoration: none; background: linear-gradient(135deg, #10B981 0%, #059669 100%); color: white; padding: 0.5rem 1rem; border-radius: 8px; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; transition: transform 0.2s ease;">
+                    <span aria-hidden="true">🗺️</span> Lesson Map
+                </a>
+                <a href="achievements.html" class="btn-achievements" aria-label="View achievements" style="text-decoration: none; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 0.5rem 1rem; border-radius: 8px; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; transition: transform 0.2s ease;">
+                    <span aria-hidden="true">🏆</span> Achievements
+                </a>
+                <button class="btn-ai-tutor" id="copyToGeminiBtn" aria-label="Copy current progress to Gemini AI helper">
+                    <span aria-hidden="true">✨</span> Copy to Gemini
+                </button>
+                <div id="userInfo" style="display: none; align-items: center; gap: var(--space-3);">
+                    <a href="auth/profile.html" class="btn-user-profile" aria-label="View profile" style="text-decoration: none; color: inherit;">
+                        <span id="userGreeting" style="font-size: var(--text-sm); font-weight: var(--font-weight-medium);">Hi, Student!</span>
+                    </a>
+                    <button id="signOutBtn" class="btn btn-sm btn-ghost" aria-label="Sign out">Sign Out</button>
+                </div>
+            </div>
         </header>
 
         <!-- Main Content -->
@@ -697,9 +716,22 @@
     </div>
 
     <!-- Scripts -->
+    <!-- Supabase SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <!-- Environment variables (injected by Netlify build) -->
     <script src="env-inject.js"></script>
+    <!-- Authentication -->
+    <script src="js/auth/supabase-client.js"></script>
+    <script src="js/auth/auth-manager.js"></script>
+    <!-- Core modules -->
     <script src="js/core/equations.js"></script>
+    <!-- XP and Coin Systems - Load before other features -->
+    <script src="js/features/xp-system.js"></script>
+    <script src="js/features/coin-system.js"></script>
+    <script src="js/ui/xp-display.js"></script>
+    <script src="js/ui/coin-display.js"></script>
+    <script src="js/features/rewards-integration.js"></script>
+    <!-- Other features -->
     <script src="js/features/animated-examples.js"></script>
     <script src="js/features/student-report.js"></script>
     <script src="js/features/adaptive-learning.js"></script>
@@ -712,9 +744,103 @@
     <script src="js/config/schedule.js"></script>
     <script src="js/features/lesson-scheduler.js"></script>
     <script src="js/features/date-navigation.js"></script>
+    <!-- Streak tracking system -->
+    <script src="js/features/streak-tracker.js"></script>
+    <script src="js/ui/streak-display.js"></script>
+    <!-- Achievement system -->
+    <script src="js/features/achievement-system.js"></script>
+    <script src="js/ui/achievement-display.js"></script>
     <!-- Must load after schedule files -->
     <script src="js/core/game.js"></script>
     <script src="js/features/three-visualization.js"></script>
     <script src="js/utils/gemini-helper.js"></script>
+
+    <!-- Auth Integration Script -->
+    <script>
+        // Authentication integration for index.html
+        (async function() {
+            // Wait for auth manager to be ready
+            let attempts = 0;
+            while (!window.authManager && attempts < 50) {
+                await new Promise(resolve => setTimeout(resolve, 100));
+                attempts++;
+            }
+
+            if (!window.authManager) {
+                console.error('Auth manager not available');
+                return;
+            }
+
+            // Check authentication status
+            const user = window.authManager.getCurrentUser();
+
+            if (!user) {
+                // Not authenticated - redirect to login
+                // Note: You can comment this out during development if you want to allow guest access
+                // window.location.href = 'auth/login.html';
+                console.log('User not authenticated - consider adding guest mode or redirect to auth/login.html');
+                return;
+            }
+
+            // User is authenticated - show user info
+            const userInfo = document.getElementById('userInfo');
+            const userGreeting = document.getElementById('userGreeting');
+
+            if (userInfo && userGreeting) {
+                // Load user profile
+                const profile = await window.authManager.getUserProfile(user.id);
+
+                if (profile) {
+                    userGreeting.textContent = `Hi, ${profile.username || 'Student'}!`;
+                    userInfo.style.display = 'flex';
+
+                    // Sync profile data with game state
+                    if (window.gameController) {
+                        // Update game stats from profile
+                        if (profile.level) window.gameController.playerLevel = profile.level;
+                        if (profile.xp) window.gameController.playerXP = profile.xp;
+                        if (profile.coins) window.gameController.playerCoins = profile.coins;
+
+                        // Update UI
+                        window.gameController.updatePlayerStats();
+                    }
+                }
+            }
+
+            // Sign out button handler
+            const signOutBtn = document.getElementById('signOutBtn');
+            if (signOutBtn) {
+                signOutBtn.addEventListener('click', async () => {
+                    const result = await window.authManager.signOut();
+                    if (result.success) {
+                        window.location.href = 'auth/login.html';
+                    }
+                });
+            }
+
+            // Listen for auth state changes
+            window.authManager.onAuthStateChange((event, user) => {
+                if (event === 'signed_out') {
+                    window.location.href = 'auth/login.html';
+                }
+            });
+
+            // Sync game progress to database periodically
+            setInterval(async () => {
+                if (window.gameController && user) {
+                    const updates = {
+                        level: window.gameController.playerLevel,
+                        xp: window.gameController.playerXP,
+                        coins: window.gameController.playerCoins,
+                        current_world: window.gameController.currentWorld || 1,
+                        current_lesson: window.gameController.currentLevel || 1,
+                        last_active: new Date().toISOString()
+                    };
+
+                    await window.authManager.updateUserProfile(user.id, updates);
+                }
+            }, 30000); // Sync every 30 seconds
+        })();
+    </script>
 </body>
 </html>

@@ -180,14 +180,42 @@ const LessonScheduler = {
   /**
    * Mark a lesson as completed
    * @param {number} lessonNumber
+   * @param {object} lessonData - Optional lesson completion data (score, time, etc.)
    */
-  completLesson(lessonNumber) {
+  completLesson(lessonNumber, lessonData = {}) {
     const progress = this.getProgress();
-    if (!progress.completedLessons.includes(lessonNumber)) {
+    const isFirstCompletion = !progress.completedLessons.includes(lessonNumber);
+
+    if (isFirstCompletion) {
       progress.completedLessons.push(lessonNumber);
       progress.completedLessons.sort((a, b) => a - b);
       this.saveProgress(progress);
       console.log(`✅ Lesson ${lessonNumber} marked as completed`);
+
+      // Check achievements when lesson is completed
+      if (window.AchievementSystem) {
+        window.AchievementSystem.checkAchievements('lesson_complete', {
+          lessonId: lessonNumber,
+          score: lessonData.score || 0,
+          time: lessonData.time || 0,
+          ...lessonData
+        });
+      }
+
+      // Update streak when lesson is completed
+      if (window.StreakTracker) {
+        const streakResult = window.StreakTracker.updateStreak('default', new Date());
+
+        // If milestone reached, trigger celebration
+        if (streakResult.milestone && streakResult.bonus) {
+          window.dispatchEvent(new CustomEvent('streakMilestone', {
+            detail: {
+              milestone: streakResult.milestone,
+              rewards: streakResult.bonus
+            }
+          }));
+        }
+      }
     }
   },
 
@@ -381,6 +409,38 @@ const LessonScheduler = {
       console.log('🔄 Progress reset');
       this.loadProgress();
     }
+  },
+
+  /**
+   * Launch lesson player for a specific lesson
+   * @param {number} lessonNumber
+   */
+  launchLesson(lessonNumber) {
+    const status = this.getLessonStatus(lessonNumber);
+
+    // Check if lesson is available
+    if (status === 'locked') {
+      alert('This lesson is not available yet. Complete previous lessons first!');
+      return;
+    }
+
+    // Launch lesson player
+    console.log(`Launching lesson ${lessonNumber}...`);
+    window.location.href = `/lesson-player.html?lesson=${lessonNumber}`;
+  },
+
+  /**
+   * Launch today's lesson
+   */
+  launchTodaysLesson() {
+    const todaysLesson = this.getTodaysLesson();
+
+    if (!todaysLesson) {
+      alert('No lesson scheduled for today!');
+      return;
+    }
+
+    this.launchLesson(todaysLesson.lessonNumber);
   }
 };
 

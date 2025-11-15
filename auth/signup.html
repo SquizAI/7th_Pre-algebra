@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Equation Quest</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/main.css">
+
+    <style>
+        /* Auth Page Specific Styles */
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--color-primary-400) 0%, var(--color-accent-500) 100%);
+            padding: var(--space-4);
+        }
+
+        .auth-card {
+            background: var(--color-white);
+            border-radius: var(--radius-xl);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: var(--space-8);
+            max-width: 450px;
+            width: 100%;
+            animation: slideUp 0.4s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: var(--space-8);
+        }
+
+        .auth-logo {
+            font-size: var(--text-5xl);
+            margin-bottom: var(--space-4);
+        }
+
+        .auth-title {
+            font-size: var(--text-3xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-text-primary);
+            margin-bottom: var(--space-2);
+        }
+
+        .auth-subtitle {
+            font-size: var(--text-base);
+            color: var(--color-text-secondary);
+        }
+
+        .auth-form {
+            margin-bottom: var(--space-6);
+        }
+
+        .auth-links {
+            text-align: center;
+            margin-top: var(--space-6);
+        }
+
+        .auth-link {
+            color: var(--color-primary-500);
+            font-weight: var(--font-weight-medium);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        .auth-link:hover {
+            color: var(--color-primary-600);
+            text-decoration: underline;
+        }
+
+        .password-strength {
+            margin-top: var(--space-2);
+            height: 4px;
+            background: var(--color-neutral-200);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+        }
+
+        .password-strength-bar {
+            height: 100%;
+            width: 0;
+            transition: width 0.3s ease, background-color 0.3s ease;
+        }
+
+        .password-strength-bar.weak {
+            width: 33%;
+            background: var(--color-danger-500);
+        }
+
+        .password-strength-bar.medium {
+            width: 66%;
+            background: var(--color-warning-500);
+        }
+
+        .password-strength-bar.strong {
+            width: 100%;
+            background: var(--color-success-500);
+        }
+
+        .password-hint {
+            font-size: var(--text-xs);
+            color: var(--color-text-tertiary);
+            margin-top: var(--space-2);
+        }
+
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .loading-overlay.active {
+            display: flex;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid var(--color-white);
+            border-top: 4px solid var(--color-primary-500);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .alert {
+            padding: var(--space-4);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-4);
+            font-size: var(--text-sm);
+            display: none;
+        }
+
+        .alert.active {
+            display: block;
+        }
+
+        .alert-error {
+            background: var(--color-danger-50);
+            color: var(--color-danger-700);
+            border: 1px solid var(--color-danger-200);
+        }
+
+        .alert-success {
+            background: var(--color-success-50);
+            color: var(--color-success-700);
+            border: 1px solid var(--color-success-200);
+        }
+
+        .terms-text {
+            font-size: var(--text-sm);
+            color: var(--color-text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="auth-logo">🚀</div>
+                <h1 class="auth-title">Start Your Journey!</h1>
+                <p class="auth-subtitle">Create an account to track your progress</p>
+            </div>
+
+            <!-- Alert Messages -->
+            <div id="alertMessage" class="alert" role="alert"></div>
+
+            <!-- Signup Form -->
+            <form id="signupForm" class="auth-form">
+                <div class="form-group">
+                    <label for="fullName" class="form-label form-label--required">Full Name</label>
+                    <input
+                        type="text"
+                        id="fullName"
+                        class="form-input"
+                        placeholder="John Doe"
+                        required
+                        autocomplete="name"
+                        aria-required="true"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="username" class="form-label form-label--required">Username</label>
+                    <input
+                        type="text"
+                        id="username"
+                        class="form-input"
+                        placeholder="cool_student123"
+                        required
+                        autocomplete="username"
+                        aria-required="true"
+                        minlength="3"
+                        maxlength="20"
+                    >
+                    <span class="form-help">3-20 characters, letters and numbers only</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="form-label form-label--required">Email Address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        class="form-input"
+                        placeholder="student@example.com"
+                        required
+                        autocomplete="email"
+                        aria-required="true"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="form-label form-label--required">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        class="form-input"
+                        placeholder="Create a strong password"
+                        required
+                        autocomplete="new-password"
+                        aria-required="true"
+                        minlength="8"
+                    >
+                    <div class="password-strength">
+                        <div id="passwordStrengthBar" class="password-strength-bar"></div>
+                    </div>
+                    <span class="password-hint">At least 8 characters with numbers and letters</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword" class="form-label form-label--required">Confirm Password</label>
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        class="form-input"
+                        placeholder="Re-enter your password"
+                        required
+                        autocomplete="new-password"
+                        aria-required="true"
+                    >
+                </div>
+
+                <div class="form-check">
+                    <input
+                        type="checkbox"
+                        id="acceptTerms"
+                        class="form-check-input"
+                        required
+                        aria-required="true"
+                    >
+                    <label for="acceptTerms" class="form-check-label terms-text">
+                        I agree to the Terms of Service and Privacy Policy
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-lg btn-primary" style="width: 100%; margin-top: var(--space-6);">
+                    Create Account
+                </button>
+            </form>
+
+            <div class="auth-links">
+                <p>
+                    Already have an account?
+                    <a href="login.html" class="auth-link">Sign in here</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../env-inject.js"></script>
+    <script src="../js/auth/supabase-client.js"></script>
+    <script src="../js/auth/auth-manager.js"></script>
+
+    <script>
+        // Form elements
+        const signupForm = document.getElementById('signupForm');
+        const alertMessage = document.getElementById('alertMessage');
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        const passwordInput = document.getElementById('password');
+        const passwordStrengthBar = document.getElementById('passwordStrengthBar');
+
+        // Show alert message
+        function showAlert(message, type = 'error') {
+            alertMessage.textContent = message;
+            alertMessage.className = `alert alert-${type} active`;
+
+            setTimeout(() => {
+                alertMessage.classList.remove('active');
+            }, 5000);
+        }
+
+        // Show loading overlay
+        function showLoading(show = true) {
+            loadingOverlay.classList.toggle('active', show);
+        }
+
+        // Password strength checker
+        passwordInput.addEventListener('input', (e) => {
+            const password = e.target.value;
+            const strength = calculatePasswordStrength(password);
+
+            passwordStrengthBar.className = 'password-strength-bar';
+            if (strength >= 80) {
+                passwordStrengthBar.classList.add('strong');
+            } else if (strength >= 50) {
+                passwordStrengthBar.classList.add('medium');
+            } else if (password.length > 0) {
+                passwordStrengthBar.classList.add('weak');
+            }
+        });
+
+        // Calculate password strength
+        function calculatePasswordStrength(password) {
+            let strength = 0;
+
+            if (password.length >= 8) strength += 25;
+            if (password.length >= 12) strength += 15;
+            if (/[a-z]/.test(password)) strength += 15;
+            if (/[A-Z]/.test(password)) strength += 15;
+            if (/[0-9]/.test(password)) strength += 15;
+            if (/[^a-zA-Z0-9]/.test(password)) strength += 15;
+
+            return strength;
+        }
+
+        // Validate username
+        function validateUsername(username) {
+            const usernameRegex = /^[a-zA-Z0-9_]{3,20}$/;
+            return usernameRegex.test(username);
+        }
+
+        // Handle signup form submission
+        signupForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const fullName = document.getElementById('fullName').value.trim();
+            const username = document.getElementById('username').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const acceptTerms = document.getElementById('acceptTerms').checked;
+
+            // Validation
+            if (!fullName || !username || !email || !password) {
+                showAlert('Please fill in all required fields');
+                return;
+            }
+
+            if (!validateUsername(username)) {
+                showAlert('Username must be 3-20 characters and contain only letters, numbers, and underscores');
+                return;
+            }
+
+            if (password.length < 8) {
+                showAlert('Password must be at least 8 characters long');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                showAlert('Passwords do not match');
+                return;
+            }
+
+            if (!acceptTerms) {
+                showAlert('You must accept the Terms of Service');
+                return;
+            }
+
+            showLoading(true);
+
+            try {
+                // Wait for auth manager to be ready
+                await waitForAuthManager();
+
+                // Sign up
+                const result = await window.authManager.signUp(email, password, username, fullName);
+
+                if (result.success) {
+                    showAlert(result.message, 'success');
+
+                    // Redirect to login after 2 seconds
+                    setTimeout(() => {
+                        window.location.href = 'login.html';
+                    }, 2000);
+                } else {
+                    showAlert(result.error || 'Signup failed. Please try again.');
+                }
+            } catch (error) {
+                console.error('Signup error:', error);
+                showAlert('An unexpected error occurred. Please try again.');
+            } finally {
+                showLoading(false);
+            }
+        });
+
+        // Wait for auth manager to be ready
+        async function waitForAuthManager() {
+            let attempts = 0;
+            while (!window.authManager && attempts < 50) {
+                await new Promise(resolve => setTimeout(resolve, 100));
+                attempts++;
+            }
+
+            if (!window.authManager) {
+                throw new Error('Auth manager failed to initialize');
+            }
+        }
+
+        // Check if already logged in
+        async function checkAuth() {
+            try {
+                await waitForAuthManager();
+
+                if (window.authManager.isAuthenticated()) {
+                    window.location.href = '../index.html';
+                }
+            } catch (error) {
+                console.error('Auth check error:', error);
+            }
+        }
+
+        // Run auth check on page load
+        checkAuth();
+    </script>
+</body>
+</html>

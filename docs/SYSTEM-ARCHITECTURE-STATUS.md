@@ -15,30 +15,30 @@ graph TB
     User([👤 User Browser])
 
     %% PAGES
-    Index[🏠 index.html<br/>🟢 LOADS<br/>🟢 XP Display Fixed<br/>🟡 Needs Testing]
-    Login[🔐 auth/login.html<br/>🟢 WORKING]
-    Signup[📝 auth/signup.html<br/>🟢 WORKING]
-    Profile[👤 auth/profile.html<br/>🟡 UNTESTED]
-    LessonMap[🗺️ lesson-map.html<br/>🟢 WORKING<br/>🟢 Skill Tree Renders<br/>🟢 Lessons Clickable]
-    LessonPlayer[🎮 lesson-player.html<br/>🟢 Resume Dialog Fixed<br/>🟡 Needs Full Test]
-    Dashboard[📊 dashboard.html<br/>🟡 NEEDS BUILD]
-    Achievements[🏆 achievements.html<br/>🟡 NEEDS BUILD]
+    Index["🏠 index.html<br/>🟢 LOADS | 🟢 XP Display Fixed<br/>🟡 NEXT: Test XP/Coin Display<br/>👤 Agent: test-agent<br/>📍 Why: Homepage entry, loads game.js"]
+    Login["🔐 auth/login.html<br/>🟢 WORKING | ✅ Tested<br/>📍 Why: User authentication entry<br/>🔧 Uses: AuthManager, SupabaseClient"]
+    Signup["📝 auth/signup.html<br/>🟢 WORKING | ✅ Tested<br/>📍 Why: New user registration<br/>🔧 Creates: Profile in Supabase"]
+    Profile["👤 auth/profile.html<br/>🟡 UNTESTED<br/>🟡 NEXT: Test profile loading<br/>👤 Agent: test-agent<br/>📍 Why: User profile management"]
+    LessonMap["🗺️ lesson-map.html<br/>🟢 WORKING | ✅ Skill Tree Renders<br/>🟢 87 Lessons Clickable<br/>📍 Why: Main lesson navigation<br/>🔧 Uses: SkillTree, SkillTreeRenderer"]
+    LessonPlayer["🎮 lesson-player.html<br/>🟢 Resume Bug Fixed<br/>🟡 NEXT: Full E2E Test<br/>👤 Agent: test-agent<br/>📍 Why: Interactive lesson delivery<br/>🔧 Awards: XP, Coins, Achievements"]
+    Dashboard["📊 dashboard.html<br/>🔴 NEEDS BUILD<br/>🔴 NEXT: Create student dashboard<br/>👤 Agent: frontend-agent<br/>📍 Why: Student progress tracking<br/>🔧 Shows: Stats, Streaks, Progress"]
+    Achievements["🏆 achievements.html<br/>🟡 PARTIAL | 44 Badges Defined<br/>🟡 NEXT: Test badge unlocking<br/>👤 Agent: test-agent<br/>📍 Why: Gamification motivation<br/>🔧 Displays: 44 achievement badges"]
 
     %% CSS ARCHITECTURE
     subgraph CSS["🎨 CSS Architecture"]
         direction TB
-        StylesCSS[styles.css<br/>🟢 LEGACY 84KB<br/>🟢 Loads First Now<br/>🟡 Needs Migration]
-        MainCSS[main.css<br/>🟢 Atomic Design Entry<br/>🟢 Fixed Import Order]
+        StylesCSS["styles.css<br/>🟢 LEGACY 84KB 4887 lines<br/>✅ FIXED: Now loads FIRST<br/>🟡 NEXT: Migrate to atomic<br/>👤 Agent: ui-update-agent<br/>📍 Why: Prevents override conflicts"]
+        MainCSS["main.css<br/>🟢 Atomic Design Entry<br/>✅ FIXED: Import order<br/>📍 Why: Central CSS orchestrator<br/>🔧 Imports: All atomic layers"]
 
         subgraph Atomic["🔧 Atomic Design System"]
-            Foundation[Foundation<br/>🟢 tokens.css<br/>🟢 reset.css<br/>🟢 base.css]
-            Atoms[Atoms<br/>🟢 buttons.css<br/>🟡 typography.css<br/>🟡 spacing.css]
-            Molecules[Molecules<br/>🟢 cards.css<br/>🟡 forms.css<br/>🟢 rewards.css]
-            Organisms[Organisms<br/>🟡 header.css<br/>🟡 navigation.css<br/>🟢 hero-lesson.css]
-            Utilities[Utilities<br/>🟢 helpers.css<br/>🟢 layout.css]
+            Foundation["Foundation<br/>🟢 tokens.css - Design vars<br/>🟢 reset.css - CSS reset<br/>🟢 base.css - Base styles<br/>📍 Why: Core design system"]
+            Atoms["Atoms<br/>🟢 buttons.css - Button styles<br/>🟡 typography.css - Text styles<br/>🟡 spacing.css - Margin/padding<br/>👤 Agent: ui-update-agent<br/>📍 Why: Basic UI building blocks"]
+            Molecules["Molecules<br/>🟢 cards.css - Card components<br/>🟡 forms.css - Form elements<br/>🟢 rewards.css - XP/Coin display<br/>📍 Why: Simple component combos"]
+            Organisms["Organisms<br/>🟡 header.css - Site header<br/>🟡 navigation.css - Nav menus<br/>🟢 hero-lesson.css - Lesson hero<br/>👤 Agent: ui-update-agent<br/>📍 Why: Complex UI sections"]
+            Utilities["Utilities<br/>🟢 helpers.css - Utility classes<br/>🟢 layout.css - Grid/flex<br/>📍 Why: Layout and helper classes"]
         end
 
-        PageCSS[Page-Specific CSS<br/>🟡 dashboard.css<br/>🟡 lesson-player.css<br/>🟡 achievements.css<br/>🟡 skill-tree.css]
+        PageCSS["Page-Specific CSS<br/>🟡 dashboard.css - Dashboard page<br/>🟡 lesson-player.css - Lesson UI<br/>🟡 achievements.css - Badge gallery<br/>🟡 skill-tree.css - Lesson map<br/>👤 Agent: frontend-agent<br/>📍 Why: Page-specific styling"]
     end
 
     %% FRONTEND JAVASCRIPT
@@ -46,31 +46,31 @@ graph TB
         direction TB
 
         subgraph Auth["🔐 Authentication"]
-            SupabaseClient[supabase-client.js<br/>🟢 WORKING]
-            AuthManager[auth-manager.js<br/>🟢 WORKING]
+            SupabaseClient["supabase-client.js<br/>🟢 WORKING | ✅ Tested<br/>📍 Why: Supabase connection<br/>🔧 Exports: supabase instance<br/>✅ Fixed: No more infinite RLS"]
+            AuthManager["auth-manager.js<br/>🟢 WORKING | ✅ Tested<br/>📍 Why: Auth operations<br/>🔧 Methods: signup, signin, signout<br/>✅ Creates user profiles"]
         end
 
         subgraph Features["✨ Features"]
-            SkillTree[skill-tree.js<br/>🟢 Data Loading]
-            SkillTreeRenderer[skill-tree-renderer.js<br/>🟢 Rendering Works]
-            LessonScheduler[lesson-scheduler.js<br/>🟡 UNTESTED]
+            SkillTree["skill-tree.js<br/>🟢 Data Loading<br/>🟢 87 Lessons Loaded<br/>📍 Why: Lesson progression<br/>🔧 Fetches: lessons, progress<br/>🟡 NEXT: Test progress tracking"]
+            SkillTreeRenderer["skill-tree-renderer.js<br/>🟢 Rendering Works<br/>✅ Visual skill tree<br/>📍 Why: Renders lesson map<br/>🔧 Shows: Locked/unlocked/complete"]
+            LessonScheduler["lesson-scheduler.js<br/>🟡 UNTESTED<br/>🟡 NEXT: Test B-day scheduling<br/>👤 Agent: test-agent<br/>📍 Why: Maps lessons to dates<br/>🔧 Uses: B-day calendar JSON"]
 
-            XPSystem[xp-system.js<br/>🟡 Class Exists<br/>🟢 Fixed: window.xpSystem]
-            CoinSystem[coin-system.js<br/>🟡 Class Exists<br/>🟢 Fixed: window.coinSystem]
+            XPSystem["xp-system.js<br/>🟢 Class Exists<br/>✅ FIXED: window.xpSystem lowercase<br/>📍 Why: XP tracking & leveling<br/>🔧 Methods: awardXP, getUserStats<br/>🟡 NEXT: Test with lesson player"]
+            CoinSystem["coin-system.js<br/>🟢 Class Exists<br/>✅ FIXED: window.coinSystem lowercase<br/>📍 Why: Coin economy<br/>🔧 Methods: awardCoins, spendCoins<br/>🟡 NEXT: Test coin transactions"]
 
-            AchievementSys[achievement-system.js<br/>🟡 UNTESTED]
-            StreakTracker[streak-tracker.js<br/>🟡 UNTESTED]
+            AchievementSys["achievement-system.js<br/>🟡 UNTESTED<br/>🟡 NEXT: Test achievement unlocking<br/>👤 Agent: test-agent<br/>📍 Why: Badge system<br/>🔧 44 achievements defined<br/>🔧 Awards: First lesson, Streaks, etc"]
+            StreakTracker["streak-tracker.js<br/>🟡 UNTESTED<br/>🟡 NEXT: Test streak tracking<br/>👤 Agent: test-agent<br/>📍 Why: Daily engagement<br/>🔧 B-days only counting<br/>🔧 Milestone: 3,7,14,30,60,100 days"]
 
-            GameCore[game.js<br/>🟡 OLD PRACTICE MODE<br/>🟡 Low Priority Fix]
-            AdaptiveLearning[adaptive-learning.js<br/>🟡 UNTESTED]
+            GameCore["game.js<br/>🟡 OLD PRACTICE MODE<br/>✅ Resume bug fixed<br/>🟡 NEXT: Integrate with XP/Coin<br/>👤 Agent: analyze-agent<br/>📍 Why: Legacy practice mode<br/>🔧 Uses local storage not Supabase"]
+            AdaptiveLearning["adaptive-learning.js<br/>🟡 UNTESTED<br/>🟡 NEXT: Test difficulty adjustment<br/>👤 Agent: test-agent<br/>📍 Why: Personalized difficulty<br/>🔧 Adjusts based on performance"]
         end
 
         subgraph UI["🎨 UI Components"]
-            CoinDisplay[coin-display.js<br/>🟢 Fixed Method Calls<br/>🟢 Async/Await]
-            XPDisplay[xp-display.js<br/>🟢 CREATED & FIXED<br/>🟡 Needs Testing]
-            StreakDisplay[streak-display.js<br/>🟡 UNTESTED]
-            AchievementDisplay[achievement-display.js<br/>🟡 UNTESTED]
-            LessonPreview[lesson-preview.js<br/>🟡 UNTESTED]
+            CoinDisplay["coin-display.js<br/>🟢 Fixed Method Calls<br/>✅ FIXED: Async/await<br/>✅ FIXED: Method names<br/>📍 Why: Shows coin balance<br/>🔧 Calls: coinSystem.getCoinsBalance<br/>🟡 NEXT: Test on index.html"]
+            XPDisplay["xp-display.js<br/>🟢 CREATED & FIXED<br/>✅ FIXED: window.xpSystem<br/>📍 Why: Shows XP/level<br/>🔧 Displays: Level, progress bar<br/>🟡 NEXT: Test XP animations"]
+            StreakDisplay["streak-display.js<br/>🟡 UNTESTED<br/>🟡 NEXT: Test streak flame UI<br/>👤 Agent: test-agent<br/>📍 Why: Shows daily streak<br/>🔧 Displays: Flame emoji counter"]
+            AchievementDisplay["achievement-display.js<br/>🟡 UNTESTED<br/>🟡 NEXT: Test badge modals<br/>👤 Agent: test-agent<br/>📍 Why: Shows earned badges<br/>🔧 Displays: Purple gradient modals"]
+            LessonPreview["lesson-preview.js<br/>🟡 UNTESTED<br/>🟡 NEXT: Test lesson cards<br/>👤 Agent: test-agent<br/>📍 Why: Preview before starting<br/>🔧 Shows: Title, standard, objectives"]
         end
     end
 
@@ -79,29 +79,29 @@ graph TB
         direction TB
 
         subgraph Supabase["🗄️ Supabase PostgreSQL"]
-            DB[(Database)]
+            DB[("Database<br/>fejyyntdbqlighscjvre<br/>8 tables | RLS enabled")]
 
-            ProfilesTable[profiles<br/>🟢 FIXED RLS Policy<br/>🟢 No Infinite Recursion]
-            LessonsTable[lessons<br/>🟢 87 Lessons Seeded]
-            ProgressTable[lesson_progress<br/>🟡 UNTESTED]
-            AchievementsTable[achievements<br/>🟢 44 Achievements Seeded]
-            UserAchievements[user_achievements<br/>🟡 UNTESTED]
-            XPHistory[xp_history<br/>🟡 Schema Mismatch Fixed]
-            CoinHistory[coin_history<br/>🟡 Schema Mismatch Fixed]
-            Streaks[daily_streaks<br/>🟡 UNTESTED]
+            ProfilesTable["profiles<br/>✅ FIXED RLS: Uses auth.jwt not SELECT<br/>✅ FIXED: Column id not user_id<br/>📍 Why: User accounts<br/>🔧 Columns: id, username, level, xp, coins<br/>🟡 NEXT: Test RLS policies"]
+            LessonsTable["lessons<br/>🟢 87 Lessons Seeded<br/>📍 Why: Curriculum data<br/>🔧 B-days only 2025-2026<br/>✅ All 4 quarters loaded<br/>🔧 MA.8.XXX standards"]
+            ProgressTable["lesson_progress<br/>🟡 UNTESTED<br/>🟡 NEXT: Test progress tracking<br/>👤 Agent: test-agent<br/>📍 Why: Student progress<br/>🔧 Tracks: status, score, time, attempts"]
+            AchievementsTable["achievements<br/>🟢 44 Achievements Seeded<br/>📍 Why: Badge definitions<br/>🔧 Categories: 6 types<br/>✅ Completion, Accuracy, Speed, etc"]
+            UserAchievements["user_achievements<br/>🟡 UNTESTED<br/>🟡 NEXT: Test badge unlocking<br/>👤 Agent: test-agent<br/>📍 Why: User badges earned<br/>🔧 Links: user_id + achievement_id"]
+            XPHistory["xp_history<br/>✅ FIXED: Schema matches inserts<br/>🟡 NEXT: Test history tracking<br/>👤 Agent: test-agent<br/>📍 Why: XP transaction log<br/>🔧 Columns: user_id, amount, source"]
+            CoinHistory["coin_history<br/>✅ FIXED: Schema matches inserts<br/>🟡 NEXT: Test coin history<br/>👤 Agent: test-agent<br/>📍 Why: Coin transaction log<br/>🔧 Columns: user_id, amount, type, source"]
+            Streaks["daily_streaks<br/>🟡 UNTESTED<br/>🟡 NEXT: Test streak tracking<br/>👤 Agent: test-agent<br/>📍 Why: Daily engagement B-days<br/>🔧 Columns: user_id, date, lessons_completed"]
         end
 
         subgraph Functions["⚡ Netlify Functions"]
-            AwardXP[award-xp.js<br/>🟢 TESTED<br/>🟢 Column Names Fixed]
-            AwardCoins[award-coins.js<br/>🟢 Column Names Fixed<br/>🟡 UNTESTED]
-            AwardAchievement[award-achievement.js<br/>🟡 Column Names Fixed<br/>🟡 UNTESTED]
-            UpdateStreak[update-streak.js<br/>🟡 Column Names Fixed<br/>🟡 UNTESTED]
-            CheckStreak[check-streak.js<br/>🟡 UNTESTED]
-            GetUserStats[get-user-stats.js<br/>🟡 Column Names Fixed<br/>🟡 UNTESTED]
-            GetStudentProgress[get-student-progress.js<br/>🟡 UNTESTED]
-            GetClassProgress[get-class-progress.js<br/>🟡 UNTESTED]
-            SpendCoins[spend-coins.js<br/>🟡 UNTESTED]
-            GeminiAPI[gemini-api.js<br/>🟡 UNTESTED]
+            AwardXP["award-xp.js<br/>🟢 TESTED & WORKING<br/>✅ FIXED: .eq id not user_id<br/>✅ FIXED: XP history schema<br/>📍 Why: Awards XP for lessons<br/>🔧 Updates: profiles.total_xp, level<br/>🔧 Test: User leveled 1→2 ✅"]
+            AwardCoins["award-coins.js<br/>✅ FIXED: Column names<br/>✅ FIXED: Coin history schema<br/>🟡 NEXT: Test coin awarding<br/>👤 Agent: test-agent<br/>📍 Why: Awards coins for lessons<br/>🔧 Updates: profiles.coins"]
+            AwardAchievement["award-achievement.js<br/>✅ FIXED: Column names<br/>🟡 NEXT: Test badge awarding<br/>👤 Agent: test-agent<br/>📍 Why: Unlocks achievements<br/>🔧 Inserts: user_achievements<br/>🔧 Triggers: Frontend toast notification"]
+            UpdateStreak["update-streak.js<br/>✅ FIXED: Column names<br/>🟡 NEXT: Test B-day streak logic<br/>👤 Agent: test-agent<br/>📍 Why: Updates daily streaks<br/>🔧 Checks: B-day schedule only<br/>🔧 Awards: Milestone achievements"]
+            CheckStreak["check-streak.js<br/>🟡 UNTESTED<br/>🟡 NEXT: Test streak status<br/>👤 Agent: test-agent<br/>📍 Why: Checks current streak<br/>🔧 Returns: current, longest streak"]
+            GetUserStats["get-user-stats.js<br/>✅ FIXED: Column names<br/>🟡 NEXT: Test stats fetching<br/>👤 Agent: test-agent<br/>📍 Why: Get user stats<br/>🔧 Returns: xp, level, coins, streaks"]
+            GetStudentProgress["get-student-progress.js<br/>✅ FIXED: Column names<br/>🟡 NEXT: Test progress query<br/>👤 Agent: test-agent<br/>📍 Why: Student dashboard data<br/>🔧 Returns: lessons completed, scores"]
+            GetClassProgress["get-class-progress.js<br/>🟡 UNTESTED<br/>🟡 NEXT: Test class aggregation<br/>👤 Agent: test-agent<br/>📍 Why: Teacher dashboard<br/>🔧 Returns: Class average, completion"]
+            SpendCoins["spend-coins.js<br/>🟡 UNTESTED<br/>🟡 NEXT: Test coin deduction<br/>👤 Agent: test-agent<br/>📍 Why: Coin store purchases<br/>🔧 Updates: profiles.coins<br/>🔧 Validates: Sufficient balance"]
+            GeminiAPI["gemini-api.js<br/>🟡 UNTESTED<br/>🟡 NEXT: Test AI hint generation<br/>👤 Agent: test-agent<br/>📍 Why: AI-powered hints<br/>🔧 Uses: Gemini API for help<br/>🔧 Context: Lesson standard, problem"]
         end
     end
 

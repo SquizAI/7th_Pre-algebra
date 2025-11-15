@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson Map - 7th Grade Pre-Algebra</title>
+
+    <!-- Meta Tags -->
+    <meta name="description" content="Visual skill tree showing all 87 lessons in 7th Grade Pre-Algebra. Track your progress through the year.">
+    <meta name="keywords" content="lesson map, skill tree, pre-algebra, 7th grade math, progress tracker">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/skill-tree.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+
+    <!-- Supabase Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/env-inject.js"></script>
+    <script src="/js/auth/supabase-client.js"></script>
+</head>
+<body>
+    <!-- Skip to main content -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navigation -->
+    <nav class="main-nav" role="navigation">
+        <div class="nav-container">
+            <a href="/index.html" class="nav-brand">
+                <span class="nav-logo">🎓</span>
+                <span class="nav-title">Equation Quest</span>
+            </a>
+            <div class="nav-links">
+                <a href="/index.html" class="nav-link">Home</a>
+                <a href="/lesson-map.html" class="nav-link active">Lesson Map</a>
+                <a href="/achievements.html" class="nav-link">Achievements</a>
+                <a href="/auth/profile.html" class="nav-link">Profile</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content" class="skill-tree-container">
+        <!-- Header -->
+        <header class="skill-tree-header">
+            <h1 class="skill-tree-title">Your Learning Journey</h1>
+            <p class="skill-tree-subtitle">87 Lessons • 4 Quarters • 10 Units</p>
+
+            <!-- Progress Circle -->
+            <div class="skill-tree-progress">
+                <div class="progress-circle" id="progressCircle" style="--progress: 0" data-progress="0"></div>
+                <div class="progress-text">
+                    <span id="progressCount">0/87</span> Lessons Completed
+                </div>
+            </div>
+        </header>
+
+        <!-- Filters -->
+        <section class="skill-tree-filters" aria-label="Filter lessons">
+            <!-- Quarter Filter -->
+            <div class="filter-group">
+                <label for="quarterFilter" class="filter-label">Quarter</label>
+                <select id="quarterFilter" class="filter-select" aria-label="Filter by quarter">
+                    <option value="all">All Quarters</option>
+                    <option value="Q1">Q1 - Number Sense</option>
+                    <option value="Q2">Q2 - Algebra</option>
+                    <option value="Q3">Q3 - Systems & Functions</option>
+                    <option value="Q4">Q4 - Data & Geometry</option>
+                </select>
+            </div>
+
+            <!-- Unit Filter -->
+            <div class="filter-group">
+                <label for="unitFilter" class="filter-label">Unit</label>
+                <select id="unitFilter" class="filter-select" aria-label="Filter by unit">
+                    <option value="all">All Units</option>
+                </select>
+            </div>
+
+            <!-- Standard Type Filter -->
+            <div class="filter-group">
+                <label for="standardFilter" class="filter-label">Standard Type</label>
+                <select id="standardFilter" class="filter-select" aria-label="Filter by standard type">
+                    <option value="all">All Standards</option>
+                    <option value="NSO">NSO - Number Sense</option>
+                    <option value="AR">AR - Algebraic Reasoning</option>
+                    <option value="F">F - Functions</option>
+                    <option value="GR">GR - Geometric Reasoning</option>
+                    <option value="DP">DP - Data & Probability</option>
+                </select>
+            </div>
+
+            <!-- Status Filter -->
+            <div class="filter-group">
+                <label for="statusFilter" class="filter-label">Status</label>
+                <select id="statusFilter" class="filter-select" aria-label="Filter by completion status">
+                    <option value="all">All Lessons</option>
+                    <option value="not-started">Not Started</option>
+                    <option value="in-progress">In Progress</option>
+                    <option value="completed">Completed</option>
+                </select>
+            </div>
+
+            <!-- Search Box -->
+            <div class="search-box">
+                <label for="lessonSearch" class="filter-label">Search</label>
+                <div style="position: relative;">
+                    <span class="search-icon" aria-hidden="true">🔍</span>
+                    <input
+                        type="text"
+                        id="lessonSearch"
+                        class="search-input"
+                        placeholder="Search lessons..."
+                        aria-label="Search lessons by title or standard"
+                    >
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Actions -->
+        <section class="quick-actions" style="display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
+            <button id="scrollToCurrentBtn" class="btn btn-primary" style="flex: 1; min-width: 200px;">
+                ⭐ Go to Current Lesson
+            </button>
+            <button id="resetFiltersBtn" class="btn btn-secondary" style="flex: 1; min-width: 200px;">
+                🔄 Reset Filters
+            </button>
+        </section>
+
+        <!-- Skill Tree -->
+        <section id="skillTreeContent" class="skill-tree-content" role="region" aria-label="Lesson skill tree">
+            <!-- Content will be dynamically generated -->
+            <div class="loading-spinner" id="loadingSpinner" style="text-align: center; padding: 4rem;">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">⏳</div>
+                <p style="font-size: 1.125rem; color: #6B7280;">Loading your lesson map...</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer" style="text-align: center; padding: 2rem; background: #F9FAFB; margin-top: 4rem;">
+        <p style="color: #6B7280; margin: 0;">
+            &copy; 2025 Equation Quest • 7th Grade Pre-Algebra • Florida B.E.S.T. Standards
+        </p>
+        <p style="color: #9CA3AF; font-size: 0.875rem; margin-top: 0.5rem;">
+            Made with ❤️ for Centner Academy students
+        </p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/js/ui/skill-tree.js"></script>
+    <script src="/js/ui/skill-tree-renderer.js"></script>
+    <script src="/js/ui/lesson-preview.js"></script>
+
+    <!-- Main App Script -->
+    <script>
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', async () => {
+            console.log('🚀 Lesson Map initializing...');
+
+            try {
+                // Initialize Skill Tree (loads from Supabase or JSON fallback)
+                await SkillTree.init();
+
+                // Initialize Renderer
+                SkillTreeRenderer.init('skillTreeContent');
+
+                // Initialize Preview Modal
+                LessonPreview.init();
+
+                // Hide loading spinner
+                const spinner = document.getElementById('loadingSpinner');
+                if (spinner) {
+                    spinner.style.display = 'none';
+                }
+
+                // Check if lessons loaded
+                if (SkillTree.allLessons.length === 0) {
+                    showError('No lessons found. Please check your connection and try again.');
+                    return;
+                }
+
+                // Render initial tree
+                renderTree();
+
+                // Update progress display
+                updateProgress();
+
+                // Populate unit filter
+                populateUnitFilter();
+
+                // Set up event listeners
+                setupEventListeners();
+
+                // Auto-scroll to current lesson after a delay
+                setTimeout(() => {
+                    SkillTreeRenderer.scrollToCurrentLesson();
+                }, 500);
+
+                console.log('✅ Lesson Map ready!');
+            } catch (error) {
+                console.error('❌ Failed to initialize Lesson Map:', error);
+                showError('Failed to load lesson map. Please refresh the page.');
+            }
+        });
+
+        /**
+         * Show error message
+         */
+        function showError(message) {
+            const spinner = document.getElementById('loadingSpinner');
+            if (spinner) {
+                spinner.innerHTML = `
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">⚠️</div>
+                    <p style="font-size: 1.125rem; color: #DC2626;">${message}</p>
+                    <button onclick="location.reload()" class="btn btn-primary" style="margin-top: 1rem;">
+                        Reload Page
+                    </button>
+                `;
+            }
+        }
+
+        /**
+         * Render the skill tree
+         */
+        function renderTree() {
+            const lessons = SkillTree.getFilteredLessons();
+            SkillTreeRenderer.renderSkillTree(lessons);
+
+            // Update result count
+            const totalCount = SkillTree.allLessons.length;
+            const filteredCount = lessons.length;
+
+            if (filteredCount < totalCount) {
+                showFilterMessage(filteredCount, totalCount);
+            }
+        }
+
+        /**
+         * Update progress display
+         */
+        function updateProgress() {
+            const completed = SkillTree.getCompletedCount();
+            const total = SkillTree.allLessons.length;
+            const percentage = SkillTree.getProgressPercentage();
+
+            // Update progress circle
+            const circle = document.getElementById('progressCircle');
+            if (circle) {
+                circle.style.setProperty('--progress', percentage);
+                circle.setAttribute('data-progress', percentage);
+            }
+
+            // Update count
+            const countEl = document.getElementById('progressCount');
+            if (countEl) {
+                countEl.textContent = `${completed}/${total}`;
+            }
+        }
+
+        /**
+         * Populate unit filter dropdown
+         */
+        function populateUnitFilter() {
+            const unitFilter = document.getElementById('unitFilter');
+            if (!unitFilter) return;
+
+            const units = SkillTree.getUnits();
+
+            // Clear existing options except "All Units"
+            unitFilter.innerHTML = '<option value="all">All Units</option>';
+
+            // Add unit options
+            units.forEach(unit => {
+                const option = document.createElement('option');
+                option.value = unit.unitNumber;
+                option.textContent = `Unit ${unit.unitNumber}: ${unit.unitName} (${unit.lessonCount} lessons)`;
+                unitFilter.appendChild(option);
+            });
+        }
+
+        /**
+         * Show filter message
+         */
+        function showFilterMessage(filtered, total) {
+            const existingMsg = document.querySelector('.filter-message');
+            if (existingMsg) {
+                existingMsg.remove();
+            }
+
+            const message = document.createElement('div');
+            message.className = 'filter-message';
+            message.style.cssText = `
+                padding: 1rem 1.5rem;
+                background: #EFF6FF;
+                border-left: 4px solid #3B82F6;
+                border-radius: 8px;
+                margin-bottom: 2rem;
+                color: #1E40AF;
+            `;
+            message.innerHTML = `
+                <strong>Filtered View:</strong> Showing ${filtered} of ${total} lessons
+            `;
+
+            const content = document.getElementById('skillTreeContent');
+            if (content && content.firstChild) {
+                content.insertBefore(message, content.firstChild);
+            }
+        }
+
+        /**
+         * Set up event listeners
+         */
+        function setupEventListeners() {
+            // Quarter filter
+            const quarterFilter = document.getElementById('quarterFilter');
+            if (quarterFilter) {
+                quarterFilter.addEventListener('change', (e) => {
+                    SkillTree.filterByQuarter(e.target.value);
+                    renderTree();
+                });
+            }
+
+            // Unit filter
+            const unitFilter = document.getElementById('unitFilter');
+            if (unitFilter) {
+                unitFilter.addEventListener('change', (e) => {
+                    const value = e.target.value === 'all' ? 'all' : parseInt(e.target.value);
+                    SkillTree.filterByUnit(value);
+                    renderTree();
+                });
+            }
+
+            // Standard filter
+            const standardFilter = document.getElementById('standardFilter');
+            if (standardFilter) {
+                standardFilter.addEventListener('change', (e) => {
+                    SkillTree.filterByStandard(e.target.value);
+                    renderTree();
+                });
+            }
+
+            // Status filter
+            const statusFilter = document.getElementById('statusFilter');
+            if (statusFilter) {
+                statusFilter.addEventListener('change', (e) => {
+                    SkillTree.filterByStatus(e.target.value);
+                    renderTree();
+                });
+            }
+
+            // Search
+            const searchInput = document.getElementById('lessonSearch');
+            if (searchInput) {
+                let searchTimeout;
+                searchInput.addEventListener('input', (e) => {
+                    clearTimeout(searchTimeout);
+                    searchTimeout = setTimeout(() => {
+                        handleSearch(e.target.value);
+                    }, 300);
+                });
+            }
+
+            // Scroll to current button
+            const scrollBtn = document.getElementById('scrollToCurrentBtn');
+            if (scrollBtn) {
+                scrollBtn.addEventListener('click', () => {
+                    SkillTreeRenderer.scrollToCurrentLesson();
+                });
+            }
+
+            // Reset filters button
+            const resetBtn = document.getElementById('resetFiltersBtn');
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                    resetFilters();
+                });
+            }
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'c' && (e.ctrlKey || e.metaKey)) {
+                    e.preventDefault();
+                    SkillTreeRenderer.scrollToCurrentLesson();
+                }
+            });
+        }
+
+        /**
+         * Handle search
+         */
+        function handleSearch(keyword) {
+            if (!keyword.trim()) {
+                renderTree();
+                return;
+            }
+
+            const results = SkillTree.searchLessons(keyword);
+            SkillTreeRenderer.renderSkillTree(results);
+
+            if (results.length === 0) {
+                showNoResults(keyword);
+            } else {
+                showFilterMessage(results.length, SkillTree.allLessons.length);
+            }
+        }
+
+        /**
+         * Show no results message
+         */
+        function showNoResults(keyword) {
+            const content = document.getElementById('skillTreeContent');
+            if (!content) return;
+
+            content.innerHTML = `
+                <div style="text-align: center; padding: 4rem; color: #6B7280;">
+                    <div style="font-size: 4rem; margin-bottom: 1rem;">🔍</div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">No lessons found</h3>
+                    <p>No lessons match "${keyword}"</p>
+                    <button onclick="resetFilters()" class="btn btn-primary" style="margin-top: 2rem;">
+                        Clear Search
+                    </button>
+                </div>
+            `;
+        }
+
+        /**
+         * Reset all filters
+         */
+        function resetFilters() {
+            // Reset filter objects
+            SkillTree.filters = {
+                quarter: 'all',
+                unit: 'all',
+                standard: 'all',
+                status: 'all'
+            };
+
+            // Reset UI
+            const quarterFilter = document.getElementById('quarterFilter');
+            const unitFilter = document.getElementById('unitFilter');
+            const standardFilter = document.getElementById('standardFilter');
+            const statusFilter = document.getElementById('statusFilter');
+            const searchInput = document.getElementById('lessonSearch');
+
+            if (quarterFilter) quarterFilter.value = 'all';
+            if (unitFilter) unitFilter.value = 'all';
+            if (standardFilter) standardFilter.value = 'all';
+            if (statusFilter) statusFilter.value = 'all';
+            if (searchInput) searchInput.value = '';
+
+            // Re-render
+            renderTree();
+
+            // Remove filter message
+            const filterMsg = document.querySelector('.filter-message');
+            if (filterMsg) {
+                filterMsg.remove();
+            }
+        }
+    </script>
+</body>
+</html>

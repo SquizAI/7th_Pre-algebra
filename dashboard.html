@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard - Equation Quest</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+    <!-- Supabase SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>Equation Quest</h1>
+                    <p class="subtitle">Student Dashboard</p>
+                </div>
+                <div class="header-actions">
+                    <a href="index.html" class="btn btn-md btn-ghost">Back to Lessons</a>
+                    <button id="signOutBtn" class="btn btn-md btn-ghost">Sign Out</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+                <div class="welcome-content">
+                    <h2 id="welcomeMessage">Welcome back, Student!</h2>
+                    <div class="level-badge-container">
+                        <div class="level-badge">
+                            <span class="level-icon">⭐</span>
+                            <div class="level-info">
+                                <span class="level-label">Level</span>
+                                <span class="level-number" id="studentLevel">1</span>
+                            </div>
+                        </div>
+                        <div class="xp-bar-container">
+                            <div class="xp-label">
+                                <span>XP Progress</span>
+                                <span id="xpText">0 / 100 XP</span>
+                            </div>
+                            <div class="xp-bar">
+                                <div class="xp-fill" id="xpFill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="coins-display">
+                            <span class="coins-icon">🪙</span>
+                            <span class="coins-amount" id="coinsAmount">0</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stats Cards -->
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">📚</div>
+                    <div class="stat-content">
+                        <div class="stat-label">Lessons Completed</div>
+                        <div class="stat-value" id="lessonsCompleted">0 / 87</div>
+                        <div class="stat-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="lessonProgress" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card streak-card">
+                    <div class="stat-icon">🔥</div>
+                    <div class="stat-content">
+                        <div class="stat-label">Current Streak</div>
+                        <div class="stat-value" id="currentStreak">0 days</div>
+                        <div class="stat-subtext" id="streakMessage">Complete today's lesson to continue!</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">⚡</div>
+                    <div class="stat-content">
+                        <div class="stat-label">Total XP</div>
+                        <div class="stat-value" id="totalXP">0</div>
+                        <div class="stat-subtext">Keep earning to level up!</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">🏆</div>
+                    <div class="stat-content">
+                        <div class="stat-label">Achievements</div>
+                        <div class="stat-value" id="achievementsCount">0 / 44</div>
+                        <a href="achievements.html" class="stat-link">View All →</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Progress by Quarter -->
+            <section class="section">
+                <div class="section-header">
+                    <h3>Progress by Quarter</h3>
+                    <div class="section-info">Track your completion across all four quarters</div>
+                </div>
+                <div class="quarter-progress-grid">
+                    <div class="quarter-card" data-quarter="Q1">
+                        <div class="quarter-header">
+                            <span class="quarter-icon">🏰</span>
+                            <div class="quarter-info">
+                                <div class="quarter-name">Quarter 1</div>
+                                <div class="quarter-dates">Aug - Oct</div>
+                            </div>
+                        </div>
+                        <div class="quarter-stats">
+                            <div class="quarter-progress-text" id="q1Progress">0 / 22 lessons</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="q1ProgressBar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quarter-card" data-quarter="Q2">
+                        <div class="quarter-header">
+                            <span class="quarter-icon">🌲</span>
+                            <div class="quarter-info">
+                                <div class="quarter-name">Quarter 2</div>
+                                <div class="quarter-dates">Nov - Jan</div>
+                            </div>
+                        </div>
+                        <div class="quarter-stats">
+                            <div class="quarter-progress-text" id="q2Progress">0 / 22 lessons</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="q2ProgressBar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quarter-card" data-quarter="Q3">
+                        <div class="quarter-header">
+                            <span class="quarter-icon">⛰️</span>
+                            <div class="quarter-info">
+                                <div class="quarter-name">Quarter 3</div>
+                                <div class="quarter-dates">Jan - Mar</div>
+                            </div>
+                        </div>
+                        <div class="quarter-stats">
+                            <div class="quarter-progress-text" id="q3Progress">0 / 22 lessons</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="q3ProgressBar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quarter-card" data-quarter="Q4">
+                        <div class="quarter-header">
+                            <span class="quarter-icon">🌊</span>
+                            <div class="quarter-info">
+                                <div class="quarter-name">Quarter 4</div>
+                                <div class="quarter-dates">Apr - May</div>
+                            </div>
+                        </div>
+                        <div class="quarter-stats">
+                            <div class="quarter-progress-text" id="q4Progress">0 / 21 lessons</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="q4ProgressBar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Charts Row -->
+            <div class="charts-row">
+                <!-- Progress Chart -->
+                <section class="section chart-section">
+                    <div class="section-header">
+                        <h3>Progress Over Time</h3>
+                        <select id="chartPeriodSelect" class="period-select">
+                            <option value="7">Last 7 days</option>
+                            <option value="30" selected>Last 30 days</option>
+                            <option value="90">Last 90 days</option>
+                            <option value="all">All time</option>
+                        </select>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="progressChart"></canvas>
+                    </div>
+                </section>
+
+                <!-- Study Time Chart -->
+                <section class="section chart-section">
+                    <div class="section-header">
+                        <h3>Study Time</h3>
+                        <div class="section-info">Hours per week</div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="studyTimeChart"></canvas>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Recent Activity & Upcoming -->
+            <div class="activity-row">
+                <!-- Recent Activity -->
+                <section class="section activity-section">
+                    <div class="section-header">
+                        <h3>Recent Activity</h3>
+                        <button id="refreshActivity" class="btn-icon-sm" title="Refresh">↻</button>
+                    </div>
+                    <div class="activity-feed" id="activityFeed">
+                        <div class="loading-state">
+                            <div class="spinner"></div>
+                            <p>Loading activity...</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Upcoming Lessons -->
+                <section class="section upcoming-section">
+                    <div class="section-header">
+                        <h3>Upcoming Lessons</h3>
+                        <div class="section-info">Next on your schedule</div>
+                    </div>
+                    <div class="upcoming-list" id="upcomingList">
+                        <div class="loading-state">
+                            <div class="spinner"></div>
+                            <p>Loading lessons...</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Achievement Showcase -->
+            <section class="section showcase-section">
+                <div class="section-header">
+                    <h3>Recent Achievements</h3>
+                    <a href="achievements.html" class="view-all-link">View All →</a>
+                </div>
+                <div class="achievements-showcase" id="achievementsShowcase">
+                    <div class="loading-state">
+                        <div class="spinner"></div>
+                        <p>Loading achievements...</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Insights Section -->
+            <section class="section insights-section">
+                <div class="section-header">
+                    <h3>Your Insights</h3>
+                    <div class="section-info">Personalized feedback based on your progress</div>
+                </div>
+                <div class="insights-grid" id="insightsGrid">
+                    <!-- Dynamically populated -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="dashboard-footer">
+            <p>Last updated: <span id="lastUpdated">Just now</span></p>
+            <button id="exportBtn" class="btn btn-sm btn-ghost">📊 Export Progress Report</button>
+        </footer>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-content">
+            <div class="spinner-large"></div>
+            <p>Loading your dashboard...</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="env-inject.js"></script>
+    <script src="js/auth/supabase-client.js"></script>
+    <script src="js/auth/auth-manager.js"></script>
+    <script src="js/utils/analytics.js"></script>
+    <script src="js/ui/charts.js"></script>
+    <script src="js/ui/dashboard.js"></script>
+
+    <script>
+        // Initialize dashboard when ready
+        (async function() {
+            // Wait for auth manager
+            let attempts = 0;
+            while (!window.authManager && attempts < 50) {
+                await new Promise(resolve => setTimeout(resolve, 100));
+                attempts++;
+            }
+
+            if (!window.authManager) {
+                console.error('Auth manager not available');
+                window.location.href = 'auth/login.html';
+                return;
+            }
+
+            // Check authentication
+            const user = window.authManager.getCurrentUser();
+            if (!user) {
+                window.location.href = 'auth/login.html';
+                return;
+            }
+
+            // Initialize dashboard
+            if (window.Dashboard) {
+                await window.Dashboard.init(user.id);
+            }
+
+            // Sign out handler
+            document.getElementById('signOutBtn')?.addEventListener('click', async () => {
+                const result = await window.authManager.signOut();
+                if (result.success) {
+                    window.location.href = 'auth/login.html';
+                }
+            });
+
+            // Auto-refresh every 60 seconds
+            setInterval(() => {
+                if (window.Dashboard) {
+                    window.Dashboard.refresh();
+                }
+            }, 60000);
+        })();
+    </script>
+</body>
+</html>

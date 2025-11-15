@@ -1,6 +1,6 @@
 [build]
   publish = "."
-  command = "echo '// No client-side API key needed - use serverless function' > env-inject.js"
+  command = "node build.js"
   functions = "functions"
 
 [[headers]]
