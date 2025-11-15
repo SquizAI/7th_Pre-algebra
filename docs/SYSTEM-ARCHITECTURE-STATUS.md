@@ -9,6 +9,32 @@
 
 ---
 
+## 🚨 ARCHITECTURE REFACTOR PLANNED
+
+**Status**: 🔴 Current architecture unsustainable - full refactor approved
+**Plan**: [REFACTOR-PLAN.md](REFACTOR-PLAN.md) - Ground-up rebuild with React + TypeScript
+**Roadmap**: [REFACTOR-ROADMAP.md](REFACTOR-ROADMAP.md) - 12-week phased migration
+**Timeline**: 8-12 weeks to complete migration
+**Approach**: Dual-run (keep old app working while building new)
+
+**Key Issues**:
+- No module system (36 script tags)
+- CSS import order fragile (84KB legacy file)
+- 1,300-line monolithic game.js
+- Zero test coverage
+- No TypeScript
+
+**New Stack**:
+- React 18 + TypeScript
+- Vite (build tool)
+- Zustand (state management)
+- Tailwind CSS (styling)
+- Vitest + Playwright (testing)
+
+See refactor plan for complete details.
+
+---
+
 ```mermaid
 graph TB
     %% USER ENTRY POINTS

@@ -33,6 +33,11 @@ This directory contains curriculum planning files for **8th Grade Pre-Algebra** 
 - [SYSTEM-ARCHITECTURE-STATUS.md](SYSTEM-ARCHITECTURE-STATUS.md) - **Current system status with Mermaid flowchart**
 - [DOCUMENTATION-GUIDE.md](DOCUMENTATION-GUIDE.md) - Documentation management and archival guide
 
+### 🔨 Architecture Refactor
+- [REFACTOR-PLAN.md](REFACTOR-PLAN.md) - **Complete ground-up rebuild plan (React + TypeScript)**
+- [REFACTOR-ROADMAP.md](REFACTOR-ROADMAP.md) - Visual timeline and phase breakdown
+- [architecture/](architecture/) - Detailed component-level architecture docs
+
 ### 🔐 Authentication System
 - [AUTH_README.md](AUTH_README.md) - Authentication system overview
 - [AUTH_QUICK_START.md](AUTH_QUICK_START.md) - Quick start guide
