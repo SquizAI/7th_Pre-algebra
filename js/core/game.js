@@ -36,8 +36,8 @@ class GameController {
         // Start auto-save
         this.startAutoSave();
 
-        // Check for in-progress level
-        this.checkResumeLevel();
+        // NOTE: Removed checkResumeLevel() from init to prevent dialog on page load
+        // Resume dialog will show when user clicks "Start Story Mode"
     }
 
     setupEventListeners() {
@@ -131,6 +131,12 @@ class GameController {
 
     // Start story mode
     startStoryMode() {
+        // Check if user has in-progress level and offer to resume
+        if (this.hasInProgressLevel && this.inProgressData) {
+            this.checkResumeLevel();
+            return; // Resume dialog will handle next steps
+        }
+
         // DON'T show game screen yet - let loadLevel() decide which screen to show
         // (concept intro → video → game OR directly to game if concept learned)
         console.log('Starting story mode, current level:', this.currentLevel);
@@ -949,8 +955,25 @@ class GameController {
     }
 
     // XP and leveling
-    addXP(amount) {
-        this.playerXP += amount;
+    addXP(amount, options = {}) {
+        let totalXP = amount;
+
+        // Add streak bonus if available
+        if (options.includeStreakBonus && window.StreakTracker) {
+            const status = window.StreakTracker.getStreakStatus();
+            if (status.currentStreak > 0) {
+                // Calculate streak bonus: 5% per day up to 50% at 10+ days
+                const bonusPercent = Math.min(status.currentStreak * 5, 50);
+                const streakBonus = Math.floor(amount * (bonusPercent / 100));
+                totalXP += streakBonus;
+
+                if (streakBonus > 0) {
+                    console.log(`🔥 Streak bonus: +${streakBonus} XP (${bonusPercent}% from ${status.currentStreak}-day streak)`);
+                }
+            }
+        }
+
+        this.playerXP += totalXP;
 
         // Check for level up
         const xpNeeded = this.playerLevel * 100;
@@ -962,6 +985,8 @@ class GameController {
 
         this.updatePlayerStats();
         this.saveProgress();
+
+        return totalXP; // Return actual XP earned (with bonuses)
     }
 
     addCoins(amount) {
@@ -1161,10 +1186,12 @@ class GameController {
                 // Resume the level
                 this.resumeLevel(this.inProgressData);
             } else {
-                // Clear in-progress data
+                // Clear in-progress data and start fresh
                 this.hasInProgressLevel = false;
                 this.inProgressData = null;
                 this.saveProgress();
+                // Load current level from beginning
+                this.loadLevel(this.currentLevel);
             }
         }
     }
