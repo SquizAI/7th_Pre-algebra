@@ -94,24 +94,105 @@ Please provide helpful, age-appropriate guidance for a 7th-grade student. Focus 
     // Parse and return response
     const data = await response.json();
 
-    // Log response structure for debugging
-    console.log('Gemini API Response:', JSON.stringify(data, null, 2));
+    // Comprehensive logging for debugging
+    console.log('Gemini API Full Response:', JSON.stringify(data, null, 2));
 
-    // Extract the text response
-    const aiResponse = data?.candidates?.[0]?.content?.parts?.[0]?.text || 'No response generated';
+    // Check for safety blocks
+    if (data.promptFeedback?.blockReason) {
+      console.error('Content blocked by safety filters:', data.promptFeedback.blockReason);
+      return {
+        statusCode: 400,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': 'Content-Type'
+        },
+        body: JSON.stringify({
+          error: 'Content blocked by safety filters',
+          reason: data.promptFeedback.blockReason,
+          safetyRatings: data.promptFeedback.safetyRatings
+        })
+      };
+    }
 
-    console.log('Extracted AI Response:', aiResponse);
+    // Check if candidates exist
+    if (!data.candidates || data.candidates.length === 0) {
+      console.error('No candidates in response');
+      console.log('Full response data:', data);
+      return {
+        statusCode: 500,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': 'Content-Type'
+        },
+        body: JSON.stringify({
+          error: 'No response candidates generated',
+          details: 'The AI did not generate any response candidates',
+          responseData: data
+        })
+      };
+    }
 
+    // Check finish reason
+    const finishReason = data.candidates[0].finishReason;
+    console.log('Finish reason:', finishReason);
+
+    if (finishReason && finishReason !== 'STOP') {
+      console.warn('Unexpected finish reason:', finishReason);
+
+      // Handle different finish reasons
+      if (finishReason === 'SAFETY') {
+        return {
+          statusCode: 400,
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers': 'Content-Type'
+          },
+          body: JSON.stringify({
+            error: 'Response blocked by safety filters',
+            finishReason: finishReason,
+            safetyRatings: data.candidates[0].safetyRatings
+          })
+        };
+      }
+    }
+
+    // Extract text
+    const aiResponse = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+    console.log('Extracted text:', aiResponse);
+
+    if (!aiResponse) {
+      console.error('No text found in response parts');
+      console.log('Candidate structure:', JSON.stringify(data.candidates[0], null, 2));
+      return {
+        statusCode: 500,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': 'Content-Type'
+        },
+        body: JSON.stringify({
+          error: 'No text in response',
+          finishReason: finishReason,
+          candidateData: data.candidates[0]
+        })
+      };
+    }
+
+    // Success response
     return {
       statusCode: 200,
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*', // Adjust in production if needed
+        'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Headers': 'Content-Type'
       },
       body: JSON.stringify({
         success: true,
         response: aiResponse,
+        finishReason: finishReason,
         timestamp: new Date().toISOString()
       })
     };
