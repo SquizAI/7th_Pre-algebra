@@ -71,7 +71,7 @@ Please provide helpful, age-appropriate guidance for a 7th-grade student. Focus 
         }],
         generationConfig: {
           temperature: 0.7,
-          maxOutputTokens: 1024,
+          maxOutputTokens: 8192,  // Increased from 1024 to allow full responses
           topP: 0.8,
           topK: 40
         }
@@ -154,6 +154,21 @@ Please provide helpful, age-appropriate guidance for a 7th-grade student. Focus 
             error: 'Response blocked by safety filters',
             finishReason: finishReason,
             safetyRatings: data.candidates[0].safetyRatings
+          })
+        };
+      } else if (finishReason === 'MAX_TOKENS') {
+        console.error('Response truncated: hit max token limit');
+        return {
+          statusCode: 500,
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers': 'Content-Type'
+          },
+          body: JSON.stringify({
+            error: 'Response truncated due to token limit',
+            finishReason: finishReason,
+            details: 'The AI response was too long. Try asking a more specific question.'
           })
         };
       }
