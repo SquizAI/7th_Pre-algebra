@@ -108,14 +108,14 @@ graph TB
     %% ROUTING & NAVIGATION
     subgraph Routing["🔀 Routing & Navigation"]
         direction LR
-        Route1[/ → index.html<br/>🟢 WORKS]
-        Route2[/auth/login → login.html<br/>🟢 WORKS]
-        Route3[/auth/signup → signup.html<br/>🟢 WORKS]
-        Route4[/lesson-map → lesson-map.html<br/>🟢 WORKS]
-        Route5[/lesson-player → lesson-player.html<br/>🟢 Resume Bug Fixed]
-        Route6[/dashboard → dashboard.html<br/>🟡 UNTESTED]
-        Route7[/achievements → achievements.html<br/>🟡 UNTESTED]
-        Route8[/api/* → Netlify Functions<br/>🟢 WORKS]
+        Route1["/ to index.html<br/>🟢 WORKS"]
+        Route2["/auth/login to login.html<br/>🟢 WORKS"]
+        Route3["/auth/signup to signup.html<br/>🟢 WORKS"]
+        Route4["/lesson-map to lesson-map.html<br/>🟢 WORKS"]
+        Route5["/lesson-player to lesson-player.html<br/>🟢 Resume Bug Fixed"]
+        Route6["/dashboard to dashboard.html<br/>🟡 UNTESTED"]
+        Route7["/achievements to achievements.html<br/>🟡 UNTESTED"]
+        Route8["/api/* to Netlify Functions<br/>🟢 WORKS"]
     end
 
     %% BUILD & DEPLOYMENT
@@ -253,7 +253,15 @@ graph TB
 4. ✅ **Deployed** - https://7th-grade-pre-algebra.netlify.app
 5. ⏳ Remove inline styles from all pages (Pending)
 
-### **Phase 2: Critical Testing (This Week)**
+### **Phase 2: Documentation & Organization (COMPLETED ✅)**
+
+1. ✅ **Documentation System** - [docs/DOCUMENTATION-GUIDE.md](DOCUMENTATION-GUIDE.md) - Complete archival guide
+2. ✅ **Archive Script** - [scripts/docs-archive.sh](../scripts/docs-archive.sh) - Automated archival tool
+3. ✅ **Docs Cleanup** - Archived 4 old deployment reports to [docs/archive/2025-11/](archive/2025-11/)
+4. ✅ **Docs Index** - Updated [docs/README.md](README.md) with organized documentation index
+5. ✅ **Mermaid Syntax Fix** - Fixed routing arrows that caused render errors
+
+### **Phase 3: Critical Testing (This Week)**
 
 1. ⏳ Test all backend functions
 2. ⏳ Test dashboard page
@@ -261,7 +269,7 @@ graph TB
 4. ⏳ Test profile page
 5. ⏳ Full end-to-end lesson completion flow
 
-### **Phase 3: CSS Refactoring (Next Week)**
+### **Phase 4: CSS Refactoring (Next Week)**
 
 1. ⏳ Migrate styles.css to atomic design
 2. ⏳ Remove duplicate components
