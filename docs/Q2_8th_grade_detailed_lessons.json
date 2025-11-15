@@ -1,0 +1,667 @@
+{
+  "quarter": "Q2",
+  "date_range": "November 12, 2024 - January 30, 2025",
+  "grade_level": "8th Grade",
+  "total_lessons": 25,
+  "units": [
+    {
+      "unit_number": 2,
+      "unit_name": "Algebraic Expressions",
+      "standard_family": "MA.8.AR.1",
+      "lessons": [
+        {
+          "lesson_number": 20,
+          "b_day_date": "2024-11-12",
+          "title": "Laws of Exponents - Product Rule",
+          "standard": "MA.8.AR.1.1",
+          "standard_details": {
+            "code": "MA.8.AR.1.1",
+            "text": "Apply the Laws of Exponents to generate equivalent algebraic expressions, limited to integer exponents and monomial bases.",
+            "focus": "Product Rule: x^a · x^b = x^(a+b)",
+            "example_problems": [
+              "x^3 · x^5",
+              "2y^4 · 3y^2",
+              "a^2 · a^(-3)"
+            ]
+          },
+          "objectives": [
+            "Apply product rule with same base",
+            "Simplify expressions with integer exponents",
+            "Work with negative exponents"
+          ],
+          "vocabulary": ["exponent", "base", "product rule", "integer exponent"],
+          "difficulty": "medium",
+          "prior_knowledge": ["Understanding of exponents", "Multiplication of variables"]
+        },
+        {
+          "lesson_number": 21,
+          "b_day_date": "2024-11-14",
+          "title": "Laws of Exponents - Quotient Rule",
+          "standard": "MA.8.AR.1.1",
+          "standard_details": {
+            "code": "MA.8.AR.1.1",
+            "text": "Apply the Laws of Exponents to generate equivalent algebraic expressions, limited to integer exponents and monomial bases.",
+            "focus": "Quotient Rule: x^a ÷ x^b = x^(a-b)",
+            "example_problems": [
+              "x^7 ÷ x^3",
+              "12y^5 ÷ 3y^2",
+              "a^2 ÷ a^5"
+            ]
+          },
+          "objectives": [
+            "Apply quotient rule with same base",
+            "Understand zero exponents",
+            "Generate negative exponents from division"
+          ],
+          "vocabulary": ["quotient rule", "zero exponent", "negative exponent"],
+          "difficulty": "medium",
+          "prior_knowledge": ["Product rule", "Division of variables"]
+        },
+        {
+          "lesson_number": 22,
+          "b_day_date": "2024-11-18",
+          "title": "Laws of Exponents - Power Rule",
+          "standard": "MA.8.AR.1.1",
+          "standard_details": {
+            "code": "MA.8.AR.1.1",
+            "text": "Apply the Laws of Exponents to generate equivalent algebraic expressions, limited to integer exponents and monomial bases.",
+            "focus": "Power Rule: (x^a)^b = x^(ab)",
+            "example_problems": [
+              "(x^3)^4",
+              "(2y^2)^3",
+              "(a^-2)^5"
+            ]
+          },
+          "objectives": [
+            "Apply power to a power rule",
+            "Simplify power of a product",
+            "Combine multiple exponent rules"
+          ],
+          "vocabulary": ["power rule", "power of a power", "power of a product"],
+          "difficulty": "medium",
+          "prior_knowledge": ["Product rule", "Quotient rule"]
+        },
+        {
+          "lesson_number": 23,
+          "b_day_date": "2024-11-20",
+          "title": "Combining Exponent Laws",
+          "standard": "MA.8.AR.1.1",
+          "standard_details": {
+            "code": "MA.8.AR.1.1",
+            "text": "Apply the Laws of Exponents to generate equivalent algebraic expressions, limited to integer exponents and monomial bases.",
+            "focus": "Using multiple exponent laws in one expression",
+            "example_problems": [
+              "(2x^3)^2 · x^4",
+              "15y^8 ÷ (3y^2)^3",
+              "(a^2b^3)^2 ÷ (ab)^4"
+            ]
+          },
+          "objectives": [
+            "Apply multiple exponent laws in sequence",
+            "Simplify complex monomial expressions",
+            "Choose appropriate exponent rules"
+          ],
+          "vocabulary": ["equivalent expressions", "simplify", "monomial"],
+          "difficulty": "hard",
+          "prior_knowledge": ["All exponent laws"]
+        },
+        {
+          "lesson_number": 24,
+          "b_day_date": "2024-11-22",
+          "title": "Multiplying Monomials and Binomials",
+          "standard": "MA.8.AR.1.2",
+          "standard_details": {
+            "code": "MA.8.AR.1.2",
+            "text": "Apply properties of operations to multiply two linear expressions with rational coefficients.",
+            "focus": "Distributive property: a(bx + c)",
+            "example_problems": [
+              "3(2x + 5)",
+              "-4(x - 7)",
+              "0.5(6x + 10)"
+            ]
+          },
+          "objectives": [
+            "Apply distributive property to multiply monomial by binomial",
+            "Work with rational coefficients",
+            "Simplify resulting expressions"
+          ],
+          "vocabulary": ["distributive property", "monomial", "binomial", "coefficient"],
+          "difficulty": "medium",
+          "prior_knowledge": ["Order of operations", "Integer operations"]
+        },
+        {
+          "lesson_number": 25,
+          "b_day_date": "2024-11-26",
+          "title": "Multiplying Binomials - FOIL Method",
+          "standard": "MA.8.AR.1.2",
+          "standard_details": {
+            "code": "MA.8.AR.1.2",
+            "text": "Apply properties of operations to multiply two linear expressions with rational coefficients.",
+            "focus": "FOIL: (ax + b)(cx + d)",
+            "example_problems": [
+              "(x + 3)(x + 5)",
+              "(2x - 4)(x + 7)",
+              "(3x + 1)(2x - 5)"
+            ]
+          },
+          "objectives": [
+            "Apply FOIL method to multiply binomials",
+            "Combine like terms in products",
+            "Work with positive and negative terms"
+          ],
+          "vocabulary": ["FOIL", "First", "Outer", "Inner", "Last", "like terms"],
+          "difficulty": "hard",
+          "prior_knowledge": ["Distributive property", "Combining like terms"]
+        },
+        {
+          "lesson_number": 26,
+          "b_day_date": "2024-12-02",
+          "title": "Factoring - Greatest Common Factor",
+          "standard": "MA.8.AR.1.3",
+          "standard_details": {
+            "code": "MA.8.AR.1.3",
+            "text": "Rewrite the sum of two algebraic expressions having a common monomial factor as a common factor multiplied by the sum of two algebraic expressions.",
+            "focus": "Finding GCF and factoring: ab + ac = a(b + c)",
+            "example_problems": [
+              "6x + 9",
+              "4x² + 8x",
+              "12y³ - 18y²"
+            ]
+          },
+          "objectives": [
+            "Identify greatest common factor of terms",
+            "Factor out common monomial",
+            "Verify factoring by multiplying"
+          ],
+          "vocabulary": ["factor", "greatest common factor", "GCF", "factored form"],
+          "difficulty": "medium",
+          "prior_knowledge": ["GCF of numbers", "Distributive property"]
+        },
+        {
+          "lesson_number": 27,
+          "b_day_date": "2024-12-04",
+          "title": "Factoring with Variables and Coefficients",
+          "standard": "MA.8.AR.1.3",
+          "standard_details": {
+            "code": "MA.8.AR.1.3",
+            "text": "Rewrite the sum of two algebraic expressions having a common monomial factor as a common factor multiplied by the sum of two algebraic expressions.",
+            "focus": "Factoring complex monomials from sums",
+            "example_problems": [
+              "15x²y + 20xy²",
+              "8a³b - 12a²b²",
+              "24m³n² + 36m²n³"
+            ]
+          },
+          "objectives": [
+            "Factor multi-variable expressions",
+            "Determine GCF with multiple variables",
+            "Apply to real-world area problems"
+          ],
+          "vocabulary": ["common monomial factor", "multi-variable", "factored completely"],
+          "difficulty": "hard",
+          "prior_knowledge": ["GCF with variables", "Exponent laws"]
+        }
+      ]
+    },
+    {
+      "unit_number": 3,
+      "unit_name": "Equations and Inequalities",
+      "standard_family": "MA.8.AR.2",
+      "lessons": [
+        {
+          "lesson_number": 28,
+          "b_day_date": "2024-12-06",
+          "title": "Multi-Step Equations - Combining Like Terms",
+          "standard": "MA.8.AR.2.1",
+          "standard_details": {
+            "code": "MA.8.AR.2.1",
+            "text": "Solve multi-step linear equations in one variable, with rational number coefficients. Include equations with variables on both sides.",
+            "focus": "Simplify before solving: 3x + 5x - 7 = 17",
+            "example_problems": [
+              "2x + 3x + 8 = 23",
+              "7y - 2y + 11 = 26",
+              "4a + 9 - a = 21"
+            ]
+          },
+          "objectives": [
+            "Combine like terms on same side",
+            "Use inverse operations to solve",
+            "Work with rational coefficients"
+          ],
+          "vocabulary": ["like terms", "coefficient", "variable", "constant"],
+          "difficulty": "medium",
+          "prior_knowledge": ["Two-step equations", "Combining like terms"]
+        },
+        {
+          "lesson_number": 29,
+          "b_day_date": "2024-12-10",
+          "title": "Multi-Step Equations - Using Distributive Property",
+          "standard": "MA.8.AR.2.1",
+          "standard_details": {
+            "code": "MA.8.AR.2.1",
+            "text": "Solve multi-step linear equations in one variable, with rational number coefficients. Include equations with variables on both sides.",
+            "focus": "Distribute first: 3(x + 4) = 21",
+            "example_problems": [
+              "2(x + 5) = 18",
+              "4(y - 3) = 20",
+              "-3(2a + 1) = 15"
+            ]
+          },
+          "objectives": [
+            "Apply distributive property before solving",
+            "Handle negative coefficients",
+            "Combine distribution with multi-step solving"
+          ],
+          "vocabulary": ["distributive property", "expand", "simplify"],
+          "difficulty": "medium",
+          "prior_knowledge": ["Distributive property", "Multi-step equations"]
+        },
+        {
+          "lesson_number": 30,
+          "b_day_date": "2024-12-12",
+          "title": "Equations with Variables on Both Sides - Basic",
+          "standard": "MA.8.AR.2.1",
+          "standard_details": {
+            "code": "MA.8.AR.2.1",
+            "text": "Solve multi-step linear equations in one variable, with rational number coefficients. Include equations with variables on both sides.",
+            "focus": "Collecting variables on one side: 5x + 3 = 2x + 12",
+            "example_problems": [
+              "3x + 7 = x + 15",
+              "5y - 4 = 2y + 11",
+              "4a + 9 = a + 24"
+            ]
+          },
+          "objectives": [
+            "Move variable terms to one side",
+            "Move constant terms to other side",
+            "Solve systematically"
+          ],
+          "vocabulary": ["variables on both sides", "isolate", "collect terms"],
+          "difficulty": "hard",
+          "prior_knowledge": ["Multi-step equations", "Inverse operations"]
+        },
+        {
+          "lesson_number": 31,
+          "b_day_date": "2024-12-16",
+          "title": "Equations with Variables on Both Sides - Complex",
+          "standard": "MA.8.AR.2.1",
+          "standard_details": {
+            "code": "MA.8.AR.2.1",
+            "text": "Solve multi-step linear equations in one variable, with rational number coefficients. Include equations with variables on both sides.",
+            "focus": "Combining multiple skills: 2(x + 3) = 4x - 8",
+            "example_problems": [
+              "3(x - 2) = 2x + 5",
+              "4(2y + 1) = 5y + 10",
+              "2(3a - 4) = 4(a + 1)"
+            ]
+          },
+          "objectives": [
+            "Distribute on one or both sides",
+            "Combine like terms",
+            "Collect variables and solve"
+          ],
+          "vocabulary": ["multi-step", "simplify both sides", "systematic approach"],
+          "difficulty": "hard",
+          "prior_knowledge": ["Distributive property", "Variables on both sides"]
+        },
+        {
+          "lesson_number": 32,
+          "b_day_date": "2024-12-18",
+          "title": "Equations with Rational Coefficients",
+          "standard": "MA.8.AR.2.1",
+          "standard_details": {
+            "code": "MA.8.AR.2.1",
+            "text": "Solve multi-step linear equations in one variable, with rational number coefficients. Include equations with variables on both sides.",
+            "focus": "Fractions and decimals: 0.5x + 3 = 1.5x - 2",
+            "example_problems": [
+              "(1/2)x + 4 = (3/4)x + 1",
+              "0.3y - 2 = 0.7y + 6",
+              "(2/3)a + 5 = (1/6)a - 1"
+            ]
+          },
+          "objectives": [
+            "Work with decimal coefficients",
+            "Work with fraction coefficients",
+            "Clear fractions by multiplying"
+          ],
+          "vocabulary": ["rational coefficients", "decimal", "fraction", "clear fractions"],
+          "difficulty": "hard",
+          "prior_knowledge": ["Operations with fractions", "Operations with decimals"]
+        },
+        {
+          "lesson_number": 33,
+          "b_day_date": "2024-12-20",
+          "title": "Special Cases - No Solution and Infinite Solutions",
+          "standard": "MA.8.AR.2.1",
+          "standard_details": {
+            "code": "MA.8.AR.2.1",
+            "text": "Solve multi-step linear equations in one variable, with rational number coefficients. Include equations with variables on both sides.",
+            "focus": "Identifying special cases: 2x + 3 = 2x + 5 (no solution), 3x + 6 = 3(x + 2) (infinite solutions)",
+            "example_problems": [
+              "4x + 7 = 4x + 2",
+              "2(x + 3) = 2x + 6",
+              "5y - 8 = 5y + 1"
+            ]
+          },
+          "objectives": [
+            "Recognize equations with no solution",
+            "Recognize equations with infinite solutions",
+            "Explain why special cases occur"
+          ],
+          "vocabulary": ["no solution", "infinite solutions", "identity", "contradiction"],
+          "difficulty": "hard",
+          "prior_knowledge": ["Solving equations with variables on both sides"]
+        },
+        {
+          "lesson_number": 34,
+          "b_day_date": "2025-01-06",
+          "title": "Two-Step Inequalities - Basic",
+          "standard": "MA.8.AR.2.2",
+          "standard_details": {
+            "code": "MA.8.AR.2.2",
+            "text": "Solve two-step linear inequalities in one variable and represent solutions algebraically and graphically.",
+            "focus": "Solving ax + b < c or ax + b > c",
+            "example_problems": [
+              "2x + 5 < 13",
+              "3y - 7 ≥ 11",
+              "-4a + 9 ≤ 1"
+            ]
+          },
+          "objectives": [
+            "Solve two-step inequalities",
+            "Reverse inequality when multiplying/dividing by negative",
+            "Graph solutions on number line"
+          ],
+          "vocabulary": ["inequality", "greater than", "less than", "number line", "solution set"],
+          "difficulty": "medium",
+          "prior_knowledge": ["Two-step equations", "Inequality symbols"]
+        },
+        {
+          "lesson_number": 35,
+          "b_day_date": "2025-01-08",
+          "title": "Two-Step Inequalities - Graphing and Notation",
+          "standard": "MA.8.AR.2.2",
+          "standard_details": {
+            "code": "MA.8.AR.2.2",
+            "text": "Solve two-step linear inequalities in one variable and represent solutions algebraically and graphically.",
+            "focus": "Representing solutions: x > 3, graphing, interval notation",
+            "example_problems": [
+              "5x - 8 > 17 (solve and graph)",
+              "-(1/2)y + 4 ≤ 7 (solve and graph)",
+              "3a + 12 < 0 (solve and graph)"
+            ]
+          },
+          "objectives": [
+            "Graph inequality solutions correctly",
+            "Use open and closed circles appropriately",
+            "Write solutions in inequality notation"
+          ],
+          "vocabulary": ["open circle", "closed circle", "boundary point", "solution set"],
+          "difficulty": "medium",
+          "prior_knowledge": ["Solving inequalities", "Number line graphing"]
+        },
+        {
+          "lesson_number": 36,
+          "b_day_date": "2025-01-10",
+          "title": "Square Roots and Cube Roots - Introduction",
+          "standard": "MA.8.AR.2.3",
+          "standard_details": {
+            "code": "MA.8.AR.2.3",
+            "text": "Solve mathematical and real-world problems involving the cube root of a number and solve mathematical problems involving the square root of a number.",
+            "focus": "Understanding √x and ∛x",
+            "example_problems": [
+              "√49",
+              "√100",
+              "∛27",
+              "∛64"
+            ]
+          },
+          "objectives": [
+            "Find perfect square roots",
+            "Find perfect cube roots",
+            "Understand root notation and meaning"
+          ],
+          "vocabulary": ["square root", "cube root", "perfect square", "perfect cube", "radical"],
+          "difficulty": "medium",
+          "prior_knowledge": ["Exponents", "Multiplication"]
+        },
+        {
+          "lesson_number": 37,
+          "b_day_date": "2025-01-14",
+          "title": "Solving Equations with Square and Cube Roots",
+          "standard": "MA.8.AR.2.3",
+          "standard_details": {
+            "code": "MA.8.AR.2.3",
+            "text": "Solve mathematical and real-world problems involving the cube root of a number and solve mathematical problems involving the square root of a number.",
+            "focus": "Solving x² = a and x³ = b",
+            "example_problems": [
+              "x² = 81",
+              "x³ = 125",
+              "2x² = 72",
+              "x³ + 5 = 32"
+            ]
+          },
+          "objectives": [
+            "Isolate squared or cubed variable",
+            "Apply square root or cube root to solve",
+            "Understand positive and negative square roots"
+          ],
+          "vocabulary": ["inverse operations", "squared", "cubed", "principal square root"],
+          "difficulty": "hard",
+          "prior_knowledge": ["Square roots", "Cube roots", "Solving equations"]
+        },
+        {
+          "lesson_number": 38,
+          "b_day_date": "2025-01-16",
+          "title": "Real-World Problems with Roots",
+          "standard": "MA.8.AR.2.3",
+          "standard_details": {
+            "code": "MA.8.AR.2.3",
+            "text": "Solve mathematical and real-world problems involving the cube root of a number and solve mathematical problems involving the square root of a number.",
+            "focus": "Applications: area, volume, and other contexts",
+            "example_problems": [
+              "A square has area 144 ft². Find side length.",
+              "A cube has volume 216 cm³. Find edge length.",
+              "The area of a circle is 64π. Find radius."
+            ]
+          },
+          "objectives": [
+            "Apply square roots to area problems",
+            "Apply cube roots to volume problems",
+            "Model real-world situations with root equations"
+          ],
+          "vocabulary": ["area", "volume", "dimensions", "side length", "edge length"],
+          "difficulty": "hard",
+          "prior_knowledge": ["Area formulas", "Volume formulas", "Solving root equations"]
+        }
+      ]
+    },
+    {
+      "unit_number": 4,
+      "unit_name": "Linear Relationships",
+      "standard_family": "MA.8.AR.3",
+      "lessons": [
+        {
+          "lesson_number": 39,
+          "b_day_date": "2025-01-20",
+          "title": "Proportional vs Non-Proportional Relationships",
+          "standard": "MA.8.AR.3.1",
+          "standard_details": {
+            "code": "MA.8.AR.3.1",
+            "text": "Determine if a linear relationship is also proportional given a table, graph or written description.",
+            "focus": "Identifying y = kx vs y = mx + b where b ≠ 0",
+            "example_problems": [
+              "Table with (0,0): proportional or linear?",
+              "Table with (0,3): proportional or linear?",
+              "Graph through origin vs not through origin"
+            ]
+          },
+          "objectives": [
+            "Identify proportional relationships (y = kx)",
+            "Identify non-proportional linear relationships (y = mx + b)",
+            "Distinguish using tables, graphs, and descriptions"
+          ],
+          "vocabulary": ["proportional", "non-proportional", "linear", "origin", "constant of proportionality"],
+          "difficulty": "medium",
+          "prior_knowledge": ["Proportional relationships from 7th grade", "Linear patterns"]
+        },
+        {
+          "lesson_number": 40,
+          "b_day_date": "2025-01-22",
+          "title": "Introduction to Slope",
+          "standard": "MA.8.AR.3.2",
+          "standard_details": {
+            "code": "MA.8.AR.3.2",
+            "text": "Given a table, graph or written description of a linear relationship, write an equation in slope-intercept form.",
+            "focus": "Understanding slope as rate of change: m = (y₂ - y₁)/(x₂ - x₁)",
+            "example_problems": [
+              "Find slope from points (2, 5) and (4, 11)",
+              "Find slope from points (1, 3) and (5, 7)",
+              "Find slope from table of values"
+            ]
+          },
+          "objectives": [
+            "Calculate slope from two points",
+            "Understand slope as rate of change",
+            "Identify positive, negative, zero, and undefined slopes"
+          ],
+          "vocabulary": ["slope", "rate of change", "rise", "run", "rise over run"],
+          "difficulty": "medium",
+          "prior_knowledge": ["Coordinate plane", "Subtraction", "Division"]
+        },
+        {
+          "lesson_number": 41,
+          "b_day_date": "2025-01-24",
+          "title": "Slope-Intercept Form",
+          "standard": "MA.8.AR.3.2",
+          "standard_details": {
+            "code": "MA.8.AR.3.2",
+            "text": "Given a table, graph or written description of a linear relationship, write an equation in slope-intercept form.",
+            "focus": "y = mx + b where m is slope and b is y-intercept",
+            "example_problems": [
+              "Write equation from slope 3 and y-intercept 5",
+              "Write equation from table of values",
+              "Write equation from graph"
+            ]
+          },
+          "objectives": [
+            "Identify slope and y-intercept from graph",
+            "Write equations in y = mx + b form",
+            "Find b from a point and slope"
+          ],
+          "vocabulary": ["slope-intercept form", "y-intercept", "b-value", "m-value"],
+          "difficulty": "medium",
+          "prior_knowledge": ["Slope", "Y-intercept concept"]
+        },
+        {
+          "lesson_number": 42,
+          "b_day_date": "2025-01-28",
+          "title": "Graphing Linear Equations in Slope-Intercept Form",
+          "standard": "MA.8.AR.3.4",
+          "standard_details": {
+            "code": "MA.8.AR.3.4",
+            "text": "Given a mathematical or real-world context, graph a two-variable linear equation from a written description, a table or an equation in slope-intercept form.",
+            "focus": "Plotting y-intercept and using slope to find additional points",
+            "example_problems": [
+              "Graph y = 2x + 3",
+              "Graph y = -1/2x + 4",
+              "Graph y = -3x - 1"
+            ]
+          },
+          "objectives": [
+            "Plot y-intercept on coordinate plane",
+            "Use slope to find additional points",
+            "Draw line through points"
+          ],
+          "vocabulary": ["plot", "coordinate plane", "x-axis", "y-axis", "line"],
+          "difficulty": "medium",
+          "prior_knowledge": ["Slope-intercept form", "Graphing points"]
+        },
+        {
+          "lesson_number": 43,
+          "b_day_date": "2025-01-30",
+          "title": "Interpreting Slope and Y-Intercept",
+          "standard": "MA.8.AR.3.5",
+          "standard_details": {
+            "code": "MA.8.AR.3.5",
+            "text": "Given a table, graph or written description of a linear relationship, write an equation in slope-intercept form and interpret the slope and y-intercept.",
+            "focus": "Real-world meaning of m and b in context",
+            "example_problems": [
+              "y = 50x + 100 represents cost; interpret slope and y-intercept",
+              "y = -2x + 80 represents water draining; interpret",
+              "y = 15x represents earnings; interpret"
+            ]
+          },
+          "objectives": [
+            "Interpret slope in context (rate of change)",
+            "Interpret y-intercept in context (starting value)",
+            "Write verbal descriptions of linear situations"
+          ],
+          "vocabulary": ["rate of change", "initial value", "starting amount", "unit rate", "context"],
+          "difficulty": "hard",
+          "prior_knowledge": ["Slope-intercept form", "Real-world problem solving"]
+        },
+        {
+          "lesson_number": 44,
+          "b_day_date": "2025-01-30",
+          "title": "Q2 Review and Assessment Preparation",
+          "standard": "MA.8.AR.1, MA.8.AR.2, MA.8.AR.3",
+          "standard_details": {
+            "code": "Multiple standards",
+            "text": "Review all Q2 standards: Exponent Laws, Multiplying Expressions, Factoring, Multi-Step Equations, Inequalities, Roots, and Linear Relationships",
+            "focus": "Comprehensive review of Units 2, 3, and 4",
+            "example_problems": [
+              "Mixed review from all units",
+              "Multi-step problems combining concepts",
+              "Real-world applications"
+            ]
+          },
+          "objectives": [
+            "Review exponent laws and applications",
+            "Review solving complex equations and inequalities",
+            "Review linear relationships and graphing"
+          ],
+          "vocabulary": ["Review all Q2 vocabulary"],
+          "difficulty": "hard",
+          "prior_knowledge": ["All Q2 content"]
+        }
+      ]
+    }
+  ],
+  "pacing_notes": {
+    "total_b_days": 25,
+    "winter_break": "Dec 23 - Jan 3 (no lessons during break)",
+    "lesson_distribution": {
+      "unit_2_algebraic_expressions": 8,
+      "unit_3_equations_inequalities": 11,
+      "unit_4_linear_relationships": 6
+    },
+    "note": "Lesson 43 and 44 both on Jan 30 - Lesson 43 is instruction, Lesson 44 is review/assessment prep"
+  },
+  "standards_alignment": {
+    "MA.8.AR.1.1": "Lessons 20-23 (Laws of Exponents)",
+    "MA.8.AR.1.2": "Lessons 24-25 (Multiplying Linear Expressions)",
+    "MA.8.AR.1.3": "Lessons 26-27 (Factoring Common Monomial)",
+    "MA.8.AR.2.1": "Lessons 28-33 (Multi-Step Equations with Variables on Both Sides)",
+    "MA.8.AR.2.2": "Lessons 34-35 (Two-Step Inequalities)",
+    "MA.8.AR.2.3": "Lessons 36-38 (Square and Cube Roots)",
+    "MA.8.AR.3.1": "Lesson 39 (Proportional vs Non-Proportional)",
+    "MA.8.AR.3.2": "Lessons 40-41 (Slope and Slope-Intercept Form)",
+    "MA.8.AR.3.4": "Lesson 42 (Graphing Linear Equations)",
+    "MA.8.AR.3.5": "Lesson 43 (Interpreting Slope and Y-Intercept)"
+  },
+  "assessment_recommendations": {
+    "formative": [
+      "Daily exit tickets",
+      "Gemini AI practice problems",
+      "3D visualization checks",
+      "Quick checks after each standard"
+    ],
+    "summative": [
+      "Unit 2 Test (after Lesson 27, around Dec 4)",
+      "Unit 3 Test (after Lesson 38, around Jan 16)",
+      "Unit 4 Test (after Lesson 43, around Jan 30)",
+      "Q2 Comprehensive Assessment (early February)"
+    ]
+  }
+}

@@ -1,0 +1,1188 @@
+{
+  "metadata": {
+    "course_name": "M/J Grade 8 Pre-Algebra",
+    "course_code": "1205070",
+    "grade_level": "8th",
+    "subject": "Mathematics",
+    "state": "Florida",
+    "framework": "Florida BEST Standards",
+    "source": "CPALMS.org",
+    "scraped_date": "2025-11-13",
+    "total_standards": 42,
+    "note": "Florida's B.E.S.T. Standards for Mathematics were adopted by the State Board of Education on February 17, 2020"
+  },
+  "standards": {
+    "MA.8.NSO.1.1": {
+      "code": "MA.8.NSO.1.1",
+      "strand": "Number Sense and Operations",
+      "category": "NSO.1 - Rational and Irrational Numbers",
+      "title": "Extend previous understanding of rational numbers to define irrational numbers within the real number system. Locate an approximate value of a numerical expression involving irrational numbers on a number line",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Instruction includes understanding that irrational numbers cannot be expressed as a ratio of two integers."
+        },
+        {
+          "number": 2,
+          "text": "Within this benchmark, the expectation is to approximate irrational numbers, including π, square roots and cube roots."
+        },
+        {
+          "number": 3,
+          "text": "Instruction includes the understanding that the square root of a non-perfect square is irrational."
+        }
+      ],
+      "key_concepts": ["rational numbers", "irrational numbers", "real number system", "square roots", "cube roots", "number line", "approximation"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+    },
+    "MA.8.NSO.1.2": {
+      "code": "MA.8.NSO.1.2",
+      "strand": "Number Sense and Operations",
+      "category": "NSO.1 - Rational and Irrational Numbers",
+      "title": "Plot, order and compare rational and irrational numbers, represented in various forms",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Within this benchmark, the expectation is to represent numbers using integer exponents and radicals."
+        },
+        {
+          "number": 2,
+          "text": "Instruction includes the use of the symbols <, > and =."
+        },
+        {
+          "number": 3,
+          "text": "Instruction includes ordering and comparing rational and irrational numbers with and without the use of a number line."
+        }
+      ],
+      "key_concepts": ["plotting", "ordering", "comparing", "rational numbers", "irrational numbers", "number line", "inequalities"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+    },
+    "MA.8.NSO.1.3": {
+      "code": "MA.8.NSO.1.3",
+      "strand": "Number Sense and Operations",
+      "category": "NSO.1 - Rational and Irrational Numbers",
+      "title": "Extend previous understanding of the Laws of Exponents to include integer exponents. Apply the Laws of Exponents to evaluate numerical expressions and generate equivalent numerical expressions, limited to integer exponents and rational number bases, with procedural fluency",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Instruction includes an understanding of the inverse relationship between exponents and radicals."
+        },
+        {
+          "number": 2,
+          "text": "Within this benchmark, it is the expectation to simplify monomial expressions with integer exponents."
+        },
+        {
+          "number": 3,
+          "text": "Refer to Properties of Operations, Equality and Inequality (Appendix D) and K-12 Glossary (Appendix A)."
+        }
+      ],
+      "key_concepts": ["laws of exponents", "integer exponents", "rational bases", "equivalent expressions", "procedural fluency", "monomial expressions"],
+      "cognitive_complexity": "Level 1: Recall",
+      "appendix_references": ["Appendix D: Properties of Operations, Equality and Inequality", "Appendix A: K-12 Glossary"]
+    },
+    "MA.8.NSO.1.4": {
+      "code": "MA.8.NSO.1.4",
+      "strand": "Number Sense and Operations",
+      "category": "NSO.1 - Rational and Irrational Numbers",
+      "title": "Express numbers in scientific notation to represent and approximate very large or very small quantities. Determine how many times larger or smaller one number is compared to a second number",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Instruction includes understanding that a number written in scientific notation is represented as a × 10^n, where a is a number such that 1 ≤ |a| < 10 and n is an integer."
+        },
+        {
+          "number": 2,
+          "text": "Within this benchmark, it is the expectation to translate numbers between scientific notation and standard form."
+        }
+      ],
+      "key_concepts": ["scientific notation", "very large numbers", "very small numbers", "powers of 10", "standard form", "magnitude comparison"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+    },
+    "MA.8.NSO.1.5": {
+      "code": "MA.8.NSO.1.5",
+      "strand": "Number Sense and Operations",
+      "category": "NSO.1 - Rational and Irrational Numbers",
+      "title": "Add, subtract, multiply and divide numbers expressed in scientific notation with procedural fluency",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Instruction includes understanding that when adding or subtracting numbers in scientific notation, the exponents must be the same."
+        },
+        {
+          "number": 2,
+          "text": "Instruction includes the use of appropriate tools and techniques."
+        }
+      ],
+      "key_concepts": ["scientific notation", "addition", "subtraction", "multiplication", "division", "procedural fluency", "operations"],
+      "cognitive_complexity": "Level 1: Recall"
+    },
+    "MA.8.NSO.1.6": {
+      "code": "MA.8.NSO.1.6",
+      "strand": "Number Sense and Operations",
+      "category": "NSO.1 - Rational and Irrational Numbers",
+      "title": "Solve real-world problems involving operations with numbers expressed in scientific notation",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Instruction includes the use of appropriate tools and techniques."
+        },
+        {
+          "number": 2,
+          "text": "Within this benchmark, it is not the expectation to perform calculations by hand for numbers in scientific notation; calculators can be used."
+        }
+      ],
+      "key_concepts": ["real-world problems", "scientific notation", "operations", "problem-solving", "applications"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+    },
+    "MA.8.NSO.1.7": {
+      "code": "MA.8.NSO.1.7",
+      "strand": "Number Sense and Operations",
+      "category": "NSO.1 - Rational and Irrational Numbers",
+      "title": "Solve multi-step mathematical and real-world problems involving the order of operations with rational numbers including exponents and radicals",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Instruction includes positive and negative rational numbers."
+        },
+        {
+          "number": 2,
+          "text": "Within this benchmark, it is the expectation for exponents to be limited to integer exponents from -10 to 10 and radicals to be square roots or cube roots."
+        },
+        {
+          "number": 3,
+          "text": "Refer to Properties of Operations, Equality and Inequality (Appendix D)."
+        }
+      ],
+      "key_concepts": ["order of operations", "multi-step problems", "rational numbers", "exponents", "radicals", "PEMDAS"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts",
+      "appendix_references": ["Appendix D: Properties of Operations, Equality and Inequality"]
+    },
+    "MA.8.AR.1.1": {
+      "code": "MA.8.AR.1.1",
+      "strand": "Algebraic Reasoning",
+      "category": "AR.1 - Algebraic Expressions",
+      "title": "Apply the Laws of Exponents to generate equivalent algebraic expressions, limited to integer exponents and monomial bases",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Instruction includes applying the Laws of Exponents to numerical and algebraic bases."
+        },
+        {
+          "number": 2,
+          "text": "Within this benchmark, it is the expectation to simplify expressions with integer exponents from -10 to 10."
+        },
+        {
+          "number": 3,
+          "text": "Refer to Properties of Operations, Equality and Inequality (Appendix D)."
+        }
+      ],
+      "key_concepts": ["laws of exponents", "algebraic expressions", "integer exponents", "monomial bases", "equivalent expressions"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts",
+      "appendix_references": ["Appendix D: Properties of Operations, Equality and Inequality"]
+    },
+    "MA.8.AR.1.2": {
+      "code": "MA.8.AR.1.2",
+      "strand": "Algebraic Reasoning",
+      "category": "AR.1 - Algebraic Expressions",
+      "title": "Apply properties of operations to multiply two linear expressions with rational coefficients",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Instruction includes understanding the relationship between multiplying linear expressions and area models."
+        },
+        {
+          "number": 2,
+          "text": "Refer to Properties of Operations, Equality and Inequality (Appendix D)."
+        }
+      ],
+      "key_concepts": ["multiplication", "linear expressions", "rational coefficients", "distributive property", "FOIL", "area models"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts",
+      "appendix_references": ["Appendix D: Properties of Operations, Equality and Inequality"]
+    },
+    "MA.8.AR.1.3": {
+      "code": "MA.8.AR.1.3",
+      "strand": "Algebraic Reasoning",
+      "category": "AR.1 - Algebraic Expressions",
+      "title": "Rewrite the sum of two algebraic expressions having a common monomial factor as a common factor multiplied by the sum of two algebraic expressions",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Instruction focuses on the application of the distributive property."
+        },
+        {
+          "number": 2,
+          "text": "Refer to Properties of Operations, Equality and Inequality (Appendix D)."
+        }
+      ],
+      "key_concepts": ["factoring", "common monomial factor", "greatest common factor", "distributive property", "equivalent expressions"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts",
+      "appendix_references": ["Appendix D: Properties of Operations, Equality and Inequality"]
+    },
+    "MA.8.AR.2.1": {
+      "code": "MA.8.AR.2.1",
+      "strand": "Algebraic Reasoning",
+      "category": "AR.2 - Equations and Inequalities",
+      "title": "Solve multi-step linear equations in one variable, with rational number coefficients. Include equations with variables on both sides",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Instruction includes the use of standard form of an equation, ax + b = c, where a, b and c are rational numbers."
+        },
+        {
+          "number": 2,
+          "text": "Within this benchmark, the expectation is to include solutions that are rational numbers."
+        },
+        {
+          "number": 3,
+          "text": "Instruction includes equations with one solution, no solution or infinitely many solutions."
+        },
+        {
+          "number": 4,
+          "text": "Refer to Properties of Operations, Equality and Inequality (Appendix D)."
+        }
+      ],
+      "key_concepts": ["multi-step equations", "linear equations", "rational coefficients", "variables on both sides", "one solution", "no solution", "infinite solutions"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts",
+      "appendix_references": ["Appendix D: Properties of Operations, Equality and Inequality"]
+    },
+    "MA.8.AR.2.2": {
+      "code": "MA.8.AR.2.2",
+      "strand": "Algebraic Reasoning",
+      "category": "AR.2 - Equations and Inequalities",
+      "title": "Solve two-step linear inequalities in one variable and represent solutions algebraically and graphically",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Within this benchmark, the expectation is to include solutions that are rational numbers."
+        },
+        {
+          "number": 2,
+          "text": "Instruction includes representing solutions on a number line and algebraically."
+        },
+        {
+          "number": 3,
+          "text": "Instruction includes the understanding that if you multiply or divide both sides of an inequality by a negative number, the inequality sign reverses."
+        },
+        {
+          "number": 4,
+          "text": "Refer to Properties of Operations, Equality and Inequality (Appendix D)."
+        }
+      ],
+      "key_concepts": ["two-step inequalities", "linear inequalities", "algebraic representation", "graphical representation", "number line", "reversing inequality"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts",
+      "appendix_references": ["Appendix D: Properties of Operations, Equality and Inequality"]
+    },
+    "MA.8.AR.2.3": {
+      "code": "MA.8.AR.2.3",
+      "strand": "Algebraic Reasoning",
+      "category": "AR.2 - Equations and Inequalities",
+      "title": "Given an equation in the form of x² = p and x³ = q, where p is a whole number and q is an integer, determine the real solutions",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Instruction includes recognizing that squaring a number and taking the square root are inverse operations. Similarly, cubing a number and taking the cube root are inverse operations."
+        },
+        {
+          "number": 2,
+          "text": "Within this benchmark, the expectation is to know that for x² = p, both the principal square root and its opposite are solutions if p > 0."
+        }
+      ],
+      "key_concepts": ["square root equations", "cube root equations", "inverse operations", "real solutions", "principal square root"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+    },
+    "MA.8.AR.3.1": {
+      "code": "MA.8.AR.3.1",
+      "strand": "Algebraic Reasoning",
+      "category": "AR.3 - Linear Relationships",
+      "title": "Determine if a linear relationship is also a proportional relationship",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Instruction includes understanding that proportional relationships are linear relationships whose graph passes through the origin."
+        },
+        {
+          "number": 2,
+          "text": "Instruction includes representing proportional relationships by equations of the form y = kx, and other linear relationships by equations of the form y = mx + b."
+        }
+      ],
+      "key_concepts": ["linear relationships", "proportional relationships", "constant of proportionality", "slope-intercept form", "origin"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+    },
+    "MA.8.AR.3.2": {
+      "code": "MA.8.AR.3.2",
+      "strand": "Algebraic Reasoning",
+      "category": "AR.3 - Linear Relationships",
+      "title": "Given a table, graph or written description of a linear relationship, determine the slope",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Instruction includes using triangles to illustrate slope."
+        },
+        {
+          "number": 2,
+          "text": "Instruction includes making the connection that the slope is equivalent to the constant rate of change of a linear relationship and the constant of proportionality."
+        }
+      ],
+      "key_concepts": ["slope", "rate of change", "linear relationships", "rise over run", "constant rate of change"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+    },
+    "MA.8.AR.3.3": {
+      "code": "MA.8.AR.3.3",
+      "strand": "Algebraic Reasoning",
+      "category": "AR.3 - Linear Relationships",
+      "title": "Given a table, graph or written description of a linear relationship, write an equation in slope-intercept form",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Within this benchmark, the expectation is to write linear equations given slope and y-intercept, slope and a point, two points, x- and y-intercepts, or a graph."
+        },
+        {
+          "number": 2,
+          "text": "Instruction includes cases where the slope is zero or undefined."
+        }
+      ],
+      "key_concepts": ["slope-intercept form", "linear equations", "slope", "y-intercept", "writing equations"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+    },
+    "MA.8.AR.3.4": {
+      "code": "MA.8.AR.3.4",
+      "strand": "Algebraic Reasoning",
+      "category": "AR.3 - Linear Relationships",
+      "title": "Given a mathematical or real-world context, graph a two-variable linear equation from a written description, a table or an equation in slope-intercept form",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Within this benchmark, the expectation is to use appropriate titles, labels and scales."
+        },
+        {
+          "number": 2,
+          "text": "Instruction includes cases where the slope is zero or undefined."
+        }
+      ],
+      "key_concepts": ["graphing linear equations", "slope-intercept form", "coordinate plane", "two-variable equations", "labeling"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+    },
+    "MA.8.AR.3.5": {
+      "code": "MA.8.AR.3.5",
+      "strand": "Algebraic Reasoning",
+      "category": "AR.3 - Linear Relationships",
+      "title": "Given a real-world context, determine and interpret the slope and y-intercept of a two-variable linear equation from a written description, a table, a graph or an equation in slope-intercept form",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Instruction focuses on making connections between slope as a rate of change in a real-world context and the constant rate of change of a linear function."
+        },
+        {
+          "number": 2,
+          "text": "Instruction focuses on the understanding that the y-intercept is the value of y when x is zero, which is also referred to as the initial value."
+        }
+      ],
+      "key_concepts": ["slope interpretation", "y-intercept interpretation", "rate of change", "initial value", "real-world context"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+    },
+    "MA.8.AR.4.1": {
+      "code": "MA.8.AR.4.1",
+      "strand": "Algebraic Reasoning",
+      "category": "AR.4 - Systems of Equations",
+      "title": "Given a system of two linear equations and a specified set of possible solutions, determine which ordered pairs satisfy the system of linear equations",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Instruction focuses on the understanding that the solution to a system of linear equations is the point of intersection when graphed."
+        },
+        {
+          "number": 2,
+          "text": "Within this benchmark, students are not solving the system of linear equations. They are given a set of possible solutions and determine which ordered pair(s) make both equations true."
+        }
+      ],
+      "key_concepts": ["systems of equations", "ordered pairs", "solutions", "substitution", "checking solutions"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+    },
+    "MA.8.AR.4.2": {
+      "code": "MA.8.AR.4.2",
+      "strand": "Algebraic Reasoning",
+      "category": "AR.4 - Systems of Equations",
+      "title": "Given a system of two linear equations represented graphically on the same coordinate plane, determine whether there is one solution, no solution or infinitely many solutions",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Instruction includes understanding that two lines can intersect at one point, intersect at all points or not intersect."
+        },
+        {
+          "number": 2,
+          "text": "Instruction includes understanding that parallel lines have the same slope but different y-intercepts."
+        }
+      ],
+      "key_concepts": ["systems of equations", "graphical representation", "intersection points", "parallel lines", "one solution", "no solution", "infinite solutions"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+    },
+    "MA.8.AR.4.3": {
+      "code": "MA.8.AR.4.3",
+      "strand": "Algebraic Reasoning",
+      "category": "AR.4 - Systems of Equations",
+      "title": "Given a mathematical or real-world context, solve systems of two linear equations by graphing",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Instruction focuses on finding solutions by graphing with an emphasis on the reasonableness of solutions."
+        },
+        {
+          "number": 2,
+          "text": "Within this benchmark, the expectation is not to solve systems algebraically."
+        }
+      ],
+      "key_concepts": ["systems of equations", "solving by graphing", "intersection point", "real-world applications", "reasonableness"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+    },
+    "MA.8.F.1.1": {
+      "code": "MA.8.F.1.1",
+      "strand": "Functions",
+      "category": "F.1 - Understanding Functions",
+      "title": "Given a set of ordered pairs, a table, a graph or mapping diagram, determine whether the relationship is a function. Identify the domain and range of the relation",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Instruction includes understanding that a function is a relation where each element of the domain is paired with exactly one element of the range."
+        },
+        {
+          "number": 2,
+          "text": "Instruction includes use of the Vertical Line Test."
+        },
+        {
+          "number": 3,
+          "text": "Within this benchmark, the expectation is not to use function notation."
+        }
+      ],
+      "key_concepts": ["functions", "relations", "domain", "range", "ordered pairs", "vertical line test", "mapping diagrams"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+    },
+    "MA.8.F.1.2": {
+      "code": "MA.8.F.1.2",
+      "strand": "Functions",
+      "category": "F.1 - Understanding Functions",
+      "title": "Given a function defined by a graph or an equation, determine whether the function is a linear function. Given an input-output table, determine whether it could represent a linear function",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Within this benchmark, it is the expectation to understand that linear functions have a constant rate of change."
+        },
+        {
+          "number": 2,
+          "text": "Within this benchmark, it is the expectation to know that linear functions graph as a non-vertical straight line."
+        },
+        {
+          "number": 3,
+          "text": "Instruction includes recognizing and using the rate of change to identify linear functions."
+        }
+      ],
+      "key_concepts": ["linear functions", "constant rate of change", "non-linear functions", "tables", "graphs", "equations"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+    },
+    "MA.8.F.1.3": {
+      "code": "MA.8.F.1.3",
+      "strand": "Functions",
+      "category": "F.1 - Understanding Functions",
+      "title": "Analyze a real-world written description or graphical representation of a functional relationship between two quantities and identify where the function is increasing, decreasing or constant",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Instruction focuses on describing the behavior of a function."
+        },
+        {
+          "number": 2,
+          "text": "Within this benchmark, the expectation is to use interval notation is not required."
+        }
+      ],
+      "key_concepts": ["function behavior", "increasing", "decreasing", "constant", "graphical analysis", "real-world functions"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+    },
+    "MA.8.GR.1.1": {
+      "code": "MA.8.GR.1.1",
+      "strand": "Geometric Reasoning",
+      "category": "GR.1 - Pythagorean Theorem and Angles",
+      "title": "Apply the Pythagorean Theorem to solve mathematical and real-world problems involving unknown side lengths in right triangles",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Instruction includes using Pythagorean Theorem and its converse."
+        },
+        {
+          "number": 2,
+          "text": "Instruction focuses on understanding that side c represents the hypotenuse."
+        },
+        {
+          "number": 3,
+          "text": "Refer to K-12 Glossary (Appendix A)."
+        }
+      ],
+      "key_concepts": ["Pythagorean Theorem", "right triangles", "hypotenuse", "legs", "real-world applications"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts",
+      "appendix_references": ["Appendix A: K-12 Glossary"]
+    },
+    "MA.8.GR.1.2": {
+      "code": "MA.8.GR.1.2",
+      "strand": "Geometric Reasoning",
+      "category": "GR.1 - Pythagorean Theorem and Angles",
+      "title": "Apply the Pythagorean Theorem to solve mathematical and real-world problems involving the distance between two points in a coordinate plane",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Instruction includes understanding how the Distance Formula is derived from the Pythagorean Theorem."
+        },
+        {
+          "number": 2,
+          "text": "Refer to K-12 Glossary (Appendix A)."
+        }
+      ],
+      "key_concepts": ["Pythagorean Theorem", "distance formula", "coordinate plane", "distance between points"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts",
+      "appendix_references": ["Appendix A: K-12 Glossary"]
+    },
+    "MA.8.GR.1.3": {
+      "code": "MA.8.GR.1.3",
+      "strand": "Geometric Reasoning",
+      "category": "GR.1 - Pythagorean Theorem and Angles",
+      "title": "Use the Triangle Inequality Theorem to determine if a triangle can be formed from a given set of sides. Use the converse of the Pythagorean Theorem to determine if a right triangle can be formed from a given set of sides",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Instruction includes understanding that the Triangle Inequality Theorem states that the sum of the lengths of any two sides of a triangle must be greater than the length of the third side."
+        },
+        {
+          "number": 2,
+          "text": "Refer to K-12 Glossary (Appendix A)."
+        }
+      ],
+      "key_concepts": ["Triangle Inequality Theorem", "Pythagorean Theorem converse", "right triangles", "triangle formation"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts",
+      "appendix_references": ["Appendix A: K-12 Glossary"]
+    },
+    "MA.8.GR.1.4": {
+      "code": "MA.8.GR.1.4",
+      "strand": "Geometric Reasoning",
+      "category": "GR.1 - Pythagorean Theorem and Angles",
+      "title": "Solve mathematical problems involving the relationships between supplementary, complementary, vertical or adjacent angles",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Instruction includes understanding the relationships between angles, including linear pairs."
+        },
+        {
+          "number": 2,
+          "text": "Refer to K-12 Glossary (Appendix A)."
+        }
+      ],
+      "key_concepts": ["supplementary angles", "complementary angles", "vertical angles", "adjacent angles", "linear pairs"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts",
+      "appendix_references": ["Appendix A: K-12 Glossary"]
+    },
+    "MA.8.GR.1.5": {
+      "code": "MA.8.GR.1.5",
+      "strand": "Geometric Reasoning",
+      "category": "GR.1 - Pythagorean Theorem and Angles",
+      "title": "Solve problems involving the relationships of interior and exterior angles of a triangle",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Instruction includes understanding that the sum of the interior angles of a triangle is 180°."
+        },
+        {
+          "number": 2,
+          "text": "Instruction includes understanding the Exterior Angle Theorem, which states that the measure of an exterior angle is equal to the sum of the measures of the two non-adjacent interior angles."
+        },
+        {
+          "number": 3,
+          "text": "Refer to K-12 Glossary (Appendix A)."
+        }
+      ],
+      "key_concepts": ["interior angles", "exterior angles", "triangle angle sum", "Exterior Angle Theorem"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts",
+      "appendix_references": ["Appendix A: K-12 Glossary"]
+    },
+    "MA.8.GR.1.6": {
+      "code": "MA.8.GR.1.6",
+      "strand": "Geometric Reasoning",
+      "category": "GR.1 - Pythagorean Theorem and Angles",
+      "title": "Develop and use formulas for the sums of the interior angles of regular polygons by decomposing them into triangles",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Instruction includes deriving the formula (n - 2) × 180°, where n is the number of sides."
+        },
+        {
+          "number": 2,
+          "text": "Refer to K-12 Glossary (Appendix A)."
+        }
+      ],
+      "key_concepts": ["interior angles", "regular polygons", "polygon formulas", "triangle decomposition"],
+      "cognitive_complexity": "Level 3: Strategic Thinking & Complex Reasoning",
+      "appendix_references": ["Appendix A: K-12 Glossary"]
+    },
+    "MA.8.GR.2.1": {
+      "code": "MA.8.GR.2.1",
+      "strand": "Geometric Reasoning",
+      "category": "GR.2 - Transformations and Similarity",
+      "title": "Given a preimage and image generated by a single transformation, identify the transformation that describes the relationship",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Instruction includes recognizing transformations both on and off a coordinate plane."
+        },
+        {
+          "number": 2,
+          "text": "Transformations include translations, reflections, rotations and dilations."
+        },
+        {
+          "number": 3,
+          "text": "Refer to K-12 Glossary (Appendix A)."
+        }
+      ],
+      "key_concepts": ["transformations", "preimage", "image", "translations", "reflections", "rotations", "dilations"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts",
+      "appendix_references": ["Appendix A: K-12 Glossary"]
+    },
+    "MA.8.GR.2.2": {
+      "code": "MA.8.GR.2.2",
+      "strand": "Geometric Reasoning",
+      "category": "GR.2 - Transformations and Similarity",
+      "title": "Given a preimage and image generated by a single dilation, identify the scale factor that describes the relationship",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Instruction includes understanding that the scale factor is the ratio of a side length of the image to the corresponding side length of the preimage."
+        },
+        {
+          "number": 2,
+          "text": "Instruction includes determining if a dilation is an enlargement or reduction."
+        },
+        {
+          "number": 3,
+          "text": "Refer to K-12 Glossary (Appendix A)."
+        }
+      ],
+      "key_concepts": ["dilations", "scale factor", "enlargement", "reduction", "similarity"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts",
+      "appendix_references": ["Appendix A: K-12 Glossary"]
+    },
+    "MA.8.GR.2.3": {
+      "code": "MA.8.GR.2.3",
+      "strand": "Geometric Reasoning",
+      "category": "GR.2 - Transformations and Similarity",
+      "title": "Describe and apply the effect of a single transformation on two-dimensional figures using coordinates and the coordinate plane",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Transformations include translations, reflections, rotations and dilations."
+        },
+        {
+          "number": 2,
+          "text": "Instruction includes drawing images of figures after transformations on the coordinate plane."
+        },
+        {
+          "number": 3,
+          "text": "Instruction includes understanding the relationship between transformations and coordinates."
+        },
+        {
+          "number": 4,
+          "text": "Refer to K-12 Glossary (Appendix A)."
+        }
+      ],
+      "key_concepts": ["transformations", "coordinate plane", "translations", "reflections", "rotations", "dilations", "coordinates"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts",
+      "appendix_references": ["Appendix A: K-12 Glossary"]
+    },
+    "MA.8.GR.2.4": {
+      "code": "MA.8.GR.2.4",
+      "strand": "Geometric Reasoning",
+      "category": "GR.2 - Transformations and Similarity",
+      "title": "Solve mathematical and real-world problems involving proportional relationships between similar triangles",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Instruction focuses on the understanding that when two triangles are similar, the corresponding sides are proportional."
+        },
+        {
+          "number": 2,
+          "text": "Instruction includes using AA (Angle-Angle) to establish similarity of two triangles."
+        },
+        {
+          "number": 3,
+          "text": "Refer to K-12 Glossary (Appendix A)."
+        }
+      ],
+      "key_concepts": ["similar triangles", "proportional relationships", "corresponding sides", "AA similarity", "indirect measurement"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts",
+      "appendix_references": ["Appendix A: K-12 Glossary"]
+    },
+    "MA.8.DP.1.1": {
+      "code": "MA.8.DP.1.1",
+      "strand": "Data Analysis and Probability",
+      "category": "DP.1 - Bivariate Data",
+      "title": "Given a set of real-world bivariate numerical data, construct a scatter plot or a line graph as appropriate for the context",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Instruction includes understanding that scatter plots are appropriate for bivariate numerical data that do not have a natural order and line graphs are appropriate for bivariate numerical data that have a natural order."
+        },
+        {
+          "number": 2,
+          "text": "Within this benchmark, line graphs may be referred to as line plots or line charts."
+        },
+        {
+          "number": 3,
+          "text": "Instruction includes using appropriate titles, labels and scales."
+        }
+      ],
+      "key_concepts": ["bivariate data", "scatter plots", "line graphs", "data visualization", "graphing"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+    },
+    "MA.8.DP.1.2": {
+      "code": "MA.8.DP.1.2",
+      "strand": "Data Analysis and Probability",
+      "category": "DP.1 - Bivariate Data",
+      "title": "Given a scatter plot within a real-world context, describe patterns of association",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Instruction includes describing patterns as positive or negative association, linear or non-linear association, or no association."
+        },
+        {
+          "number": 2,
+          "text": "Instruction includes identifying outliers and clusters."
+        }
+      ],
+      "key_concepts": ["scatter plots", "patterns of association", "positive association", "negative association", "outliers", "clusters", "correlation"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+    },
+    "MA.8.DP.1.3": {
+      "code": "MA.8.DP.1.3",
+      "strand": "Data Analysis and Probability",
+      "category": "DP.1 - Bivariate Data",
+      "title": "Given a scatter plot with a linear association, informally fit a straight line",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Instruction focuses on fitting a trend line for a scatter plot that suggests a linear association."
+        },
+        {
+          "number": 2,
+          "text": "Within this benchmark, the expectation is not to find the equation of the trend line, but to understand that a trend line is a good fit if it is close to most of the data points."
+        }
+      ],
+      "key_concepts": ["scatter plots", "line of best fit", "trend line", "linear association", "informal fit"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+    },
+    "MA.8.DP.2.1": {
+      "code": "MA.8.DP.2.1",
+      "strand": "Data Analysis and Probability",
+      "category": "DP.2 - Probability",
+      "title": "Determine the sample space for a repeated experiment",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Instruction includes the use of tables, tree diagrams, systematic lists and counting principles."
+        },
+        {
+          "number": 2,
+          "text": "Within this benchmark, the expectation is to represent all the possible outcomes from a repeated experiment."
+        }
+      ],
+      "key_concepts": ["sample space", "repeated experiments", "tree diagrams", "systematic lists", "counting principles"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+    },
+    "MA.8.DP.2.2": {
+      "code": "MA.8.DP.2.2",
+      "strand": "Data Analysis and Probability",
+      "category": "DP.2 - Probability",
+      "title": "Find the theoretical probability of an event related to a repeated experiment",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Instruction includes representing probability as a fraction, percentage or decimal."
+        },
+        {
+          "number": 2,
+          "text": "Within this benchmark, the expectation is to work with theoretical probabilities from repeated experiments."
+        },
+        {
+          "number": 3,
+          "text": "Refer to Probability (Appendix E)."
+        }
+      ],
+      "key_concepts": ["theoretical probability", "repeated experiments", "probability notation", "fractions", "percentages", "decimals"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts",
+      "appendix_references": ["Appendix E: Probability"]
+    },
+    "MA.8.DP.2.3": {
+      "code": "MA.8.DP.2.3",
+      "strand": "Data Analysis and Probability",
+      "category": "DP.2 - Probability",
+      "title": "Solve real-world problems involving probabilities related to single or repeated experiments, including making predictions based on theoretical probability",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Instruction includes using simulations and relative frequencies as estimates of probabilities."
+        },
+        {
+          "number": 2,
+          "text": "Instruction includes making predictions and validating or refuting them."
+        },
+        {
+          "number": 3,
+          "text": "Refer to Probability (Appendix E)."
+        }
+      ],
+      "key_concepts": ["probability", "real-world problems", "predictions", "simulations", "theoretical probability"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts",
+      "appendix_references": ["Appendix E: Probability"]
+    },
+    "MA.K12.MTR.1.1": {
+      "code": "MA.K12.MTR.1.1",
+      "strand": "Mathematical Thinking and Reasoning",
+      "category": "MTR.1 - Actively participate in effortful learning",
+      "title": "Actively participate in effortful learning both individually and collectively",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Mathematicians who participate in effortful learning both individually and with others: Analyze the problem in a way that makes sense given the task; Ask questions that will help with solving the task; Build perseverance by modifying methods as needed while solving a challenging task; Stay engaged and maintain a positive mindset when working to solve tasks; Help and support each other when attempting a new method or approach."
+        }
+      ],
+      "key_concepts": ["effortful learning", "perseverance", "problem-solving", "collaboration", "positive mindset"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+    },
+    "MA.K12.MTR.2.1": {
+      "code": "MA.K12.MTR.2.1",
+      "strand": "Mathematical Thinking and Reasoning",
+      "category": "MTR.2 - Demonstrate understanding",
+      "title": "Demonstrate understanding by representing problems in multiple ways",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Mathematicians who demonstrate understanding by representing problems in multiple ways: Build understanding through modeling and using manipulatives; Represent solutions to problems in multiple ways using objects, drawings, tables, graphs and equations; Progress from modeling problems with objects and drawings to using algorithms and equations; Express connections between concepts and representations; Choose a representation based on the given context or purpose."
+        }
+      ],
+      "key_concepts": ["multiple representations", "modeling", "manipulatives", "tables", "graphs", "equations", "algorithms"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+    },
+    "MA.K12.MTR.3.1": {
+      "code": "MA.K12.MTR.3.1",
+      "strand": "Mathematical Thinking and Reasoning",
+      "category": "MTR.3 - Complete tasks with precision",
+      "title": "Complete tasks with mathematical fluency",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Mathematicians who complete tasks with mathematical fluency: Select efficient and appropriate methods for solving problems within the given context; Maintain flexibility and accuracy while performing procedures and mental calculations; Complete tasks accurately and with confidence; Adapt procedures to apply them to a new context; Use feedback to improve efficiency when performing calculations."
+        }
+      ],
+      "key_concepts": ["mathematical fluency", "efficiency", "accuracy", "mental calculations", "flexibility", "procedures"],
+      "cognitive_complexity": "Level 1: Recall"
+    },
+    "MA.K12.MTR.4.1": {
+      "code": "MA.K12.MTR.4.1",
+      "strand": "Mathematical Thinking and Reasoning",
+      "category": "MTR.4 - Engage in discussions",
+      "title": "Engage in discussions that reflect on the mathematical thinking of self and others",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Mathematicians who engage in discussions that reflect on the mathematical thinking of self and others: Communicate mathematical ideas, vocabulary and methods effectively; Analyze the mathematical thinking of others; Compare the efficiency of a method to those expressed by others; Recognize errors and suggest how to correctly solve the task; Justify results by explaining methods and processes; Construct possible arguments based on evidence."
+        }
+      ],
+      "key_concepts": ["mathematical discussions", "communication", "analysis", "comparison", "error analysis", "justification", "argumentation"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+    },
+    "MA.K12.MTR.5.1": {
+      "code": "MA.K12.MTR.5.1",
+      "strand": "Mathematical Thinking and Reasoning",
+      "category": "MTR.5 - Use patterns and structure",
+      "title": "Use patterns and structure to help understand and connect mathematical concepts",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Mathematicians who use patterns and structure to help understand and connect mathematical concepts: Focus on relevant details within a problem; Create plans and procedures to logically order events, steps or ideas to solve problems; Decompose a complex problem into manageable parts; Relate previously learned concepts to new concepts; Look for similarities among problems; Connect solutions of problems to more complicated large-scale situations."
+        }
+      ],
+      "key_concepts": ["patterns", "structure", "connections", "decomposition", "planning", "prior knowledge"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+    },
+    "MA.K12.MTR.6.1": {
+      "code": "MA.K12.MTR.6.1",
+      "strand": "Mathematical Thinking and Reasoning",
+      "category": "MTR.6 - Assess reasonableness",
+      "title": "Assess the reasonableness of solutions",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Mathematicians who assess the reasonableness of solutions: Estimate to discover possible solutions; Use benchmark quantities to determine if a solution makes sense; Check calculations when solving problems; Verify possible solutions by explaining the methods used; Evaluate results based on the given context."
+        }
+      ],
+      "key_concepts": ["reasonableness", "estimation", "benchmarks", "verification", "evaluation", "context"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+    },
+    "MA.K12.MTR.7.1": {
+      "code": "MA.K12.MTR.7.1",
+      "strand": "Mathematical Thinking and Reasoning",
+      "category": "MTR.7 - Apply mathematics to real-world contexts",
+      "title": "Apply mathematics to real-world contexts",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Mathematicians who apply mathematics to real-world contexts: Connect mathematical concepts to everyday experiences; Use models and methods to understand, represent and solve problems; Perform investigations to gather data or determine if a method is appropriate; Redesign models and methods to improve accuracy or efficiency."
+        }
+      ],
+      "key_concepts": ["real-world applications", "mathematical modeling", "investigations", "data gathering", "problem representation"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+    },
+    "ELA.K12.EE.1.1": {
+      "code": "ELA.K12.EE.1.1",
+      "strand": "K-12 General Expectations",
+      "category": "EE.1 - Reading Process",
+      "title": "Cite evidence to explain and justify reasoning",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "K-1 Students include textual evidence in their oral communication with guidance and support from adults. The evidence can consist of details from the text without naming the text. During 1st grade, students learn how to incorporate the evidence in their writing."
+        },
+        {
+          "number": 2,
+          "text": "2-3 Students include relevant textual evidence in their written and oral communication. Students should name the text when they refer to it. In 3rd grade, students should use a combination of direct and indirect citations."
+        },
+        {
+          "number": 3,
+          "text": "4-5 Students continue with previous skills and reference comments made by speakers and peers. Students cite texts that they've directly quoted, paraphrased, or used for information. When writing, students will use the form of citation dictated by the instructor or the style guide referenced by the instructor."
+        },
+        {
+          "number": 4,
+          "text": "6-8 Students continue with previous skills and use a style guide to create a proper citation."
+        }
+      ],
+      "key_concepts": ["citing evidence", "textual evidence", "justification", "reasoning"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+    },
+    "ELA.K12.EE.2.1": {
+      "code": "ELA.K12.EE.2.1",
+      "strand": "K-12 General Expectations",
+      "category": "EE.2 - Reading Process",
+      "title": "Read and comprehend grade-level complex texts proficiently",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "See Text Complexity for grade-level complexity bands and a text complexity rubric."
+        }
+      ],
+      "key_concepts": ["complex texts", "comprehension", "grade-level reading", "text complexity"],
+      "cognitive_complexity": "Level 3: Strategic Thinking & Complex Reasoning"
+    },
+    "ELA.K12.EE.3.1": {
+      "code": "ELA.K12.EE.3.1",
+      "strand": "K-12 General Expectations",
+      "category": "EE.3 - Reading Process",
+      "title": "Make inferences to support comprehension",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Students will make inferences before the words infer or inference are introduced. Kindergarten students will answer questions like 'Why is the girl smiling?' or make predictions about what will happen based on the title page. Students will use the terms 'infer' and 'inference' once they are introduced in grade 4."
+        }
+      ],
+      "key_concepts": ["inferences", "comprehension", "predictions", "reasoning"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+    },
+    "ELA.K12.EE.4.1": {
+      "code": "ELA.K12.EE.4.1",
+      "strand": "K-12 General Expectations",
+      "category": "EE.4 - Communication",
+      "title": "Use appropriate collaborative techniques and active listening skills when engaging in discussions in a variety of situations",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "In kindergarten, students learn to listen to one another respectfully."
+        },
+        {
+          "number": 2,
+          "text": "In grades 1-2, students build upon these skills by justifying what they are thinking. For example: 'I think X is true because...'"
+        },
+        {
+          "number": 3,
+          "text": "In grades 3-12, students learn to engage in discourse around a topic, text, or issue."
+        }
+      ],
+      "key_concepts": ["collaboration", "active listening", "discussion skills", "communication"],
+      "cognitive_complexity": "Level 1: Recall"
+    },
+    "ELA.K12.EE.5.1": {
+      "code": "ELA.K12.EE.5.1",
+      "strand": "K-12 General Expectations",
+      "category": "EE.5 - Communication",
+      "title": "Use the accepted rules governing a specific format to create quality work",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "Students will incorporate skills learned into work products that are formal and meet course-specific expectations."
+        }
+      ],
+      "key_concepts": ["formatting rules", "quality work", "formal writing", "conventions"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+    },
+    "ELA.K12.EE.6.1": {
+      "code": "ELA.K12.EE.6.1",
+      "strand": "K-12 General Expectations",
+      "category": "EE.6 - Communication",
+      "title": "Use appropriate voice and tone when speaking or writing",
+      "date_adopted": "02/20",
+      "clarifications": [
+        {
+          "number": 1,
+          "text": "In kindergarten and 1st grade, students learn the difference between formal and informal language. For example, the way we talk to our friends differs from the way we speak to adults. In 2nd grade and beyond, students practice appropriate social and academic language to discuss texts."
+        }
+      ],
+      "key_concepts": ["voice", "tone", "formal language", "informal language", "audience awareness"],
+      "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+    }
+  },
+  "strand_summary": {
+    "Number Sense and Operations": {
+      "count": 7,
+      "categories": [
+        {
+          "name": "NSO.1 - Rational and Irrational Numbers",
+          "standards": ["MA.8.NSO.1.1", "MA.8.NSO.1.2", "MA.8.NSO.1.3", "MA.8.NSO.1.4", "MA.8.NSO.1.5", "MA.8.NSO.1.6", "MA.8.NSO.1.7"],
+          "focus": "Rational and irrational numbers, laws of exponents, scientific notation, order of operations"
+        }
+      ]
+    },
+    "Algebraic Reasoning": {
+      "count": 14,
+      "categories": [
+        {
+          "name": "AR.1 - Algebraic Expressions",
+          "standards": ["MA.8.AR.1.1", "MA.8.AR.1.2", "MA.8.AR.1.3"],
+          "focus": "Laws of exponents with algebraic expressions, multiplying linear expressions, factoring"
+        },
+        {
+          "name": "AR.2 - Equations and Inequalities",
+          "standards": ["MA.8.AR.2.1", "MA.8.AR.2.2", "MA.8.AR.2.3"],
+          "focus": "Multi-step linear equations and inequalities, square and cube root equations"
+        },
+        {
+          "name": "AR.3 - Linear Relationships",
+          "standards": ["MA.8.AR.3.1", "MA.8.AR.3.2", "MA.8.AR.3.3", "MA.8.AR.3.4", "MA.8.AR.3.5"],
+          "focus": "Proportional vs. linear relationships, slope, slope-intercept form, graphing, interpretation"
+        },
+        {
+          "name": "AR.4 - Systems of Equations",
+          "standards": ["MA.8.AR.4.1", "MA.8.AR.4.2", "MA.8.AR.4.3"],
+          "focus": "Identifying solutions to systems, determining number of solutions, solving by graphing"
+        }
+      ]
+    },
+    "Functions": {
+      "count": 3,
+      "categories": [
+        {
+          "name": "F.1 - Understanding Functions",
+          "standards": ["MA.8.F.1.1", "MA.8.F.1.2", "MA.8.F.1.3"],
+          "focus": "Identifying functions, domain and range, linear vs. non-linear, function behavior"
+        }
+      ]
+    },
+    "Geometric Reasoning": {
+      "count": 10,
+      "categories": [
+        {
+          "name": "GR.1 - Pythagorean Theorem and Angles",
+          "standards": ["MA.8.GR.1.1", "MA.8.GR.1.2", "MA.8.GR.1.3", "MA.8.GR.1.4", "MA.8.GR.1.5", "MA.8.GR.1.6"],
+          "focus": "Pythagorean Theorem, distance formula, Triangle Inequality Theorem, angle relationships, interior/exterior angles, polygon angles"
+        },
+        {
+          "name": "GR.2 - Transformations and Similarity",
+          "standards": ["MA.8.GR.2.1", "MA.8.GR.2.2", "MA.8.GR.2.3", "MA.8.GR.2.4"],
+          "focus": "Identifying transformations, scale factors, coordinate transformations, similar triangles"
+        }
+      ]
+    },
+    "Data Analysis and Probability": {
+      "count": 6,
+      "categories": [
+        {
+          "name": "DP.1 - Bivariate Data",
+          "standards": ["MA.8.DP.1.1", "MA.8.DP.1.2", "MA.8.DP.1.3"],
+          "focus": "Scatter plots, line graphs, patterns of association, line of best fit"
+        },
+        {
+          "name": "DP.2 - Probability",
+          "standards": ["MA.8.DP.2.1", "MA.8.DP.2.2", "MA.8.DP.2.3"],
+          "focus": "Sample space for repeated experiments, theoretical probability, real-world probability problems"
+        }
+      ]
+    },
+    "Mathematical Thinking and Reasoning": {
+      "count": 7,
+      "standards": ["MA.K12.MTR.1.1", "MA.K12.MTR.2.1", "MA.K12.MTR.3.1", "MA.K12.MTR.4.1", "MA.K12.MTR.5.1", "MA.K12.MTR.6.1", "MA.K12.MTR.7.1"],
+      "focus": "Effortful learning, multiple representations, mathematical fluency, mathematical discussions, patterns and structure, reasonableness, real-world applications"
+    },
+    "K-12 General Expectations": {
+      "count": 6,
+      "standards": ["ELA.K12.EE.1.1", "ELA.K12.EE.2.1", "ELA.K12.EE.3.1", "ELA.K12.EE.4.1", "ELA.K12.EE.5.1", "ELA.K12.EE.6.1"],
+      "focus": "Citing evidence, reading complex texts, making inferences, collaboration, quality work, voice and tone"
+    }
+  },
+  "instructional_notes": {
+    "course_description": "The fundamental purpose of M/J Grade 8 Pre-Algebra is to formalize and extend the mathematics that students learned in grades 6 and 7. This course deepens and extends understanding of linear and exponential relationships by contrasting them with each other and by applying linear models to data that exhibit a linear trend. Students engage in methods for analyzing, solving, and using quadratic functions. The Mathematical Thinking and Reasoning (MTR) standards specify the kind of thinking that students should engage in throughout all courses.",
+    "mathematical_practices": "The Mathematical Thinking and Reasoning (MTR) standards are embedded throughout all mathematics courses and should be integrated into instruction daily. These practices emphasize process standards that demonstrate how students should engage with mathematical content.",
+    "key_transitions": "Grade 8 Pre-Algebra represents the critical bridge to high school algebra, where students transition from arithmetic thinking to algebraic thinking, develop deep understanding of functions, and prepare for advanced mathematics including Algebra 1, Geometry, and beyond.",
+    "technology_integration": "Throughout this course, technology should be used appropriately to support instruction, assessment, and student exploration of mathematical concepts. Students should use graphing calculators, computer algebra systems, spreadsheets, and dynamic geometry software when appropriate.",
+    "assessment_expectations": "Students should demonstrate proficiency with rational and irrational numbers, scientific notation, laws of exponents, linear equations and inequalities, systems of equations, functions, Pythagorean Theorem, transformations, similarity, bivariate data analysis, and probability."
+  }
+}

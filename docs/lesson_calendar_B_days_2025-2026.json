@@ -1,0 +1,473 @@
+{
+  "metadata": {
+    "school": "Centner Academy - Miami, FL",
+    "course": "Grade 7: Pre-Algebra",
+    "schedule_type": "A/B Block Schedule - B Days Only",
+    "class_duration": "90 minutes",
+    "academic_year": "2025-2026",
+    "start_date": "September 3, 2025",
+    "end_date": "June 11, 2026",
+    "total_b_days": 87,
+    "total_lessons": 87,
+    "current_lessons_created": 21,
+    "lessons_needed": 66,
+    "note": "Lessons are taught ONLY on B-days (every other day). Sept 3 was Day 1-A. First lesson was Sept 4 (Day 1-B)."
+  },
+
+  "quarters": [
+    {
+      "quarter": "Q1",
+      "start_date": "September 3, 2025",
+      "end_date": "November 7, 2025",
+      "total_days": 46,
+      "total_b_days": 23,
+      "lesson_range": "1-23",
+      "units_covered": [1, 2]
+    },
+    {
+      "quarter": "Q2",
+      "start_date": "November 10, 2025",
+      "end_date": "January 30, 2026",
+      "total_days": 42,
+      "total_b_days": 21,
+      "lesson_range": "24-44",
+      "units_covered": [2, 3, 4]
+    },
+    {
+      "quarter": "Q3",
+      "start_date": "February 2, 2026",
+      "end_date": "April 10, 2026",
+      "total_days": 43,
+      "total_b_days": 22,
+      "lesson_range": "45-66",
+      "units_covered": [5, 6]
+    },
+    {
+      "quarter": "Q4",
+      "start_date": "April 13, 2026",
+      "end_date": "June 11, 2026",
+      "total_days": 43,
+      "total_b_days": 21,
+      "lesson_range": "67-87",
+      "units_covered": [7, 8, 9]
+    }
+  ],
+
+  "lesson_calendar": [
+    {
+      "lesson_number": 1,
+      "date": "Thursday, September 4, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "week": 1,
+      "unit": 1,
+      "unit_name": "Rational Number Operations",
+      "standard": "MA.7.NSO.1.1",
+      "lesson_topic": "Product Rule: Multiplying Powers (a^m × a^n)",
+      "status": "NOT CREATED",
+      "existing_lesson": null,
+      "note": "Foundation: Exponent laws"
+    },
+    {
+      "lesson_number": 2,
+      "date": "Monday, September 8, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "week": 2,
+      "unit": 1,
+      "unit_name": "Rational Number Operations",
+      "standard": "MA.7.NSO.1.1",
+      "lesson_topic": "Quotient Rule: Dividing Powers (a^m ÷ a^n)",
+      "status": "NOT CREATED",
+      "existing_lesson": null,
+      "note": "Exponent laws continued"
+    },
+    {
+      "lesson_number": 3,
+      "date": "Thursday, September 11, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "week": 2,
+      "unit": 1,
+      "unit_name": "Rational Number Operations",
+      "standard": "MA.7.NSO.1.1",
+      "lesson_topic": "Power Rule: (a^m)^n = a^(mn)",
+      "status": "NOT CREATED",
+      "existing_lesson": null
+    },
+    {
+      "lesson_number": 4,
+      "date": "Monday, September 15, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "week": 3,
+      "unit": 1,
+      "unit_name": "Rational Number Operations",
+      "standard": "MA.7.NSO.1.1",
+      "lesson_topic": "Zero and Negative Exponents",
+      "status": "NOT CREATED",
+      "existing_lesson": null
+    },
+    {
+      "lesson_number": 5,
+      "date": "Thursday, September 18, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "week": 3,
+      "unit": 1,
+      "unit_name": "Rational Number Operations",
+      "standard": "MA.7.NSO.1.1",
+      "lesson_topic": "Mixed Exponent Laws Practice",
+      "status": "NOT CREATED",
+      "existing_lesson": null
+    },
+    {
+      "lesson_number": 6,
+      "date": "Monday, September 22, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "week": 4,
+      "unit": 1,
+      "unit_name": "Rational Number Operations",
+      "standard": "MA.7.NSO.1.2",
+      "lesson_topic": "Fractions to Decimals Conversion",
+      "status": "NOT CREATED",
+      "existing_lesson": null
+    },
+    {
+      "lesson_number": 7,
+      "date": "Thursday, September 25, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "week": 4,
+      "unit": 1,
+      "unit_name": "Rational Number Operations",
+      "standard": "MA.7.NSO.1.2",
+      "lesson_topic": "Decimals to Fractions Conversion",
+      "status": "NOT CREATED",
+      "existing_lesson": null
+    },
+    {
+      "lesson_number": 8,
+      "date": "Monday, September 29, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "week": 5,
+      "unit": 1,
+      "unit_name": "Rational Number Operations",
+      "standard": "MA.7.NSO.1.2",
+      "lesson_topic": "Fractions/Decimals to Percentages",
+      "status": "NOT CREATED",
+      "existing_lesson": null
+    },
+    {
+      "lesson_number": 9,
+      "date": "Thursday, October 2, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "week": 5,
+      "unit": 1,
+      "unit_name": "Rational Number Operations",
+      "standard": "MA.7.NSO.1.2",
+      "lesson_topic": "Repeating Decimals",
+      "status": "NOT CREATED",
+      "existing_lesson": null,
+      "note": "Oct 2 is actually listed as 'No School' in calendar - verify"
+    },
+    {
+      "lesson_number": 10,
+      "date": "Monday, October 6, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "week": 6,
+      "unit": 1,
+      "unit_name": "Rational Number Operations",
+      "standard": "MA.7.NSO.2.1",
+      "lesson_topic": "Order of Operations Review (PEMDAS)",
+      "status": "NOT CREATED",
+      "existing_lesson": null
+    },
+    {
+      "lesson_number": 11,
+      "date": "Thursday, October 9, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "week": 6,
+      "unit": 1,
+      "unit_name": "Rational Number Operations",
+      "standard": "MA.7.NSO.2.1",
+      "lesson_topic": "Order of Operations with Integers",
+      "status": "NOT CREATED",
+      "existing_lesson": null
+    },
+    {
+      "lesson_number": 12,
+      "date": "Tuesday, October 14, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "week": 7,
+      "unit": 1,
+      "unit_name": "Rational Number Operations",
+      "standard": "MA.7.NSO.2.1",
+      "lesson_topic": "Order of Operations with Fractions/Decimals",
+      "status": "NOT CREATED",
+      "existing_lesson": null
+    },
+    {
+      "lesson_number": 13,
+      "date": "Friday, October 17, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "week": 7,
+      "unit": 1,
+      "unit_name": "Rational Number Operations",
+      "standard": "MA.7.NSO.2.2",
+      "lesson_topic": "Adding and Subtracting Integers",
+      "status": "NOT CREATED",
+      "existing_lesson": null
+    },
+    {
+      "lesson_number": 14,
+      "date": "Tuesday, October 21, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "week": 8,
+      "unit": 1,
+      "unit_name": "Rational Number Operations",
+      "standard": "MA.7.NSO.2.2",
+      "lesson_topic": "Multiplying and Dividing Integers",
+      "status": "NOT CREATED",
+      "existing_lesson": null
+    },
+    {
+      "lesson_number": 15,
+      "date": "Friday, October 24, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "week": 8,
+      "unit": 1,
+      "unit_name": "Rational Number Operations",
+      "standard": "MA.7.NSO.2.2",
+      "lesson_topic": "Adding/Subtracting Fractions (Unlike Denominators)",
+      "status": "NOT CREATED",
+      "existing_lesson": null
+    },
+    {
+      "lesson_number": 16,
+      "date": "Tuesday, October 28, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "week": 9,
+      "unit": 1,
+      "unit_name": "Rational Number Operations",
+      "standard": "MA.7.NSO.2.2",
+      "lesson_topic": "Multiplying/Dividing Fractions",
+      "status": "NOT CREATED",
+      "existing_lesson": null
+    },
+    {
+      "lesson_number": 17,
+      "date": "Friday, October 31, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "week": 9,
+      "unit": 1,
+      "unit_name": "Rational Number Operations",
+      "standard": "MA.7.NSO.2.2",
+      "lesson_topic": "Operations with Decimals",
+      "status": "NOT CREATED",
+      "existing_lesson": null,
+      "note": "Noon dismissal - shortened class"
+    },
+    {
+      "lesson_number": 18,
+      "date": "Tuesday, November 4, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "week": 10,
+      "unit": 1,
+      "unit_name": "Rational Number Operations",
+      "standard": "MA.7.NSO.2.3",
+      "lesson_topic": "Real-World Rational Number Problems",
+      "status": "NOT CREATED",
+      "existing_lesson": null
+    },
+    {
+      "lesson_number": 19,
+      "date": "Friday, November 7, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "week": 10,
+      "unit": 1,
+      "unit_name": "Rational Number Operations",
+      "standard": "Review",
+      "lesson_topic": "Unit 1 Review & Assessment",
+      "status": "NOT CREATED",
+      "existing_lesson": null,
+      "note": "Last day of Q1"
+    },
+    {
+      "lesson_number": 20,
+      "date": "Wednesday, November 12, 2025",
+      "day_type": "B",
+      "quarter": "Q2",
+      "week": 11,
+      "unit": 2,
+      "unit_name": "Proportional Relationships",
+      "standard": "MA.7.AR.4.1",
+      "lesson_topic": "Identifying Proportional Relationships in Tables",
+      "status": "NOT CREATED",
+      "existing_lesson": {
+        "code": "7_math_2.11.2",
+        "topic": "Variables on both sides",
+        "standard": "MA.8.AR.2.1",
+        "issue": "Using 8th grade standard - should be MA.7.AR.4.1"
+      },
+      "note": "CURRENT: You had lesson on variables on both sides (wrong standard). SHOULD BE: Proportional relationships"
+    },
+    {
+      "lesson_number": 21,
+      "date": "Friday, November 14, 2025",
+      "day_type": "B",
+      "quarter": "Q2",
+      "week": 11,
+      "unit": 2,
+      "unit_name": "Proportional Relationships",
+      "standard": "MA.7.AR.4.1",
+      "lesson_topic": "Identifying Proportional Relationships in Graphs",
+      "status": "NOT CREATED",
+      "existing_lesson": null
+    },
+    {
+      "lesson_number": 22,
+      "date": "Wednesday, November 19, 2025",
+      "day_type": "B",
+      "quarter": "Q2",
+      "week": 12,
+      "unit": 2,
+      "unit_name": "Proportional Relationships",
+      "standard": "MA.7.AR.4.2",
+      "lesson_topic": "Finding Constant of Proportionality (k) from Tables",
+      "status": "NOT CREATED",
+      "existing_lesson": null
+    },
+    {
+      "lesson_number": 23,
+      "date": "Monday, November 24, 2025",
+      "day_type": "THANKSGIVING BREAK",
+      "quarter": "Q2",
+      "week": 13,
+      "unit": null,
+      "unit_name": "Thanksgiving Break",
+      "standard": null,
+      "lesson_topic": "No School",
+      "status": "N/A",
+      "existing_lesson": null
+    },
+    {
+      "lesson_number": 24,
+      "date": "Monday, December 1, 2025",
+      "day_type": "B",
+      "quarter": "Q2",
+      "week": 14,
+      "unit": 2,
+      "unit_name": "Proportional Relationships",
+      "standard": "MA.7.AR.4.2",
+      "lesson_topic": "Constant of Proportionality as Unit Rate",
+      "status": "NOT CREATED",
+      "existing_lesson": null
+    }
+  ],
+
+  "existing_lessons_mapping": {
+    "note": "You have 21 lessons on equations (MA.7.AR.2.2 and MA.8.AR.2.1). These should be taught in Unit 5 (Q3, around lessons 45-65). The current Nov 12 lesson uses 8th grade standards.",
+    "your_21_lessons": [
+      {
+        "lesson_id": 1,
+        "title": "Welcome to Algebra Castle",
+        "standard": "MA.7.AR.2.2 / MA.8.AR.2.1",
+        "suggested_date": "TBD - Unit 5 (Q3)",
+        "note": "Should be moved to Q3 after proportions and percents"
+      }
+    ],
+    "recommendation": "The 21 equation lessons should be taught starting around Lesson 45 (early Q3) as part of Unit 5: Equations and Inequalities. For Nov 12 (Lesson 20), you should be teaching proportional relationships (Unit 2), not equations."
+  },
+
+  "unit_breakdown_by_lessons": {
+    "unit_1": {
+      "name": "Rational Number Operations",
+      "lessons": "1-19",
+      "quarter": "Q1",
+      "b_days": 19,
+      "standards_covered": ["MA.7.NSO.1.1", "MA.7.NSO.1.2", "MA.7.NSO.2.1", "MA.7.NSO.2.2", "MA.7.NSO.2.3"]
+    },
+    "unit_2": {
+      "name": "Proportional Relationships",
+      "lessons": "20-31",
+      "quarter": "Q2",
+      "b_days": 12,
+      "standards_covered": ["MA.7.AR.4.1", "MA.7.AR.4.2", "MA.7.AR.4.3", "MA.7.AR.4.4", "MA.7.AR.3.2", "MA.7.AR.3.3"]
+    },
+    "unit_3": {
+      "name": "Percent Problems",
+      "lessons": "32-43",
+      "quarter": "Q2",
+      "b_days": 12,
+      "standards_covered": ["MA.7.AR.3.1", "MA.7.AR.4.5"]
+    },
+    "unit_4": {
+      "name": "Algebraic Expressions",
+      "lessons": "44-54",
+      "quarter": "Q2-Q3",
+      "b_days": 11,
+      "standards_covered": ["MA.7.AR.1.1", "MA.7.AR.1.2"]
+    },
+    "unit_5": {
+      "name": "Equations and Inequalities",
+      "lessons": "55-68",
+      "quarter": "Q3",
+      "b_days": 14,
+      "standards_covered": ["MA.7.AR.2.1", "MA.7.AR.2.2"],
+      "note": "YOUR 21 EXISTING LESSONS GO HERE"
+    },
+    "unit_6": {
+      "name": "Data Analysis",
+      "lessons": "69-78",
+      "quarter": "Q4",
+      "b_days": 10,
+      "standards_covered": ["MA.7.DP.1.1", "MA.7.DP.1.2", "MA.7.DP.1.3", "MA.7.DP.1.4", "MA.7.DP.1.5"]
+    },
+    "unit_7": {
+      "name": "Probability",
+      "lessons": "79-84",
+      "quarter": "Q4",
+      "b_days": 6,
+      "standards_covered": ["MA.7.DP.2.1", "MA.7.DP.2.2", "MA.7.DP.2.3", "MA.7.DP.2.4"]
+    },
+    "unit_8": {
+      "name": "Geometry (Area, Volume, Circles)",
+      "lessons": "85-87",
+      "quarter": "Q4",
+      "b_days": 3,
+      "standards_covered": ["MA.7.GR.1.1", "MA.7.GR.1.2", "MA.7.GR.1.3", "MA.7.GR.1.4", "MA.7.GR.1.5", "MA.7.GR.2.1", "MA.7.GR.2.2", "MA.7.GR.2.3"],
+      "note": "Geometry unit shortened - will need additional time or integration throughout year"
+    }
+  },
+
+  "action_items": {
+    "immediate": [
+      "Update Nov 12 lesson from MA.8.AR.2.1 (variables on both sides) to MA.7.AR.4.1 (proportional relationships)",
+      "Update Nov 14 lesson to MA.7.AR.4.1 (identifying proportional relationships in graphs)"
+    ],
+    "short_term": [
+      "Create Lessons 1-19 (Unit 1: Rational Numbers) - retroactive for Q1",
+      "Create Lessons 20-31 (Unit 2: Proportional Relationships) - for current Q2",
+      "Create Lessons 32-43 (Unit 3: Percent Problems) - for Q2"
+    ],
+    "long_term": [
+      "Integrate existing 21 equation lessons into Unit 5 (Lessons 55-68) for Q3",
+      "Create inequality lessons to complement equation lessons",
+      "Create Units 6-8 (Data, Probability, Geometry)"
+    ]
+  }
+}

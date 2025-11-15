@@ -1,0 +1,806 @@
+{
+  "quarter": "Q4",
+  "date_range": "Apr 13 - Jun 11",
+  "lesson_range": "67-87",
+  "units": [
+    {
+      "unit_number": 7,
+      "unit_name": "Data Analysis (continued)",
+      "standard_prefix": "MA.8.DP.1",
+      "lessons": [
+        {
+          "lesson_number": 67,
+          "title": "Fitting a Line to Data",
+          "standard": "MA.8.DP.1.3",
+          "standard_details": {
+            "code": "MA.8.DP.1.3",
+            "description": "Given a scatter plot with a linear association, informally fit a straight line.",
+            "depth_of_knowledge": 2,
+            "cognitive_complexity": "Moderate"
+          },
+          "objectives": [
+            "Draw a line of best fit by hand",
+            "Understand the purpose of a trend line",
+            "Balance points above and below the line"
+          ],
+          "key_concepts": [
+            "Line of best fit",
+            "Trend line",
+            "Linear association",
+            "Informal fitting",
+            "Equal distribution of points"
+          ],
+          "examples": [
+            "Fit a line to height vs foot length data",
+            "Draw trend line through study time vs grade scatter plot",
+            "Compare different student-drawn lines of fit"
+          ],
+          "common_misconceptions": [
+            "Thinking the line must pass through specific points",
+            "Forcing the line through (0,0)",
+            "Making the line too steep or flat"
+          ],
+          "real_world_applications": [
+            "Predicting future sales from past data",
+            "Estimating relationships in scientific experiments"
+          ]
+        },
+        {
+          "lesson_number": 68,
+          "title": "Using Lines of Fit for Predictions",
+          "standard": "MA.8.DP.1.3",
+          "standard_details": {
+            "code": "MA.8.DP.1.3",
+            "description": "Given a scatter plot with a linear association, informally fit a straight line.",
+            "depth_of_knowledge": 2,
+            "cognitive_complexity": "Moderate"
+          },
+          "objectives": [
+            "Use a line of fit to make predictions",
+            "Interpolate and extrapolate from trend lines",
+            "Understand limitations of predictions"
+          ],
+          "key_concepts": [
+            "Interpolation",
+            "Extrapolation",
+            "Prediction from trend line",
+            "Reading values from fitted line",
+            "Reliability of predictions"
+          ],
+          "examples": [
+            "Predict test score for 5 hours of study using fitted line",
+            "Estimate missing data point using trend line",
+            "Extrapolate future value from existing pattern"
+          ],
+          "common_misconceptions": [
+            "Thinking predictions are always exact",
+            "Extrapolating too far from data range",
+            "Not considering context when predicting"
+          ],
+          "real_world_applications": [
+            "Business forecasting from historical data",
+            "Weather prediction based on patterns"
+          ]
+        },
+        {
+          "lesson_number": 69,
+          "title": "Data Analysis Review",
+          "standard": "MA.8.DP.1.1, MA.8.DP.1.2, MA.8.DP.1.3",
+          "standard_details": {
+            "code": "MA.8.DP.1",
+            "description": "Develop an understanding of the patterns and relationships in bivariate data.",
+            "depth_of_knowledge": 2,
+            "cognitive_complexity": "Moderate to High"
+          },
+          "objectives": [
+            "Construct appropriate graphs for data",
+            "Describe patterns and correlations",
+            "Fit lines and make predictions"
+          ],
+          "key_concepts": [
+            "All data analysis concepts from MA.8.DP.1.1-1.3",
+            "Graph construction",
+            "Pattern description",
+            "Prediction and estimation"
+          ],
+          "examples": [
+            "Complete data analysis projects",
+            "Mixed practice with real-world data sets",
+            "Graph interpretation and prediction"
+          ],
+          "common_misconceptions": [
+            "Review all misconceptions from lessons 64-68"
+          ],
+          "real_world_applications": [
+            "Complete statistical analysis of real-world relationships"
+          ]
+        }
+      ]
+    },
+    {
+      "unit_number": 8,
+      "unit_name": "Probability",
+      "standard_prefix": "MA.8.DP.2",
+      "lessons": [
+        {
+          "lesson_number": 70,
+          "title": "Sample Spaces and Tree Diagrams",
+          "standard": "MA.8.DP.2.1",
+          "standard_details": {
+            "code": "MA.8.DP.2.1",
+            "description": "Determine the sample space for a repeated experiment.",
+            "depth_of_knowledge": 2,
+            "cognitive_complexity": "Moderate"
+          },
+          "objectives": [
+            "Define sample space",
+            "List all possible outcomes of repeated experiments",
+            "Create tree diagrams for repeated experiments"
+          ],
+          "key_concepts": [
+            "Sample space",
+            "Outcome",
+            "Repeated experiment",
+            "Tree diagram",
+            "Systematic listing",
+            "Organized counting"
+          ],
+          "examples": [
+            "Find sample space for flipping a coin twice",
+            "List outcomes for rolling a die and flipping a coin",
+            "Create tree diagram for three coin flips"
+          ],
+          "common_misconceptions": [
+            "Missing outcomes in listing",
+            "Not treating each repetition independently",
+            "Confusing sample space with probability"
+          ],
+          "real_world_applications": [
+            "Planning all possible scenarios in decision-making",
+            "Game strategy analysis"
+          ]
+        },
+        {
+          "lesson_number": 71,
+          "title": "Sample Spaces with Multiple Experiments",
+          "standard": "MA.8.DP.2.1",
+          "standard_details": {
+            "code": "MA.8.DP.2.1",
+            "description": "Determine the sample space for a repeated experiment.",
+            "depth_of_knowledge": 2,
+            "cognitive_complexity": "Moderate"
+          },
+          "objectives": [
+            "Find sample spaces for complex repeated experiments",
+            "Use multiplication principle to count outcomes",
+            "Organize outcomes systematically"
+          ],
+          "key_concepts": [
+            "Fundamental counting principle",
+            "Multiplication of outcomes",
+            "Organized lists",
+            "Tables for sample spaces"
+          ],
+          "examples": [
+            "Sample space for rolling two dice",
+            "Outcomes for choosing from multiple categories",
+            "Calculate total outcomes using multiplication"
+          ],
+          "common_misconceptions": [
+            "Adding instead of multiplying outcome counts",
+            "Not accounting for order when it matters",
+            "Double-counting outcomes"
+          ],
+          "real_world_applications": [
+            "Menu combination possibilities",
+            "Password or code combinations"
+          ]
+        },
+        {
+          "lesson_number": 72,
+          "title": "Introduction to Theoretical Probability",
+          "standard": "MA.8.DP.2.2",
+          "standard_details": {
+            "code": "MA.8.DP.2.2",
+            "description": "Determine the theoretical probability of an event related to a repeated experiment.",
+            "depth_of_knowledge": 2,
+            "cognitive_complexity": "Moderate"
+          },
+          "objectives": [
+            "Define theoretical probability",
+            "Calculate probability as favorable/total outcomes",
+            "Express probability as fraction, decimal, and percent"
+          ],
+          "key_concepts": [
+            "Theoretical probability",
+            "Favorable outcomes",
+            "Total outcomes",
+            "P(event) = favorable/total",
+            "Probability scale (0 to 1)"
+          ],
+          "examples": [
+            "Find P(heads) when flipping a coin twice",
+            "Calculate P(sum of 7) when rolling two dice",
+            "Determine P(both red) when drawing marbles with replacement"
+          ],
+          "common_misconceptions": [
+            "Confusing number of outcomes with probability",
+            "Thinking probability can be greater than 1",
+            "Not simplifying probability fractions"
+          ],
+          "real_world_applications": [
+            "Calculating chances of winning games",
+            "Understanding weather forecast probabilities"
+          ]
+        },
+        {
+          "lesson_number": 73,
+          "title": "Probability of Compound Events",
+          "standard": "MA.8.DP.2.2",
+          "standard_details": {
+            "code": "MA.8.DP.2.2",
+            "description": "Determine the theoretical probability of an event related to a repeated experiment.",
+            "depth_of_knowledge": 2,
+            "cognitive_complexity": "Moderate"
+          },
+          "objectives": [
+            "Find probability of compound events",
+            "Use sample spaces to calculate probabilities",
+            "Determine complementary probabilities"
+          ],
+          "key_concepts": [
+            "Compound event",
+            "Complementary events",
+            "P(A') = 1 - P(A)",
+            "And vs or events",
+            "Using tree diagrams for probability"
+          ],
+          "examples": [
+            "Find P(at least one head) in three coin flips",
+            "Calculate P(no 6) when rolling a die twice",
+            "Determine P(same color) when spinning two spinners"
+          ],
+          "common_misconceptions": [
+            "Confusing 'and' with 'or' probabilities",
+            "Not using complement when appropriate",
+            "Incorrectly counting favorable outcomes"
+          ],
+          "real_world_applications": [
+            "Quality control with multiple tests",
+            "Sports tournament bracket probabilities"
+          ]
+        },
+        {
+          "lesson_number": 74,
+          "title": "Real-World Probability Applications",
+          "standard": "MA.8.DP.2.3",
+          "standard_details": {
+            "code": "MA.8.DP.2.3",
+            "description": "Solve real-world problems involving probabilities related to single or repeated experiments, including making predictions based on theoretical probability.",
+            "depth_of_knowledge": 2,
+            "cognitive_complexity": "Moderate to High"
+          },
+          "objectives": [
+            "Apply probability to real-world contexts",
+            "Make predictions based on theoretical probability",
+            "Calculate expected outcomes"
+          ],
+          "key_concepts": [
+            "Contextual probability",
+            "Expected value (informal)",
+            "Predictions from probability",
+            "Interpreting probability in context"
+          ],
+          "examples": [
+            "Predict number of heads in 100 coin flips",
+            "Calculate expected wins in a carnival game",
+            "Determine likelihood of weather events"
+          ],
+          "common_misconceptions": [
+            "Thinking probability guarantees specific results",
+            "Not scaling probability to number of trials",
+            "Confusing theoretical with experimental probability"
+          ],
+          "real_world_applications": [
+            "Insurance risk calculations",
+            "Game fairness analysis"
+          ]
+        },
+        {
+          "lesson_number": 75,
+          "title": "Advanced Real-World Probability",
+          "standard": "MA.8.DP.2.3",
+          "standard_details": {
+            "code": "MA.8.DP.2.3",
+            "description": "Solve real-world problems involving probabilities related to single or repeated experiments, including making predictions based on theoretical probability.",
+            "depth_of_knowledge": 2,
+            "cognitive_complexity": "Moderate to High"
+          },
+          "objectives": [
+            "Solve multi-step probability problems",
+            "Compare theoretical predictions to real results",
+            "Evaluate fairness of games and contests"
+          ],
+          "key_concepts": [
+            "Multi-step probability problems",
+            "Fair vs unfair games",
+            "Probability-based decision making",
+            "Comparing probabilities"
+          ],
+          "examples": [
+            "Determine if a game is fair based on probabilities",
+            "Solve complex real-world probability scenarios",
+            "Make informed decisions using probability"
+          ],
+          "common_misconceptions": [
+            "Not considering all possible outcomes in complex scenarios",
+            "Thinking equal prizes mean fair game",
+            "Misunderstanding probability in sequential events"
+          ],
+          "real_world_applications": [
+            "Evaluating gambling and lottery odds",
+            "Making business decisions under uncertainty"
+          ]
+        },
+        {
+          "lesson_number": 76,
+          "title": "Probability Unit Review",
+          "standard": "MA.8.DP.2.1, MA.8.DP.2.2, MA.8.DP.2.3",
+          "standard_details": {
+            "code": "MA.8.DP.2",
+            "description": "Develop an understanding of probability.",
+            "depth_of_knowledge": 2,
+            "cognitive_complexity": "Moderate to High"
+          },
+          "objectives": [
+            "Determine sample spaces",
+            "Calculate theoretical probabilities",
+            "Solve real-world probability problems"
+          ],
+          "key_concepts": [
+            "All probability concepts from MA.8.DP.2.1-2.3",
+            "Sample space creation",
+            "Probability calculation",
+            "Real-world application"
+          ],
+          "examples": [
+            "Mixed probability practice",
+            "Complex real-world scenarios",
+            "Probability project work"
+          ],
+          "common_misconceptions": [
+            "Review all misconceptions from lessons 70-75"
+          ],
+          "real_world_applications": [
+            "Complete probability analysis in authentic contexts"
+          ]
+        }
+      ]
+    },
+    {
+      "unit_number": 9,
+      "unit_name": "Geometry - Pythagorean Theorem and Angles",
+      "standard_prefix": "MA.8.GR.1",
+      "lessons": [
+        {
+          "lesson_number": 77,
+          "title": "Introduction to Pythagorean Theorem",
+          "standard": "MA.8.GR.1.1",
+          "standard_details": {
+            "code": "MA.8.GR.1.1",
+            "description": "Apply the Pythagorean Theorem to solve mathematical and real-world problems involving unknown side lengths in right triangles.",
+            "depth_of_knowledge": 2,
+            "cognitive_complexity": "Moderate"
+          },
+          "objectives": [
+            "Identify right triangles and their parts",
+            "State the Pythagorean Theorem (a² + b² = c²)",
+            "Find the hypotenuse given two legs"
+          ],
+          "key_concepts": [
+            "Right triangle",
+            "Legs (a and b)",
+            "Hypotenuse (c)",
+            "a² + b² = c²",
+            "Perfect squares"
+          ],
+          "examples": [
+            "Find c when a = 3 and b = 4",
+            "Calculate hypotenuse of a 5-12 right triangle",
+            "Solve for c when a = 8 and b = 15"
+          ],
+          "common_misconceptions": [
+            "Confusing which side is the hypotenuse",
+            "Adding instead of squaring",
+            "Not taking the square root at the end"
+          ],
+          "real_world_applications": [
+            "Finding diagonal distance across a field",
+            "Calculating ladder placement for safety"
+          ]
+        },
+        {
+          "lesson_number": 78,
+          "title": "Finding Legs with Pythagorean Theorem",
+          "standard": "MA.8.GR.1.1",
+          "standard_details": {
+            "code": "MA.8.GR.1.1",
+            "description": "Apply the Pythagorean Theorem to solve mathematical and real-world problems involving unknown side lengths in right triangles.",
+            "depth_of_knowledge": 2,
+            "cognitive_complexity": "Moderate"
+          },
+          "objectives": [
+            "Find a leg when given hypotenuse and other leg",
+            "Rearrange Pythagorean Theorem (a² = c² - b²)",
+            "Solve real-world problems for legs"
+          ],
+          "key_concepts": [
+            "Solving for a leg",
+            "a² = c² - b² or b² = c² - a²",
+            "Subtraction before square root",
+            "Application problems"
+          ],
+          "examples": [
+            "Find a when b = 12 and c = 13",
+            "Calculate missing leg when c = 10 and a = 6",
+            "Determine height of a structure using Pythagorean Theorem"
+          ],
+          "common_misconceptions": [
+            "Using addition instead of subtraction",
+            "Confusing which value is c",
+            "Forgetting to take square root"
+          ],
+          "real_world_applications": [
+            "Finding height of a building using shadow",
+            "Calculating depth in construction projects"
+          ]
+        },
+        {
+          "lesson_number": 79,
+          "title": "Pythagorean Theorem for Distance",
+          "standard": "MA.8.GR.1.2",
+          "standard_details": {
+            "code": "MA.8.GR.1.2",
+            "description": "Apply the Pythagorean Theorem to solve mathematical and real-world problems involving the distance between two points in a coordinate plane.",
+            "depth_of_knowledge": 2,
+            "cognitive_complexity": "Moderate"
+          },
+          "objectives": [
+            "Find distance between two points on coordinate plane",
+            "Recognize distance as hypotenuse of right triangle",
+            "Apply distance formula"
+          ],
+          "key_concepts": [
+            "Distance formula: d = √[(x₂-x₁)² + (y₂-y₁)²]",
+            "Horizontal distance (change in x)",
+            "Vertical distance (change in y)",
+            "Right triangle on coordinate plane"
+          ],
+          "examples": [
+            "Find distance between (1, 2) and (4, 6)",
+            "Calculate distance from origin to (3, 4)",
+            "Determine length of segment with endpoints (-2, 1) and (3, 5)"
+          ],
+          "common_misconceptions": [
+            "Not squaring the differences",
+            "Forgetting the square root",
+            "Subtracting coordinates incorrectly"
+          ],
+          "real_world_applications": [
+            "GPS distance calculations",
+            "Mapping shortest routes"
+          ]
+        },
+        {
+          "lesson_number": 80,
+          "title": "Triangle Inequality Theorem",
+          "standard": "MA.8.GR.1.3",
+          "standard_details": {
+            "code": "MA.8.GR.1.3",
+            "description": "Use the Triangle Inequality Theorem to determine if a triangle can be formed from a given set of sides.",
+            "depth_of_knowledge": 2,
+            "cognitive_complexity": "Moderate"
+          },
+          "objectives": [
+            "State Triangle Inequality Theorem",
+            "Check if three lengths can form a triangle",
+            "Explain why certain combinations don't work"
+          ],
+          "key_concepts": [
+            "Triangle Inequality Theorem",
+            "Sum of two sides > third side",
+            "Testing all three combinations",
+            "Possible vs impossible triangles"
+          ],
+          "examples": [
+            "Can sides 3, 4, 5 form a triangle?",
+            "Determine if 2, 3, 10 can be triangle sides",
+            "Check if 5, 7, 9 form a valid triangle"
+          ],
+          "common_misconceptions": [
+            "Only checking one combination",
+            "Using ≥ instead of >",
+            "Not testing the longest side"
+          ],
+          "real_world_applications": [
+            "Construction - ensuring triangular frames are possible",
+            "Engineering - validating triangular support structures"
+          ]
+        },
+        {
+          "lesson_number": 81,
+          "title": "Angle Relationships",
+          "standard": "MA.8.GR.1.4",
+          "standard_details": {
+            "code": "MA.8.GR.1.4",
+            "description": "Solve mathematical problems involving the relationships of the angles formed by a transversal and a pair of parallel lines.",
+            "depth_of_knowledge": 2,
+            "cognitive_complexity": "Moderate"
+          },
+          "objectives": [
+            "Identify angle relationships with parallel lines and transversal",
+            "Find corresponding, alternate interior, and alternate exterior angles",
+            "Solve for unknown angles using angle relationships"
+          ],
+          "key_concepts": [
+            "Parallel lines",
+            "Transversal",
+            "Corresponding angles (equal)",
+            "Alternate interior angles (equal)",
+            "Alternate exterior angles (equal)",
+            "Same-side interior angles (supplementary)"
+          ],
+          "examples": [
+            "Find missing angles when parallel lines are cut by transversal",
+            "Identify angle pairs and their relationships",
+            "Solve for x in parallel line diagrams"
+          ],
+          "common_misconceptions": [
+            "Confusing angle pair types",
+            "Not recognizing when lines are parallel",
+            "Mixing up equal vs supplementary relationships"
+          ],
+          "real_world_applications": [
+            "Architecture - parallel beam structures",
+            "Railroad track design"
+          ]
+        },
+        {
+          "lesson_number": 82,
+          "title": "Triangle Angle Sum",
+          "standard": "MA.8.GR.1.5",
+          "standard_details": {
+            "code": "MA.8.GR.1.5",
+            "description": "Develop and use formulas for the sums of the interior angles of regular polygons by decomposing them into triangles.",
+            "depth_of_knowledge": 2,
+            "cognitive_complexity": "Moderate"
+          },
+          "objectives": [
+            "Prove triangle angle sum is 180°",
+            "Find missing angles in triangles",
+            "Apply triangle angle sum to solve problems"
+          ],
+          "key_concepts": [
+            "Triangle angle sum = 180°",
+            "Interior angles of triangle",
+            "Using algebra to find unknown angles",
+            "Angle relationships in triangles"
+          ],
+          "examples": [
+            "Find missing angle when two angles are 50° and 70°",
+            "Solve for x when angles are x, 2x, and 3x",
+            "Calculate third angle given two angles"
+          ],
+          "common_misconceptions": [
+            "Using 360° instead of 180°",
+            "Not setting up equations correctly",
+            "Forgetting to check if answer is reasonable"
+          ],
+          "real_world_applications": [
+            "Roof truss angle calculations",
+            "Triangular sail design"
+          ]
+        },
+        {
+          "lesson_number": 83,
+          "title": "Polygon Angle Sums",
+          "standard": "MA.8.GR.1.6",
+          "standard_details": {
+            "code": "MA.8.GR.1.6",
+            "description": "Develop and use formulas for the sums of the interior angles of regular polygons by decomposing them into triangles.",
+            "depth_of_knowledge": 2,
+            "cognitive_complexity": "Moderate"
+          },
+          "objectives": [
+            "Decompose polygons into triangles",
+            "Derive formula: (n-2) × 180°",
+            "Find sum of interior angles for any polygon"
+          ],
+          "key_concepts": [
+            "Polygon decomposition",
+            "Number of triangles = n - 2",
+            "Interior angle sum = (n-2) × 180°",
+            "Regular vs irregular polygons"
+          ],
+          "examples": [
+            "Find angle sum of hexagon",
+            "Calculate interior angle sum of octagon",
+            "Determine each angle in regular pentagon"
+          ],
+          "common_misconceptions": [
+            "Using n instead of (n-2)",
+            "Not counting sides correctly",
+            "Confusing interior angle sum with one angle measure"
+          ],
+          "real_world_applications": [
+            "Architecture - polygonal building design",
+            "Tile pattern calculations"
+          ]
+        },
+        {
+          "lesson_number": 84,
+          "title": "Geometry Review - Pythagorean Theorem and Angles",
+          "standard": "MA.8.GR.1.1, MA.8.GR.1.2, MA.8.GR.1.3, MA.8.GR.1.4, MA.8.GR.1.5, MA.8.GR.1.6",
+          "standard_details": {
+            "code": "MA.8.GR.1",
+            "description": "Develop an understanding of relationships among geometric figures.",
+            "depth_of_knowledge": 2,
+            "cognitive_complexity": "Moderate to High"
+          },
+          "objectives": [
+            "Apply Pythagorean Theorem to various problems",
+            "Use Triangle Inequality Theorem",
+            "Solve angle problems with parallel lines and polygons"
+          ],
+          "key_concepts": [
+            "All geometry concepts from MA.8.GR.1.1-1.6",
+            "Right triangles and distances",
+            "Angle relationships",
+            "Polygon properties"
+          ],
+          "examples": [
+            "Mixed practice problems",
+            "Real-world geometry applications",
+            "Multi-step geometry problems"
+          ],
+          "common_misconceptions": [
+            "Review all misconceptions from lessons 77-83"
+          ],
+          "real_world_applications": [
+            "Construction and engineering applications",
+            "Navigation and mapping"
+          ]
+        }
+      ]
+    },
+    {
+      "unit_number": 10,
+      "unit_name": "Transformations",
+      "standard_prefix": "MA.8.GR.2",
+      "lessons": [
+        {
+          "lesson_number": 85,
+          "title": "Identifying Transformations",
+          "standard": "MA.8.GR.2.1",
+          "standard_details": {
+            "code": "MA.8.GR.2.1",
+            "description": "Given a preimage and image generated by a single transformation, identify the transformation that describes the relationship.",
+            "depth_of_knowledge": 2,
+            "cognitive_complexity": "Moderate"
+          },
+          "objectives": [
+            "Identify translations, reflections, rotations, and dilations",
+            "Distinguish between rigid and non-rigid transformations",
+            "Describe transformations in words"
+          ],
+          "key_concepts": [
+            "Translation (slide)",
+            "Reflection (flip)",
+            "Rotation (turn)",
+            "Dilation (resize)",
+            "Preimage and image",
+            "Congruent vs similar"
+          ],
+          "examples": [
+            "Identify if a figure was translated, reflected, or rotated",
+            "Recognize dilation from size change",
+            "Describe transformation from preimage to image"
+          ],
+          "common_misconceptions": [
+            "Confusing rotation with reflection",
+            "Not recognizing dilations",
+            "Thinking all transformations preserve size"
+          ],
+          "real_world_applications": [
+            "Computer graphics and animation",
+            "Photography and image editing"
+          ]
+        },
+        {
+          "lesson_number": 86,
+          "title": "Dilations and Scale Factors",
+          "standard": "MA.8.GR.2.2",
+          "standard_details": {
+            "code": "MA.8.GR.2.2",
+            "description": "Given a preimage and image generated by a single dilation, identify the scale factor that describes the relationship.",
+            "depth_of_knowledge": 2,
+            "cognitive_complexity": "Moderate"
+          },
+          "objectives": [
+            "Define scale factor",
+            "Calculate scale factor from preimage and image",
+            "Distinguish enlargements from reductions"
+          ],
+          "key_concepts": [
+            "Scale factor",
+            "k > 1 (enlargement)",
+            "0 < k < 1 (reduction)",
+            "k = 1 (congruent)",
+            "Center of dilation",
+            "Proportional sides"
+          ],
+          "examples": [
+            "Find scale factor when image is twice the preimage",
+            "Determine k when figure is reduced to half size",
+            "Calculate scale factor from corresponding side lengths"
+          ],
+          "common_misconceptions": [
+            "Confusing scale factor with actual lengths",
+            "Inverting scale factor fraction",
+            "Not recognizing reductions as dilations"
+          ],
+          "real_world_applications": [
+            "Scale models and blueprints",
+            "Map scaling"
+          ]
+        },
+        {
+          "lesson_number": 87,
+          "title": "Applying Transformations and Similar Triangles",
+          "standard": "MA.8.GR.2.3, MA.8.GR.2.4",
+          "standard_details": {
+            "code": "MA.8.GR.2.3 & MA.8.GR.2.4",
+            "description": "Apply a single transformation to a figure and represent the transformation with a written description and with coordinates. / Describe and apply the effect of a single transformation on two-dimensional figures using coordinates and the coordinate plane. Given a preimage and an image, describe a sequence of transformations that maps the preimage to the image.",
+            "depth_of_knowledge": 2,
+            "cognitive_complexity": "Moderate to High"
+          },
+          "objectives": [
+            "Apply transformations on coordinate plane",
+            "Write coordinate rules for transformations",
+            "Use similarity to solve triangle problems",
+            "Sequence multiple transformations"
+          ],
+          "key_concepts": [
+            "Coordinate notation for transformations",
+            "Translation: (x, y) → (x + a, y + b)",
+            "Reflection rules",
+            "Rotation rules",
+            "Dilation: (x, y) → (kx, ky)",
+            "Similar triangles",
+            "Corresponding parts",
+            "Proportional relationships"
+          ],
+          "examples": [
+            "Apply a translation to triangle ABC",
+            "Reflect a figure across x-axis",
+            "Dilate a shape with center at origin",
+            "Find missing sides in similar triangles",
+            "Describe sequence of transformations"
+          ],
+          "common_misconceptions": [
+            "Mixing up transformation rules",
+            "Not maintaining orientation properly",
+            "Confusing similar with congruent",
+            "Not setting up proportions correctly"
+          ],
+          "real_world_applications": [
+            "Computer-aided design (CAD)",
+            "Architecture and scaling drawings",
+            "GPS and navigation transformations",
+            "Shadow and perspective problems"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1462 @@
+{
+  "metadata": {
+    "title": "Q1 Detailed Lesson Plans - 8th Grade Mathematics",
+    "school": "Centner Academy, Miami, FL",
+    "course_code": "1205050",
+    "course_name": "M/J Grade 8 Pre-Algebra",
+    "quarter": "Q1",
+    "start_date": "September 4, 2025",
+    "end_date": "November 7, 2025",
+    "total_lessons": 19,
+    "day_type": "B-days only",
+    "unit": {
+      "number": 1,
+      "name": "Number Sense and Operations - 8th Grade"
+    },
+    "created_date": "2025-01-13",
+    "updated_date": "2025-01-13",
+    "framework": "Florida B.E.S.T. Standards",
+    "note": "COMPLETELY REDONE FOR 8TH GRADE STANDARDS - Covers MA.8.NSO.1.1 through MA.8.NSO.1.7"
+  },
+
+  "lessons": [
+    {
+      "lesson_number": 1,
+      "date": "Thursday, September 4, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "unit_number": 1,
+      "unit_name": "Number Sense and Operations - 8th Grade",
+      "standard_code": "MA.8.NSO.1.1",
+      "standard_title": "Extend previous understanding of rational numbers to define irrational numbers within the real number system. Locate an approximate value of a numerical expression involving irrational numbers on a number line.",
+      "standard_details": {
+        "code": "MA.8.NSO.1.1",
+        "title": "Extend previous understanding of rational numbers to define irrational numbers within the real number system. Locate an approximate value of a numerical expression involving irrational numbers on a number line.",
+        "strand": "Number Sense and Operations",
+        "category": "NSO.1 - Solve problems involving rational numbers, including numbers in scientific notation, and extend the understanding of rational numbers to irrational numbers",
+        "date_adopted": "08/20",
+        "clarifications": [
+          {
+            "number": 1,
+            "text": "Instruction includes the use of number line and rational number approximations, and recognizing pi (π) as an irrational number."
+          },
+          {
+            "number": 2,
+            "text": "Within this benchmark, the expectation is to approximate numerical expressions involving one arithmetic operation and estimating square roots or pi (π)."
+          }
+        ],
+        "key_concepts": [
+          "irrational numbers",
+          "rational numbers",
+          "real number system",
+          "number line",
+          "pi (π)",
+          "square roots",
+          "cube roots",
+          "approximation"
+        ],
+        "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts",
+        "vertical_alignment": {
+          "previous": "MA.7.NSO.1.2",
+          "next": "MA.912.AR.3.1"
+        }
+      },
+      "lesson_topic": "Introduction to Irrational Numbers and the Real Number System",
+      "learning_objectives": [
+        "Students will distinguish between rational and irrational numbers",
+        "Students will understand that irrational numbers have non-terminating, non-repeating decimal representations",
+        "Students will recognize pi (π) as an irrational number",
+        "Students will create a graphic organizer showing the relationship between subsets of the real number system",
+        "Students will understand that every number on the number line is either rational or irrational"
+      ],
+      "key_vocabulary": [
+        "irrational number",
+        "rational number",
+        "real number",
+        "terminating decimal",
+        "repeating decimal",
+        "non-terminating",
+        "non-repeating",
+        "pi (π)"
+      ],
+      "materials_needed": [
+        "Whiteboard and markers",
+        "Calculator",
+        "Student notebooks",
+        "Real number system graphic organizer template",
+        "Pi (π) decimal expansion printout"
+      ],
+      "status": "NOT CREATED",
+      "notes": "First lesson of 8th grade. Establish strong foundation for irrational numbers. Use visual organizer showing Natural → Whole → Integer → Rational → Real number hierarchy.",
+      "integrated_mtr_standards": ["MA.K12.MTR.2.1", "MA.K12.MTR.4.1"]
+    },
+
+    {
+      "lesson_number": 2,
+      "date": "Monday, September 8, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "unit_number": 1,
+      "unit_name": "Number Sense and Operations - 8th Grade",
+      "standard_code": "MA.8.NSO.1.1",
+      "standard_title": "Extend previous understanding of rational numbers to define irrational numbers within the real number system. Locate an approximate value of a numerical expression involving irrational numbers on a number line.",
+      "standard_details": {
+        "code": "MA.8.NSO.1.1",
+        "title": "Extend previous understanding of rational numbers to define irrational numbers within the real number system. Locate an approximate value of a numerical expression involving irrational numbers on a number line.",
+        "strand": "Number Sense and Operations",
+        "category": "NSO.1 - Solve problems involving rational numbers, including numbers in scientific notation, and extend the understanding of rational numbers to irrational numbers",
+        "date_adopted": "08/20",
+        "clarifications": [
+          {
+            "number": 1,
+            "text": "Instruction includes the use of number line and rational number approximations, and recognizing pi (π) as an irrational number."
+          },
+          {
+            "number": 2,
+            "text": "Within this benchmark, the expectation is to approximate numerical expressions involving one arithmetic operation and estimating square roots or pi (π)."
+          }
+        ],
+        "key_concepts": [
+          "irrational numbers",
+          "square roots",
+          "perfect squares",
+          "approximation",
+          "number line",
+          "benchmark values"
+        ],
+        "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+      },
+      "lesson_topic": "Approximating Square Roots and Locating Them on a Number Line",
+      "learning_objectives": [
+        "Students will identify perfect squares from 1 to 225",
+        "Students will approximate square roots of non-perfect squares using benchmark perfect squares",
+        "Students will locate approximate values of square roots on a number line",
+        "Students will use the strategy of finding which perfect squares a number falls between",
+        "Students will refine approximations by testing decimal values"
+      ],
+      "key_vocabulary": [
+        "square root",
+        "perfect square",
+        "approximation",
+        "benchmark",
+        "radicand",
+        "between"
+      ],
+      "materials_needed": [
+        "Whiteboard and markers",
+        "Calculator (for verification)",
+        "Student notebooks",
+        "Number lines (0-15)",
+        "Perfect squares reference chart (1-225)",
+        "Practice worksheet on approximating square roots"
+      ],
+      "status": "NOT CREATED",
+      "notes": "Key strategy: √28 is between √25 and √36, so √28 is between 5 and 6. Since 28 is closer to 25, √28 ≈ 5.3. Build estimation skills without calculator first.",
+      "integrated_mtr_standards": ["MA.K12.MTR.2.1", "MA.K12.MTR.5.1", "MA.K12.MTR.6.1"]
+    },
+
+    {
+      "lesson_number": 3,
+      "date": "Thursday, September 11, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "unit_number": 1,
+      "unit_name": "Number Sense and Operations - 8th Grade",
+      "standard_code": "MA.8.NSO.1.1",
+      "standard_title": "Extend previous understanding of rational numbers to define irrational numbers within the real number system. Locate an approximate value of a numerical expression involving irrational numbers on a number line.",
+      "standard_details": {
+        "code": "MA.8.NSO.1.1",
+        "title": "Extend previous understanding of rational numbers to define irrational numbers within the real number system. Locate an approximate value of a numerical expression involving irrational numbers on a number line.",
+        "strand": "Number Sense and Operations",
+        "category": "NSO.1",
+        "date_adopted": "08/20",
+        "clarifications": [
+          {
+            "number": 1,
+            "text": "Instruction includes the use of number line and rational number approximations, and recognizing pi (π) as an irrational number."
+          },
+          {
+            "number": 2,
+            "text": "Within this benchmark, the expectation is to approximate numerical expressions involving one arithmetic operation and estimating square roots or pi (π)."
+          }
+        ],
+        "key_concepts": [
+          "irrational numbers",
+          "numerical expressions",
+          "addition with irrationals",
+          "subtraction with irrationals",
+          "approximation"
+        ],
+        "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+      },
+      "lesson_topic": "Approximating Expressions with Irrational Numbers (Addition and Subtraction)",
+      "learning_objectives": [
+        "Students will approximate expressions like 1 + √30 by first approximating the irrational number",
+        "Students will locate expressions involving addition with square roots on a number line",
+        "Students will evaluate expressions like π - 2 and locate them on a number line",
+        "Students will understand that adding/subtracting a rational and irrational number yields an irrational number",
+        "Students will solve real-world problems involving expressions with irrational numbers"
+      ],
+      "key_vocabulary": [
+        "numerical expression",
+        "irrational number",
+        "approximation",
+        "sum",
+        "difference",
+        "location on number line"
+      ],
+      "materials_needed": [
+        "Whiteboard and markers",
+        "Calculator",
+        "Student notebooks",
+        "Number lines",
+        "Practice problems with √ and π expressions"
+      ],
+      "status": "NOT CREATED",
+      "notes": "Example: 1 + √30. First approximate √30 ≈ 5.5, then 1 + 5.5 ≈ 6.5. Emphasize the process of breaking down complex expressions.",
+      "integrated_mtr_standards": ["MA.K12.MTR.2.1", "MA.K12.MTR.4.1", "MA.K12.MTR.6.1"]
+    },
+
+    {
+      "lesson_number": 4,
+      "date": "Monday, September 15, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "unit_number": 1,
+      "unit_name": "Number Sense and Operations - 8th Grade",
+      "standard_code": "MA.8.NSO.1.2",
+      "standard_title": "Plot, order and compare rational and irrational numbers, represented in various forms.",
+      "standard_details": {
+        "code": "MA.8.NSO.1.2",
+        "title": "Plot, order and compare rational and irrational numbers, represented in various forms.",
+        "strand": "Number Sense and Operations",
+        "category": "NSO.1",
+        "date_adopted": "08/20",
+        "clarifications": [
+          {
+            "number": 1,
+            "text": "Within this benchmark, it is not the expectation to work with the number e."
+          },
+          {
+            "number": 2,
+            "text": "Within this benchmark, the expectation is to plot, order and compare square roots and cube roots."
+          },
+          {
+            "number": 3,
+            "text": "Within this benchmark, the expectation is to use symbols (<, > or =)."
+          }
+        ],
+        "key_concepts": [
+          "plotting numbers",
+          "ordering numbers",
+          "comparing numbers",
+          "rational numbers",
+          "irrational numbers",
+          "square roots",
+          "cube roots",
+          "inequality symbols"
+        ],
+        "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts",
+        "vertical_alignment": {
+          "previous": "MA.7.NSO.1.2",
+          "next": "MA.912.NSO.1.4, MA.912.GR.3.1"
+        }
+      },
+      "lesson_topic": "Plotting, Ordering, and Comparing Rational and Irrational Numbers",
+      "learning_objectives": [
+        "Students will plot rational and irrational numbers on a number line with appropriate scale",
+        "Students will order sets of rational and irrational numbers from least to greatest",
+        "Students will compare rational and irrational numbers using inequality symbols (<, >, =)",
+        "Students will work with numbers in various forms (decimals, fractions, square roots, cube roots)",
+        "Students will determine appropriate scales for number lines based on the numbers being plotted"
+      ],
+      "key_vocabulary": [
+        "plot",
+        "order",
+        "compare",
+        "least to greatest",
+        "inequality symbols",
+        "scale",
+        "rational number",
+        "irrational number"
+      ],
+      "materials_needed": [
+        "Whiteboard and markers",
+        "Calculator",
+        "Student notebooks",
+        "Blank number lines",
+        "Mixed number cards (rational and irrational)",
+        "Comparison symbol cards"
+      ],
+      "status": "NOT CREATED",
+      "notes": "Include numbers like -3.42857, √50, ∛10, 2.5, π, -√25. Students must approximate irrationals to plot accurately.",
+      "integrated_mtr_standards": ["MA.K12.MTR.2.1", "MA.K12.MTR.4.1", "MA.K12.MTR.5.1"]
+    },
+
+    {
+      "lesson_number": 5,
+      "date": "Thursday, September 18, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "unit_number": 1,
+      "unit_name": "Number Sense and Operations - 8th Grade",
+      "standard_code": "MA.8.NSO.1.2",
+      "standard_title": "Plot, order and compare rational and irrational numbers, represented in various forms.",
+      "standard_details": {
+        "code": "MA.8.NSO.1.2",
+        "title": "Plot, order and compare rational and irrational numbers, represented in various forms.",
+        "strand": "Number Sense and Operations",
+        "category": "NSO.1",
+        "date_adopted": "08/20",
+        "clarifications": [
+          {
+            "number": 1,
+            "text": "Within this benchmark, it is not the expectation to work with the number e."
+          },
+          {
+            "number": 2,
+            "text": "Within this benchmark, the expectation is to plot, order and compare square roots and cube roots."
+          },
+          {
+            "number": 3,
+            "text": "Within this benchmark, the expectation is to use symbols (<, > or =)."
+          }
+        ],
+        "key_concepts": [
+          "cube roots",
+          "perfect cubes",
+          "plotting cube roots",
+          "comparing square and cube roots",
+          "number line"
+        ],
+        "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+      },
+      "lesson_topic": "Working with Cube Roots - Plotting and Comparing",
+      "learning_objectives": [
+        "Students will identify perfect cubes from -125 to 125",
+        "Students will approximate cube roots of non-perfect cubes",
+        "Students will plot cube roots on a number line",
+        "Students will compare and order sets including both square roots and cube roots",
+        "Students will recognize that every positive number has one positive and one negative square root, but only one cube root"
+      ],
+      "key_vocabulary": [
+        "cube root",
+        "perfect cube",
+        "radicand",
+        "index",
+        "approximation",
+        "positive and negative square roots"
+      ],
+      "materials_needed": [
+        "Whiteboard and markers",
+        "Calculator",
+        "Student notebooks",
+        "Perfect cubes reference chart (-125 to 125)",
+        "Number lines",
+        "Practice worksheet with cube roots"
+      ],
+      "status": "NOT CREATED",
+      "notes": "Plot ∛8, ∛10, ∛27 on number line. Perfect cubes: -125, -64, -27, -8, -1, 0, 1, 8, 27, 64, 125. Emphasize difference between square and cube roots.",
+      "integrated_mtr_standards": ["MA.K12.MTR.2.1", "MA.K12.MTR.4.1", "MA.K12.MTR.5.1"]
+    },
+
+    {
+      "lesson_number": 6,
+      "date": "Monday, September 22, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "unit_number": 1,
+      "unit_name": "Number Sense and Operations - 8th Grade",
+      "standard_code": "MA.8.NSO.1.3",
+      "standard_title": "Extend previous understanding of the Laws of Exponents to include integer exponents. Apply the Laws of Exponents to evaluate numerical expressions and generate equivalent numerical expressions, limited to integer exponents and rational number bases, with procedural fluency.",
+      "standard_details": {
+        "code": "MA.8.NSO.1.3",
+        "title": "Extend previous understanding of the Laws of Exponents to include integer exponents. Apply the Laws of Exponents to evaluate numerical expressions and generate equivalent numerical expressions, limited to integer exponents and rational number bases, with procedural fluency.",
+        "strand": "Number Sense and Operations",
+        "category": "NSO.1",
+        "date_adopted": "08/20",
+        "clarifications": [
+          {
+            "number": 1,
+            "text": "Refer to the K-12 Formulas (Appendix E) for the Laws of Exponents."
+          }
+        ],
+        "key_concepts": [
+          "Laws of Exponents",
+          "integer exponents",
+          "negative exponents",
+          "product rule",
+          "quotient rule",
+          "power rule",
+          "zero exponent",
+          "procedural fluency"
+        ],
+        "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts",
+        "vertical_alignment": {
+          "previous": "MA.7.NSO.1.1",
+          "next": "MA.912.NSO.1.1"
+        },
+        "appendix_references": ["Appendix E - Laws of Exponents"]
+      },
+      "lesson_topic": "Review of Exponent Laws and Introduction to Negative Integer Exponents",
+      "learning_objectives": [
+        "Students will review Product Rule, Quotient Rule, and Power Rule from 7th grade",
+        "Students will understand that negative exponents represent reciprocals (a^(-n) = 1/a^n)",
+        "Students will develop meaning for negative exponents through pattern exploration",
+        "Students will simplify expressions with negative exponents",
+        "Students will convert between expressions with negative exponents and fractional forms"
+      ],
+      "key_vocabulary": [
+        "integer exponent",
+        "negative exponent",
+        "reciprocal",
+        "power",
+        "base",
+        "equivalent expressions"
+      ],
+      "materials_needed": [
+        "Whiteboard and markers",
+        "Calculator",
+        "Student notebooks",
+        "Pattern exploration worksheet (powers of 2 from 2^3 to 2^(-3))",
+        "Laws of Exponents reference sheet (Appendix E)"
+      ],
+      "status": "NOT CREATED",
+      "notes": "Use pattern approach: 2^3=8, 2^2=4, 2^1=2, 2^0=1, 2^(-1)=1/2, 2^(-2)=1/4. Students discover that each step divides by 2, leading to negative exponents as reciprocals.",
+      "integrated_mtr_standards": ["MA.K12.MTR.2.1", "MA.K12.MTR.3.1", "MA.K12.MTR.5.1"]
+    },
+
+    {
+      "lesson_number": 7,
+      "date": "Thursday, September 25, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "unit_number": 1,
+      "unit_name": "Number Sense and Operations - 8th Grade",
+      "standard_code": "MA.8.NSO.1.3",
+      "standard_title": "Extend previous understanding of the Laws of Exponents to include integer exponents. Apply the Laws of Exponents to evaluate numerical expressions and generate equivalent numerical expressions, limited to integer exponents and rational number bases, with procedural fluency.",
+      "standard_details": {
+        "code": "MA.8.NSO.1.3",
+        "title": "Extend previous understanding of the Laws of Exponents to include integer exponents. Apply the Laws of Exponents to evaluate numerical expressions and generate equivalent numerical expressions, limited to integer exponents and rational number bases, with procedural fluency.",
+        "strand": "Number Sense and Operations",
+        "category": "NSO.1",
+        "date_adopted": "08/20",
+        "clarifications": [
+          {
+            "number": 1,
+            "text": "Refer to the K-12 Formulas (Appendix E) for the Laws of Exponents."
+          }
+        ],
+        "key_concepts": [
+          "Laws of Exponents",
+          "integer exponents",
+          "product rule",
+          "quotient rule",
+          "power rule",
+          "negative exponents",
+          "procedural fluency"
+        ],
+        "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+      },
+      "lesson_topic": "Applying Laws of Exponents with Integer Exponents",
+      "learning_objectives": [
+        "Students will apply Product Rule with integer exponents: a^m × a^n = a^(m+n)",
+        "Students will apply Quotient Rule with integer exponents: a^m ÷ a^n = a^(m-n)",
+        "Students will apply Power Rule with integer exponents: (a^m)^n = a^(mn)",
+        "Students will simplify complex expressions using multiple exponent laws",
+        "Students will evaluate numerical expressions with integer exponents and rational bases with procedural fluency"
+      ],
+      "key_vocabulary": [
+        "product rule",
+        "quotient rule",
+        "power rule",
+        "integer exponents",
+        "simplify",
+        "equivalent expressions"
+      ],
+      "materials_needed": [
+        "Whiteboard and markers",
+        "Calculator",
+        "Student notebooks",
+        "Mixed practice worksheet with integer exponents",
+        "Laws of Exponents reference poster"
+      ],
+      "status": "NOT CREATED",
+      "notes": "Example: (2^4)/(2^7) = 2^(-3) = 1/8. Students must be fluent with both positive and negative integer exponents.",
+      "integrated_mtr_standards": ["MA.K12.MTR.2.1", "MA.K12.MTR.3.1", "MA.K12.MTR.5.1"]
+    },
+
+    {
+      "lesson_number": 8,
+      "date": "Monday, September 29, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "unit_number": 1,
+      "unit_name": "Number Sense and Operations - 8th Grade",
+      "standard_code": "MA.8.NSO.1.4",
+      "standard_title": "Express numbers in scientific notation to represent and approximate very large or very small quantities. Determine how many times larger or smaller one number is compared to a second number.",
+      "standard_details": {
+        "code": "MA.8.NSO.1.4",
+        "title": "Express numbers in scientific notation to represent and approximate very large or very small quantities. Determine how many times larger or smaller one number is compared to a second number.",
+        "strand": "Number Sense and Operations",
+        "category": "NSO.1",
+        "date_adopted": "08/20",
+        "clarifications": [],
+        "key_concepts": [
+          "scientific notation",
+          "very large numbers",
+          "very small numbers",
+          "powers of 10",
+          "magnitude",
+          "comparison",
+          "place value"
+        ],
+        "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts",
+        "vertical_alignment": {
+          "previous": "MA.7.NSO.1.1, MA.7.NSO.2.1",
+          "next": "MA.912.GR.4.5"
+        }
+      },
+      "lesson_topic": "Introduction to Scientific Notation - Converting and Understanding Magnitude",
+      "learning_objectives": [
+        "Students will understand that scientific notation is a × 10^n where 1 ≤ a < 10 and n is an integer",
+        "Students will convert very large numbers to scientific notation (positive exponents)",
+        "Students will convert very small numbers to scientific notation (negative exponents)",
+        "Students will convert from scientific notation to standard form",
+        "Students will recognize calculator notation using 'E' (e.g., 2.3E27 means 2.3 × 10^27)"
+      ],
+      "key_vocabulary": [
+        "scientific notation",
+        "standard form",
+        "power of 10",
+        "exponent",
+        "magnitude",
+        "coefficient",
+        "very large",
+        "very small"
+      ],
+      "materials_needed": [
+        "Whiteboard and markers",
+        "Scientific calculator",
+        "Student notebooks",
+        "Place value chart with powers of 10",
+        "Real-world data examples (astronomical distances, atomic sizes)",
+        "Practice worksheet on converting to/from scientific notation"
+      ],
+      "status": "NOT CREATED",
+      "notes": "Example: 39,900,000,000,000 km to Proxima Centauri = 3.99 × 10^13 km. Bohr radius 0.0000000000529 = 5.29 × 10^(-11). Connect to place value.",
+      "integrated_mtr_standards": ["MA.K12.MTR.2.1", "MA.K12.MTR.4.1", "MA.K12.MTR.5.1"]
+    },
+
+    {
+      "lesson_number": 9,
+      "date": "Thursday, October 2, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "unit_number": 1,
+      "unit_name": "Number Sense and Operations - 8th Grade",
+      "standard_code": "MA.8.NSO.1.4",
+      "standard_title": "Express numbers in scientific notation to represent and approximate very large or very small quantities. Determine how many times larger or smaller one number is compared to a second number.",
+      "standard_details": {
+        "code": "MA.8.NSO.1.4",
+        "title": "Express numbers in scientific notation to represent and approximate very large or very small quantities. Determine how many times larger or smaller one number is compared to a second number.",
+        "strand": "Number Sense and Operations",
+        "category": "NSO.1",
+        "date_adopted": "08/20",
+        "clarifications": [],
+        "key_concepts": [
+          "scientific notation",
+          "comparing magnitudes",
+          "powers of 10",
+          "times larger",
+          "times smaller",
+          "place value"
+        ],
+        "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+      },
+      "lesson_topic": "Comparing Numbers in Scientific Notation - Determining Magnitude Differences",
+      "learning_objectives": [
+        "Students will compare two numbers in scientific notation to determine which is larger or smaller",
+        "Students will determine how many times larger one number is compared to another",
+        "Students will understand that if the exponent increases by 1, the value increases by a factor of 10",
+        "Students will solve problems comparing very large or very small quantities",
+        "Students will apply comparison skills to real-world contexts (astronomy, biology, physics)"
+      ],
+      "key_vocabulary": [
+        "times larger",
+        "times smaller",
+        "magnitude",
+        "factor of 10",
+        "compare",
+        "exponent difference"
+      ],
+      "materials_needed": [
+        "Whiteboard and markers",
+        "Scientific calculator",
+        "Student notebooks",
+        "Real-world comparison problems (planet sizes, cell sizes, etc.)",
+        "Practice worksheet on comparing scientific notation"
+      ],
+      "status": "NOT CREATED",
+      "notes": "Example: Blue whale 4×10^5 lb vs. elephant 1×10^4 lb. Compare: 4×10^5 is approximately 40 times heavier (4×10 = 40). Oct 2 may be 'No School' - verify calendar.",
+      "integrated_mtr_standards": ["MA.K12.MTR.2.1", "MA.K12.MTR.4.1", "MA.K12.MTR.6.1"]
+    },
+
+    {
+      "lesson_number": 10,
+      "date": "Monday, October 6, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "unit_number": 1,
+      "unit_name": "Number Sense and Operations - 8th Grade",
+      "standard_code": "MA.8.NSO.1.5",
+      "standard_title": "Add, subtract, multiply and divide numbers expressed in scientific notation with procedural fluency.",
+      "standard_details": {
+        "code": "MA.8.NSO.1.5",
+        "title": "Add, subtract, multiply and divide numbers expressed in scientific notation with procedural fluency.",
+        "strand": "Number Sense and Operations",
+        "category": "NSO.1",
+        "date_adopted": "08/20",
+        "clarifications": [
+          {
+            "number": 1,
+            "text": "Within this benchmark, for addition and subtraction with numbers expressed in scientific notation, exponents are limited to within 2 of each other."
+          }
+        ],
+        "key_concepts": [
+          "operations with scientific notation",
+          "multiplication in scientific notation",
+          "division in scientific notation",
+          "Laws of Exponents",
+          "procedural fluency"
+        ],
+        "cognitive_complexity": "Level 1: Recall",
+        "vertical_alignment": {
+          "previous": "MA.7.NSO.1.1, MA.7.NSO.2.1",
+          "next": "MA.912.GR.4.5"
+        }
+      },
+      "lesson_topic": "Multiplying and Dividing Numbers in Scientific Notation",
+      "learning_objectives": [
+        "Students will multiply numbers in scientific notation by multiplying coefficients and adding exponents",
+        "Students will divide numbers in scientific notation by dividing coefficients and subtracting exponents",
+        "Students will ensure final answers are in proper scientific notation form (1 ≤ a < 10)",
+        "Students will apply Laws of Exponents to operations with scientific notation",
+        "Students will demonstrate procedural fluency with multiplication and division of scientific notation"
+      ],
+      "key_vocabulary": [
+        "multiply",
+        "divide",
+        "coefficient",
+        "exponent",
+        "product rule",
+        "quotient rule",
+        "scientific notation"
+      ],
+      "materials_needed": [
+        "Whiteboard and markers",
+        "Scientific calculator",
+        "Student notebooks",
+        "Color highlighters (to separate coefficients and powers of 10)",
+        "Practice worksheet on multiplying/dividing scientific notation"
+      ],
+      "status": "NOT CREATED",
+      "notes": "Example: (3.2×10^28)(6.7×10^7) = (3.2×6.7)(10^28×10^7) = 21.44×10^35 = 2.144×10^36. Must convert to proper form.",
+      "integrated_mtr_standards": ["MA.K12.MTR.2.1", "MA.K12.MTR.5.1"]
+    },
+
+    {
+      "lesson_number": 11,
+      "date": "Thursday, October 9, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "unit_number": 1,
+      "unit_name": "Number Sense and Operations - 8th Grade",
+      "standard_code": "MA.8.NSO.1.5",
+      "standard_title": "Add, subtract, multiply and divide numbers expressed in scientific notation with procedural fluency.",
+      "standard_details": {
+        "code": "MA.8.NSO.1.5",
+        "title": "Add, subtract, multiply and divide numbers expressed in scientific notation with procedural fluency.",
+        "strand": "Number Sense and Operations",
+        "category": "NSO.1",
+        "date_adopted": "08/20",
+        "clarifications": [
+          {
+            "number": 1,
+            "text": "Within this benchmark, for addition and subtraction with numbers expressed in scientific notation, exponents are limited to within 2 of each other."
+          }
+        ],
+        "key_concepts": [
+          "addition in scientific notation",
+          "subtraction in scientific notation",
+          "same exponent requirement",
+          "rewriting with common power of 10",
+          "procedural fluency"
+        ],
+        "cognitive_complexity": "Level 1: Recall"
+      },
+      "lesson_topic": "Adding and Subtracting Numbers in Scientific Notation",
+      "learning_objectives": [
+        "Students will understand that addition/subtraction requires the same power of 10 (like place values)",
+        "Students will rewrite numbers in scientific notation with a common exponent before adding/subtracting",
+        "Students will add and subtract coefficients when exponents match",
+        "Students will ensure final answers are in proper scientific notation form",
+        "Students will demonstrate procedural fluency with addition and subtraction (exponents within 2 of each other)"
+      ],
+      "key_vocabulary": [
+        "addition",
+        "subtraction",
+        "common exponent",
+        "same power of 10",
+        "rewrite",
+        "place value connection"
+      ],
+      "materials_needed": [
+        "Whiteboard and markers",
+        "Scientific calculator",
+        "Student notebooks",
+        "Place value connection chart",
+        "Practice worksheet on adding/subtracting scientific notation"
+      ],
+      "status": "NOT CREATED",
+      "notes": "Example: (2.31×10^15) + (9.1×10^13). Rewrite 9.1×10^13 as 0.091×10^15, then add: 2.31 + 0.091 = 2.401×10^15. Limit to exponents within 2.",
+      "integrated_mtr_standards": ["MA.K12.MTR.2.1", "MA.K12.MTR.5.1"]
+    },
+
+    {
+      "lesson_number": 12,
+      "date": "Tuesday, October 14, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "unit_number": 1,
+      "unit_name": "Number Sense and Operations - 8th Grade",
+      "standard_code": "MA.8.NSO.1.6",
+      "standard_title": "Solve real-world problems involving operations with numbers expressed in scientific notation.",
+      "standard_details": {
+        "code": "MA.8.NSO.1.6",
+        "title": "Solve real-world problems involving operations with numbers expressed in scientific notation.",
+        "strand": "Number Sense and Operations",
+        "category": "NSO.1",
+        "date_adopted": "08/20",
+        "clarifications": [
+          {
+            "number": 1,
+            "text": "Instruction includes recognizing the importance of significant digits when physical measurements are involved."
+          },
+          {
+            "number": 2,
+            "text": "Within this benchmark, for addition and subtraction with numbers expressed in scientific notation, exponents are limited to within 2 of each other."
+          }
+        ],
+        "key_concepts": [
+          "real-world problems",
+          "scientific notation applications",
+          "significant digits",
+          "operations with scientific notation",
+          "context interpretation"
+        ],
+        "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts",
+        "vertical_alignment": {
+          "previous": "MA.7.NSO.1.1, MA.7.NSO.2.1",
+          "next": "MA.912.GR.4.5"
+        }
+      },
+      "lesson_topic": "Real-World Applications of Scientific Notation",
+      "learning_objectives": [
+        "Students will solve real-world problems involving multiplication and division in scientific notation",
+        "Students will understand and apply significant digits rules to answers",
+        "Students will interpret results in the context of real-world situations",
+        "Students will work with cross-curricular examples from science (astronomy, chemistry, biology)",
+        "Students will determine appropriate precision based on significant digits in the problem"
+      ],
+      "key_vocabulary": [
+        "real-world application",
+        "significant digits",
+        "precision",
+        "measurement",
+        "scientific context",
+        "interpret"
+      ],
+      "materials_needed": [
+        "Whiteboard and markers",
+        "Scientific calculator",
+        "Student notebooks",
+        "Real-world problem task cards (astronomy, biology, physics contexts)",
+        "Significant digits reference guide"
+      ],
+      "status": "NOT CREATED",
+      "notes": "Example: Amazon River releases 5.5×10^7 gal/sec. 3.2×10^9 sec/year. How many gallons/year? Answer: 1.8×10^17 gallons (2 sig figs).",
+      "integrated_mtr_standards": ["MA.K12.MTR.2.1", "MA.K12.MTR.4.1", "MA.K12.MTR.6.1", "MA.K12.MTR.7.1"]
+    },
+
+    {
+      "lesson_number": 13,
+      "date": "Friday, October 17, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "unit_number": 1,
+      "unit_name": "Number Sense and Operations - 8th Grade",
+      "standard_code": "MA.8.NSO.1.6",
+      "standard_title": "Solve real-world problems involving operations with numbers expressed in scientific notation.",
+      "standard_details": {
+        "code": "MA.8.NSO.1.6",
+        "title": "Solve real-world problems involving operations with numbers expressed in scientific notation.",
+        "strand": "Number Sense and Operations",
+        "category": "NSO.1",
+        "date_adopted": "08/20",
+        "clarifications": [
+          {
+            "number": 1,
+            "text": "Instruction includes recognizing the importance of significant digits when physical measurements are involved."
+          },
+          {
+            "number": 2,
+            "text": "Within this benchmark, for addition and subtraction with numbers expressed in scientific notation, exponents are limited to within 2 of each other."
+          }
+        ],
+        "key_concepts": [
+          "population density",
+          "area calculations",
+          "significant digits",
+          "multi-step problems",
+          "scientific notation applications"
+        ],
+        "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+      },
+      "lesson_topic": "Multi-Step Real-World Problems with Scientific Notation and Significant Digits",
+      "learning_objectives": [
+        "Students will solve multi-step problems involving scientific notation in real-world contexts",
+        "Students will apply addition/subtraction with scientific notation to real problems",
+        "Students will determine appropriate number of significant digits for final answers",
+        "Students will understand concepts like population density, area, and rates using scientific notation",
+        "Students will justify their answers and assess reasonableness in context"
+      ],
+      "key_vocabulary": [
+        "multi-step problem",
+        "population density",
+        "significant digits",
+        "area",
+        "rate",
+        "reasonableness"
+      ],
+      "materials_needed": [
+        "Whiteboard and markers",
+        "Scientific calculator",
+        "Student notebooks",
+        "Multi-step real-world problem set",
+        "Significant digits rules poster"
+      ],
+      "status": "NOT CREATED",
+      "notes": "Example: Puerto Rico population 3.98×10^6 people, density 1000 people/sq mi. Find area. Answer: 3.98×10^3 sq mi (3 sig figs).",
+      "integrated_mtr_standards": ["MA.K12.MTR.2.1", "MA.K12.MTR.4.1", "MA.K12.MTR.6.1", "MA.K12.MTR.7.1"]
+    },
+
+    {
+      "lesson_number": 14,
+      "date": "Tuesday, October 21, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "unit_number": 1,
+      "unit_name": "Number Sense and Operations - 8th Grade",
+      "standard_code": "MA.8.NSO.1.7",
+      "standard_title": "Solve multi-step mathematical and real-world problems involving the order of operations with rational numbers including exponents and radicals.",
+      "standard_details": {
+        "code": "MA.8.NSO.1.7",
+        "title": "Solve multi-step mathematical and real-world problems involving the order of operations with rational numbers including exponents and radicals.",
+        "strand": "Number Sense and Operations",
+        "category": "NSO.1",
+        "date_adopted": "08/20",
+        "clarifications": [
+          {
+            "number": 1,
+            "text": "Multi-step expressions are limited to 6 or fewer steps."
+          },
+          {
+            "number": 2,
+            "text": "Within this benchmark, the expectation is to simplify radicals by factoring square roots of perfect squares up to 225 and cube roots of perfect cubes from -125 to 125."
+          }
+        ],
+        "key_concepts": [
+          "order of operations",
+          "exponents",
+          "radicals",
+          "square roots",
+          "cube roots",
+          "multi-step expressions",
+          "rational numbers"
+        ],
+        "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts",
+        "vertical_alignment": {
+          "previous": "MA.8.AR.1.1, MA.8.AR.1.2, MA.8.AR.2.1, MA.8.AR.2.3, MA.8.GR.1.1, MA.8.GR.1.2, MA.8.GR.1.3",
+          "next": "MA.912.NSO.1.4"
+        }
+      },
+      "lesson_topic": "Order of Operations Review with Integer Exponents and Radicals",
+      "learning_objectives": [
+        "Students will review the order of operations (Parentheses, Exponents/Radicals, Multiplication/Division, Addition/Subtraction)",
+        "Students will understand that radicals act as grouping symbols (evaluate inside first)",
+        "Students will simplify square roots of perfect squares up to 225",
+        "Students will simplify cube roots of perfect cubes from -125 to 125",
+        "Students will evaluate multi-step expressions (up to 6 steps) with exponents and radicals"
+      ],
+      "key_vocabulary": [
+        "order of operations",
+        "PEMDAS/GEMDAS",
+        "grouping symbols",
+        "exponent",
+        "radical",
+        "square root",
+        "cube root",
+        "perfect square",
+        "perfect cube"
+      ],
+      "materials_needed": [
+        "Whiteboard and markers",
+        "Calculator",
+        "Student notebooks",
+        "Perfect squares chart (1-225)",
+        "Perfect cubes chart (-125 to 125)",
+        "Order of operations reference poster",
+        "Practice worksheet with exponents and radicals"
+      ],
+      "status": "NOT CREATED",
+      "notes": "Example: (-1/2)^2 + √(2^3 + 8) = 1/4 + √16 = 1/4 + 4 = 17/4. Avoid PEMDAS mnemonic - use proper grouping and number sense.",
+      "integrated_mtr_standards": ["MA.K12.MTR.2.1", "MA.K12.MTR.4.1", "MA.K12.MTR.5.1"]
+    },
+
+    {
+      "lesson_number": 15,
+      "date": "Friday, October 24, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "unit_number": 1,
+      "unit_name": "Number Sense and Operations - 8th Grade",
+      "standard_code": "MA.8.NSO.1.7",
+      "standard_title": "Solve multi-step mathematical and real-world problems involving the order of operations with rational numbers including exponents and radicals.",
+      "standard_details": {
+        "code": "MA.8.NSO.1.7",
+        "title": "Solve multi-step mathematical and real-world problems involving the order of operations with rational numbers including exponents and radicals.",
+        "strand": "Number Sense and Operations",
+        "category": "NSO.1",
+        "date_adopted": "08/20",
+        "clarifications": [
+          {
+            "number": 1,
+            "text": "Multi-step expressions are limited to 6 or fewer steps."
+          },
+          {
+            "number": 2,
+            "text": "Within this benchmark, the expectation is to simplify radicals by factoring square roots of perfect squares up to 225 and cube roots of perfect cubes from -125 to 125."
+          }
+        ],
+        "key_concepts": [
+          "order of operations",
+          "integer exponents",
+          "radicals",
+          "fractions",
+          "decimals",
+          "multi-step expressions"
+        ],
+        "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+      },
+      "lesson_topic": "Multi-Step Expressions with Rational Numbers, Exponents, and Radicals",
+      "learning_objectives": [
+        "Students will evaluate expressions with combinations of fractions, decimals, exponents, and radicals",
+        "Students will apply order of operations to expressions with up to 6 steps",
+        "Students will work with nested grouping symbols and radicals",
+        "Students will show equivalence from one step to another in their work",
+        "Students will use color-coding or organizational strategies to track multi-step problems"
+      ],
+      "key_vocabulary": [
+        "multi-step expression",
+        "nested grouping",
+        "equivalence",
+        "step-by-step process",
+        "simplify"
+      ],
+      "materials_needed": [
+        "Whiteboard and markers",
+        "Calculator",
+        "Student notebooks",
+        "Colored pencils or highlighters",
+        "Multi-step practice worksheet",
+        "Step-by-step solution templates"
+      ],
+      "status": "NOT CREATED",
+      "notes": "Example: ∛27 - 1.4(3^2 - 5) = 3 - 1.4(9-5) = 3 - 1.4(4) = 3 - 5.6 = -2.6. Use color coding for organization.",
+      "integrated_mtr_standards": ["MA.K12.MTR.2.1", "MA.K12.MTR.4.1", "MA.K12.MTR.5.1"]
+    },
+
+    {
+      "lesson_number": 16,
+      "date": "Tuesday, October 28, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "unit_number": 1,
+      "unit_name": "Number Sense and Operations - 8th Grade",
+      "standard_code": "MA.8.NSO.1.7",
+      "standard_title": "Solve multi-step mathematical and real-world problems involving the order of operations with rational numbers including exponents and radicals.",
+      "standard_details": {
+        "code": "MA.8.NSO.1.7",
+        "title": "Solve multi-step mathematical and real-world problems involving the order of operations with rational numbers including exponents and radicals.",
+        "strand": "Number Sense and Operations",
+        "category": "NSO.1",
+        "date_adopted": "08/20",
+        "clarifications": [
+          {
+            "number": 1,
+            "text": "Multi-step expressions are limited to 6 or fewer steps."
+          },
+          {
+            "number": 2,
+            "text": "Within this benchmark, the expectation is to simplify radicals by factoring square roots of perfect squares up to 225 and cube roots of perfect cubes from -125 to 125."
+          }
+        ],
+        "key_concepts": [
+          "real-world applications",
+          "order of operations",
+          "exponents",
+          "radicals",
+          "problem solving",
+          "context interpretation"
+        ],
+        "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+      },
+      "lesson_topic": "Real-World Problems Involving Order of Operations with Exponents and Radicals",
+      "learning_objectives": [
+        "Students will solve real-world problems requiring order of operations with exponents and radicals",
+        "Students will apply the Pythagorean Theorem and use square roots in geometric contexts",
+        "Students will use area formulas involving squares and cubes (A = s^2, V = s^3)",
+        "Students will estimate and predict solutions before solving to check reasonableness",
+        "Students will interpret solutions in the context of the problem situation"
+      ],
+      "key_vocabulary": [
+        "real-world application",
+        "geometric context",
+        "Pythagorean Theorem",
+        "area",
+        "volume",
+        "square root application",
+        "reasonableness"
+      ],
+      "materials_needed": [
+        "Whiteboard and markers",
+        "Calculator",
+        "Student notebooks",
+        "Real-world task cards (geometry, construction, design contexts)",
+        "Three-read strategy cards",
+        "Grid paper for diagrams"
+      ],
+      "status": "NOT CREATED",
+      "notes": "Example: Dotson backyard problem - total area 600 sq ft, 3 equal squares. Each square area = 200 sq ft, so side = √200 ≈ 14.14 ft. Use three-read strategy.",
+      "integrated_mtr_standards": ["MA.K12.MTR.2.1", "MA.K12.MTR.4.1", "MA.K12.MTR.6.1", "MA.K12.MTR.7.1"]
+    },
+
+    {
+      "lesson_number": 17,
+      "date": "Friday, October 31, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "unit_number": 1,
+      "unit_name": "Number Sense and Operations - 8th Grade",
+      "standard_code": "MA.8.NSO.1.1 - MA.8.NSO.1.7 (Review)",
+      "standard_title": "Review of all Q1 Standards: Irrational Numbers, Plotting/Comparing, Integer Exponents, Scientific Notation, Order of Operations with Radicals",
+      "standard_details": {
+        "review_standards": [
+          {
+            "code": "MA.8.NSO.1.1",
+            "title": "Extend previous understanding of rational numbers to define irrational numbers within the real number system. Locate an approximate value of a numerical expression involving irrational numbers on a number line."
+          },
+          {
+            "code": "MA.8.NSO.1.2",
+            "title": "Plot, order and compare rational and irrational numbers, represented in various forms."
+          },
+          {
+            "code": "MA.8.NSO.1.3",
+            "title": "Extend previous understanding of the Laws of Exponents to include integer exponents. Apply the Laws of Exponents to evaluate numerical expressions and generate equivalent numerical expressions, limited to integer exponents and rational number bases, with procedural fluency."
+          },
+          {
+            "code": "MA.8.NSO.1.4",
+            "title": "Express numbers in scientific notation to represent and approximate very large or very small quantities. Determine how many times larger or smaller one number is compared to a second number."
+          },
+          {
+            "code": "MA.8.NSO.1.5",
+            "title": "Add, subtract, multiply and divide numbers expressed in scientific notation with procedural fluency."
+          },
+          {
+            "code": "MA.8.NSO.1.6",
+            "title": "Solve real-world problems involving operations with numbers expressed in scientific notation."
+          },
+          {
+            "code": "MA.8.NSO.1.7",
+            "title": "Solve multi-step mathematical and real-world problems involving the order of operations with rational numbers including exponents and radicals."
+          }
+        ],
+        "strand": "Number Sense and Operations - All Q1 Standards",
+        "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+      },
+      "lesson_topic": "Comprehensive Review - Stations Activity for All Q1 Topics",
+      "learning_objectives": [
+        "Students will review and demonstrate understanding of irrational numbers and the real number system",
+        "Students will plot, order, and compare rational and irrational numbers including square roots and cube roots",
+        "Students will apply Laws of Exponents with integer exponents fluently",
+        "Students will work with scientific notation: converting, comparing, and performing operations",
+        "Students will solve multi-step problems with order of operations including exponents and radicals"
+      ],
+      "key_concepts": [
+        "irrational numbers",
+        "plotting and comparing",
+        "integer exponents",
+        "scientific notation",
+        "operations with scientific notation",
+        "order of operations",
+        "radicals",
+        "real-world applications"
+      ],
+      "materials_needed": [
+        "Whiteboard and markers",
+        "Calculator",
+        "Student notebooks",
+        "Station activity materials (7 stations for 7 standards)",
+        "Review game materials (Kahoot or Jeopardy)",
+        "Self-assessment checklist"
+      ],
+      "status": "NOT CREATED",
+      "notes": "Noon dismissal on Oct 31 - shortened class time. Use station rotation or carousel activity. Quick formative assessment to identify areas needing reteaching.",
+      "integrated_mtr_standards": ["MA.K12.MTR.2.1", "MA.K12.MTR.4.1", "MA.K12.MTR.5.1", "MA.K12.MTR.6.1"]
+    },
+
+    {
+      "lesson_number": 18,
+      "date": "Tuesday, November 4, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "unit_number": 1,
+      "unit_name": "Number Sense and Operations - 8th Grade",
+      "standard_code": "MA.8.NSO.1.1 - MA.8.NSO.1.7 (Targeted Review and Practice)",
+      "standard_title": "Targeted Review and Practice - Focus on Challenging Concepts",
+      "standard_details": {
+        "review_standards": [
+          {
+            "code": "MA.8.NSO.1.1",
+            "focus": "Approximating expressions with irrational numbers"
+          },
+          {
+            "code": "MA.8.NSO.1.2",
+            "focus": "Comparing and ordering mixed rational and irrational numbers"
+          },
+          {
+            "code": "MA.8.NSO.1.3",
+            "focus": "Negative exponents and complex exponent law applications"
+          },
+          {
+            "code": "MA.8.NSO.1.5",
+            "focus": "Adding/subtracting scientific notation with different exponents"
+          },
+          {
+            "code": "MA.8.NSO.1.7",
+            "focus": "Multi-step expressions with nested grouping and radicals"
+          }
+        ],
+        "strand": "Number Sense and Operations",
+        "cognitive_complexity": "Level 2: Basic Application of Skills & Concepts"
+      },
+      "lesson_topic": "Targeted Practice on Common Misconceptions and Challenging Problems",
+      "learning_objectives": [
+        "Students will address common misconceptions identified from previous lessons",
+        "Students will work through challenging mixed-topic problems",
+        "Students will practice explaining their reasoning and solution strategies",
+        "Students will engage in peer teaching and collaborative problem solving",
+        "Students will demonstrate readiness for the Unit 1 assessment"
+      ],
+      "key_concepts": [
+        "common misconceptions",
+        "error analysis",
+        "justification",
+        "mathematical reasoning",
+        "collaborative problem solving"
+      ],
+      "materials_needed": [
+        "Whiteboard and markers",
+        "Calculator",
+        "Student notebooks",
+        "Error analysis task cards",
+        "Challenging problem set",
+        "Peer teaching protocols",
+        "Exit ticket for self-assessment"
+      ],
+      "status": "NOT CREATED",
+      "notes": "Focus on areas where students struggled during review. Use error analysis - show incorrect work and have students identify and correct errors. Prepare for assessment.",
+      "integrated_mtr_standards": ["MA.K12.MTR.2.1", "MA.K12.MTR.3.1", "MA.K12.MTR.4.1", "MA.K12.MTR.5.1", "MA.K12.MTR.6.1"]
+    },
+
+    {
+      "lesson_number": 19,
+      "date": "Friday, November 7, 2025",
+      "day_type": "B",
+      "quarter": "Q1",
+      "unit_number": 1,
+      "unit_name": "Number Sense and Operations - 8th Grade",
+      "standard_code": "ASSESSMENT - All Q1 Standards MA.8.NSO.1.1 - MA.8.NSO.1.7",
+      "standard_title": "Unit 1 Summative Assessment - Number Sense and Operations",
+      "standard_details": {
+        "assessment_standards": [
+          "MA.8.NSO.1.1 - Irrational numbers and real number system",
+          "MA.8.NSO.1.2 - Plot, order, and compare rational and irrational numbers",
+          "MA.8.NSO.1.3 - Laws of Exponents with integer exponents",
+          "MA.8.NSO.1.4 - Scientific notation and magnitude comparison",
+          "MA.8.NSO.1.5 - Operations with scientific notation",
+          "MA.8.NSO.1.6 - Real-world problems with scientific notation",
+          "MA.8.NSO.1.7 - Order of operations with exponents and radicals"
+        ],
+        "strand": "Number Sense and Operations",
+        "cognitive_complexity": "Levels 1-2",
+        "assessment_type": "Summative"
+      },
+      "lesson_topic": "Unit 1 Summative Assessment",
+      "learning_objectives": [
+        "Students will demonstrate mastery of all MA.8.NSO.1.1 - MA.8.NSO.1.7 standards",
+        "Students will apply knowledge to computational and real-world problems",
+        "Students will show work and justify solutions where appropriate",
+        "Students will demonstrate procedural fluency with exponents and scientific notation",
+        "Students will use appropriate precision and significant digits in answers"
+      ],
+      "assessment_components": [
+        "Multiple choice questions (computational fluency)",
+        "Short answer questions (showing work)",
+        "Real-world application problems",
+        "Error analysis question",
+        "Extended response with justification"
+      ],
+      "materials_needed": [
+        "Assessment booklet",
+        "Answer sheet",
+        "Calculator",
+        "Reference sheet (if allowed)",
+        "Scratch paper"
+      ],
+      "status": "NOT CREATED",
+      "notes": "Last day of Q1. Assessment should cover all 7 standards proportionally. Include mix of computational, conceptual, and application problems. Allow calculator use.",
+      "integrated_mtr_standards": ["MA.K12.MTR.2.1", "MA.K12.MTR.4.1", "MA.K12.MTR.6.1"]
+    }
+  ],
+
+  "standards_covered": {
+    "MA.8.NSO.1.1": {
+      "lessons": [1, 2, 3],
+      "title": "Extend previous understanding of rational numbers to define irrational numbers within the real number system. Locate an approximate value of a numerical expression involving irrational numbers on a number line.",
+      "total_lessons": 3,
+      "key_topics": ["Irrational numbers", "Real number system", "Approximating square roots", "Expressions with irrationals"]
+    },
+    "MA.8.NSO.1.2": {
+      "lessons": [4, 5],
+      "title": "Plot, order and compare rational and irrational numbers, represented in various forms.",
+      "total_lessons": 2,
+      "key_topics": ["Plotting numbers", "Ordering numbers", "Comparing with inequalities", "Cube roots"]
+    },
+    "MA.8.NSO.1.3": {
+      "lessons": [6, 7],
+      "title": "Extend previous understanding of the Laws of Exponents to include integer exponents. Apply the Laws of Exponents to evaluate numerical expressions and generate equivalent numerical expressions, limited to integer exponents and rational number bases, with procedural fluency.",
+      "total_lessons": 2,
+      "key_topics": ["Negative exponents", "Product/Quotient/Power rules", "Integer exponents", "Procedural fluency"]
+    },
+    "MA.8.NSO.1.4": {
+      "lessons": [8, 9],
+      "title": "Express numbers in scientific notation to represent and approximate very large or very small quantities. Determine how many times larger or smaller one number is compared to a second number.",
+      "total_lessons": 2,
+      "key_topics": ["Scientific notation", "Very large/small numbers", "Magnitude comparison", "Calculator notation"]
+    },
+    "MA.8.NSO.1.5": {
+      "lessons": [10, 11],
+      "title": "Add, subtract, multiply and divide numbers expressed in scientific notation with procedural fluency.",
+      "total_lessons": 2,
+      "key_topics": ["Multiplying/dividing scientific notation", "Adding/subtracting scientific notation", "Procedural fluency"]
+    },
+    "MA.8.NSO.1.6": {
+      "lessons": [12, 13],
+      "title": "Solve real-world problems involving operations with numbers expressed in scientific notation.",
+      "total_lessons": 2,
+      "key_topics": ["Real-world applications", "Significant digits", "Multi-step problems", "Cross-curricular connections"]
+    },
+    "MA.8.NSO.1.7": {
+      "lessons": [14, 15, 16],
+      "title": "Solve multi-step mathematical and real-world problems involving the order of operations with rational numbers including exponents and radicals.",
+      "total_lessons": 3,
+      "key_topics": ["Order of operations", "Radicals", "Exponents", "Multi-step expressions", "Real-world applications"]
+    },
+    "REVIEW_AND_ASSESSMENT": {
+      "lessons": [17, 18, 19],
+      "title": "Comprehensive Review and Summative Assessment",
+      "total_lessons": 3
+    }
+  },
+
+  "integrated_mtr_standards": {
+    "MA.K12.MTR.2.1": {
+      "code": "MA.K12.MTR.2.1",
+      "title": "Demonstrate understanding by representing problems in multiple ways",
+      "strand": "Mathematical Thinking and Reasoning",
+      "integrated_in_all_lessons": true
+    },
+    "MA.K12.MTR.3.1": {
+      "code": "MA.K12.MTR.3.1",
+      "title": "Complete tasks with mathematical fluency",
+      "strand": "Mathematical Thinking and Reasoning",
+      "emphasis_lessons": [6, 7, 10, 11, 18]
+    },
+    "MA.K12.MTR.4.1": {
+      "code": "MA.K12.MTR.4.1",
+      "title": "Engage in discussions that reflect on the mathematical thinking of self and others",
+      "strand": "Mathematical Thinking and Reasoning",
+      "integrated_in_all_lessons": true
+    },
+    "MA.K12.MTR.5.1": {
+      "code": "MA.K12.MTR.5.1",
+      "title": "Use patterns and structure to help understand and connect mathematical concepts",
+      "strand": "Mathematical Thinking and Reasoning",
+      "emphasis_lessons": [2, 6, 10, 14, 15]
+    },
+    "MA.K12.MTR.6.1": {
+      "code": "MA.K12.MTR.6.1",
+      "title": "Assess the reasonableness of solutions",
+      "strand": "Mathematical Thinking and Reasoning",
+      "emphasis_lessons": [2, 3, 9, 12, 13, 16, 17, 18, 19]
+    },
+    "MA.K12.MTR.7.1": {
+      "code": "MA.K12.MTR.7.1",
+      "title": "Apply mathematics to real-world contexts",
+      "strand": "Mathematical Thinking and Reasoning",
+      "emphasis_lessons": [12, 13, 16]
+    }
+  },
+
+  "q1_b_day_schedule": {
+    "september_2025": [
+      "Thursday, September 4 (Lesson 1)",
+      "Monday, September 8 (Lesson 2)",
+      "Thursday, September 11 (Lesson 3)",
+      "Monday, September 15 (Lesson 4)",
+      "Thursday, September 18 (Lesson 5)",
+      "Monday, September 22 (Lesson 6)",
+      "Thursday, September 25 (Lesson 7)",
+      "Monday, September 29 (Lesson 8)"
+    ],
+    "october_2025": [
+      "Thursday, October 2 (Lesson 9) - NOTE: Verify if No School",
+      "Monday, October 6 (Lesson 10)",
+      "Thursday, October 9 (Lesson 11)",
+      "Tuesday, October 14 (Lesson 12)",
+      "Friday, October 17 (Lesson 13)",
+      "Tuesday, October 21 (Lesson 14)",
+      "Friday, October 24 (Lesson 15)",
+      "Tuesday, October 28 (Lesson 16)",
+      "Friday, October 31 (Lesson 17) - Noon dismissal, shortened class"
+    ],
+    "november_2025": [
+      "Tuesday, November 4 (Lesson 18)",
+      "Friday, November 7 (Lesson 19) - Last day of Q1"
+    ],
+    "total_b_days_in_q1": 19
+  },
+
+  "instructional_notes": {
+    "unit_overview": "Unit 1 for 8th grade focuses on extending number sense to include irrational numbers, mastering integer exponents and scientific notation, and applying order of operations with radicals. This is foundational for Algebra 1.",
+
+    "key_differences_from_7th_grade": [
+      "8th grade introduces IRRATIONAL NUMBERS (7th grade only worked with rationals)",
+      "8th grade uses INTEGER EXPONENTS including negatives (7th grade only whole-number exponents)",
+      "8th grade introduces SCIENTIFIC NOTATION (not in 7th grade)",
+      "8th grade includes RADICALS in order of operations (7th grade did not)",
+      "8th grade plots and compares BOTH rational AND irrational numbers"
+    ],
+
+    "pacing_guidance": {
+      "irrational_numbers": "3 lessons - Build strong conceptual foundation",
+      "plotting_comparing": "2 lessons - Include both square and cube roots",
+      "integer_exponents": "2 lessons - Focus on negative exponents",
+      "scientific_notation": "5 lessons - Conversion, operations, and applications",
+      "order_of_operations_radicals": "3 lessons - Build complexity gradually",
+      "review_assessment": "3 lessons - Comprehensive review and assessment"
+    },
+
+    "fluency_expectations": "By end of Q1, students should demonstrate procedural fluency with: (1) Laws of Exponents with integer exponents, (2) All four operations with scientific notation, (3) Order of operations including radicals.",
+
+    "cross_curricular_connections": {
+      "science": "Astronomy (large distances), chemistry (atomic sizes), biology (cell sizes), physics (speed of light)",
+      "technology": "Calculator use with scientific notation, understanding E notation",
+      "real_world": "Population density, area calculations, rates, financial applications"
+    },
+
+    "assessment_recommendations": [
+      "Formative check after Lesson 3 (irrational numbers)",
+      "Formative check after Lesson 7 (exponents)",
+      "Formative check after Lesson 13 (scientific notation)",
+      "Formative check after Lesson 16 (order of operations with radicals)",
+      "Summative assessment Lesson 19 (all standards)"
+    ],
+
+    "common_student_challenges": [
+      "Distinguishing between rational and irrational numbers",
+      "Understanding that √2 ≈ 1.414... goes on forever without repeating",
+      "Negative exponents - thinking they make the answer negative",
+      "Scientific notation - ensuring 1 ≤ a < 10",
+      "Adding/subtracting scientific notation - need same exponent first",
+      "Order of operations - radicals as grouping symbols"
+    ]
+  },
+
+  "differentiation_strategies": {
+    "advanced_learners": [
+      "Explore the golden ratio (φ) as an irrational number",
+      "Work with more complex expressions involving multiple radicals",
+      "Research historical development of irrational numbers",
+      "Apply scientific notation to astronomy and nanotechnology",
+      "Challenge problems with nested radicals"
+    ],
+    "struggling_learners": [
+      "Use visual models for real number system hierarchy",
+      "Provide calculator practice with square root approximations",
+      "Use pattern discovery for negative exponents",
+      "Color coding for scientific notation operations",
+      "Step-by-step templates for multi-step problems",
+      "Small group instruction on challenging concepts"
+    ],
+    "english_language_learners": [
+      "Vocabulary cards with visual representations",
+      "Sentence frames for mathematical explanations",
+      "Bilingual math word walls",
+      "Partner work with mathematical language practice",
+      "Graphic organizers for concepts"
+    ]
+  },
+
+  "technology_integration": [
+    "Scientific calculators for all lessons",
+    "Desmos or GeoGebra for plotting rational and irrational numbers",
+    "Online interactive tools for scientific notation practice",
+    "Kahoot or Quizizz for review games",
+    "Digital number line tools"
+  ],
+
+  "parent_communication": {
+    "key_messages": [
+      "8th grade mathematics extends to irrational numbers - numbers that cannot be written as fractions",
+      "Scientific notation is essential for science courses and real-world applications",
+      "Negative exponents represent reciprocals (very important concept)",
+      "Homework will include calculator use for complex calculations",
+      "Students should be able to approximate square roots without a calculator"
+    ],
+    "support_at_home": [
+      "Review perfect squares 1-15 (1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225)",
+      "Practice with calculator scientific notation features",
+      "Discuss real-world examples of very large/small numbers (space, atoms)",
+      "Encourage estimation before calculating",
+      "Review order of operations rules"
+    ]
+  },
+
+  "next_steps": {
+    "after_q1": "Unit 2 will likely cover algebraic expressions, equations, and functions (MA.8.AR standards)",
+    "building_to": "This Number Sense and Operations unit is foundational for Algebra 1, where students will work with polynomial expressions, rational expressions, and radical expressions"
+  }
+}
